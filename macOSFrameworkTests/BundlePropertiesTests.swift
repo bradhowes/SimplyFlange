@@ -1,7 +1,7 @@
 // Copyright © 2020 Brad Howes. All rights reserved.
 
 import XCTest
-import LowPassFilterFramework
+import SimplyFlangerFilterFramework
 
 extension Bundle {
     func info(for key: String) -> String { infoDictionary?[key] as! String }
@@ -16,12 +16,12 @@ extension Bundle {
 class BundlePropertiesTests: XCTestCase {
 
     func testComponentAttributes() throws {
-        let bundle = Bundle(for: LowPassFilterFramework.FilterAudioUnit.self)
-        XCTAssertEqual("LPF", bundle.auBaseName)
-        XCTAssertEqual("B-Ray: SimplyLowPass", bundle.auComponentName)
+        let bundle = Bundle(for: SimplyFlangerFilterFramework.FilterAudioUnit.self)
+        XCTAssertEqual("SimplyFlanger", bundle.auBaseName)
+        XCTAssertEqual("B-Ray: SimplyFlanger", bundle.auComponentName)
         XCTAssertEqual("aufx", bundle.auComponentType)
-        XCTAssertEqual("lpas", bundle.auComponentSubtype)
+        XCTAssertEqual("flng", bundle.auComponentSubtype)
         XCTAssertEqual("BRay", bundle.auComponentManufacturer)
-        XCTAssertEqual("LowPassFilterFramework.FilterViewController", bundle.auFactoryFunction)
+        XCTAssertEqual("SimplyFlangerFilterFramework.FilterViewController", bundle.auFactoryFunction)
     }
 }

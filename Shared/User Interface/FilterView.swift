@@ -27,7 +27,7 @@ public protocol FilterViewDelegate: class {
      - parameter filterView: the source of the notification
      - parameter resonance: the new value
      */
-    func filterView(_ filterView: FilterView, didChangeResonance resonance: Float)
+    // func filterView(_ filterView: FilterView, didChangeResonance resonance: Float)
 
     /**
      Notification that the frequency setting has changed.
@@ -35,7 +35,7 @@ public protocol FilterViewDelegate: class {
      - parameter filterView: the source of the notification
      - parameter cutoff: the new value
      */
-    func filterView(_ filterView: FilterView, didChangeCutoff cutoff: Float)
+    // func filterView(_ filterView: FilterView, didChangeCutoff cutoff: Float)
 
     /**
      Notification that the frequency and resonance settings have changed.
@@ -44,8 +44,9 @@ public protocol FilterViewDelegate: class {
      - parameter cutoff: the new frequency value
      - parameter resonance: the new resonance value
      */
-    func filterView(_ filterView: FilterView, didChangeCutoff cutoff: Float, andResonance resonance: Float)
-    func filterViewDataDidChange(_ filterView: FilterView)
+    // func filterView(_ filterView: FilterView, didChangeCutoff cutoff: Float, andResonance resonance: Float)
+
+    // func filterViewDataDidChange(_ filterView: FilterView)
 }
 
 /**
@@ -89,7 +90,7 @@ public final class FilterView: View {
             if newValue != _cutoff {
                 _cutoff = newValue
                 updateIndicator()
-                delegate?.filterView(self, didChangeCutoff: cutoff)
+                // delegate?.filterView(self, didChangeCutoff: cutoff)
             }
         }
     }
@@ -102,7 +103,7 @@ public final class FilterView: View {
             if newValue != _resonance {
                 _resonance = newValue
                 updateIndicator()
-                delegate?.filterView(self, didChangeResonance: resonance)
+                // delegate?.filterView(self, didChangeResonance: resonance)
             }
         }
     }
@@ -172,8 +173,6 @@ public final class FilterView: View {
         #endif
     }
 
-//    public override var intrinsicContentSize: Size { CGSize(width: 600, height: 400) }
-
     override public func awakeFromNib() {
         super.awakeFromNib()
 
@@ -233,38 +232,6 @@ public final class FilterView: View {
     }
 
     #endif
-}
-
-// MARK: - Response Curve
-extension FilterView {
-
-    /**
-     Create a new response curve using the given magnitude values.
-
-     - parameter magnitudes: the magnitudes from the filter for the frequencies in `frequencies`
-     */
-    public func makeFilterResponseCurve(_ magnitudes: [Float]) {
-        guard let frequencies = self.frequencies else { return }
-        guard magnitudes.count > 0 else { return }
-
-        let width = graphLayer.bounds.width
-        let scale = width / CGFloat(frequencies.count)
-        let bezierPath = CGMutablePath()
-
-        bezierPath.move(to: CGPoint(x: 0, y: graphLayer.bounds.height))
-        for (index, magnitude) in magnitudes.enumerated() {
-            bezierPath.addLine(to: CGPoint(x: CGFloat(index) * scale, y: dbToLocation(magnitude)))
-        }
-
-        bezierPath.addLine(to: CGPoint(x: CGFloat(frequencies.count - 1) * scale, y: graphLayer.bounds.height))
-        bezierPath.closeSubpath()
-
-        CATransaction.noAnimation {
-            curveLayer.fillColor = curveColor.cgColor
-            curveLayer.path = bezierPath
-        }
-        updateIndicator()
-    }
 }
 
 // MARK: - Touch/Mouse Event Handling

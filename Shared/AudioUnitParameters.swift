@@ -4,6 +4,21 @@ import Foundation
 import os
 
 /**
+ Address definitions for AUParameter settings. Available in Swift as `FilterParameterAddress.*`
+ */
+@objc public enum FilterParameterAddress: UInt64, CaseIterable {
+    case depth = 0
+    case rate
+    case delay
+    case feedback
+    case wetDryMix
+}
+
+private extension Array where Element == AUParameter {
+    subscript(index: FilterParameterAddress) -> AUParameter { self[Int(index.rawValue)] }
+}
+
+/**
  Definitions for the runtime parameters of the filter. There are two:
 
  - cutoff -- the frequency at which the filter starts to roll off and filter out the higher frequencies
@@ -14,27 +29,30 @@ public final class AudioUnitParameters: NSObject {
 
     private let log = Logging.logger("FilterParameters")
 
-    /// Definition of the cutoff parameter. Range is 12 - 20kHz.
-    public let cutoff = AUParameterTree.createParameter(withIdentifier: "cutoff", name: "Cutoff",
-                                                        address: FilterParameterAddress.cutoff.rawValue,
-                                                        min: 12.0, max: 20_000.0,
-                                                        unit: .hertz, unitName: nil,
-                                                        flags: [.flag_IsReadable, .flag_IsWritable,
-                                                                .flag_DisplayLogarithmic],
-                                                        valueStrings: nil,
-                                                        dependentParameters: nil)
+    static public let maxDelayMilliseconds: AUValue = 15.0
 
-    /// Definition of the resonance parameter. Range is -20dB - +40dB
-    public let resonance = AUParameterTree.createParameter(withIdentifier: "resonance", name: "Resonance",
-                                                           address: FilterParameterAddress.resonance.rawValue,
-                                                           min: -20.0, max: 40.0,
-                                                           unit: .decibels, unitName: nil,
-                                                           flags: [.flag_IsReadable, .flag_IsWritable],
-                                                           valueStrings: nil,
-                                                           dependentParameters: nil)
+    public let parameters: [AUParameter] = [
+        AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: .depth,
+                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent),
+        AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: .rate,
+                                        value: 2.5, min: 0.0, max: 5.0, unit: .hertz),
+        AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: .delay,
+                                        value: 7.5, min: 0.0, max: AudioUnitParameters.maxDelayMilliseconds,
+                                        unit: .milliseconds),
+        AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: .feedback,
+                                        value: 0.0, min: 0.0, max: 100.0, unit: .percent),
+        AUParameterTree.createParameter(withIdentifier: "mix", name: "Mix", address: .wetDryMix,
+                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent)
+    ]
 
     /// AUParameterTree created with the parameter definitions for the audio unit
     public let parameterTree: AUParameterTree
+
+    public var depth: AUParameter { parameters[.depth] }
+    public var rate: AUParameter { parameters[.rate] }
+    public var delay: AUParameter { parameters[.delay] }
+    public var feedback: AUParameter { parameters[.feedback] }
+    public var wetDryMix: AUParameter { parameters[.wetDryMix] }
 
     /**
      Create a new AUParameterTree for the defined filter parameters.
@@ -47,37 +65,39 @@ public final class AudioUnitParameters: NSObject {
      - parameter parameterHandler the object to use to handle the AUParameterTree requests
      */
     init(parameterHandler: AUParameterHandler) {
-        parameterTree = AUParameterTree.createTree(withChildren: [cutoff, resonance])
-        cutoff.value = 440.0
-        resonance.value = 5.0
+        parameterTree = AUParameterTree.createTree(withChildren: parameters)
         super.init()
 
         parameterTree.implementorValueObserver = { parameterHandler.set($0, value: $1) }
         parameterTree.implementorValueProvider = { parameterHandler.get($0) }
         parameterTree.implementorStringFromValueCallback = { param, value in
-            let formatted: String = {
-                switch param.address {
-                case self.cutoff.address: return String(format: "%.2f", param.value)
-                case self.resonance.address: return String(format: "%.2f", param.value)
-                default: return "?"
-                }
-            }()
+            let formatted = self.formatValue(param.address.filterParameter, value: param.value)
             os_log(.debug, log: self.log, "parameter %d as string: %d %f %{public}s",
                    param.address, param.value, formatted)
             return formatted
         }
     }
 
+    public subscript(address: FilterParameterAddress) -> AUParameter { parameters[address] }
+
+    public func formatValue(_ address: FilterParameterAddress?, value: AUValue) -> String {
+        switch address {
+        case .depth, .feedback, .wetDryMix: return String(format: "%.2f%%", value)
+        case .rate: return String(format: "%.2f Hz", value)
+        case .delay: return String(format: "%.2f ms", value)
+        default: return "?"
+        }
+    }
+
     /**
      Accept new values for the filter settings. Uses the AUParameterTree framework for communicating the changes to the
      AudioUnit.
-
-     - parameter cutoffValue: the new cutoff value to use
-     - parameter resonanceValue: the new resonance value to use
      */
-    public func setValues(cutoff: AUValue, resonance: AUValue) {
-        os_log(.info, log: log, "cutoff: %f resonance: %f", cutoff, resonance)
-        self.cutoff.value = cutoff
-        self.resonance.value = resonance
+    public func setValues(_ preset: FilterPreset) {
+        self.depth.value = preset.depth
+        self.rate.value = preset.rate
+        self.delay.value = preset.delay
+        self.feedback.value = preset.feedback
+        self.wetDryMix.value = preset.wetDryMix
     }
 }

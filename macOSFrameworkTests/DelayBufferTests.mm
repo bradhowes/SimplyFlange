@@ -29,9 +29,9 @@
 - (void)testReadFromOffset{
     auto buffer = DelayBuffer<float>(8);
     XCTAssertEqual(8, buffer.size());
-    buffer.add(1.2);
-    buffer.add(2.4);
-    buffer.add(3.6);
+    buffer.write(1.2);
+    buffer.write(2.4);
+    buffer.write(3.6);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(1), 3.6, 0.001);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(2), 2.4, 0.001);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(3), 1.2, 0.001);
@@ -40,9 +40,9 @@
 - (void)testReadInterpolated {
     auto buffer = DelayBuffer<float>(8);
     XCTAssertEqual(8, buffer.size());
-    buffer.add(1.2);
-    buffer.add(2.4);
-    buffer.add(3.6);
+    buffer.write(1.2);
+    buffer.write(2.4);
+    buffer.write(3.6);
     XCTAssertEqualWithAccuracy(buffer.read(1.0), 3.6, 0.001);
     XCTAssertEqualWithAccuracy(buffer.read(2.0), 2.4, 0.001);
     XCTAssertEqualWithAccuracy(buffer.read(3.0), 1.2, 0.001);
@@ -56,11 +56,11 @@
 - (void)testWrapping {
     auto buffer = DelayBuffer<float>(4);
     XCTAssertEqual(4, buffer.size());
-    buffer.add(1.2);
-    buffer.add(2.4);
-    buffer.add(3.6);
-    buffer.add(4.8);
-    buffer.add(5.0);
+    buffer.write(1.2);
+    buffer.write(2.4);
+    buffer.write(3.6);
+    buffer.write(4.8);
+    buffer.write(5.0);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(0), 2.4, 0.001);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(1), 5.0, 0.001);
     XCTAssertEqualWithAccuracy(buffer.readFromOffset(2), 4.8, 0.001);

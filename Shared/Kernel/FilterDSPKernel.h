@@ -7,7 +7,7 @@
 
 #import "DelayBuffer.h"
 #import "KernelEventProcessor.h"
-
+#import "LFO.h"
 #import "SimplyFlangerFilterFramework/SimplyFlangerFilterFramework-Swift.h"
 
 class FilterDSPKernel : public KernelEventProcessor<FilterDSPKernel> {
@@ -19,7 +19,7 @@ public:
     :
     super(os_log_create(name.c_str(), "FilterDSPKernel")),
     maxDelayMilliseconds_{maxDelayMilliseconds},
-    delayLines_{}
+    delayLines_{}, lfo_()
     {}
 
     /**
@@ -33,6 +33,7 @@ public:
     void initialize(int channelCount, float sampleRate) {
         samplesPerMillisecond_ = sampleRate / 1000.0;
         delayInSamples_ = delay_ * samplesPerMillisecond_;
+        lfo_.initialize(sampleRate, rate_);
 
         auto size = maxDelayMilliseconds_ * samplesPerMillisecond_ + 1;
         os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f delayInSamples: %f", size, delayInSamples_);
@@ -55,6 +56,7 @@ public:
                 if (value == rate_) return;
                 os_log_with_type(log_, OS_LOG_TYPE_INFO, "rate - %f", value);
                 rate_ = value;
+                lfo_.setFrequency(rate_);
                 break;
             case FilterParameterAddressDelay:
                 if (value == delay_) return;
@@ -99,17 +101,16 @@ private:
     void doParameterEvent(AUParameterEvent const& event) { setParameterValue(event.parameterAddress, event.value); }
 
     void doRendering(std::vector<float const*> ins, std::vector<float*> outs, AUAudioFrameCount frameCount) {
-        os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "delay: %f feedback: %f mix: %f delayInSamples: %f",
-                         delay_, feedback_, wetDryMix_, delayInSamples_);
-        for (int channel = 0; channel < ins.size(); ++channel) {
-            auto input = ins[channel];
-            auto& delayLine = delayLines_[channel];
-            auto output = outs[channel];
-            for (int index = 0; index < frameCount; ++index) {
-                auto inputSample = *input++;
-                auto delayedSample = delayLine.read(delayInSamples_);
-                delayLine.write(inputSample + feedback_ * delayedSample);
-                *output++ = wetDryMix_ * delayedSample + (1.0 - wetDryMix_) * inputSample;
+//        os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "delay: %f feedback: %f mix: %f delayInSamples: %f",
+//                         delay_, feedback_, wetDryMix_, delayInSamples_);
+        for (int frame = 0; frame < frameCount; ++frame) {
+            auto lfoValue = lfo_.value();
+            for (int channel = 0; channel < ins.size(); ++channel) {
+                auto inputSample = ins[channel][frame];
+                auto delayPos = lfoValue * depth_ * delayInSamples_ / 2.0 + delayInSamples_;
+                auto delayedSample = delayLines_[channel].read(delayPos);
+                delayLines_[channel].write(inputSample + feedback_ * delayedSample);
+                outs[channel][frame] = wetDryMix_ * delayedSample + (1.0 - wetDryMix_) * inputSample;
             }
         }
     }
@@ -126,4 +127,5 @@ private:
     float wetDryMix_;
 
     std::vector<DelayBuffer<float>> delayLines_;
+    LFO<float> lfo_;
 };

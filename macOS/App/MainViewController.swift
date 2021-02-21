@@ -3,17 +3,10 @@
 
 import Cocoa
 import SimplyFlangerFilterFramework
-import os
 
 final class MainViewController: NSViewController {
 
-    private let cutoffSliderMinValue: Double = 0.0
-    private let cutoffSliderMaxValue: Double = 9.0
-    private lazy var cutoffSliderMaxValuePower2Minus1 = Float(pow(2, cutoffSliderMaxValue) - 1)
-
     private var audioUnitManager: AudioUnitManager!
-    private var cutoff: AUParameter? { audioUnitManager?.audioUnit?.parameterDefinitions.cutoff }
-    private var resonance: AUParameter? { audioUnitManager?.audioUnit?.parameterDefinitions.resonance }
 
     private var playButton: NSButton!
     private var bypassButton: NSButton!
@@ -21,11 +14,8 @@ final class MainViewController: NSViewController {
     private var bypassMenuItem: NSMenuItem!
     private var savePresetMenuItem: NSMenuItem!
 
-    @IBOutlet var cutoffSlider: NSSlider!
-    @IBOutlet var cutoffTextField: NSTextField!
-    @IBOutlet var resonanceSlider: NSSlider!
-    @IBOutlet var resonanceTextField: NSTextField!
-    @IBOutlet var containerView: NSView!
+    @IBOutlet weak var containerView: NSView!
+    @IBOutlet weak var loadingText: NSTextField!
 
     private var windowController: MainWindowController? { view.window?.windowController as? MainWindowController }
     private var appDelegate: AppDelegate? { NSApplication.shared.delegate as? AppDelegate }
@@ -41,11 +31,8 @@ extension MainViewController {
         super.viewDidLoad()
 
         audioUnitManager = AudioUnitManager(componentDescription: FilterAudioUnit.componentDescription,
-                                            appExtension: Bundle.main.auBaseName)
+                                            appExtension: Bundle.main.auExtensionName)
         audioUnitManager.delegate = self
-
-        cutoffSlider.minValue = cutoffSliderMinValue
-        cutoffSlider.maxValue = cutoffSliderMaxValue
     }
 
     override func viewWillAppear() {
@@ -102,11 +89,9 @@ extension MainViewController: AudioUnitManagerDelegate {
     func connected() {
         guard filterView == nil else { return }
         connectFilterView()
-        connectParametersToControls()
     }
 }
 
-// MARK: - UI Actions
 extension MainViewController {
 
     @IBAction private func togglePlay(_ sender: NSButton) {
@@ -125,14 +110,6 @@ extension MainViewController {
         bypassButton?.state = isBypassed ? .on : .off
         bypassButton?.title = isBypassed ? "Resume" : "Bypass"
         bypassMenuItem?.title = isBypassed ? "Resume" : "Bypass"
-    }
-
-    @IBAction private func cutoffSliderValueChanged(_ sender: NSSlider) {
-        cutoff?.value = frequencyValueForSliderLocation(sender.floatValue)
-    }
-
-    @IBAction private func resonanceSliderValueChanged(_ sender: NSSlider) {
-        resonance?.value = sender.floatValue
     }
 
     @objc private func handleSavePresetMenuSelection(_ sender: NSMenuItem) throws {
@@ -192,45 +169,7 @@ extension MainViewController {
         addChild(viewController)
         view.needsLayout = true
         containerView.needsLayout = true
-    }
-
-    private func connectParametersToControls() {
-        guard let auAudioUnit = audioUnitManager.viewController.audioUnit else {
-            fatalError("Couldn't locate FilterAudioUnit")
-        }
-        guard let parameterTree = auAudioUnit.parameterTree else {
-            fatalError("FilterAudioUnit does not define any parameters.")
-        }
-        guard let _ = parameterTree.parameter(withAddress: .cutoff) else {
-            fatalError("Undefined cutoff parameter")
-        }
-        guard let resonanceParameter = parameterTree.parameter(withAddress: .resonance) else {
-            fatalError("Undefined resonance parameter")
-        }
-
-        resonanceSlider.minValue = Double(resonanceParameter.minValue)
-        resonanceSlider.maxValue = Double(resonanceParameter.maxValue)
-
-        parameterObserverToken = parameterTree.token(byAddingParameterObserver: { [weak self] address, value in
-            guard let self = self else { return }
-            switch address.filterParameter {
-            case .cutoff: DispatchQueue.main.async { self.cutoffValueDidChange(value) }
-            case .resonance: DispatchQueue.main.async { self.resonanceValueDidChange(value) }
-            default: break
-            }
-        })
-
-        populatePresetMenu(auAudioUnit)
-    }
-
-    public func cutoffValueDidChange(_ value: AUValue) {
-        cutoffSlider.floatValue = sliderLocationForFrequencyValue(value)
-        cutoffTextField.stringValue = String(format: "%.f", value)
-    }
-
-    public func resonanceValueDidChange(_ value: AUValue) {
-        resonanceSlider.floatValue = value
-        resonanceTextField.stringValue = String(format: "%.2f", value)
+        loadingText.isHidden = true
     }
 
     private func populatePresetMenu(_ audioUnit: FilterAudioUnit) {
@@ -246,15 +185,5 @@ extension MainViewController {
         if let currentPreset = audioUnit.currentPreset {
             presetMenu.item(at: currentPreset.number + 2)?.state = .on
         }
-    }
-
-    private func sliderLocationForFrequencyValue(_ frequency: Float) -> Float {
-        log(((frequency - FilterView.hertzMin) / (FilterView.hertzMax - FilterView.hertzMin)) *
-            cutoffSliderMaxValuePower2Minus1 + 1.0) / log(2)
-    }
-
-    private func frequencyValueForSliderLocation(_ location: Float) -> Float {
-        ((pow(2, location) - 1) / cutoffSliderMaxValuePower2Minus1) * (FilterView.hertzMax - FilterView.hertzMin) +
-            FilterView.hertzMin
     }
 }

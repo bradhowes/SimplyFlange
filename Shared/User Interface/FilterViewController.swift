@@ -12,12 +12,27 @@ public final class FilterViewController: AUViewController {
     private let log = Logging.logger("FilterViewController")
 
     private var viewConfig: AUAudioUnitViewConfiguration!
-    private var cutoffParam: AUParameter!
-    private var resonanceParam: AUParameter!
     private var parameterObserverToken: AUParameterObserverToken?
     private var keyValueObserverToken: NSKeyValueObservation?
 
-    @IBOutlet private weak var filterView: FilterView!
+    @IBOutlet weak var depthValueLabel: Label!
+    @IBOutlet weak var rateValueLabel: Label!
+    @IBOutlet weak var delayValueLabel: Label!
+    @IBOutlet weak var feedbackValueLabel: Label!
+    @IBOutlet weak var wetDryMixValueLabel: Label!
+
+    @IBOutlet weak var depthSlider: Slider!
+    @IBOutlet weak var rateSlider: Slider!
+    @IBOutlet weak var delaySlider: Slider!
+    @IBOutlet weak var feedbackSlider: Slider!
+    @IBOutlet weak var wetDryMixSlider: Slider!
+
+    struct Grouping {
+        let label: Label
+        let slider: Slider
+    }
+
+    var groupings: [FilterParameterAddress: Grouping] = [:]
 
     public var audioUnit: FilterAudioUnit? {
         didSet {
@@ -41,8 +56,15 @@ public final class FilterViewController: AUViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        filterView.delegate = self
         guard audioUnit != nil else { return }
+        view.backgroundColor = .black
+
+        groupings[.depth] = Grouping(label: depthValueLabel, slider: depthSlider)
+        groupings[.rate] = Grouping(label: rateValueLabel, slider: rateSlider)
+        groupings[.delay] = Grouping(label: delayValueLabel, slider: delaySlider)
+        groupings[.feedback] = Grouping(label: feedbackValueLabel, slider: feedbackSlider)
+        groupings[.wetDryMix] = Grouping(label: wetDryMixValueLabel, slider: wetDryMixSlider)
+
         connectViewToAU()
     }
 
@@ -50,6 +72,12 @@ public final class FilterViewController: AUViewController {
         guard self.viewConfig != viewConfig else { return }
         self.viewConfig = viewConfig
     }
+
+    @IBAction func depthChanged(_: Slider) { updateParam(.depth) }
+    @IBAction func rateChanged(_: Slider) { updateParam(.rate) }
+    @IBAction func delayChanged(_: Slider) { updateParam(.delay) }
+    @IBAction func feedbackChanged(_: Slider) { updateParam(.feedback) }
+    @IBAction func wetDryMixChanged(_: Slider) { updateParam(.wetDryMix) }
 }
 
 extension FilterViewController: AUAudioUnitFactory {
@@ -68,76 +96,15 @@ extension FilterViewController: AUAudioUnitFactory {
     }
 }
 
-extension FilterViewController: FilterViewDelegate {
-
-    public func filterViewTouchBegan(_ view: FilterView) {
-        os_log(.debug, log: log, "touch began")
-        cutoffParam.setValue(view.cutoff, originator: parameterObserverToken, atHostTime: 0, eventType: .touch)
-        resonanceParam.setValue(view.resonance, originator: parameterObserverToken, atHostTime: 0, eventType: .touch)
-    }
-    
-    public func filterView(_ view: FilterView, didChangeResonance resonance: Float) {
-        os_log(.debug, log: log, "resonance changed: %f", resonance)
-        resonanceParam.setValue(resonance, originator: parameterObserverToken, atHostTime: 0, eventType: .value)
-        updateFilterViewFrequencyAndMagnitudes()
-    }
-
-    public func filterView(_ view: FilterView, didChangeCutoff cutoff: Float) {
-        os_log(.debug, log: log, "cutoff changed: %f", cutoff)
-        cutoffParam.setValue(cutoff, originator: parameterObserverToken, atHostTime: 0, eventType: .value)
-        updateFilterViewFrequencyAndMagnitudes()
-    }
-
-    public func filterView(_ view: FilterView, didChangeCutoff cutoff: Float, andResonance resonance: Float) {
-        os_log(.debug, log: log, "changed cutoff: %f resonance: %f", cutoff, resonance)
-        cutoffParam.setValue(cutoff, originator: parameterObserverToken, atHostTime: 0, eventType: .value)
-        resonanceParam.setValue(resonance, originator: parameterObserverToken, atHostTime: 0, eventType: .value)
-        updateFilterViewFrequencyAndMagnitudes()
-    }
-
-    public func filterViewTouchEnded(_ view: FilterView) {
-        os_log(.debug, log: log, "touch ended")
-        cutoffParam.setValue(filterView.cutoff, originator: nil, atHostTime: 0, eventType: .release)
-        resonanceParam.setValue(filterView.resonance, originator: nil, atHostTime: 0, eventType: .release)
-    }
-    
-    public func filterViewDataDidChange(_ view: FilterView) {
-        os_log(.debug, log: log, "dataDidChange")
-        updateFilterViewFrequencyAndMagnitudes()
-    }
-}
-
 extension FilterViewController {
-
-    private func updateFilterViewFrequencyAndMagnitudes() {
-        guard let audioUnit = audioUnit else { return }
-        filterView.makeFilterResponseCurve(audioUnit.magnitudes(forFrequencies: filterView.responseCurveFrequencies))
-        filterView.setNeedsDisplay()
-    }
 
     private func connectViewToAU() {
         os_log(.info, log: log, "connectViewToAU")
 
         guard parameterObserverToken == nil else { return }
+        guard let audioUnit = audioUnit else { fatalError("logic error -- nil audioUnit value") }
+        guard let paramTree = audioUnit.parameterTree else { fatalError("logic error -- nil parameterTree") }
 
-        guard let audioUnit = audioUnit else {
-            fatalError("logic error -- nil audioUnit value")
-        }
-
-        guard let paramTree = audioUnit.parameterTree else {
-            fatalError("logic error -- nil parameterTree")
-        }
-
-        let defs = audioUnit.parameterDefinitions
-        guard let cutoffParam = paramTree.value(forKey: defs.cutoff.identifier) as? AUParameter,
-              let resonanceParam = paramTree.value(forKey: defs.resonance.identifier) as? AUParameter else {
-            fatalError("logic error -- missing parameter(s)")
-        }
-
-        self.cutoffParam = cutoffParam
-        self.resonanceParam = resonanceParam
-
-        // Observe major state changes like a user selecting a user preset.
         keyValueObserverToken = audioUnit.observe(\.allParameterValues) { _, _ in
             self.performOnMain { self.updateDisplay() }
         }
@@ -151,28 +118,26 @@ extension FilterViewController {
         updateDisplay()
     }
 
-    private func updateKernelParameters() {
-        filterView.cutoff = cutoffParam.value
-        filterView.resonance = resonanceParam.value
+    private func updateDisplay() {
+        guard let params = audioUnit?.parameterDefinitions else { return }
+        for address in FilterParameterAddress.allCases {
+            let param = params[address]
+            guard let grouping = groupings[address] else { fatalError()}
+            grouping.label.text = params.formatValue(address, value: param.value)
+            grouping.slider.minimumValue = param.minValue
+            grouping.slider.maximumValue = param.maxValue
+            grouping.slider.value = param.value
+        }
     }
 
-    private func updateDisplay() {
-        updateKernelParameters()
-        updateFilterViewFrequencyAndMagnitudes()
+    private func updateParam(_ address: FilterParameterAddress) {
+        guard let params = audioUnit?.parameterDefinitions else { return }
+        guard let grouping = groupings[address] else { fatalError() }
+        grouping.label.text = params.formatValue(address, value: grouping.slider.value)
+        params[address].value = grouping.slider.value
     }
 
     private func performOnMain(_ operation: @escaping () -> Void) {
         (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
     }
 }
-
-#if os(iOS)
-extension FilterViewController: UITextFieldDelegate {
-
-    // MARK: UITextFieldDelegate
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        view.endEditing(true)
-        return false
-    }
-}
-#endif

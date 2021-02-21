@@ -14,8 +14,10 @@ final class SimplePlayEngine {
     private var activeEffect: AVAudioUnit?
 
     private lazy var file: AVAudioFile = {
-        let filename = "WhisperingDroneClip"
-        let ext = "mp3"
+//        let filename = "WhisperingDroneClip"
+//        let ext = "mp3"
+        let filename = "Sweet Strummer 02"
+        let ext = "caf"
         guard let url = bundle.url(forResource: filename, withExtension: ext) else {
             fatalError("\(filename).\(ext) missing from bundle")
         }

@@ -22,20 +22,12 @@
 @end
 
 /**
- Address definitions for AUParameter settings. Available in Swift as `FilterParameterAddress.*`
- */
-typedef NS_ENUM(AUParameterAddress, FilterParameterAddress) {
-    FilterParameterAddressCutoff = 1,
-    FilterParameterAddressResonance = 2
-};
-
-/**
  Small Obj-C wrapper around the FilterDSPKernel C++ class. Handles AUParameter get/set requests by forwarding them to
  the kernel.
  */
 @interface FilterDSPKernelAdapter : NSObject <AUParameterHandler>
 
-- (nonnull id)init:(nonnull NSString*)appExtensionName;
+- (nonnull id)init:(nonnull NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay;
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
@@ -64,15 +56,6 @@ typedef NS_ENUM(AUParameterAddress, FilterParameterAddress) {
                       output:(nonnull AudioBufferList*)output
                       events:(nullable AURenderEvent*)realtimeEventListHead
               pullInputBlock:(nonnull AURenderPullInputBlock)pullInputBlock;
-
-/**
- Request by the FilterViewController to fetch the frequency responses of the low-pass filter.
-
- @param frequencies C array of frequencies to use
- @param count the number of frequencies in the C array
- @param output pointer to C array that can hold `count` samples
- */
-- (void)magnitudes:(nonnull const float*)frequencies count:(NSInteger)count output:(nonnull float*)output;
 
 /**
  Set the bypass state.

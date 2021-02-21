@@ -68,10 +68,10 @@ public final class FilterAudioUnit: AUAudioUnit {
 
             if preset.number >= 0 {
                 os_log(.info, log: log, "factoryPreset %d", preset.number)
-                let values = factoryPresetValues[preset.number]
+                let settings = factoryPresetValues[preset.number]
                 _currentPreset = preset
                 os_log(.info, log: log, "updating parameters")
-                parameterDefinitions.setValues(cutoff: values.cutoff, resonance: values.resonance)
+                parameterDefinitions.setValues(settings.preset)
             }
             else {
                 os_log(.info, log: log, "userPreset %d", preset.number)
@@ -134,12 +134,11 @@ public final class FilterAudioUnit: AUAudioUnit {
     /// Maximum frames to render
     private let maxFramesToRender: UInt32 = 512
     /// Objective-C bridge into the C++ kernel
-    private let kernel = FilterDSPKernelAdapter(Bundle.main.auBaseName)
+    private let kernel = FilterDSPKernelAdapter(Bundle.main.auBaseName,
+                                                maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
 
-    private let factoryPresetValues:[(name: String, cutoff: AUValue, resonance: AUValue)] = [
-        ("Prominent", 2500.0, 5.0),
-        ("Bright", 14_000.0, 12.0),
-        ("Warm", 384.0, -3.0)
+    private let factoryPresetValues:[(name: String, preset: FilterPreset)] = [
+        ("One", FilterPreset(depth: 50, rate: 2.5, delay: 7.5, feedback: 0, wetDryMix: 50))
     ]
 
     private var _currentPreset: AUAudioUnitPreset? {
@@ -264,9 +263,7 @@ public final class FilterAudioUnit: AUAudioUnit {
     }
 
     override public func parametersForOverview(withCount: Int) -> [NSNumber] {
-        Array([parameterDefinitions.cutoff, parameterDefinitions.resonance].map {
-            NSNumber(value: $0.address)
-        }[0..<withCount])
+        parameterDefinitions.parameters[0..<withCount].map { NSNumber(value: $0.address) }
     }
 
     override public func supportedViewConfigurations(_ availableViewConfigurations: [AUAudioUnitViewConfiguration]) ->
@@ -276,21 +273,5 @@ public final class FilterAudioUnit: AUAudioUnit {
 
     override public func select(_ viewConfiguration: AUAudioUnitViewConfiguration) {
         viewController?.selectViewConfiguration(viewConfiguration)
-    }
-}
-
-extension FilterAudioUnit {
-
-    /**
-     Obtain the magnitudes at given frequencies (frequency response) for the current filter settings. This just
-     forwards the request to the internal kernel.
-
-     - parameter frequencies: the frequencies to evaluate
-     - returns: the filter responses at the given frequencies
-     */
-    public func magnitudes(forFrequencies frequencies: [Float]) -> [Float] {
-        var output: [Float] = Array(repeating: 0.0, count: frequencies.count)
-        kernel.magnitudes(frequencies, count: frequencies.count, output: &output)
-        return output
     }
 }

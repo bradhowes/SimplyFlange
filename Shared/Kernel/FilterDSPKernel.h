@@ -5,90 +5,125 @@
 
 #import <AVFoundation/AVFoundation.h>
 
-#import "BiquadFilter.h"
-#import "FilterDSPKernelAdapter.h"
+#import "DelayBuffer.h"
 #import "KernelEventProcessor.h"
+
+#import "SimplyFlangerFilterFramework/SimplyFlangerFilterFramework-Swift.h"
 
 class FilterDSPKernel : public KernelEventProcessor<FilterDSPKernel> {
 public:
     using super = KernelEventProcessor<FilterDSPKernel>;
     friend super;
 
-    FilterDSPKernel(std::string const& name)
-    : super(os_log_create(name.c_str(), "FilterDSPKernel")), cutoff_{float(400.0)}, resonance_{20.0}
-    {
-        setSampleRate(44100.0);
-        filter_.calculateParams(cutoff_, resonance_, nyquistPeriod_, 2);
-    }
+    FilterDSPKernel(std::string const& name, float maxDelayMilliseconds)
+    :
+    super(os_log_create(name.c_str(), "FilterDSPKernel")),
+    maxDelayMilliseconds_{maxDelayMilliseconds},
+    delayLines_{}
+    {}
 
     /**
      Update kernel and buffers to support the given format and channel count
      */
-    void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender)
-    {
+    void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender) {
         super::startProcessing(format, maxFramesToRender);
-        setSampleRate(format.sampleRate);
+        initialize(format.channelCount, format.sampleRate);
+    }
+
+    void initialize(int channelCount, float sampleRate) {
+        samplesPerMillisecond_ = sampleRate / 1000.0;
+        delayInSamples_ = delay_ * samplesPerMillisecond_;
+
+        auto size = maxDelayMilliseconds_ * samplesPerMillisecond_ + 1;
+        os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f delayInSamples: %f", size, delayInSamples_);
+        delayLines_.clear();
+        for (int index = 0; index < channelCount; ++index)
+            delayLines_.emplace_back(size);
     }
 
     void stopProcessing() { super::stopProcessing(); }
 
-    void setParameterValue(AUParameterAddress address, AUValue value)
-    {
+    void setParameterValue(AUParameterAddress address, AUValue value) {
         switch (address) {
-            case FilterParameterAddressCutoff:
-                os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "set cutoff: %f", value);
-                cutoff_ = value;
+            case FilterParameterAddressDepth:
+                value = value / 100.0;
+                if (value == depth_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "depth - %f", value);
+                depth_ = value;
                 break;
-
-            case FilterParameterAddressResonance:
-                os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "set resonance: %f", value);
-                resonance_ = value;
+            case FilterParameterAddressRate:
+                if (value == rate_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "rate - %f", value);
+                rate_ = value;
+                break;
+            case FilterParameterAddressDelay:
+                if (value == delay_) return;
+                delay_ = value;
+                delayInSamples_ = samplesPerMillisecond_ * value;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "delay - %f  delayInSamples: %f", value, delayInSamples_);
+                break;
+            case FilterParameterAddressFeedback:
+                value = value / 100.0;
+                if (value == feedback_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "feedback - %f", value);
+                feedback_ = value;
+                break;
+            case FilterParameterAddressWetDryMix:
+                value = value / 100.0;
+                if (value == wetDryMix_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetDryMix - %f", value);
+                wetDryMix_ = value;
                 break;
         }
     }
 
-    AUValue getParameterValue(AUParameterAddress address) const
-    {
+    AUValue getParameterValue(AUParameterAddress address) const {
         switch (address) {
-            case FilterParameterAddressCutoff:
-                os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "get cutoff: %f", cutoff_);
-                return cutoff_;
-
-            case FilterParameterAddressResonance:
-                os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "get resonance: %f", resonance_);
-                return resonance_;
-
-            default: return 0.0;
+            case FilterParameterAddressDepth: return depth_ * 100.0;
+            case FilterParameterAddressRate: return rate_;
+            case FilterParameterAddressDelay: return delay_;
+            case FilterParameterAddressFeedback: return feedback_ * 100.0;
+            case FilterParameterAddressWetDryMix: return wetDryMix_ * 100.0;
         }
+        return 0.0;
     }
 
-    float nyquistPeriod() const { return nyquistPeriod_; }
-    float cutoff() const { return cutoff_; }
-    float resonance() const { return resonance_; }
+    float depth() const { return depth_; }
+    float rate() const { return rate_; }
+    float delay() const { return delay_; }
+    float feedback() const { return feedback_; }
+    float wetDryMix() const { return wetDryMix_; }
 
 private:
 
     void doParameterEvent(AUParameterEvent const& event) { setParameterValue(event.parameterAddress, event.value); }
 
     void doRendering(std::vector<float const*> ins, std::vector<float*> outs, AUAudioFrameCount frameCount) {
-        filter_.calculateParams(cutoff_, resonance_, nyquistPeriod_, ins.size());
-        filter_.apply(ins, outs, frameCount);
+        os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "delay: %f feedback: %f mix: %f delayInSamples: %f",
+                         delay_, feedback_, wetDryMix_, delayInSamples_);
+        for (int channel = 0; channel < ins.size(); ++channel) {
+            auto input = ins[channel];
+            auto& delayLine = delayLines_[channel];
+            auto output = outs[channel];
+            for (int index = 0; index < frameCount; ++index) {
+                auto inputSample = *input++;
+                auto delayedSample = delayLine.read(delayInSamples_);
+                delayLine.write(inputSample + feedback_ * delayedSample);
+                *output++ = wetDryMix_ * delayedSample + (1.0 - wetDryMix_) * inputSample;
+            }
+        }
     }
 
     void doMIDIEvent(AUMIDIEvent const& midiEvent) {}
 
-    void setSampleRate(float value) {
-        sampleRate_ = value;
-        nyquistFrequency_ = 0.5 * sampleRate_;
-        nyquistPeriod_ = 1.0 / nyquistFrequency_;
-    }
+    float maxDelayMilliseconds_;
+    float samplesPerMillisecond_;
+    float depth_;
+    float rate_;
+    float delay_;
+    float delayInSamples_;
+    float feedback_;
+    float wetDryMix_;
 
-    BiquadFilter filter_;
-
-    float sampleRate_;
-    float nyquistFrequency_;
-    float nyquistPeriod_;
-
-    float cutoff_;
-    float resonance_;
+    std::vector<DelayBuffer<float>> delayLines_;
 };

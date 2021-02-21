@@ -18,7 +18,7 @@
 		BD1D24C625D48B8500523748 /* ValueChangeDetectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */; };
 		BD1D24CD25D48B8E00523748 /* RampingValueChangeDetectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */; };
 		BD1D24D425D48B9600523748 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
-		BD1D24DB25D48B9C00523748 /* BiquadFilterTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* BiquadFilterTests.mm */; };
+		BD1D24DB25D48B9C00523748 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD1D24E225D48BA200523748 /* BundlePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D249425D4831B00523748 /* BundlePropertiesTests.swift */; };
 		BD1D24E925D48BA800523748 /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
 		BD1D24F625D48D8100523748 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -27,14 +27,14 @@
 		BD1D255F25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
-		BD1F7BAC249FF7EF00960DA3 /* BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD1F7BAA249FF7EF00960DA3 /* BiquadFilter.cpp */; };
-		BD1F7BAD249FF7EF00960DA3 /* BiquadFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BD1F7BAA249FF7EF00960DA3 /* BiquadFilter.cpp */; };
-		BD1F7BAE249FF7EF00960DA3 /* BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* BiquadFilter.h */; };
-		BD1F7BAF249FF7EF00960DA3 /* BiquadFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* BiquadFilter.h */; };
+		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
+		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD2FD3ED259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3EE259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
 		BD2FD3F6259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
+		BD446BA225E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */ = {isa = PBXBuildFile; fileRef = BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */; };
+		BD446BA325E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */ = {isa = PBXBuildFile; fileRef = BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */; };
 		BD49661624A35D8700A81F0B /* FourCharCode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */; };
 		BD49661724A35D8900A81F0B /* FourCharCode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */; };
 		BD50D29A25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -43,15 +43,15 @@
 		BD578EEE25D278490040D83D /* AudioUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD578EEC25D278490040D83D /* AudioUnitManager.swift */; };
 		BD63B15424AE25F80015236D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BD49661924A3605800A81F0B /* LICENSE.md */; };
 		BD63B15624AE26020015236D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BD49661924A3605800A81F0B /* LICENSE.md */; };
+		BD71E31125E1AFB4005C5E1E /* FilterPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD71E30125E1AF2A005C5E1E /* FilterPreset.swift */; };
+		BD71E31925E1AFB5005C5E1E /* FilterPreset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD71E30125E1AF2A005C5E1E /* FilterPreset.swift */; };
 		BD72F2E525D1D4CE0031E422 /* InputBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = BD72F2E425D1D4CE0031E422 /* InputBuffer.h */; };
 		BD72F2E625D1D4CE0031E422 /* InputBuffer.h in Sources */ = {isa = PBXBuildFile; fileRef = BD72F2E425D1D4CE0031E422 /* InputBuffer.h */; };
 		BD75B67A25DA9C400071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B67025DA9B7A0071F55E /* AppStore.swift */; };
 		BD75B68325DA9E420071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B68225DA9E420071F55E /* AppStore.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
 		BD78FDC224C2F6530091A854 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78FDC124C2F6530091A854 /* MainWindowController.swift */; };
-		BD7B4D6A25E179DE00C92F47 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B4D6925E179DE00C92F47 /* Knob.swift */; };
-		BD7B4D6B25E179DE00C92F47 /* Knob.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B4D6925E179DE00C92F47 /* Knob.swift */; };
-		BD938B5024A6BC1F00892358 /* BiquadFilterTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* BiquadFilterTests.mm */; };
+		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
 		BD95148324A090E400D8024C /* ValueChangeDetectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */; };
@@ -107,10 +107,8 @@
 		C4BEE7F222236F27001E6B6D /* FilterDSPKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */; };
 		C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */; };
 		C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */; };
-		C4BEE7FF22236F6E001E6B6D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7D922236E99001E6B6D /* FilterView.swift */; };
 		C4BEE80022236F6E001E6B6D /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */; };
 		C4BEE80122236F6E001E6B6D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7D722236E99001E6B6D /* View+Extensions.swift */; };
-		C4BEE80322236F6F001E6B6D /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7D922236E99001E6B6D /* FilterView.swift */; };
 		C4BEE80422236F6F001E6B6D /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */; };
 		C4BEE80522236F6F001E6B6D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7D722236E99001E6B6D /* View+Extensions.swift */; };
 		C4BEE80922237078001E6B6D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE80822237078001E6B6D /* MainViewController.swift */; };
@@ -243,23 +241,23 @@
 		BD1D257825D5AAB000523748 /* Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshots.swift; sourceTree = "<group>"; };
 		BD1D257A25D5AAB000523748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
-		BD1F7BAA249FF7EF00960DA3 /* BiquadFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = BiquadFilter.cpp; sourceTree = "<group>"; };
-		BD1F7BAB249FF7EF00960DA3 /* BiquadFilter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiquadFilter.h; sourceTree = "<group>"; };
+		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
 		BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterTree+Extensions.swift"; sourceTree = "<group>"; };
 		BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterAddress+Extensions.swift"; sourceTree = "<group>"; };
+		BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sweet Strummer 02.caf"; sourceTree = "<group>"; };
 		BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FourCharCode+Extensions.swift"; sourceTree = "<group>"; };
 		BD49661924A3605800A81F0B /* LICENSE.md */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = LICENSE.md; sourceTree = "<group>"; };
 		BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDSPKernelAdapter.h; sourceTree = "<group>"; };
 		BD50D32425D75B7900375455 /* SimplyFlanger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyFlanger.entitlements; sourceTree = "<group>"; };
 		BD578EEC25D278490040D83D /* AudioUnitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUnitManager.swift; sourceTree = "<group>"; };
 		BD578F0D25D2C4720040D83D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BD71E30125E1AF2A005C5E1E /* FilterPreset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterPreset.swift; sourceTree = "<group>"; };
 		BD72F2E425D1D4CE0031E422 /* InputBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputBuffer.h; sourceTree = "<group>"; };
 		BD75B67025DA9B7A0071F55E /* AppStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B68225DA9E420071F55E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		BD7B4D6925E179DE00C92F47 /* Knob.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob.swift; sourceTree = "<group>"; };
-		BD938B4F24A6BC1F00892358 /* BiquadFilterTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = BiquadFilterTests.mm; sourceTree = "<group>"; };
+		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSwiftTestTemplate.swift; sourceTree = "<group>"; };
 		BD95147924A08BB600D8024C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -285,7 +283,7 @@
 		BDE2CE1924A3EBD1004AC8FA /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configuration/Common.xcconfig; sourceTree = "<group>"; };
 		C4201A2822403120006E4333 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
-		C437FE3A222367A6008D6C09 /* SimplyFlanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C437FE3A222367A6008D6C09 /* SimplyFlangerHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangerHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE52222367CD008D6C09 /* SimplyFlangerFilterFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplyFlangerFilterFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE632223686D008D6C09 /* SimplyFlangerAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplyFlangerAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE7A2223688D008D6C09 /* SimplyFlanger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlanger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,7 +308,6 @@
 		C4BEE7C922236A58001E6B6D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C4BEE7CA22236A58001E6B6D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BEE7D722236E99001E6B6D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		C4BEE7D922236E99001E6B6D /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
 		C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDSPKernel.h; sourceTree = "<group>"; };
 		C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RampingValueChangeDetector.hpp; sourceTree = "<group>"; };
@@ -454,7 +451,7 @@
 			children = (
 				BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */,
 				BD1D249425D4831B00523748 /* BundlePropertiesTests.swift */,
-				BD938B4F24A6BC1F00892358 /* BiquadFilterTests.mm */,
+				BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */,
 				BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */,
 				BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */,
 				BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */,
@@ -467,8 +464,7 @@
 			isa = PBXGroup;
 			children = (
 				BD578F0D25D2C4720040D83D /* README.md */,
-				BD1F7BAB249FF7EF00960DA3 /* BiquadFilter.h */,
-				BD1F7BAA249FF7EF00960DA3 /* BiquadFilter.cpp */,
+				BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */,
 				C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */,
 				BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */,
 				C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */,
@@ -500,7 +496,7 @@
 		C437FE3B222367A6008D6C09 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C437FE3A222367A6008D6C09 /* SimplyFlanger.app */,
+				C437FE3A222367A6008D6C09 /* SimplyFlangerHost.app */,
 				C437FE52222367CD008D6C09 /* SimplyFlangerFilterFramework.framework */,
 				C437FE632223686D008D6C09 /* SimplyFlangerAU.appex */,
 				C437FE7A2223688D008D6C09 /* SimplyFlanger.app */,
@@ -611,6 +607,7 @@
 				BD1D252E25D51AD600523748 /* README.md */,
 				BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */,
 				C4F004A52239B2070014E248 /* FilterAudioUnit.swift */,
+				BD71E30125E1AF2A005C5E1E /* FilterPreset.swift */,
 				BDB11A5124A114D700DD8EF9 /* Kernel */,
 				C4DCBAD6223ADE85000D9CB3 /* User Interface */,
 				C4BEE7E422236E99001E6B6D /* Support */,
@@ -651,6 +648,7 @@
 			isa = PBXGroup;
 			children = (
 				BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */,
+				BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */,
 				C4A3D65A223FF12A002784D4 /* SimplePlayEngine.swift */,
 			);
 			path = Audio;
@@ -660,8 +658,6 @@
 			isa = PBXGroup;
 			children = (
 				C4F07730223AC4F5008FFF06 /* FilterViewController.swift */,
-				C4BEE7D922236E99001E6B6D /* FilterView.swift */,
-				BD7B4D6925E179DE00C92F47 /* Knob.swift */,
 				C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */,
 			);
 			path = "User Interface";
@@ -696,7 +692,7 @@
 			files = (
 				C4BEE8172223736F001E6B6D /* SimplyFlangerFilterFramework.h in Headers */,
 				BD50D29A25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */,
-				BD1F7BAE249FF7EF00960DA3 /* BiquadFilter.h in Headers */,
+				BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */,
 				BDB7CE97249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7EF22236F24001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
 				BDB7CE90249D3C00009580D5 /* NonCopyable.hpp in Headers */,
@@ -711,7 +707,7 @@
 			files = (
 				C496341422238CFA001D1F5B /* SimplyFlangerFilterFramework.h in Headers */,
 				BD50D29B25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */,
-				BD1F7BAF249FF7EF00960DA3 /* BiquadFilter.h in Headers */,
+				BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */,
 				BDB7CE98249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
 				BDB7CE91249D3C00009580D5 /* NonCopyable.hpp in Headers */,
@@ -795,7 +791,7 @@
 			);
 			name = "iOS App";
 			productName = "AUv3Filter iOS";
-			productReference = C437FE3A222367A6008D6C09 /* SimplyFlanger.app */;
+			productReference = C437FE3A222367A6008D6C09 /* SimplyFlangerHost.app */;
 			productType = "com.apple.product-type.application";
 		};
 		C437FE51222367CD008D6C09 /* iOS Framework */ = {
@@ -897,7 +893,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1200;
+				LastUpgradeCheck = 1240;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					BD1D24A825D486A700523748 = {
@@ -1015,6 +1011,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD446BA225E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
 				BD1D255E25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,6 +1039,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD446BA325E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
 				C46B8B8122418B6000E00B1E /* FilterViewController.xib in Resources */,
 				BD1D255F25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
 			);
@@ -1066,7 +1064,7 @@
 				BD1D24E925D48BA800523748 /* NewSwiftTestTemplate.swift in Sources */,
 				BD1D24C625D48B8500523748 /* ValueChangeDetectorTests.mm in Sources */,
 				BD1D24E225D48BA200523748 /* BundlePropertiesTests.swift in Sources */,
-				BD1D24DB25D48B9C00523748 /* BiquadFilterTests.mm in Sources */,
+				BD1D24DB25D48B9C00523748 /* DelayBufferTests.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1084,7 +1082,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */,
-				BD938B5024A6BC1F00892358 /* BiquadFilterTests.mm in Sources */,
+				BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */,
 				BD95148524A092E800D8024C /* RampingValueChangeDetectorTests.mm in Sources */,
 				BDB11A6324A1530D00DD8EF9 /* LogScaling.swift in Sources */,
 				BD1D249525D4831B00523748 /* BundlePropertiesTests.swift in Sources */,
@@ -1107,20 +1105,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD49661624A35D8700A81F0B /* FourCharCode+Extensions.swift in Sources */,
-				BD1F7BAC249FF7EF00960DA3 /* BiquadFilter.cpp in Sources */,
 				C4BEE80522236F6F001E6B6D /* View+Extensions.swift in Sources */,
 				C4F07731223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				BDE2CDF524A3DF24004AC8FA /* Bundle+Extensions.swift in Sources */,
 				C4F004A62239B2070014E248 /* FilterAudioUnit.swift in Sources */,
 				BDB11A5824A13CB100DD8EF9 /* CALayer+Extensions.swift in Sources */,
-				BD7B4D6A25E179DE00C92F47 /* Knob.swift in Sources */,
 				BD2FD3ED259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */,
 				BDB11A6024A13FCF00DD8EF9 /* CATransaction+Extensions.swift in Sources */,
 				C4A3D65B223FF12A002784D4 /* SimplePlayEngine.swift in Sources */,
 				BDE2CDF124A3DEE4004AC8FA /* Logging.swift in Sources */,
 				BD72F2E525D1D4CE0031E422 /* InputBuffer.h in Sources */,
 				BD06772C24CF9FA00039F161 /* Optional+Extensions.swift in Sources */,
-				C4BEE80322236F6F001E6B6D /* FilterView.swift in Sources */,
+				BD71E31925E1AFB5005C5E1E /* FilterPreset.swift in Sources */,
 				C4BEE80422236F6F001E6B6D /* TypeAliases.swift in Sources */,
 				BD18B39D24CB248200B7CB1E /* AudioComponentDescription+Extensions.swift in Sources */,
 				BDB11A5524A13C4B00DD8EF9 /* Comparble+Extensions.swift in Sources */,
@@ -1163,18 +1159,16 @@
 				C4F07732223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				C4BEE80122236F6E001E6B6D /* View+Extensions.swift in Sources */,
 				BDB11A5424A13C4A00DD8EF9 /* Comparble+Extensions.swift in Sources */,
-				BD7B4D6B25E179DE00C92F47 /* Knob.swift in Sources */,
 				BDB7CE9C249FC0AC009580D5 /* AUAudioUnitPreset+Extensions.swift in Sources */,
 				BD72F2E625D1D4CE0031E422 /* InputBuffer.h in Sources */,
-				C4BEE7FF22236F6E001E6B6D /* FilterView.swift in Sources */,
 				BDE2CDF224A3DEE5004AC8FA /* Logging.swift in Sources */,
 				BDB11A5924A13CB200DD8EF9 /* CALayer+Extensions.swift in Sources */,
 				BDB11A5D24A13F8800DD8EF9 /* Color+Extensions.swift in Sources */,
+				BD71E31125E1AFB4005C5E1E /* FilterPreset.swift in Sources */,
 				BD2FD3EE259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */,
 				BDE2CDF624A3DF25004AC8FA /* Bundle+Extensions.swift in Sources */,
 				C4BEE80022236F6E001E6B6D /* TypeAliases.swift in Sources */,
 				BD2FD3F6259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */,
-				BD1F7BAD249FF7EF00960DA3 /* BiquadFilter.cpp in Sources */,
 				C4F004A72239B2070014E248 /* FilterAudioUnit.swift in Sources */,
 				C4A3D65C223FF12A002784D4 /* SimplePlayEngine.swift in Sources */,
 				BD49661724A35D8900A81F0B /* FourCharCode+Extensions.swift in Sources */,
@@ -1586,7 +1580,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlanger;
-				PRODUCT_NAME = SimplyFlanger;
+				PRODUCT_NAME = SimplyFlangerHost;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1631,7 +1625,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20210219225626;
@@ -1656,7 +1650,7 @@
 				MARKETING_VERSION = 1.0.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlangerAU.appex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlanger.appex;
 				PRODUCT_NAME = SimplyFlangerAU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
@@ -2121,7 +2115,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlanger;
-				PRODUCT_NAME = SimplyFlanger;
+				PRODUCT_NAME = SimplyFlangerHost;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -2251,7 +2245,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 20210219225626;
@@ -2283,7 +2277,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlangerAU.appex;
+				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlanger.appex;
 				PRODUCT_NAME = SimplyFlangerAU;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;

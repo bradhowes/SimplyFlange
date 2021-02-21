@@ -93,7 +93,7 @@ extension AudioUnitManager {
     }
 
     private static func loadViewController(appExtension: String) -> FilterViewController {
-        guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent(appExtension + ".appex") else {
+        guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent(appExtension) else {
             fatalError("Could not obtain extension bundle URL")
         }
         guard let extensionBundle = Bundle(url: url) else { fatalError("Could not get app extension bundle") }

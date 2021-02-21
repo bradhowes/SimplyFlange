@@ -19,13 +19,15 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var rateValueLabel: Label!
     @IBOutlet weak var delayValueLabel: Label!
     @IBOutlet weak var feedbackValueLabel: Label!
-    @IBOutlet weak var wetDryMixValueLabel: Label!
+    @IBOutlet weak var dryMixValueLabel: Label!
+    @IBOutlet weak var wetMixValueLabel: Label!
 
     @IBOutlet weak var depthSlider: Slider!
     @IBOutlet weak var rateSlider: Slider!
     @IBOutlet weak var delaySlider: Slider!
     @IBOutlet weak var feedbackSlider: Slider!
-    @IBOutlet weak var wetDryMixSlider: Slider!
+    @IBOutlet weak var dryMixSlider: Slider!
+    @IBOutlet weak var wetMixSlider: Slider!
 
     struct Grouping {
         let label: Label
@@ -63,7 +65,8 @@ public final class FilterViewController: AUViewController {
         groupings[.rate] = Grouping(label: rateValueLabel, slider: rateSlider)
         groupings[.delay] = Grouping(label: delayValueLabel, slider: delaySlider)
         groupings[.feedback] = Grouping(label: feedbackValueLabel, slider: feedbackSlider)
-        groupings[.wetDryMix] = Grouping(label: wetDryMixValueLabel, slider: wetDryMixSlider)
+        groupings[.dryMix] = Grouping(label: dryMixValueLabel, slider: dryMixSlider)
+        groupings[.wetMix] = Grouping(label: wetMixValueLabel, slider: wetMixSlider)
 
         connectViewToAU()
     }
@@ -77,7 +80,8 @@ public final class FilterViewController: AUViewController {
     @IBAction func rateChanged(_: Slider) { updateParam(.rate) }
     @IBAction func delayChanged(_: Slider) { updateParam(.delay) }
     @IBAction func feedbackChanged(_: Slider) { updateParam(.feedback) }
-    @IBAction func wetDryMixChanged(_: Slider) { updateParam(.wetDryMix) }
+    @IBAction func dryMixChanged(_: Slider) { updateParam(.dryMix) }
+    @IBAction func wetMixChanged(_: Slider) { updateParam(.wetMix) }
 }
 
 extension FilterViewController: AUAudioUnitFactory {

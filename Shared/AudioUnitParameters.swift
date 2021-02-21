@@ -4,14 +4,15 @@ import Foundation
 import os
 
 /**
- Address definitions for AUParameter settings. Available in Swift as `FilterParameterAddress.*`
+ Address definitions for AUParameter settings.
  */
 @objc public enum FilterParameterAddress: UInt64, CaseIterable {
     case depth = 0
     case rate
     case delay
     case feedback
-    case wetDryMix
+    case dryMix
+    case wetMix
 }
 
 private extension Array where Element == AUParameter {
@@ -19,11 +20,7 @@ private extension Array where Element == AUParameter {
 }
 
 /**
- Definitions for the runtime parameters of the filter. There are two:
-
- - cutoff -- the frequency at which the filter starts to roll off and filter out the higher frequencies
- - resonance -- a dB setting that can attenuate the frequencies near the cutoff
-
+ Definitions for the runtime parameters of the filter.
  */
 public final class AudioUnitParameters: NSObject {
 
@@ -33,15 +30,17 @@ public final class AudioUnitParameters: NSObject {
 
     public let parameters: [AUParameter] = [
         AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: .depth,
-                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent),
+                                        value: 100.0, min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: .rate,
-                                        value: 2.5, min: 0.0, max: 5.0, unit: .hertz),
+                                        value: 0.12, min: 0.0, max: 5.0, unit: .hertz),
         AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: .delay,
-                                        value: 7.5, min: 0.0, max: AudioUnitParameters.maxDelayMilliseconds,
+                                        value: 0.7, min: 0.0, max: AudioUnitParameters.maxDelayMilliseconds,
                                         unit: .milliseconds),
         AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: .feedback,
-                                        value: 0.0, min: 0.0, max: 100.0, unit: .percent),
-        AUParameterTree.createParameter(withIdentifier: "mix", name: "Mix", address: .wetDryMix,
+                                        value: 25.0, min: 0.0, max: 100.0, unit: .percent),
+        AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: .dryMix,
+                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent),
+        AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: .wetMix,
                                         value: 50.0, min: 0.0, max: 100.0, unit: .percent)
     ]
 
@@ -52,7 +51,8 @@ public final class AudioUnitParameters: NSObject {
     public var rate: AUParameter { parameters[.rate] }
     public var delay: AUParameter { parameters[.delay] }
     public var feedback: AUParameter { parameters[.feedback] }
-    public var wetDryMix: AUParameter { parameters[.wetDryMix] }
+    public var dryMix: AUParameter { parameters[.dryMix] }
+    public var wetMix: AUParameter { parameters[.wetMix] }
 
     /**
      Create a new AUParameterTree for the defined filter parameters.
@@ -82,9 +82,10 @@ public final class AudioUnitParameters: NSObject {
 
     public func formatValue(_ address: FilterParameterAddress?, value: AUValue) -> String {
         switch address {
-        case .depth, .feedback, .wetDryMix: return String(format: "%.2f%%", value)
+        case .depth, .feedback: return String(format: "%.2f%%", value)
         case .rate: return String(format: "%.2f Hz", value)
         case .delay: return String(format: "%.2f ms", value)
+        case .dryMix, .wetMix: return String(format: "%.0f%%", value)
         default: return "?"
         }
     }
@@ -98,6 +99,7 @@ public final class AudioUnitParameters: NSObject {
         self.rate.value = preset.rate
         self.delay.value = preset.delay
         self.feedback.value = preset.feedback
-        self.wetDryMix.value = preset.wetDryMix
+        self.dryMix.value = preset.dryMix
+        self.wetMix.value = preset.wetMix
     }
 }

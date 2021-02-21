@@ -53,7 +53,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lhw-ml-zg6" userLabel="Rate">
                                         <rect key="frame" x="0.0" y="49.666666666666686" width="398" height="45.666666666666657"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WuP-td-e42">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WuP-td-e42">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Rate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iz-cZ-zwG" userLabel="Title">
@@ -63,7 +63,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gmz-lX-wSV" userLabel="Value">
-                                                        <rect key="frame" x="27.666666666666657" y="0.0" width="370.33333333333337" height="15.666666666666666"/>
+                                                        <rect key="frame" x="369.66666666666669" y="0.0" width="28.333333333333314" height="15.666666666666666"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" systemColor="systemYellowColor"/>
                                                         <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QPa-3B-fhf" userLabel="Delay">
                                         <rect key="frame" x="0.0" y="99.333333333333314" width="398" height="45.666666666666657"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OKj-le-xv9">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OKj-le-xv9">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Delay" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHV-vS-PhL" userLabel="Title">
@@ -93,7 +93,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvA-sH-74x" userLabel="Value">
-                                                        <rect key="frame" x="34" y="0.0" width="364" height="15.666666666666666"/>
+                                                        <rect key="frame" x="369.66666666666669" y="0.0" width="28.333333333333314" height="15.666666666666666"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" systemColor="systemYellowColor"/>
                                                         <nil key="highlightedColor"/>
@@ -113,7 +113,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HdF-bM-rJs" userLabel="Feedback">
                                         <rect key="frame" x="0.0" y="149" width="398" height="45.666666666666657"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-RT-Gp0">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-RT-Gp0">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ngb-Sq-vb6" userLabel="Title">
@@ -123,7 +123,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuQ-Ue-wjB" userLabel="Value">
-                                                        <rect key="frame" x="59.333333333333343" y="0.0" width="338.66666666666663" height="15.666666666666666"/>
+                                                        <rect key="frame" x="369.66666666666669" y="0.0" width="28.333333333333314" height="15.666666666666666"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                         <color key="textColor" systemColor="systemYellowColor"/>
                                                         <nil key="highlightedColor"/>
@@ -140,34 +140,69 @@
                                             </slider>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Qp-qq-Mv5" userLabel="WetDryMix">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="h2y-g3-jMe" userLabel="Mixes">
                                         <rect key="frame" x="0.0" y="198.66666666666669" width="398" height="45.666666666666657"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jxW-8t-h7h">
-                                                <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Qp-qq-Mv5" userLabel="Dry">
+                                                <rect key="frame" x="0.0" y="0.0" width="197.66666666666666" height="45.666666666666664"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Mix" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJn-df-rNl" userLabel="Title">
-                                                        <rect key="frame" x="0.0" y="0.0" width="21.333333333333332" height="15.666666666666666"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" systemColor="secondaryLabelColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zms-aC-Rah" userLabel="Value">
-                                                        <rect key="frame" x="21.333333333333343" y="0.0" width="376.66666666666663" height="15.666666666666666"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                        <color key="textColor" systemColor="systemYellowColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jxW-8t-h7h">
+                                                        <rect key="frame" x="0.0" y="0.0" width="197.66666666666666" height="15.666666666666666"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Dry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJn-df-rNl" userLabel="Title">
+                                                                <rect key="frame" x="0.0" y="0.0" width="21.333333333333332" height="15.666666666666666"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zms-aC-Rah" userLabel="Value">
+                                                                <rect key="frame" x="169.33333333333334" y="0.0" width="28.333333333333343" height="15.666666666666666"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wZL-kE-hnl" userLabel="Dry Mix Slider">
+                                                        <rect key="frame" x="-2" y="15.666666666666629" width="201.66666666666666" height="31"/>
+                                                        <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="dryMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eSw-vB-cc6"/>
+                                                        </connections>
+                                                    </slider>
                                                 </subviews>
                                             </stackView>
-                                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wZL-kE-hnl">
-                                                <rect key="frame" x="-2" y="15.666666666666629" width="402" height="31"/>
-                                                <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <connections>
-                                                    <action selector="wetDryMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="coO-zp-BeH"/>
-                                                </connections>
-                                            </slider>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YKp-tu-bmR" userLabel="Wet">
+                                                <rect key="frame" x="200.66666666666663" y="0.0" width="197.33333333333337" height="45.666666666666664"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="8BN-dK-ekF">
+                                                        <rect key="frame" x="0.0" y="0.0" width="197.33333333333334" height="15.666666666666666"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Wet" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pJW-hu-PL1" userLabel="Title">
+                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="15.666666666666666"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" systemColor="secondaryLabelColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxw-8J-cfR" userLabel="Value">
+                                                                <rect key="frame" x="169.00000000000003" y="0.0" width="28.333333333333343" height="15.666666666666666"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fh7-Ma-c1t" userLabel="Dry Mix Slider">
+                                                        <rect key="frame" x="-2" y="15.666666666666629" width="201.33333333333334" height="31"/>
+                                                        <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="wetMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="weI-Ex-9eF"/>
+                                                        </connections>
+                                                    </slider>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -192,12 +227,14 @@
                         <outlet property="delayValueLabel" destination="UvA-sH-74x" id="Ivw-0A-eMe"/>
                         <outlet property="depthSlider" destination="MBp-6k-K9o" id="vuY-AO-L4g"/>
                         <outlet property="depthValueLabel" destination="Wjf-gJ-Teh" id="4we-3Y-wjx"/>
+                        <outlet property="dryMixSlider" destination="wZL-kE-hnl" id="2tt-HE-eVe"/>
+                        <outlet property="dryMixValueLabel" destination="zms-aC-Rah" id="C77-xW-5AZ"/>
                         <outlet property="feedbackSlider" destination="098-hd-RNC" id="iD0-ti-sMW"/>
                         <outlet property="feedbackValueLabel" destination="uuQ-Ue-wjB" id="zSS-Dy-AnW"/>
                         <outlet property="rateSlider" destination="YB3-Yl-PRq" id="ja2-Uc-tG2"/>
                         <outlet property="rateValueLabel" destination="gmz-lX-wSV" id="ahf-CA-uvj"/>
-                        <outlet property="wetDryMixSlider" destination="wZL-kE-hnl" id="Cw7-Yg-bQr"/>
-                        <outlet property="wetDryMixValueLabel" destination="zms-aC-Rah" id="0Nz-aJ-0X3"/>
+                        <outlet property="wetMixSlider" destination="Fh7-Ma-c1t" id="jo8-AX-f1V"/>
+                        <outlet property="wetMixValueLabel" destination="Lxw-8J-cfR" id="C8k-6d-DBw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

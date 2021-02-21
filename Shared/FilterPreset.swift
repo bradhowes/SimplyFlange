@@ -8,5 +8,6 @@ public struct FilterPreset {
     let rate: AUValue
     let delay: AUValue
     let feedback: AUValue
-    let wetDryMix: AUValue
+    let dryMix: AUValue
+    let wetMix: AUValue
 }

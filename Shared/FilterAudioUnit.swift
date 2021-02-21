@@ -138,7 +138,7 @@ public final class FilterAudioUnit: AUAudioUnit {
                                                 maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
 
     private let factoryPresetValues:[(name: String, preset: FilterPreset)] = [
-        ("Flanger", FilterPreset(depth: 100, rate: 2.5, delay: 3.5, feedback: 0, wetDryMix: 50))
+        ("One", FilterPreset(depth: 100, rate: 2.5, delay: 3.5, feedback: 0, dryMix: 50, wetMix: 50))
     ]
 
     private var _currentPreset: AUAudioUnitPreset? {

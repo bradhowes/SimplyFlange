@@ -70,11 +70,17 @@ public:
                 os_log_with_type(log_, OS_LOG_TYPE_INFO, "feedback - %f", value);
                 feedback_ = value;
                 break;
-            case FilterParameterAddressWetDryMix:
+            case FilterParameterAddressDryMix:
                 value = value / 100.0;
-                if (value == wetDryMix_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetDryMix - %f", value);
-                wetDryMix_ = value;
+                if (value == dryMix_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "dryMix - %f", value);
+                dryMix_ = value;
+                break;
+            case FilterParameterAddressWetMix:
+                value = value / 100.0;
+                if (value == wetMix_) return;
+                os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetMix - %f", value);
+                wetMix_ = value;
                 break;
         }
     }
@@ -85,7 +91,8 @@ public:
             case FilterParameterAddressRate: return rate_;
             case FilterParameterAddressDelay: return delay_;
             case FilterParameterAddressFeedback: return feedback_ * 100.0;
-            case FilterParameterAddressWetDryMix: return wetDryMix_ * 100.0;
+            case FilterParameterAddressDryMix: return dryMix_ * 100.0;
+            case FilterParameterAddressWetMix: return wetMix_ * 100.0;
         }
         return 0.0;
     }
@@ -94,7 +101,8 @@ public:
     float rate() const { return rate_; }
     float delay() const { return delay_; }
     float feedback() const { return feedback_; }
-    float wetDryMix() const { return wetDryMix_; }
+    float dryMix() const { return dryMix_; }
+    float wetMix() const { return wetMix_; }
 
 private:
 
@@ -110,7 +118,7 @@ private:
                 auto delayPos = lfoValue * depth_ * delayInSamples_ / 2.0 + delayInSamples_;
                 auto delayedSample = delayLines_[channel].read(delayPos);
                 delayLines_[channel].write(inputSample + feedback_ * delayedSample);
-                outs[channel][frame] = wetDryMix_ * delayedSample + (1.0 - wetDryMix_) * inputSample;
+                outs[channel][frame] = wetMix_ * delayedSample + dryMix_ * inputSample;
             }
         }
     }
@@ -124,7 +132,8 @@ private:
     float delay_;
     float delayInSamples_;
     float feedback_;
-    float wetDryMix_;
+    float dryMix_;
+    float wetMix_;
 
     std::vector<DelayBuffer<float>> delayLines_;
     LFO<float> lfo_;

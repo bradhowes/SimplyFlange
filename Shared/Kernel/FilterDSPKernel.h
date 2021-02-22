@@ -6,9 +6,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "DelayBuffer.h"
+#import "FilterFramework/FilterFramework-Swift.h"
 #import "KernelEventProcessor.h"
 #import "LFO.h"
-#import "SimplyFlangerFilterFramework/SimplyFlangerFilterFramework-Swift.h"
 
 class FilterDSPKernel : public KernelEventProcessor<FilterDSPKernel> {
 public:

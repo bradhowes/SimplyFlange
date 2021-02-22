@@ -1,8 +1,8 @@
 DEVELOPMENT_TEAM = UP6SS5ES7E
 APP_STORE_ID = 1553314889
-AU_BASE_NAME = SimplyFlanger
-AU_COMPONENT_NAME = B-Ray: SimplyFlanger
+AU_BASE_NAME = SimplyFlange
+AU_COMPONENT_NAME = B-Ray: SimplyFlange
 AU_COMPONENT_TYPE = aufx
 AU_COMPONENT_SUBTYPE = flng
 AU_COMPONENT_MANUFACTURER = BRay
-AU_FACTORY_FUNCTION = SimplyFlangerFilterFramework.FilterViewController
+AU_FACTORY_FUNCTION = FilterFramework.FilterViewController

@@ -2,7 +2,7 @@
 // Original: See LICENSE folder for this sample’s licensing information.
 
 import UIKit
-import SimplyFlangerFilterFramework
+import FilterFramework
 
 final class MainViewController: UIViewController {
 
@@ -35,7 +35,7 @@ final class MainViewController: UIViewController {
                                       message: nil, preferredStyle: .alert)
         alert.message =
 """
-The AUv3 component 'SimplySimplyFlanger' is now available on your device.
+The AUv3 component 'SimplyFlange' is now available on your device.
 
 This app uses the component to demonstrate how it works and sounds.
 """

@@ -2,7 +2,7 @@
 
 import UIKit
 import AVKit
-import SimplyFlangerFilterFramework
+import FilterFramework
 import os
 
 @UIApplicationMain

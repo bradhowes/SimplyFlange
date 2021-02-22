@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C437FE51222367CD008D6C09"
-               BuildableName = "SimplyFlangerFilterFramework.framework"
+               BuildableName = "FilterFramework.framework"
                BlueprintName = "iOS Framework"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "BD1D24A825D486A700523748"
                BuildableName = "iOS Tests.xctest"
                BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C437FE51222367CD008D6C09"
-            BuildableName = "SimplyFlangerFilterFramework.framework"
+            BuildableName = "FilterFramework.framework"
             BlueprintName = "iOS Framework"
-            ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+            ReferencedContainer = "container:SimplyFlange.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

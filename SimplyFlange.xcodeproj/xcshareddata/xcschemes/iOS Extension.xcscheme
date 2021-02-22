@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C437FE39222367A6008D6C09"
-               BuildableName = "SimplyFlangerHost.app"
-               BlueprintName = "iOS App"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               BlueprintIdentifier = "C437FE622223686D008D6C09"
+               BuildableName = "SimplyFlangeAU.appex"
+               BlueprintName = "iOS Extension"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -28,10 +28,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD1D24A825D486A700523748"
-               BuildableName = "iOS Tests.xctest"
-               BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               BlueprintIdentifier = "C437FE39222367A6008D6C09"
+               BuildableName = "SimplyFlangeHost.app"
+               BlueprintName = "iOS App"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,10 +44,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C437FE39222367A6008D6C09"
-            BuildableName = "SimplyFlangerHost.app"
-            BlueprintName = "iOS App"
-            ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+            BlueprintIdentifier = "C437FE622223686D008D6C09"
+            BuildableName = "SimplyFlangeAU.appex"
+            BlueprintName = "iOS Extension"
+            ReferencedContainer = "container:SimplyFlange.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <Testables>
@@ -58,15 +58,25 @@
                BlueprintIdentifier = "BD1D24A825D486A700523748"
                BuildableName = "iOS Tests.xctest"
                BlueprintName = "iOS Tests"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BD1D257525D5AAB000523748"
+               BuildableName = "Snapshots.xctest"
+               BlueprintName = "Snapshots"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      selectedDebuggerIdentifier = ""
+      selectedLauncherIdentifier = "Xcode.IDEFoundation.Launcher.PosixSpawn"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
@@ -78,18 +88,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C437FE39222367A6008D6C09"
-            BuildableName = "SimplyFlangerHost.app"
+            BuildableName = "SimplyFlangeHost.app"
             BlueprintName = "iOS App"
-            ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+            ReferencedContainer = "container:SimplyFlange.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "CG_NUMERICS_SHOW_BACKTRACE"
-            value = "NO"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -102,9 +105,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C437FE39222367A6008D6C09"
-            BuildableName = "SimplyFlangerHost.app"
+            BuildableName = "SimplyFlangeHost.app"
             BlueprintName = "iOS App"
-            ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+            ReferencedContainer = "container:SimplyFlange.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

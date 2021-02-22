@@ -9,15 +9,29 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "C437FE8E222368A1008D6C09"
-               BuildableName = "SimplyFlangerFilterFramework.framework"
-               BlueprintName = "macOS Framework"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               BlueprintIdentifier = "C437FE39222367A6008D6C09"
+               BuildableName = "SimplyFlangeHost.app"
+               BlueprintName = "iOS App"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C437FE792223688D008D6C09"
+               BuildableName = "SimplyFlange.app"
+               BlueprintName = "SimplyFlange"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,10 +46,10 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD95147424A08BB600D8024C"
-               BuildableName = "macOS Tests.xctest"
-               BlueprintName = "macOS Tests"
-               ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+               BlueprintIdentifier = "BD1D257525D5AAB000523748"
+               BuildableName = "Snapshots.xctest"
+               BlueprintName = "Snapshots"
+               ReferencedContainer = "container:SimplyFlange.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -60,15 +74,15 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "C437FE8E222368A1008D6C09"
-            BuildableName = "SimplyFlangerFilterFramework.framework"
-            BlueprintName = "macOS Framework"
-            ReferencedContainer = "container:SimplyFlanger.xcodeproj">
+            BlueprintIdentifier = "C437FE39222367A6008D6C09"
+            BuildableName = "SimplyFlangeHost.app"
+            BlueprintName = "iOS App"
+            ReferencedContainer = "container:SimplyFlange.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Release">
+      buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"

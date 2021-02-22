@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="FilterViewController" customModule="SimplyFlangerFilterFramework">
+        <customObject id="-2" userLabel="File's Owner" customClass="FilterViewController" customModule="FilterFramework">
             <connections>
                 <outlet property="delaySlider" destination="7CF-Qv-DVp" id="uR5-pR-3Nb"/>
                 <outlet property="delayValueLabel" destination="4Tr-wv-kyy" id="UUQ-eF-UoL"/>

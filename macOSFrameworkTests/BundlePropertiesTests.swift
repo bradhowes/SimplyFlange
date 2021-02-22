@@ -1,7 +1,7 @@
 // Copyright © 2020 Brad Howes. All rights reserved.
 
 import XCTest
-import SimplyFlangerFilterFramework
+import FilterFramework
 
 extension Bundle {
     func info(for key: String) -> String { infoDictionary?[key] as! String }
@@ -16,12 +16,12 @@ extension Bundle {
 class BundlePropertiesTests: XCTestCase {
 
     func testComponentAttributes() throws {
-        let bundle = Bundle(for: SimplyFlangerFilterFramework.FilterAudioUnit.self)
-        XCTAssertEqual("SimplyFlanger", bundle.auBaseName)
-        XCTAssertEqual("B-Ray: SimplyFlanger", bundle.auComponentName)
+        let bundle = Bundle(for: FilterFramework.FilterAudioUnit.self)
+        XCTAssertEqual("SimplyFlange", bundle.auBaseName)
+        XCTAssertEqual("B-Ray: SimplyFlange", bundle.auComponentName)
         XCTAssertEqual("aufx", bundle.auComponentType)
         XCTAssertEqual("flng", bundle.auComponentSubtype)
         XCTAssertEqual("BRay", bundle.auComponentManufacturer)
-        XCTAssertEqual("SimplyFlangerFilterFramework.FilterViewController", bundle.auFactoryFunction)
+        XCTAssertEqual("Framework.FilterViewController", bundle.auFactoryFunction)
     }
 }

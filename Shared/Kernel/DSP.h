@@ -24,6 +24,7 @@ template <typename T> T unipolarToBipolar(T modulator) { return 2.0 * modulator 
 
 template <typename T> T bipolarToUnipolar(T modulator) { return 0.5 * modulator + 0.5; }
 
+// 
 template <typename T> T parabolicSine(T angle) {
     const T B = 4.0 / M_PI;
     const T C = -4.0 / (M_PI * M_PI);

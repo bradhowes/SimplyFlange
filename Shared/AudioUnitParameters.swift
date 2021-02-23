@@ -30,18 +30,17 @@ public final class AudioUnitParameters: NSObject {
 
     public let parameters: [AUParameter] = [
         AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: .depth,
-                                        value: 100.0, min: 0.0, max: 100.0, unit: .percent),
+                                        min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: .rate,
-                                        value: 0.12, min: 0.0, max: 5.0, unit: .hertz),
+                                        min: 0.01, max: 10.0, unit: .hertz),
         AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: .delay,
-                                        value: 0.7, min: 0.0, max: AudioUnitParameters.maxDelayMilliseconds,
-                                        unit: .milliseconds),
+                                        min: 0.01, max: AudioUnitParameters.maxDelayMilliseconds, unit: .milliseconds),
         AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: .feedback,
-                                        value: 25.0, min: 0.0, max: 100.0, unit: .percent),
+                                        min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: .dryMix,
-                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent),
+                                        min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: .wetMix,
-                                        value: 50.0, min: 0.0, max: 100.0, unit: .percent)
+                                        min: 0.0, max: 100.0, unit: .percent)
     ]
 
     /// AUParameterTree created with the parameter definitions for the audio unit

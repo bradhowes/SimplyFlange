@@ -13,6 +13,8 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var bypassButton: UIButton!
     @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var preset1Button: UIButton!
+    @IBOutlet weak var preset2Button: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +74,14 @@ This app uses the component to demonstrate how it works and sounds.
             fatalError("Expected a valid URL")
         }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
+    @IBAction func usePreset1(_ sender: Any) {
+        audioUnitManager.audioUnit?.currentPreset = audioUnitManager.audioUnit?.factoryPresets[1]
+    }
+
+    @IBAction func usePreset2(_ sender: Any) {
+        audioUnitManager.audioUnit?.currentPreset = audioUnitManager.audioUnit?.factoryPresets[2]
     }
 
     @IBAction private func reviewApp(_ sender: UIButton) {

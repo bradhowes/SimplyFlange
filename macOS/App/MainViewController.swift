@@ -29,7 +29,6 @@ extension MainViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         audioUnitManager = AudioUnitManager(componentDescription: FilterAudioUnit.componentDescription,
                                             appExtension: Bundle.main.auExtensionName)
         audioUnitManager.delegate = self
@@ -170,6 +169,8 @@ extension MainViewController {
         view.needsLayout = true
         containerView.needsLayout = true
         loadingText.isHidden = true
+
+        populatePresetMenu(audioUnitManager.audioUnit!)
     }
 
     private func populatePresetMenu(_ audioUnit: FilterAudioUnit) {

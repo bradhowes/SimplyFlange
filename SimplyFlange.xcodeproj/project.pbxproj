@@ -58,6 +58,10 @@
 		BD75B67A25DA9C400071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B67025DA9B7A0071F55E /* AppStore.swift */; };
 		BD75B68325DA9E420071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B68225DA9E420071F55E /* AppStore.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
+		BD77DEFA25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */; };
+		BD77DEFB25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */; };
+		BD77DEFC25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */; };
+		BD77DEFD25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */; };
 		BD78FDC224C2F6530091A854 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78FDC124C2F6530091A854 /* MainWindowController.swift */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -268,6 +272,8 @@
 		BD75B67025DA9B7A0071F55E /* AppStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B68225DA9E420071F55E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
+		BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy1.wav"; sourceTree = "<group>"; };
+		BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy2.wav"; sourceTree = "<group>"; };
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -663,6 +669,8 @@
 		C4DCBAD5223ADE79000D9CB3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
+				BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */,
+				BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */,
 				BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */,
 				BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */,
 				C4A3D65A223FF12A002784D4 /* SimplePlayEngine.swift */,
@@ -1031,8 +1039,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD77DEFC25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */,
 				BD446BA225E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
 				BD1D255E25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
+				BD77DEFA25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1061,6 +1071,8 @@
 			files = (
 				BD446BA325E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
 				C46B8B8122418B6000E00B1E /* FilterViewController.xib in Resources */,
+				BD77DEFD25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */,
+				BD77DEFB25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */,
 				BD1D255F25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

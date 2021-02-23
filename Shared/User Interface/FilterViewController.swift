@@ -8,12 +8,15 @@ import os
  Controller for the AUv3 filter view.
  */
 public final class FilterViewController: AUViewController {
-
     private let log = Logging.logger("FilterViewController")
 
     private var viewConfig: AUAudioUnitViewConfiguration!
     private var parameterObserverToken: AUParameterObserverToken?
     private var keyValueObserverToken: NSKeyValueObservation?
+
+    private let logSliderMinValue: Float = 0.0
+    private let logSliderMaxValue: Float = 9.0
+    private lazy var logSliderMaxValuePower2Minus1 = Float(pow(2, logSliderMaxValue) - 1)
 
     @IBOutlet weak var depthValueLabel: Label!
     @IBOutlet weak var rateValueLabel: Label!
@@ -77,8 +80,8 @@ public final class FilterViewController: AUViewController {
     }
 
     @IBAction func depthChanged(_: Slider) { updateParam(.depth) }
-    @IBAction func rateChanged(_: Slider) { updateParam(.rate) }
-    @IBAction func delayChanged(_: Slider) { updateParam(.delay) }
+    @IBAction func rateChanged(_: Slider) { updateLogScaleParam(.rate) }
+    @IBAction func delayChanged(_: Slider) { updateLogScaleParam(.delay) }
     @IBAction func feedbackChanged(_: Slider) { updateParam(.feedback) }
     @IBAction func dryMixChanged(_: Slider) { updateParam(.dryMix) }
     @IBAction func wetMixChanged(_: Slider) { updateParam(.wetMix) }
@@ -123,25 +126,58 @@ extension FilterViewController {
     }
 
     private func updateDisplay() {
+        os_log(.info, log: log, "updateDisplay")
+
         guard let params = audioUnit?.parameterDefinitions else { return }
         for address in FilterParameterAddress.allCases {
             let param = params[address]
             guard let grouping = groupings[address] else { fatalError()}
+            os_log(.info, log: log, "address: %d value: %f", address.rawValue, param.value)
             grouping.label.text = params.formatValue(address, value: param.value)
-            grouping.slider.minimumValue = param.minValue
-            grouping.slider.maximumValue = param.maxValue
-            grouping.slider.value = param.value
+            switch address {
+            case .rate, .delay:
+                grouping.slider.minimumValue = logSliderMinValue
+                grouping.slider.maximumValue = logSliderMaxValue
+                grouping.slider.value = logSliderLocationForParameterValue(param)
+            default:
+                grouping.slider.minimumValue = param.minValue
+                grouping.slider.maximumValue = param.maxValue
+                grouping.slider.value = param.value
+            }
         }
+    }
+
+    private func updateLogScaleParam(_ address: FilterParameterAddress) {
+        guard let params = audioUnit?.parameterDefinitions else { return }
+        guard let grouping = groupings[address] else { fatalError() }
+        os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
+        let value = parameterValueForLogSliderLocation(grouping.slider.value, parameter: params[address])
+        grouping.label.text = params.formatValue(address, value: value)
+        params[address].value = value
     }
 
     private func updateParam(_ address: FilterParameterAddress) {
         guard let params = audioUnit?.parameterDefinitions else { return }
         guard let grouping = groupings[address] else { fatalError() }
+        os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
         grouping.label.text = params.formatValue(address, value: grouping.slider.value)
         params[address].value = grouping.slider.value
     }
 
     private func performOnMain(_ operation: @escaping () -> Void) {
         (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
+    }
+}
+
+extension FilterViewController {
+
+    private func logSliderLocationForParameterValue(_ parameter: AUParameter) -> Float {
+        log2(((parameter.value - parameter.minValue) / (parameter.maxValue - parameter.minValue)) *
+                logSliderMaxValuePower2Minus1 + 1.0)
+    }
+
+    private func parameterValueForLogSliderLocation(_ location: Float, parameter: AUParameter) -> AUValue {
+        ((pow(2, location) - 1) / logSliderMaxValuePower2Minus1) * (parameter.maxValue - parameter.minValue) +
+            parameter.minValue
     }
 }

@@ -1,6 +1,6 @@
 ![CI](https://github.com/bradhowes/SimplyFlange/workflows/CI/badge.svg?branch=main)
 
-![](Shared/Resources/SimplyFlange/256px.png)
+![](macOS/App/Assets.xcassets/AppIcon.appiconset/256px.png)
 
 # About SimplyFlange
 

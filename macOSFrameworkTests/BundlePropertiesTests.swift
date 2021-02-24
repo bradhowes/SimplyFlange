@@ -1,4 +1,4 @@
-// Copyright © 2020 Brad Howes. All rights reserved.
+// Copyright © 2021 Brad Howes. All rights reserved.
 
 import XCTest
 import FilterFramework
@@ -22,6 +22,6 @@ class BundlePropertiesTests: XCTestCase {
         XCTAssertEqual("aufx", bundle.auComponentType)
         XCTAssertEqual("flng", bundle.auComponentSubtype)
         XCTAssertEqual("BRay", bundle.auComponentManufacturer)
-        XCTAssertEqual("Framework.FilterViewController", bundle.auFactoryFunction)
+        XCTAssertEqual("FilterFramework.FilterViewController", bundle.auFactoryFunction)
     }
 }

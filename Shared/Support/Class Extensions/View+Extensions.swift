@@ -1,9 +1,4 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Small extensions to simplify view handling in the demo app.
-*/
+// Copyright © 2021 Brad Howes. All rights reserved.
 
 public extension View {
 

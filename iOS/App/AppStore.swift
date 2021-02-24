@@ -1,4 +1,4 @@
-// Copyright © 2020 Brad Howes. All rights reserved.
+// Copyright © 2021 Brad Howes. All rights reserved.
 
 import UIKit
 
@@ -15,7 +15,7 @@ public struct AppStore {
     }
 
     static var supportUrl: URL {
-        return URL(string: "https://github.com/bradhowes/LPF")!
+        return URL(string: "https://github.com/bradhowes/SimplyFlange")!
     }
 
     static func visitAppStore() {

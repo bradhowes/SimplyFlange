@@ -1,9 +1,4 @@
-/*
-See LICENSE folder for this sample’s licensing information.
-
-Abstract:
-Type alias mapping to normalize AppKit and UIKit interfaces to support cross-platform code reuse.
-*/
+// Copyright © 2021 Brad Howes. All rights reserved.
 
 #if os(iOS)
 

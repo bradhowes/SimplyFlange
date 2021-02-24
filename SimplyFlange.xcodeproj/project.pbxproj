@@ -23,8 +23,6 @@
 		BD1D24E925D48BA800523748 /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
 		BD1D24F625D48D8100523748 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD1D24FE25D48DB700523748 /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; };
-		BD1D255E25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */; };
-		BD1D255F25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
@@ -33,8 +31,6 @@
 		BD2FD3EE259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
 		BD2FD3F6259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
-		BD446BA225E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */ = {isa = PBXBuildFile; fileRef = BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */; };
-		BD446BA325E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */ = {isa = PBXBuildFile; fileRef = BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */; };
 		BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BB625E2B741009B7347 /* DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BB525E2B741009B7347 /* DSP.h */; };
@@ -58,8 +54,6 @@
 		BD75B67A25DA9C400071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B67025DA9B7A0071F55E /* AppStore.swift */; };
 		BD75B68325DA9E420071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B68225DA9E420071F55E /* AppStore.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
-		BD77DEFA25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */; };
-		BD77DEFB25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */; };
 		BD77DEFC25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */; };
 		BD77DEFD25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */; };
 		BD78FDC224C2F6530091A854 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78FDC124C2F6530091A854 /* MainWindowController.swift */; };
@@ -248,7 +242,6 @@
 		BD1D250625D5178900523748 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BD1D250E25D517D000523748 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BD1D252E25D51AD600523748 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = WhisperingDroneClip.mp3; sourceTree = "<group>"; };
 		BD1D257625D5AAB000523748 /* Snapshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Snapshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD1D257825D5AAB000523748 /* Snapshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snapshots.swift; sourceTree = "<group>"; };
 		BD1D257A25D5AAB000523748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -256,7 +249,6 @@
 		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
 		BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterTree+Extensions.swift"; sourceTree = "<group>"; };
 		BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterAddress+Extensions.swift"; sourceTree = "<group>"; };
-		BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Sweet Strummer 02.caf"; sourceTree = "<group>"; };
 		BD446BAB25E2B4C5009B7347 /* LFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFO.h; sourceTree = "<group>"; };
 		BD446BB525E2B741009B7347 /* DSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSP.h; sourceTree = "<group>"; };
 		BD446BBF25E2B9CD009B7347 /* LFOTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LFOTests.mm; sourceTree = "<group>"; };
@@ -272,7 +264,6 @@
 		BD75B67025DA9B7A0071F55E /* AppStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B68225DA9E420071F55E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy1.wav"; sourceTree = "<group>"; };
 		BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy2.wav"; sourceTree = "<group>"; };
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
@@ -281,7 +272,6 @@
 		BD95147924A08BB600D8024C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ValueChangeDetectorTests.mm; sourceTree = "<group>"; };
 		BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RampingValueChangeDetectorTests.mm; sourceTree = "<group>"; };
-		BD9FA80F24A938F800FA9940 /* Documentation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Documentation; sourceTree = "<group>"; };
 		BD9FA81224A94BA100FA9940 /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 		BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDB11A5224A13BFA00DD8EF9 /* Comparble+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Comparble+Extensions.swift"; sourceTree = "<group>"; };
@@ -342,7 +332,6 @@
 		C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FilterDSPKernelAdapter.mm; sourceTree = "<group>"; };
 		C4F004A52239B2070014E248 /* FilterAudioUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAudioUnit.swift; sourceTree = "<group>"; };
 		C4F07730223AC4F5008FFF06 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
-		F14BFD10F14BCC1000000001 /* APPLE_LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = APPLE_LICENSE.txt; path = Documentation/APPLE_LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -501,8 +490,7 @@
 			children = (
 				BD50D32425D75B7900375455 /* SimplyFlange.entitlements */,
 				7E56CF207E56CEE000000001 /* README.md */,
-				D153B980F14C7C7000000001 /* LICENSE */,
-				BD9FA80F24A938F800FA9940 /* Documentation */,
+				BD49661924A3605800A81F0B /* LICENSE.md */,
 				F1464A50F1463F7000000001 /* Configuration */,
 				C4BEE79622236A29001E6B6D /* iOS */,
 				C4BEE7B622236A58001E6B6D /* macOS */,
@@ -669,10 +657,7 @@
 		C4DCBAD5223ADE79000D9CB3 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				BD77DEF825E4714B00CE6A72 /* 074_acoustic-guitar-strummy1.wav */,
 				BD77DEF925E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav */,
-				BD1D255D25D5A39700523748 /* WhisperingDroneClip.mp3 */,
-				BD446BA125E2A2CA009B7347 /* Sweet Strummer 02.caf */,
 				C4A3D65A223FF12A002784D4 /* SimplePlayEngine.swift */,
 			);
 			path = Audio;
@@ -685,15 +670,6 @@
 				C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */,
 			);
 			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		D153B980F14C7C7000000001 /* LICENSE */ = {
-			isa = PBXGroup;
-			children = (
-				BD49661924A3605800A81F0B /* LICENSE.md */,
-				F14BFD10F14BCC1000000001 /* APPLE_LICENSE.txt */,
-			);
-			name = LICENSE;
 			sourceTree = "<group>";
 		};
 		F1464A50F1463F7000000001 /* Configuration */ = {
@@ -1040,9 +1016,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD77DEFC25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */,
-				BD446BA225E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
-				BD1D255E25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
-				BD77DEFA25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1069,11 +1042,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD446BA325E2A2CA009B7347 /* Sweet Strummer 02.caf in Resources */,
 				C46B8B8122418B6000E00B1E /* FilterViewController.xib in Resources */,
 				BD77DEFD25E4714C00CE6A72 /* 074_acoustic-guitar-strummy2.wav in Resources */,
-				BD77DEFB25E4714C00CE6A72 /* 074_acoustic-guitar-strummy1.wav in Resources */,
-				BD1D255F25D5A39700523748 /* WhisperingDroneClip.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

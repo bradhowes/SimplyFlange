@@ -33,8 +33,17 @@
                                                     <action selector="togglePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kt8-zh-HcD"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9za-g7-28Y">
+                                                <rect key="frame" x="64" y="0.0" width="50" height="30"/>
+                                                <state key="normal" title="Bypass">
+                                                    <color key="titleColor" systemColor="systemTealColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="toggleBypass:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFb-Cz-SLh"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="act-OR-R8x">
-                                                <rect key="frame" x="64" y="0.0" width="55" height="30"/>
+                                                <rect key="frame" x="148" y="0.0" width="55" height="30"/>
                                                 <state key="normal" title="Preset 1">
                                                     <color key="titleColor" systemColor="systemTealColor"/>
                                                 </state>
@@ -43,7 +52,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SH0-Qn-oNO" userLabel="Preset 2">
-                                                <rect key="frame" x="153" y="0.0" width="57" height="30"/>
+                                                <rect key="frame" x="237" y="0.0" width="57" height="30"/>
                                                 <state key="normal" title="Preset 2">
                                                     <color key="titleColor" systemColor="systemTealColor"/>
                                                 </state>
@@ -52,22 +61,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJA-Ec-YsF" userLabel="APP_VERSION">
-                                                <rect key="frame" x="244" y="2" width="31" height="26"/>
+                                                <rect key="frame" x="328" y="2" width="31" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <state key="normal" title="v1.0.0">
                                                     <color key="titleColor" systemColor="systemTealColor"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="reviewApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIe-10-IRd"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9za-g7-28Y">
-                                                <rect key="frame" x="309" y="0.0" width="50" height="30"/>
-                                                <state key="normal" title="Bypass">
-                                                    <color key="titleColor" systemColor="systemTealColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="toggleBypass:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFb-Cz-SLh"/>
                                                 </connections>
                                             </button>
                                         </subviews>

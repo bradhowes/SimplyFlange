@@ -6,12 +6,14 @@ public struct AppStore {
 
     static var appStoreUrl: URL {
         let appStoreId = Bundle.main.appStoreId
-        return URL(string: "https://itunes.apple.com/app/id\(appStoreId)")!
+        let url = "https://apps.apple.com/app/id\(appStoreId)"
+        return URL(string: url)!
     }
 
     static var reviewUrl: URL {
         let appStoreId = Bundle.main.appStoreId
-        return URL(string: "https://itunes.apple.com/app/id\(appStoreId)?action=write-review")!
+        let url = "https://apps.apple.com/app/id\(appStoreId)?action=write-review"
+        return URL(string: url)!
     }
 
     static var supportUrl: URL {

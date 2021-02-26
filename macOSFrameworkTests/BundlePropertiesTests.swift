@@ -11,6 +11,7 @@ extension Bundle {
     var auComponentSubtype: String { info(for: "AU_COMPONENT_SUBTYPE") }
     var auComponentManufacturer: String { info(for: "AU_COMPONENT_MANUFACTURER") }
     var auFactoryFunction: String { info(for: "AU_FACTORY_FUNCTION") }
+    var appStoreId: String { info(for: "APP_STORE_ID") }
 }
 
 class BundlePropertiesTests: XCTestCase {
@@ -23,5 +24,6 @@ class BundlePropertiesTests: XCTestCase {
         XCTAssertEqual("flng", bundle.auComponentSubtype)
         XCTAssertEqual("BRay", bundle.auComponentManufacturer)
         XCTAssertEqual("FilterFramework.FilterViewController", bundle.auFactoryFunction)
+        XCTAssertEqual("1554960150", bundle.appStoreId)
     }
 }

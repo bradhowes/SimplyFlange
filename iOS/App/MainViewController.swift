@@ -67,14 +67,6 @@ This app uses the component to demonstrate how it works and sounds.
         bypassButton.setTitleColor(isBypassed ? .systemYellow : .systemTeal, for: .normal)
     }
 
-    @IBAction private func visitAppStore(_ sender: UIButton) {
-        let appStoreId = Bundle.main.appStoreId
-        guard let url = URL(string: "https://itunes.apple.com/app/id\(appStoreId)") else {
-            fatalError("Expected a valid URL")
-        }
-        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-    }
-
     @IBAction func usePreset1(_ sender: Any) {
         audioUnitManager.audioUnit?.currentPreset = audioUnitManager.audioUnit?.factoryPresets[1]
     }

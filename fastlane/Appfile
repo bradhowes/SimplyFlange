@@ -1,0 +1,2 @@
+app_identifier "com.braysoftware.SimplyFlange"
+api_key_filepath "/Users/howes/Documents/fastlaneAuth.json"

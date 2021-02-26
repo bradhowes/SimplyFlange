@@ -1,2 +1,5 @@
-app_identifier "com.braysoftware.SimplyFlange"
-api_key_filepath "/Users/howes/Documents/fastlaneAuth.json"
+app_identifier("com.braysoftware.SimplyFlange") # The bundle identifier of your app
+apple_id("bradhowes@mac.com") # Your Apple email address
+
+itc_team_id("217182") # App Store Connect Team ID
+team_id("UP6SS5ES7E") # Developer Portal Team ID

@@ -25,12 +25,26 @@ Generate new localized screenshots
 ```
 fastlane ios beta
 ```
-
+Generate new release make available for testing
 ### ios release
 ```
 fastlane ios release
 ```
+Generate new release and upload to store
 
+----
+
+## macos
+### macos beta
+```
+fastlane macos beta
+```
+Generate new release make available for testing
+### macos release
+```
+fastlane macos release
+```
+Generate new release and upload to store
 
 ----
 

@@ -29,4 +29,5 @@ Gemfile.lock
 fastlane/SnapshotHelper.swift
 fastlane/report.xml
 fastlane/screenshots
+fastlane/metadata
 fastlane/*.json

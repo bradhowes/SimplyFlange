@@ -1,18 +1,22 @@
 default_platform(:ios)
 
 platform :ios do
+
   desc "Generate new localized screenshots"
   lane :screenshots do
     capture_screenshots(scheme: "Snapshots")
   end
 
+  desc "Generate new release make available for testing"
   lane :beta do
-    sync_code_signing(type: "appstore")    # see code signing guide for more information
     build_app(scheme: "iOS App")
-    upload_to_testflight
+    upload_to_testflight(api_key_path: "fastlane/fastlaneAuth.json")
   end
 
+  desc "Generate new release and upload to store"
   lane :release do
     build_app(scheme: "iOS App")
+    upload_to_app_store
   end
+
 end

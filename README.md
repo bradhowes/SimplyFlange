@@ -21,6 +21,12 @@ Finally, it passes all
 [auval](https://developer.apple.com/library/archive/documentation/MusicAudio/Conceptual/AudioUnitProgrammingGuide/AudioUnitDevelopmentFundamentals/AudioUnitDevelopmentFundamentals.html)
 tests. (`auval -v aufx flng BRay`)
 
+## App Previews
+
+* [iOS App](Media/iOS_App.mp4)
+* [iOS GarageBand](Media/iOS_GarageBand.mp4)
+* [macOS_GarageBand](Media/macOS_GarageBand.mp4)
+
 ## Demo Targets
 
 The macOS and iOS apps are simple hosts that demonstrate the functionality of the AUv3 component. In the AUv3 world,

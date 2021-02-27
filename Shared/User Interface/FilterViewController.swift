@@ -48,6 +48,11 @@ public final class FilterViewController: AUViewController {
         }
     }
 
+    #if os(iOS)
+    private var bundle: Bundle { Bundle(for: FilterViewController.self) }
+    private var sliderThumbImage: UIImage { UIImage(named: "SliderThumb", in: bundle, compatibleWith: nil)! }
+    #endif
+
     #if os(macOS)
     public override init(nibName: NSNib.Name?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: Bundle(for: type(of: self)))
@@ -69,9 +74,25 @@ public final class FilterViewController: AUViewController {
         groupings[.dryMix] = Grouping(label: dryMixValueLabel, slider: dryMixSlider)
         groupings[.wetMix] = Grouping(label: wetMixValueLabel, slider: wetMixSlider)
 
+        for (_, value) in groupings {
+            setThumbImages(value.slider)
+        }
+
         if audioUnit != nil {
             connectViewToAU()
         }
+    }
+
+    private func setThumbImages(_ slider: Slider) {
+        #if os(iOS)
+        slider.setThumbImage(sliderThumbImage, for: .normal)
+        slider.setThumbImage(sliderThumbImage, for: .focused)
+        slider.setThumbImage(sliderThumbImage, for: .highlighted)
+        slider.setThumbImage(sliderThumbImage, for: .selected)
+        #endif
+        #if os(macOS)
+        slider.trackFillColor = .systemOrange
+        #endif
     }
 
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {

@@ -60,7 +60,6 @@ public final class FilterViewController: AUViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
-        guard audioUnit != nil else { return }
         view.backgroundColor = .black
 
         groupings[.depth] = Grouping(label: depthValueLabel, slider: depthSlider)
@@ -70,7 +69,9 @@ public final class FilterViewController: AUViewController {
         groupings[.dryMix] = Grouping(label: dryMixValueLabel, slider: dryMixSlider)
         groupings[.wetMix] = Grouping(label: wetMixValueLabel, slider: wetMixSlider)
 
-        connectViewToAU()
+        if audioUnit != nil {
+            connectViewToAU()
+        }
     }
 
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {

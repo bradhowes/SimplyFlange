@@ -154,7 +154,7 @@ extension FilterViewController {
             let param = params[address]
             guard let grouping = groupings[address] else { fatalError()}
             os_log(.info, log: log, "address: %d value: %f", address.rawValue, param.value)
-            grouping.label.text = params.formatValue(address, value: param.value)
+            grouping.label.text = params.formatValueWithUnits(address, value: param.value)
             switch address {
             case .rate, .delay:
                 grouping.slider.minimumValue = logSliderMinValue
@@ -173,7 +173,7 @@ extension FilterViewController {
         guard let grouping = groupings[address] else { fatalError() }
         os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
         let value = parameterValueForLogSliderLocation(grouping.slider.value, parameter: params[address])
-        grouping.label.text = params.formatValue(address, value: value)
+        grouping.label.text = params.formatValueWithUnits(address, value: value)
         params[address].value = value
     }
 
@@ -181,7 +181,7 @@ extension FilterViewController {
         guard let params = audioUnit?.parameterDefinitions else { return }
         guard let grouping = groupings[address] else { fatalError() }
         os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
-        grouping.label.text = params.formatValue(address, value: grouping.slider.value)
+        grouping.label.text = params.formatValueWithUnits(address, value: grouping.slider.value)
         params[address].value = grouping.slider.value
     }
 

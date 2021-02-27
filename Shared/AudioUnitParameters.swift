@@ -79,12 +79,24 @@ public final class AudioUnitParameters: NSObject {
 
     public subscript(address: FilterParameterAddress) -> AUParameter { parameters[address] }
 
+    public func formatValueWithUnits(_ address: FilterParameterAddress?, value: AUValue) -> String {
+        guard let address = address else { return "?" }
+        let unitName = self[address].unitName ?? ""
+        let separator: String = {
+            switch address {
+            case .rate, .delay: return " "
+            default: return ""
+            }
+        }()
+        return formatValue(address, value: value) + separator + unitName
+    }
+
     public func formatValue(_ address: FilterParameterAddress?, value: AUValue) -> String {
         switch address {
-        case .depth, .feedback: return String(format: "%.2f%%", value)
-        case .rate: return String(format: "%.2f Hz", value)
-        case .delay: return String(format: "%.2f ms", value)
-        case .dryMix, .wetMix: return String(format: "%.0f%%", value)
+        case .depth, .feedback: return String(format: "%.2f", value)
+        case .rate: return String(format: "%.2f", value)
+        case .delay: return String(format: "%.2f", value)
+        case .dryMix, .wetMix: return String(format: "%.0f", value)
         default: return "?"
         }
     }

@@ -23,9 +23,9 @@ tests. (`auval -v aufx flng BRay`)
 
 ## App Previews
 
-* [iOS App](https://github.com/bradhowes/SimplyFlange/blob/main/Media/iOS_App.mp4)
-* [iOS GarageBand](https://github.com/bradhowes/SimplyFlange/blob/main/Media/iOS_GarageBand.mp4)
-* [macOS_GarageBand](https://github.com/bradhowes/SimplyFlange/blob/main/Media/macOS_GarageBand.mp4)
+* [iOS App](https://youtu.be/TtUvZscRLT4)
+* [iOS GarageBand](https://youtu.be/9oMstnsyq3A)
+* [macOS_GarageBand](https://youtu.be/krMEQO1Fmjw)
 
 ## Demo Targets
 

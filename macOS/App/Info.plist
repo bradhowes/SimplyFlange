@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-        <string>SimplyFlangeHost</string>
+	<string>SimplyFlangeHost</string>
 	<key>APP_STORE_ID</key>
 	<string>$(APP_STORE_ID)</string>
 	<key>AU_BASE_NAME</key>

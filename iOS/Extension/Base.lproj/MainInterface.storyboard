@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="aWa-XM-5Nw">
-                                <rect key="frame" x="8" y="246" width="398" height="244.33333333333337"/>
+                                <rect key="frame" x="8" y="245.66666666666663" width="398" height="245"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="da7-9V-FLE" userLabel="Depth">
                                         <rect key="frame" x="0.0" y="0.0" width="398" height="45.666666666666664"/>
@@ -47,7 +47,7 @@
                                                 </subviews>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="MBp-6k-K9o">
-                                                <rect key="frame" x="-2" y="15.666666666666686" width="402" height="31"/>
+                                                <rect key="frame" x="-2" y="15.666666666666657" width="402" height="31"/>
                                                 <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
@@ -57,7 +57,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lhw-ml-zg6" userLabel="Rate">
-                                        <rect key="frame" x="0.0" y="49.666666666666686" width="398" height="45.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="49.666666666666657" width="398" height="45.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="WuP-td-e42">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
@@ -83,7 +83,7 @@
                                                 </subviews>
                                             </stackView>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="YB3-Yl-PRq">
-                                                <rect key="frame" x="-2" y="15.666666666666629" width="402" height="31"/>
+                                                <rect key="frame" x="-2" y="15.666666666666686" width="402" height="31"/>
                                                 <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <connections>
@@ -93,7 +93,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="QPa-3B-fhf" userLabel="Delay">
-                                        <rect key="frame" x="0.0" y="99.333333333333314" width="398" height="45.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="99.666666666666657" width="398" height="45.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OKj-le-xv9">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
@@ -129,7 +129,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="HdF-bM-rJs" userLabel="Feedback">
-                                        <rect key="frame" x="0.0" y="149" width="398" height="45.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="149.33333333333334" width="398" height="45.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="n5l-RT-Gp0">
                                                 <rect key="frame" x="0.0" y="0.0" width="398" height="15.666666666666666"/>
@@ -165,7 +165,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="h2y-g3-jMe" userLabel="Mixes">
-                                        <rect key="frame" x="0.0" y="198.66666666666669" width="398" height="45.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="199.33333333333334" width="398" height="45.666666666666657"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4Qp-qq-Mv5" userLabel="Dry">
                                                 <rect key="frame" x="0.0" y="0.0" width="197" height="45.666666666666664"/>
@@ -194,7 +194,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="wZL-kE-hnl" userLabel="Dry Mix Slider">
-                                                        <rect key="frame" x="-2" y="15.666666666666629" width="201" height="31"/>
+                                                        <rect key="frame" x="-2" y="15.666666666666686" width="201" height="31"/>
                                                         <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
@@ -230,7 +230,7 @@
                                                         </subviews>
                                                     </stackView>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Fh7-Ma-c1t" userLabel="Dry Mix Slider">
-                                                        <rect key="frame" x="-2" y="15.666666666666629" width="201" height="31"/>
+                                                        <rect key="frame" x="-2" y="15.666666666666686" width="201" height="31"/>
                                                         <color key="tintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="thumbTintColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <connections>
@@ -243,6 +243,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="245" id="DlV-Sv-wSD"/>
                                     <constraint firstAttribute="width" priority="750" constant="500" id="gHa-Gz-irm"/>
                                 </constraints>
                             </stackView>

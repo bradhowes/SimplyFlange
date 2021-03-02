@@ -1,5 +1,6 @@
 // Copyright © 2020 Brad Howes. All rights reserved.
 
+import Cocoa
 import os
 
 /**
@@ -11,7 +12,6 @@ import os
  Visual representation of the knob is done via CoreAnimation components, namely CAShapeLayer and UIBezierPath. The diameter of the arc of the knob is
  defined by the min(width, height) of the view's frame.
  */
-@IBDesignable
 open class Knob: NSControl {
 
     /// The minimum value reported by the control.
@@ -63,8 +63,6 @@ open class Knob: NSControl {
     /// The color of the tick line.
     open var tickLineColor: Color = .lightGray { didSet { ticksLayer.strokeColor = tickLineColor.cgColor } }
 
-    override public var acceptsFirstResponder: Bool { get { return true } }
-
     private let startAngle: CGFloat = -CGFloat.pi / 180.0 * 225.0
     private let endAngle: CGFloat = CGFloat.pi / 180.0 * 45.0
 
@@ -78,13 +76,10 @@ open class Knob: NSControl {
     private var panOrigin: CGPoint = .zero
     private var activeTouch: Bool = false
 
-    #if os(macOS)
+    override public var acceptsFirstResponder: Bool { get { return true } }
     var backingLayer: CALayer { layer! }
     override public var wantsUpdateLayer: Bool { true }
     override public var isFlipped: Bool { true }
-    #else
-    var backingLayer: CALayer { layer }
-    #endif
 
     /**
      Construction from an encoded representation.
@@ -107,26 +102,6 @@ open class Knob: NSControl {
         initialize()
     }
 
-    #if os(iOS)
-
-    /**
-     Reposition layers to reflect new size.
-     */
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-
-        // To make future calculations easier, configure the layers so that (0, 0) is their center
-        let layerBounds = bounds.offsetBy(dx: -bounds.midX, dy: -bounds.midY)
-        let layerCenter = CGPoint(x: bounds.midX, y: bounds.midY)
-        for layer in [backingLayer, trackLayer, progressLayer, indicatorLayer, ticksLayer] {
-            layer.bounds = layerBounds
-            layer.position = layerCenter
-        }
-        createShapes()
-    }
-
-    #else
-
     public override func layout() {
         super.layout()
 
@@ -140,8 +115,6 @@ open class Knob: NSControl {
         createShapes()
     }
 
-    #endif
-
     public func setValue(_ value: Float, animated: Bool = false) {
         _value = clampedValue(value)
         draw(animated: animated)
@@ -150,44 +123,6 @@ open class Knob: NSControl {
 }
 
 extension Knob {
-
-    #if os(iOS)
-
-    override open func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        panOrigin = touch.location(in: self)
-        activeTouch = true
-        updateQueue.async { self.sendActions(for: .valueChanged) }
-        return true
-    }
-
-    override open func continueTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        let point = touch.location(in: self)
-
-        // Scale touchSensitivity by how far away in the X direction the touch is -- farther away the larger the sensitivity, thus making for smaller value changes for the same
-        // distance traveled in the Y direction.
-        let scaleT = log10(max(abs(Float(panOrigin.x - point.x)), 1.0)) + 1
-        let deltaT = Float(panOrigin.y - point.y) / (Float(min(bounds.height, bounds.width)) * touchSensitivity * scaleT)
-        defer { panOrigin = CGPoint(x: panOrigin.x, y: point.y) }
-        let change = deltaT * (maximumValue - minimumValue)
-        self.value += change
-        updateQueue.async { self.sendActions(for: .valueChanged) }
-        return true
-    }
-
-    override open func cancelTracking(with event: UIEvent?) {
-        activeTouch = false
-        super.cancelTracking(with: event)
-        updateQueue.async { self.sendActions(for: .valueChanged) }
-    }
-
-    override open func endTracking(_ touch: UITouch?, with event: UIEvent?) {
-        activeTouch = false
-        super.endTracking(touch, with: event)
-        updateQueue.async { self.sendActions(for: .valueChanged) }
-    }
-
-    #else
-
     override public func acceptsFirstMouse(for event: NSEvent?) -> Bool {
         return true
     }
@@ -216,21 +151,13 @@ extension Knob {
         activeTouch = false
         updateQueue.async { self.sendAction(self.action, to: self.target) }
     }
-
-    #endif
 }
 
 extension Knob {
 
-    override public func updateLayer() {
-        super.updateLayer()
-    }
-
     private func initialize() {
-        #if os(macOS)
         layer = CALayer()
         wantsLayer = true
-        #endif
 
         backingLayer.drawsAsynchronously = true
         trackLayer.drawsAsynchronously = true
@@ -278,10 +205,9 @@ extension Knob {
         draw(animated: false)
     }
 
-    private func createRing() -> BezierPath {
-        let ring = BezierPath()
-        var points = [NSPoint]()
-
+    private func createRing() -> NSBezierPath {
+        let ring = NSBezierPath()
+        var points = [CGPoint]()
         for theta in 0...270 {
             let x = radius * cos(CGFloat(theta) * .pi / 180.0)
             let y = radius * sin(CGFloat(theta) * .pi / 180.0)
@@ -299,9 +225,9 @@ extension Knob {
     }
 
     private func createIndicator() {
-        let indicator = BezierPath()
+        let indicator = NSBezierPath()
         indicator.move(to: CGPoint(x: radius, y: 0.0))
-        indicator.addLine(to: CGPoint(x: radius * (1.0 - indicatorLineLength), y: 0.0))
+        indicator.line(to: CGPoint(x: radius * (1.0 - indicatorLineLength), y: 0.0))
         indicatorLayer.path = indicator.cgPath
     }
 
@@ -311,12 +237,12 @@ extension Knob {
     }
 
     private func createTicks() {
-        let ticks = BezierPath()
+        let ticks = NSBezierPath()
         for tickIndex in 0..<tickCount {
-            let tick = BezierPath()
+            let tick = NSBezierPath()
             let theta = angle(for: Float(tickIndex) / max(1.0, Float(tickCount - 1)))
             tick.move(to: CGPoint(x: 0.0 + radius * (1.0 - tickLineOffset), y: 0.0))
-            tick.addLine(to: CGPoint(x: 0.0 + radius * (1.0 - tickLineLength), y: 0.0))
+            tick.line(to: CGPoint(x: 0.0 + radius * (1.0 - tickLineLength), y: 0.0))
             tick.apply(CGAffineTransform(rotationAngle: theta))
             ticks.append(tick)
         }
@@ -338,4 +264,28 @@ extension Knob {
     private func angle(for normalizedValue: Float) -> CGFloat { CGFloat(normalizedValue) * (endAngle - startAngle) + startAngle }
 
     private func clampedValue(_ value: Float) -> Float { min(maximumValue, max(minimumValue, value)) }
+}
+
+public extension NSBezierPath {
+
+    func apply(_ transform: CGAffineTransform) {
+        self.transform(using: AffineTransform.init(m11: transform.a, m12: transform.b, m21: transform.c,
+                                                   m22: transform.d, tX: transform.tx, tY: transform.ty))
+    }
+
+    var cgPath: CGPath {
+        let path = CGMutablePath()
+        var points = [CGPoint](repeating: .zero, count: 3)
+        for index in 0 ..< self.elementCount {
+            let type = self.element(at: index, associatedPoints: &points)
+            switch type {
+            case .moveTo: path.move(to: points[0])
+            case .lineTo: path.addLine(to: points[0])
+            case .curveTo: path.addCurve(to: points[2], control1: points[0], control2: points[1])
+            case .closePath: path.closeSubpath()
+            @unknown default: break
+            }
+        }
+        return path
+    }
 }

@@ -4,23 +4,19 @@
 
 import UIKit
 public typealias Color = UIColor
-public typealias Control = UIControl
 public typealias Label = UILabel
 public typealias Slider = UISlider
 public typealias Storyboard = UIStoryboard
 public typealias View = UIView
-public typealias BezierPath = UIBezierPath
 
 #elseif os(macOS)
 
 import AppKit
 public typealias Color = NSColor
-public typealias Control = NSControl
 public typealias Label = NSTextField
 public typealias Slider = NSSlider
 public typealias Storyboard = NSStoryboard
 public typealias View = NSView
-public typealias BezierPath = NSBezierPath
 
 public extension NSView {
     func setNeedsDisplay() { self.needsDisplay = true }
@@ -61,58 +57,6 @@ public extension NSSlider {
     var value: Float {
         get { self.floatValue }
         set { self.floatValue = newValue }
-    }
-}
-
-class CustomSliderCell: NSSliderCell {
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override func drawBar(inside aRect: NSRect, flipped: Bool) {
-        var rect = aRect
-        rect.size.height = CGFloat(5)
-        let barRadius = CGFloat(2.5)
-        let value = CGFloat((self.doubleValue - self.minValue) / (self.maxValue - self.minValue))
-        let finalWidth = CGFloat(value * (self.controlView!.frame.size.width - 8))
-        var leftRect = rect
-        leftRect.size.width = finalWidth
-        let active = NSBezierPath(roundedRect: leftRect, xRadius: barRadius, yRadius: barRadius)
-        NSColor.systemOrange.setFill()
-        active.fill()
-    }
-}
-
-public extension NSBezierPath {
-
-    convenience init(arcCenter: CGPoint, radius: CGFloat, startAngle: CGFloat, endAngle: CGFloat, clockwise: Bool) {
-        self.init()
-        appendArc(withCenter: arcCenter, radius: radius, startAngle: startAngle, endAngle: endAngle,
-                  clockwise: clockwise)
-    }
-
-    func addLine(to pos: CGPoint) { self.line(to: pos) }
-
-    func apply(_ transform: CGAffineTransform) {
-        self.transform(using: AffineTransform.init(m11: transform.a, m12: transform.b, m21: transform.c,
-                                                   m22: transform.d, tX: transform.tx, tY: transform.ty))
-    }
-
-    var cgPath: CGPath {
-        let path = CGMutablePath()
-        var points = [CGPoint](repeating: .zero, count: 3)
-        for index in 0 ..< self.elementCount {
-            let type = self.element(at: index, associatedPoints: &points)
-            switch type {
-            case .moveTo: path.move(to: points[0])
-            case .lineTo: path.addLine(to: points[0])
-            case .curveTo: path.addCurve(to: points[2], control1: points[0], control2: points[1])
-            case .closePath: path.closeSubpath()
-            @unknown default: break
-            }
-        }
-        return path
     }
 }
 

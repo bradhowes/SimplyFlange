@@ -71,12 +71,12 @@ public final class FilterViewController: AUViewController {
         self.viewConfig = viewConfig
     }
 
-    @IBAction func depthChanged(_: Any) { controls[.depth]?.knobChanged()}
-    @IBAction func rateChanged(_: Any) { controls[.rate]?.knobChanged() }
-    @IBAction func delayChanged(_: Any) { controls[.delay]?.knobChanged() }
-    @IBAction func feedbackChanged(_: Any) { controls[.feedback]?.knobChanged() }
-    @IBAction func dryMixChanged(_: Any) { controls[.dryMix]?.knobChanged() }
-    @IBAction func wetMixChanged(_: Any) { controls[.wetMix]?.knobChanged() }
+    @IBAction public func depthChanged(_: Knob) { controls[.depth]?.knobChanged()}
+    @IBAction public func rateChanged(_: Knob) { controls[.rate]?.knobChanged() }
+    @IBAction public func delayChanged(_: Knob) { controls[.delay]?.knobChanged() }
+    @IBAction public func feedbackChanged(_: Knob) { controls[.feedback]?.knobChanged() }
+    @IBAction public func dryMixChanged(_: Knob) { controls[.dryMix]?.knobChanged() }
+    @IBAction public func wetMixChanged(_: Knob) { controls[.wetMix]?.knobChanged() }
 }
 
 extension FilterViewController: AUAudioUnitFactory {

@@ -4,7 +4,7 @@ import CoreAudioKit
 import os
 
 /**
- Controller for the AUv3 filter view.
+ Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
 public final class FilterViewController: AUViewController {
     private let log = Logging.logger("FilterViewController")
@@ -116,43 +116,24 @@ extension FilterViewController {
         self.parameterObserverToken = parameterObserverToken
 
         let params = audioUnit.parameterDefinitions
-        controls[.depth] = KnobController(parameterObserverToken: parameterObserverToken,
-                                          parameter: params[.depth],
-                                          formatter: params.valueFormatter(.depth),
-                                          knob: depthControl,
-                                          label: depthValueLabel,
-                                          logValues: false)
-
-        controls[.rate] = KnobController(parameterObserverToken: parameterObserverToken,
-                                         parameter: params[.rate],
-                                         formatter: params.valueFormatter(.rate),
-                                         knob: rateControl,
-                                         label: rateValueLabel,
-                                         logValues: true)
-        controls[.delay] = KnobController(parameterObserverToken: parameterObserverToken,
-                                          parameter: params[.delay],
-                                          formatter: params.valueFormatter(.delay),
-                                          knob: delayControl,
-                                          label: delayValueLabel,
-                                          logValues: true)
+        controls[.depth] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+                                          formatter: params.valueFormatter(.depth), knob: depthControl,
+                                          label: depthValueLabel, logValues: false)
+        controls[.rate] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+                                         formatter: params.valueFormatter(.rate), knob: rateControl,
+                                         label: rateValueLabel, logValues: true)
+        controls[.delay] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
+                                          formatter: params.valueFormatter(.delay), knob: delayControl,
+                                          label: delayValueLabel, logValues: true)
         controls[.feedback] = KnobController(parameterObserverToken: parameterObserverToken,
-                                             parameter: params[.feedback],
-                                             formatter: params.valueFormatter(.feedback),
-                                             knob: feedbackControl,
-                                             label: feedbackValueLabel,
-                                             logValues: false)
-        controls[.dryMix] = KnobController(parameterObserverToken: parameterObserverToken,
-                                           parameter: params[.dryMix],
-                                           formatter: params.valueFormatter(.dryMix),
-                                           knob: dryMixControl,
-                                           label: dryMixValueLabel,
-                                           logValues: false)
-        controls[.wetMix] = KnobController(parameterObserverToken: parameterObserverToken,
-                                           parameter: params[.wetMix],
-                                           formatter: params.valueFormatter(.wetMix),
-                                           knob: wetMixControl,
-                                           label:  wetMixValueLabel,
-                                           logValues: false)
+                                             parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
+                                             knob: feedbackControl, label: feedbackValueLabel, logValues: false)
+        controls[.dryMix] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
+                                           formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
+                                           label: dryMixValueLabel, logValues: false)
+        controls[.wetMix] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
+                                           formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
+                                           label:  wetMixValueLabel, logValues: false)
     }
 
     private func updateDisplay() {

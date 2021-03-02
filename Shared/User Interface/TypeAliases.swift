@@ -25,6 +25,7 @@ public typealias BezierPath = NSBezierPath
 public extension NSView {
     func setNeedsDisplay() { self.needsDisplay = true }
     func setNeedsLayout() { self.needsLayout = true }
+
     @objc func layoutSubviews() { self.layout() }
 
     var backgroundColor: NSColor? {
@@ -101,8 +102,8 @@ public extension NSBezierPath {
     var cgPath: CGPath {
         let path = CGMutablePath()
         var points = [CGPoint](repeating: .zero, count: 3)
-        for i in 0 ..< self.elementCount {
-            let type = self.element(at: i, associatedPoints: &points)
+        for index in 0 ..< self.elementCount {
+            let type = self.element(at: index, associatedPoints: &points)
             switch type {
             case .moveTo: path.move(to: points[0])
             case .lineTo: path.addLine(to: points[0])

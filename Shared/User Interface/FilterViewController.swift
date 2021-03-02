@@ -24,19 +24,14 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var dryMixValueLabel: Label!
     @IBOutlet weak var wetMixValueLabel: Label!
 
-    @IBOutlet weak var depthSlider: Slider!
-    @IBOutlet weak var rateSlider: Slider!
-    @IBOutlet weak var delaySlider: Slider!
-    @IBOutlet weak var feedbackSlider: Slider!
-    @IBOutlet weak var dryMixSlider: Slider!
-    @IBOutlet weak var wetMixSlider: Slider!
+    @IBOutlet weak var depthControl: Knob!
+    @IBOutlet weak var rateControl: Knob!
+    @IBOutlet weak var delayControl: Knob!
+    @IBOutlet weak var feedbackControl: Knob!
+    @IBOutlet weak var dryMixControl: Knob!
+    @IBOutlet weak var wetMixControl: Knob!
 
-    struct Grouping {
-        let label: Label
-        let slider: Slider
-    }
-
-    var groupings: [FilterParameterAddress: Grouping] = [:]
+    var controls = [FilterParameterAddress : KnobController]()
 
     public var audioUnit: FilterAudioUnit? {
         didSet {
@@ -66,33 +61,9 @@ public final class FilterViewController: AUViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-
-        groupings[.depth] = Grouping(label: depthValueLabel, slider: depthSlider)
-        groupings[.rate] = Grouping(label: rateValueLabel, slider: rateSlider)
-        groupings[.delay] = Grouping(label: delayValueLabel, slider: delaySlider)
-        groupings[.feedback] = Grouping(label: feedbackValueLabel, slider: feedbackSlider)
-        groupings[.dryMix] = Grouping(label: dryMixValueLabel, slider: dryMixSlider)
-        groupings[.wetMix] = Grouping(label: wetMixValueLabel, slider: wetMixSlider)
-
-        for (_, value) in groupings {
-            setThumbImages(value.slider)
-        }
-
         if audioUnit != nil {
             connectViewToAU()
         }
-    }
-
-    private func setThumbImages(_ slider: Slider) {
-        #if os(iOS)
-        slider.setThumbImage(sliderThumbImage, for: .normal)
-        slider.setThumbImage(sliderThumbImage, for: .focused)
-        slider.setThumbImage(sliderThumbImage, for: .highlighted)
-        slider.setThumbImage(sliderThumbImage, for: .selected)
-        #endif
-        #if os(macOS)
-        slider.trackFillColor = .systemOrange
-        #endif
     }
 
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {
@@ -100,12 +71,12 @@ public final class FilterViewController: AUViewController {
         self.viewConfig = viewConfig
     }
 
-    @IBAction func depthChanged(_: Slider) { updateParam(.depth) }
-    @IBAction func rateChanged(_: Slider) { updateLogScaleParam(.rate) }
-    @IBAction func delayChanged(_: Slider) { updateLogScaleParam(.delay) }
-    @IBAction func feedbackChanged(_: Slider) { updateParam(.feedback) }
-    @IBAction func dryMixChanged(_: Slider) { updateParam(.dryMix) }
-    @IBAction func wetMixChanged(_: Slider) { updateParam(.wetMix) }
+    @IBAction func depthChanged(_: Any) { controls[.depth]?.knobChanged()}
+    @IBAction func rateChanged(_: Any) { controls[.rate]?.knobChanged() }
+    @IBAction func delayChanged(_: Any) { controls[.delay]?.knobChanged() }
+    @IBAction func feedbackChanged(_: Any) { controls[.feedback]?.knobChanged() }
+    @IBAction func dryMixChanged(_: Any) { controls[.dryMix]?.knobChanged() }
+    @IBAction func wetMixChanged(_: Any) { controls[.wetMix]?.knobChanged() }
 }
 
 extension FilterViewController: AUAudioUnitFactory {
@@ -137,68 +108,64 @@ extension FilterViewController {
             self.performOnMain { self.updateDisplay() }
         }
 
-        parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] address, value in
+        let parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] address, value in
             guard let self = self else { return }
-            os_log(.info, log: self.log, "- parameter value changed: %d %f", address, value)
-            self.performOnMain { self.updateDisplay() }
+            guard let address = FilterParameterAddress(rawValue: address) else { return }
+            guard let control = self.controls[address] else { return }
+            os_log(.info, log: self.log, "- parameter value changed: %d %f", address.rawValue, value)
+            self.performOnMain { control.knobChanged() }
         })
 
-        updateDisplay()
+        self.parameterObserverToken = parameterObserverToken
+
+        let params = audioUnit.parameterDefinitions
+        controls[.depth] = KnobController(parameterObserverToken: parameterObserverToken,
+                                          parameter: params[.depth],
+                                          formatter: params.valueFormatter(.depth),
+                                          knob: depthControl,
+                                          label: depthValueLabel,
+                                          logValues: false)
+
+        controls[.rate] = KnobController(parameterObserverToken: parameterObserverToken,
+                                         parameter: params[.rate],
+                                         formatter: params.valueFormatter(.rate),
+                                         knob: rateControl,
+                                         label: rateValueLabel,
+                                         logValues: true)
+        controls[.delay] = KnobController(parameterObserverToken: parameterObserverToken,
+                                          parameter: params[.delay],
+                                          formatter: params.valueFormatter(.delay),
+                                          knob: delayControl,
+                                          label: delayValueLabel,
+                                          logValues: true)
+        controls[.feedback] = KnobController(parameterObserverToken: parameterObserverToken,
+                                             parameter: params[.feedback],
+                                             formatter: params.valueFormatter(.feedback),
+                                             knob: feedbackControl,
+                                             label: feedbackValueLabel,
+                                             logValues: false)
+        controls[.dryMix] = KnobController(parameterObserverToken: parameterObserverToken,
+                                           parameter: params[.dryMix],
+                                           formatter: params.valueFormatter(.dryMix),
+                                           knob: dryMixControl,
+                                           label: dryMixValueLabel,
+                                           logValues: false)
+        controls[.wetMix] = KnobController(parameterObserverToken: parameterObserverToken,
+                                           parameter: params[.wetMix],
+                                           formatter: params.valueFormatter(.wetMix),
+                                           knob: wetMixControl,
+                                           label:  wetMixValueLabel,
+                                           logValues: false)
     }
 
     private func updateDisplay() {
         os_log(.info, log: log, "updateDisplay")
-
-        guard let params = audioUnit?.parameterDefinitions else { return }
         for address in FilterParameterAddress.allCases {
-            let param = params[address]
-            guard let grouping = groupings[address] else { fatalError()}
-            os_log(.info, log: log, "address: %d value: %f", address.rawValue, param.value)
-            grouping.label.text = params.formatValueWithUnits(address, value: param.value)
-            switch address {
-            case .rate, .delay:
-                grouping.slider.minimumValue = logSliderMinValue
-                grouping.slider.maximumValue = logSliderMaxValue
-                grouping.slider.value = logSliderLocationForParameterValue(param)
-            default:
-                grouping.slider.minimumValue = param.minValue
-                grouping.slider.maximumValue = param.maxValue
-                grouping.slider.value = param.value
-            }
+            controls[address]?.parameterChanged()
         }
-    }
-
-    private func updateLogScaleParam(_ address: FilterParameterAddress) {
-        guard let params = audioUnit?.parameterDefinitions else { return }
-        guard let grouping = groupings[address] else { fatalError() }
-        os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
-        let value = parameterValueForLogSliderLocation(grouping.slider.value, parameter: params[address])
-        grouping.label.text = params.formatValueWithUnits(address, value: value)
-        params[address].value = value
-    }
-
-    private func updateParam(_ address: FilterParameterAddress) {
-        guard let params = audioUnit?.parameterDefinitions else { return }
-        guard let grouping = groupings[address] else { fatalError() }
-        os_log(.info, log: log, "updateParam: %d slider value: %f", address.rawValue, grouping.slider.value)
-        grouping.label.text = params.formatValueWithUnits(address, value: grouping.slider.value)
-        params[address].value = grouping.slider.value
     }
 
     private func performOnMain(_ operation: @escaping () -> Void) {
         (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
-    }
-}
-
-extension FilterViewController {
-
-    private func logSliderLocationForParameterValue(_ parameter: AUParameter) -> Float {
-        log2(((parameter.value - parameter.minValue) / (parameter.maxValue - parameter.minValue)) *
-                logSliderMaxValuePower2Minus1 + 1.0)
-    }
-
-    private func parameterValueForLogSliderLocation(_ location: Float, parameter: AUParameter) -> AUValue {
-        ((pow(2, location) - 1) / logSliderMaxValuePower2Minus1) * (parameter.maxValue - parameter.minValue) +
-            parameter.minValue
     }
 }

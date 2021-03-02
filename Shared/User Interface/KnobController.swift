@@ -1,0 +1,109 @@
+// Copyright © 2021 Brad Howes. All rights reserved.
+
+import CoreAudioKit
+import os
+
+/**
+ Controller for a knob and text view / label
+ */
+final class KnobController: NSObject {
+    private let log = Logging.logger("KnobController")
+
+    private let logSliderMinValue: Float = 0.0
+    private let logSliderMaxValue: Float = 9.0
+    private lazy var logSliderMaxValuePower2Minus1 = Float(pow(2, logSliderMaxValue) - 1)
+
+    private let parameterObserverToken: AUParameterObserverToken
+    private let parameter: AUParameter
+    private let formatter: (AUValue) -> String
+    private let knob: Knob
+    private let label: Label
+    private let useLogValues: Bool
+    private var restoreNameTimer: Timer?
+
+    init(parameterObserverToken: AUParameterObserverToken, parameter: AUParameter,
+         formatter: @escaping (AUValue) -> String, knob: Knob, label: Label,
+         logValues: Bool) {
+        self.parameterObserverToken = parameterObserverToken
+        self.parameter = parameter
+        self.formatter = formatter
+        self.knob = knob
+        self.label = label
+        self.useLogValues = logValues
+        super.init()
+
+        if useLogValues {
+            knob.minimumValue = logSliderMinValue
+            knob.maximumValue = logSliderMaxValue
+            knob.value = logKnobLocationForParameterValue()
+        }
+        else {
+            knob.minimumValue = parameter.minValue
+            knob.maximumValue = parameter.maxValue
+            knob.value = parameter.value
+        }
+
+        label.delegate = self
+    }
+}
+
+extension KnobController {
+
+    func knobChanged() {
+        let value = useLogValues ? parameterValueForLogSliderLocation() : knob.value
+        label.text = formatter(value)
+        parameter.setValue(value, originator: parameterObserverToken)
+        restoreName()
+    }
+
+    func parameterChanged() {
+        label.text = formatter(parameter.value)
+        knob.value = useLogValues ? logKnobLocationForParameterValue() : parameter.value
+        restoreName()
+    }
+}
+
+extension KnobController {
+
+    private func logKnobLocationForParameterValue() -> Float {
+        log2(((parameter.value - parameter.minValue) / (parameter.maxValue - parameter.minValue)) *
+                logSliderMaxValuePower2Minus1 + 1.0)
+    }
+
+    private func parameterValueForLogSliderLocation() -> AUValue {
+        ((pow(2, knob.value) - 1) / logSliderMaxValuePower2Minus1) * (parameter.maxValue - parameter.minValue) +
+            parameter.minValue
+    }
+
+    private func restoreName() {
+        restoreNameTimer?.invalidate()
+        restoreNameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
+            guard let self = self else { return }
+            self.label.text = self.parameter.displayName
+        }
+    }
+}
+
+extension KnobController: NSTextFieldDelegate {
+
+    func controlTextDidBeginEditing(_ obj: Notification) {
+
+    }
+
+    func controlTextDidEndEditing(_ obj: Notification) {
+
+    }
+
+    func controlTextDidChange(_ obj: Notification) {
+
+    }
+
+    func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
+        return true
+    }
+
+    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
+        return true
+    }
+
+}

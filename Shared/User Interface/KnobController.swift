@@ -32,6 +32,8 @@ final class KnobController: NSObject {
         self.useLogValues = logValues
         super.init()
 
+        self.label.text = parameter.displayName
+
         if useLogValues {
             knob.minimumValue = logSliderMinValue
             knob.maximumValue = logSliderMaxValue
@@ -49,15 +51,13 @@ extension KnobController {
 
     func knobChanged() {
         let value = useLogValues ? parameterValueForLogSliderLocation() : knob.value
-        label.text = formatter(value)
+        setValue(formatter(value))
         parameter.setValue(value, originator: parameterObserverToken)
-        restoreName()
     }
 
     func parameterChanged() {
-        label.text = formatter(parameter.value)
+        setValue(formatter(parameter.value))
         knob.value = useLogValues ? logKnobLocationForParameterValue() : parameter.value
-        restoreName()
     }
 }
 
@@ -73,11 +73,20 @@ extension KnobController {
             parameter.minValue
     }
 
+    private func setValue(_ value: String) {
+        label.text = value
+        restoreName()
+    }
+
     private func restoreName() {
         restoreNameTimer?.invalidate()
         restoreNameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
             guard let self = self else { return }
-            self.label.text = self.parameter.displayName
+            UIView.transition(with: self.label, duration: 0.5, options: [.curveLinear, .transitionCrossDissolve]) {
+                self.label.text = self.parameter.displayName
+            } completion: { _ in
+                self.label.text = self.parameter.displayName
+            }
         }
     }
 }

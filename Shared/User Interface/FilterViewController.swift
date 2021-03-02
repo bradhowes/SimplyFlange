@@ -108,12 +108,9 @@ extension FilterViewController {
             self.performOnMain { self.updateDisplay() }
         }
 
-        let parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] address, value in
+        let parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] _, _ in
             guard let self = self else { return }
-            guard let address = FilterParameterAddress(rawValue: address) else { return }
-            guard let control = self.controls[address] else { return }
-            os_log(.info, log: self.log, "- parameter value changed: %d %f", address.rawValue, value)
-            self.performOnMain { control.knobChanged() }
+            self.performOnMain { self.updateDisplay() }
         })
 
         self.parameterObserverToken = parameterObserverToken

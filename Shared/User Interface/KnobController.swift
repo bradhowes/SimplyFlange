@@ -42,8 +42,6 @@ final class KnobController: NSObject {
             knob.maximumValue = parameter.maxValue
             knob.value = parameter.value
         }
-
-        label.delegate = self
     }
 }
 
@@ -82,28 +80,4 @@ extension KnobController {
             self.label.text = self.parameter.displayName
         }
     }
-}
-
-extension KnobController: NSTextFieldDelegate {
-
-    func controlTextDidBeginEditing(_ obj: Notification) {
-
-    }
-
-    func controlTextDidEndEditing(_ obj: Notification) {
-
-    }
-
-    func controlTextDidChange(_ obj: Notification) {
-
-    }
-
-    func control(_ control: NSControl, textShouldBeginEditing fieldEditor: NSText) -> Bool {
-        return true
-    }
-
-    func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
-        return true
-    }
-
 }

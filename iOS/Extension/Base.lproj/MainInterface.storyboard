@@ -36,7 +36,7 @@
                                         <rect key="frame" x="26" y="72" width="28" height="16"/>
                                         <accessibility key="accessibilityConfiguration" identifier="0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-9f-pLo" userLabel="TapEdit">
@@ -58,7 +58,7 @@
                                         <rect key="frame" x="110" y="72" width="28" height="16"/>
                                         <accessibility key="accessibilityConfiguration" identifier="1"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-wy-l3o" userLabel="TapEdit">
@@ -80,7 +80,7 @@
                                         <rect key="frame" x="194" y="72" width="28" height="16"/>
                                         <accessibility key="accessibilityConfiguration" identifier="2"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-B7-7c6" userLabel="TapEdit">
@@ -102,7 +102,7 @@
                                         <rect key="frame" x="278" y="72" width="28" height="16"/>
                                         <accessibility key="accessibilityConfiguration" identifier="3"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-ks-Vdp" userLabel="TapEdit">
@@ -127,7 +127,7 @@
                                                 <rect key="frame" x="26" y="72" width="28" height="16"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-kZ-hpS" userLabel="TapEdit">
@@ -149,7 +149,7 @@
                                                 <rect key="frame" x="114" y="72" width="28" height="16"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-yt-nYm" userLabel="TapEdit">
@@ -228,7 +228,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
                                                 <rect key="frame" x="16" y="23" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" systemColor="systemOrangeColor"/>
+                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5xm-4x-x9O">
@@ -236,7 +236,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="dPh-GW-1UK"/>
                                                 </constraints>
-                                                <color key="textColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
@@ -308,9 +308,6 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

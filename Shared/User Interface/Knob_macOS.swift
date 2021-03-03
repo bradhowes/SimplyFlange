@@ -30,7 +30,7 @@ open class Knob: NSControl {
     open var trackLineWidth: CGFloat = 6 { didSet { trackLayer.lineWidth = trackLineWidth } }
 
     /// The color of the arc shown after the current value.
-    open var trackColor: Color = .darkGray { didSet { trackLayer.strokeColor = trackColor.cgColor } }
+    open var trackColor: Color = Color.darkGray.darker.darker.darker { didSet { trackLayer.strokeColor = trackColor.cgColor } }
 
     /// The width of the arc from the start up to the current value.
     open var progressLineWidth: CGFloat = 4 { didSet { progressLayer.lineWidth = progressLineWidth } }

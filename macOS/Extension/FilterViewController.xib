@@ -28,10 +28,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-wC-N8q">
-                    <rect key="frame" x="102" y="30" width="384" height="240"/>
+                    <rect key="frame" x="102" y="38" width="384" height="224"/>
                     <subviews>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="20" y="140" width="80" height="80"/>
+                            <rect key="frame" x="20" y="124" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="QUK-PT-mqw"/>
                                 <constraint firstAttribute="height" constant="80" id="vAd-uR-9t8"/>
@@ -41,18 +41,18 @@
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="FilterFramework">
-                            <rect key="frame" x="18" y="124" width="84" height="16"/>
+                            <rect key="frame" x="18" y="116" width="84" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="wMm-uE-pHU"/>
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Depth" usesSingleLineMode="YES" id="k91-bk-kf4">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="25e-Ls-Yhr" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="108" y="140" width="80" height="80"/>
+                            <rect key="frame" x="108" y="124" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="EDP-SX-7Vf"/>
                                 <constraint firstAttribute="height" constant="80" id="V2V-kw-xaN"/>
@@ -62,18 +62,18 @@
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-pJ-Rk3" customClass="FocusAwareTextField" customModule="FilterFramework">
-                            <rect key="frame" x="106" y="124" width="84" height="16"/>
+                            <rect key="frame" x="106" y="116" width="84" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="A7M-iM-efX"/>
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Rate" usesSingleLineMode="YES" id="dUD-TV-FfK">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VT-Na-dOb" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="196" y="140" width="80" height="80"/>
+                            <rect key="frame" x="196" y="124" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="C1h-AW-fOA"/>
                                 <constraint firstAttribute="width" constant="80" id="nK3-Ah-NbH"/>
@@ -83,18 +83,18 @@
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOT-T3-0Np" customClass="FocusAwareTextField" customModule="FilterFramework">
-                            <rect key="frame" x="194" y="124" width="84" height="16"/>
+                            <rect key="frame" x="194" y="116" width="84" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="eeP-Bv-mve"/>
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Delay" usesSingleLineMode="YES" id="lqk-lB-PF2">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="nyC-Ao-wzj" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="284" y="140" width="80" height="80"/>
+                            <rect key="frame" x="284" y="124" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="gXp-Wc-TyK"/>
                                 <constraint firstAttribute="width" constant="80" id="ukV-Dz-hMY"/>
@@ -104,18 +104,18 @@
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVU-LP-fEC" customClass="FocusAwareTextField" customModule="FilterFramework">
-                            <rect key="frame" x="282" y="124" width="84" height="16"/>
+                            <rect key="frame" x="282" y="116" width="84" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="FRm-Hh-rJg"/>
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Feedback" usesSingleLineMode="YES" id="KUE-7S-C6W">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="oTi-Ii-NHh" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="108" y="36" width="80" height="80"/>
+                            <rect key="frame" x="108" y="28" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="Vze-vS-v09"/>
                                 <constraint firstAttribute="width" constant="80" id="cgS-KS-MTB"/>
@@ -131,12 +131,12 @@
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Dry" usesSingleLineMode="YES" id="HiA-bC-Obk">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="KfU-K8-Mrs" customClass="Knob" customModule="FilterFramework">
-                            <rect key="frame" x="196" y="36" width="80" height="80"/>
+                            <rect key="frame" x="196" y="28" width="80" height="80"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="80" id="6WU-mH-P2b"/>
                                 <constraint firstAttribute="width" constant="80" id="czU-wj-DBM"/>
@@ -152,15 +152,15 @@
                             </constraints>
                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Wet" usesSingleLineMode="YES" id="sdg-kR-mgP">
                                 <font key="font" usesAppearanceFont="YES"/>
-                                <color key="textColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
+                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Bgn-eW-ymD" firstAttribute="top" secondItem="KfU-K8-Mrs" secondAttribute="bottom" id="1qV-rN-Qm6"/>
-                        <constraint firstItem="aOT-T3-0Np" firstAttribute="top" secondItem="1VT-Na-dOb" secondAttribute="bottom" id="59l-Cb-A6e"/>
-                        <constraint firstItem="FNZ-OF-PRt" firstAttribute="top" secondItem="vJE-Qk-G6z" secondAttribute="bottom" id="63A-sK-qAg"/>
+                        <constraint firstItem="Bgn-eW-ymD" firstAttribute="top" secondItem="KfU-K8-Mrs" secondAttribute="bottom" constant="-8" id="1qV-rN-Qm6"/>
+                        <constraint firstItem="aOT-T3-0Np" firstAttribute="top" secondItem="1VT-Na-dOb" secondAttribute="bottom" constant="-8" id="59l-Cb-A6e"/>
+                        <constraint firstItem="FNZ-OF-PRt" firstAttribute="top" secondItem="vJE-Qk-G6z" secondAttribute="bottom" constant="-8" id="63A-sK-qAg"/>
                         <constraint firstItem="nyC-Ao-wzj" firstAttribute="leading" secondItem="1VT-Na-dOb" secondAttribute="trailing" constant="8" symbolic="YES" id="7Ul-jH-JqC"/>
                         <constraint firstItem="1VT-Na-dOb" firstAttribute="leading" secondItem="25e-Ls-Yhr" secondAttribute="trailing" constant="8" symbolic="YES" id="Bwe-fG-m4H"/>
                         <constraint firstItem="1VT-Na-dOb" firstAttribute="top" secondItem="oPI-wC-N8q" secondAttribute="top" constant="20" symbolic="YES" id="GWW-R2-rpc"/>
@@ -171,15 +171,15 @@
                         <constraint firstItem="aOT-T3-0Np" firstAttribute="centerX" secondItem="1VT-Na-dOb" secondAttribute="centerX" id="XsO-Ro-BEF"/>
                         <constraint firstItem="nyC-Ao-wzj" firstAttribute="top" secondItem="oPI-wC-N8q" secondAttribute="top" constant="20" symbolic="YES" id="aCF-AI-Jue"/>
                         <constraint firstItem="vJE-Qk-G6z" firstAttribute="leading" secondItem="oPI-wC-N8q" secondAttribute="leading" constant="20" symbolic="YES" id="aYw-pO-b5Y"/>
-                        <constraint firstItem="k3X-9K-MVH" firstAttribute="top" secondItem="oTi-Ii-NHh" secondAttribute="bottom" id="bLV-rt-ecr"/>
+                        <constraint firstItem="k3X-9K-MVH" firstAttribute="top" secondItem="oTi-Ii-NHh" secondAttribute="bottom" constant="-8" id="bLV-rt-ecr"/>
                         <constraint firstItem="25e-Ls-Yhr" firstAttribute="top" secondItem="oPI-wC-N8q" secondAttribute="top" constant="20" symbolic="YES" id="c1D-UP-xR8"/>
                         <constraint firstItem="oTi-Ii-NHh" firstAttribute="top" secondItem="YuF-pJ-Rk3" secondAttribute="bottom" constant="8" symbolic="YES" id="g0U-lB-pu1"/>
-                        <constraint firstItem="YuF-pJ-Rk3" firstAttribute="top" secondItem="25e-Ls-Yhr" secondAttribute="bottom" id="h7e-AV-jk4"/>
+                        <constraint firstItem="YuF-pJ-Rk3" firstAttribute="top" secondItem="25e-Ls-Yhr" secondAttribute="bottom" constant="-8" id="h7e-AV-jk4"/>
                         <constraint firstItem="k3X-9K-MVH" firstAttribute="centerX" secondItem="oTi-Ii-NHh" secondAttribute="centerX" id="jgc-sZ-7h7"/>
                         <constraint firstItem="KfU-K8-Mrs" firstAttribute="top" secondItem="aOT-T3-0Np" secondAttribute="bottom" constant="8" symbolic="YES" id="kH5-Oo-clo"/>
                         <constraint firstItem="KfU-K8-Mrs" firstAttribute="leading" secondItem="oTi-Ii-NHh" secondAttribute="trailing" constant="8" symbolic="YES" id="lI9-qK-ONr"/>
                         <constraint firstItem="FNZ-OF-PRt" firstAttribute="centerX" secondItem="vJE-Qk-G6z" secondAttribute="centerX" id="mfn-yq-dHm"/>
-                        <constraint firstItem="NVU-LP-fEC" firstAttribute="top" secondItem="nyC-Ao-wzj" secondAttribute="bottom" id="pia-rV-YrG"/>
+                        <constraint firstItem="NVU-LP-fEC" firstAttribute="top" secondItem="nyC-Ao-wzj" secondAttribute="bottom" constant="-8" id="pia-rV-YrG"/>
                         <constraint firstItem="NVU-LP-fEC" firstAttribute="centerX" secondItem="nyC-Ao-wzj" secondAttribute="centerX" id="qQp-Xq-JaV"/>
                         <constraint firstItem="vJE-Qk-G6z" firstAttribute="top" secondItem="oPI-wC-N8q" secondAttribute="top" constant="20" symbolic="YES" id="r9n-sB-ZU2"/>
                         <constraint firstAttribute="bottom" secondItem="Bgn-eW-ymD" secondAttribute="bottom" constant="20" symbolic="YES" id="tOI-eq-rfB"/>

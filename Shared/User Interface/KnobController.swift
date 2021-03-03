@@ -68,9 +68,9 @@ extension KnobController {
 
         if value != parameter.value {
             parameter.setValue(value, originator: parameterObserverToken)
-            knob.value = value
+            knob.value = useLogValues ? logKnobLocationForParameterValue() : value
         }
-        showValue(value)
+        showNewValue(value)
     }
 
     func knobChanged() {
@@ -79,13 +79,13 @@ extension KnobController {
         NSApp.keyWindow?.makeFirstResponder(nil)
         #endif
         let value = useLogValues ? parameterValueForLogSliderLocation() : knob.value
-        showValue(value)
+        showNewValue(value)
         parameter.setValue(value, originator: parameterObserverToken)
     }
 
     func parameterChanged() {
         os_log(.info, log: log, "parameterChanged - %f", parameter.value)
-        showValue(parameter.value)
+        showNewValue(parameter.value)
         knob.value = useLogValues ? logKnobLocationForParameterValue() : parameter.value
     }
 }
@@ -118,8 +118,8 @@ extension KnobController {
             parameter.minValue
     }
 
-    private func showValue(_ value: AUValue) {
-        os_log(.info, log: log, "showValue: %s", value)
+    private func showNewValue(_ value: AUValue) {
+        os_log(.info, log: log, "showNewValue: %f", value)
         label.text = formatter(value)
         restoreName()
     }

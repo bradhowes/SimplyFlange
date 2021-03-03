@@ -67,7 +67,7 @@ struct InputBuffer {
     AudioBufferList* mutableAudioBufferList() const { return mutableAudioBufferList_; }
 
 private:
-    os_log_t logger_ = os_log_create("LPF", "BufferedInputBus");
+    os_log_t logger_ = os_log_create("SimplyFlange", "BufferedInputBus");
     AUAudioFrameCount maxFramesToRender_ = 0;
     AVAudioPCMBuffer* buffer_ = nullptr;
     AudioBufferList* mutableAudioBufferList_ = nullptr;

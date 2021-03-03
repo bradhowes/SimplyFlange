@@ -32,10 +32,18 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
 
+    @IBOutlet weak var depthTapEdit: UIView!
+    @IBOutlet weak var rateTapEdit: UIView!
+    @IBOutlet weak var delayTapEdit: UIView!
+    @IBOutlet weak var feedbackTapEdit: UIView!
+    @IBOutlet weak var dryMixTapEdit: UIView!
+    @IBOutlet weak var wetMixTapEdit: UIView!
+
     #if os(iOS)
     @IBOutlet weak var editingView: View!
     @IBOutlet weak var editingLabel: Label!
     @IBOutlet weak var editingValue: UITextField!
+    @IBOutlet weak var editingBackground: UIView!
     #endif
 
     var controls = [FilterParameterAddress : KnobController]()
@@ -49,13 +57,6 @@ public final class FilterViewController: AUViewController {
             }
         }
     }
-
-    #if os(iOS)
-
-    private var bundle: Bundle { Bundle(for: FilterViewController.self) }
-    private var sliderThumbImage: UIImage { UIImage(named: "SliderThumb", in: bundle, compatibleWith: nil)! }
-
-    #endif
 
     #if os(macOS)
 
@@ -78,13 +79,15 @@ public final class FilterViewController: AUViewController {
 
         #if os(iOS)
 
-        addTapGestureToLabel(depthValueLabel)
-        addTapGestureToLabel(rateValueLabel)
-        addTapGestureToLabel(delayValueLabel)
-        addTapGestureToLabel(feedbackValueLabel)
-        addTapGestureToLabel(dryMixValueLabel)
-        addTapGestureToLabel(wetMixValueLabel)
+        editingBackground.layer.cornerRadius = 8.0
+        
         editingView.isHidden = true
+        addTapGesture(depthTapEdit)
+        addTapGesture(rateTapEdit)
+        addTapGesture(delayTapEdit)
+        addTapGesture(feedbackTapEdit)
+        addTapGesture(dryMixTapEdit)
+        addTapGesture(wetMixTapEdit)
 
         #endif
     }
@@ -184,31 +187,52 @@ extension FilterViewController {
 extension FilterViewController: UITextFieldDelegate {
 
     @IBAction func beginEditing(sender: UITapGestureRecognizer) {
-        guard let view = sender.view,
-              let identifier = view.accessibilityIdentifier,
-              let id = UInt64(identifier),
-              let address = FilterParameterAddress(rawValue: id),
+        guard editingView.isHidden,
+              let view = sender.view,
+              let address = FilterParameterAddress(rawValue: UInt64(view.tag)),
               let param = controls[address]?.parameter else { return }
-        controlsView.alpha = 0.5
-        editingView.isHidden = false
-        editingView.accessibilityIdentifier = identifier
+
+        os_log(.info, log: log, "beginEditing - %d", view.tag)
+        editingView.tag = view.tag
         editingLabel.text = param.displayName
         editingValue.text = "\(param.value)"
         editingValue.becomeFirstResponder()
         editingValue.delegate = self
+
+        editingView.alpha = 0.0
+        editingView.isHidden = false
+
+        os_log(.info, log: log, "starting animation")
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: [.curveEaseIn]) {
+            self.editingView.alpha = 1.0
+            self.controlsView.alpha = 0.25
+        } completion: { _ in
+            self.editingView.alpha = 1.0
+            self.controlsView.alpha = 0.25
+            os_log(.info, log: self.log, "done animation")
+        }
     }
 
     private func endEditing() {
-        guard let identifier = editingView.accessibilityIdentifier,
-              let id = UInt64(identifier),
-              let address = FilterParameterAddress(rawValue: id) else { fatalError() }
-        if let stringValue = editingValue.text,
-           let value = Float(stringValue) {
-            controls[address]?.setEditedValue(value)
-        }
-        editingView.isHidden = true
-        controlsView.alpha = 1.0
+        guard let address = FilterParameterAddress(rawValue: UInt64(editingView.tag)) else { fatalError() }
+        os_log(.info, log: log, "endEditing - %d", editingView.tag)
+
         editingValue.resignFirstResponder()
+
+        os_log(.info, log: log, "starting animation")
+        UIView.animate(withDuration: 0.4, delay: 0.0, options: [.curveEaseIn]) {
+            self.editingView.alpha = 0.0
+            self.controlsView.alpha = 1.0
+        } completion: { _ in
+            self.editingView.alpha = 0.0
+            self.controlsView.alpha = 1.0
+            self.editingView.isHidden = true
+            if let stringValue = self.editingValue.text,
+               let value = Float(stringValue) {
+                self.controls[address]?.setEditedValue(value)
+            }
+            os_log(.info, log: self.log, "done animation")
+        }
     }
 
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -218,17 +242,25 @@ extension FilterViewController: UITextFieldDelegate {
         super.touchesBegan(touches, with: event)
     }
 
-    private func addTapGestureToLabel(_ label: UILabel) {
+    private func addTapGesture(_ view: UIView) {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(beginEditing))
         gesture.numberOfTouchesRequired = 1
         gesture.numberOfTapsRequired = 1
-        label.addGestureRecognizer(gesture)
-        label.isUserInteractionEnabled = true
+        view.addGestureRecognizer(gesture)
+        view.isUserInteractionEnabled = true
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        os_log(.info, log: log, "textFieldShouldReturn")
         endEditing()
-        return true
+        return false
+    }
+
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        os_log(.info, log: log, "textFieldDidEndEditing")
+        if textField.isFirstResponder {
+            endEditing()
+        }
     }
 }
 

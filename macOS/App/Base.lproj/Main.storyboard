@@ -12,7 +12,7 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="SimplyFlange" id="1Xt-HY-uBw" userLabel="LPF Host">
+                            <menuItem title="SimplyFlange" id="1Xt-HY-uBw" userLabel="SimplyFlange Host">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="SimplyFlange" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>

@@ -14,10 +14,12 @@ final class KnobController: NSObject {
     private lazy var logSliderMaxValuePower2Minus1 = Float(pow(2, logSliderMaxValue) - 1)
 
     private let parameterObserverToken: AUParameterObserverToken
-    private let parameter: AUParameter
-    private let formatter: (AUValue) -> String
-    private let knob: Knob
-    private let label: Label
+
+    let parameter: AUParameter
+    let formatter: (AUValue) -> String
+    let knob: Knob
+    let label: Label
+
     private let useLogValues: Bool
     private var restoreNameTimer: Timer?
     private var hasActiveLabel: Bool = false
@@ -54,6 +56,23 @@ final class KnobController: NSObject {
 
 extension KnobController {
 
+    func setEditedValue(_ value: AUValue) {
+        os_log(.info, log: log, "setEditedValue - value: %f", value)
+        var value = value
+        if value < parameter.minValue || value > parameter.maxValue {
+            os_log(.info, log: log, "out of bounds: %f", value)
+            value = parameter.value
+        }
+
+        os_log(.info, log: log, "applying value: %f", value)
+
+        if value != parameter.value {
+            parameter.setValue(value, originator: parameterObserverToken)
+            knob.value = value
+        }
+        showValue(value)
+    }
+
     func knobChanged() {
         os_log(.info, log: log, "knobChanged - %f", knob.value)
         #if os(macOS)
@@ -84,19 +103,7 @@ extension KnobController {
         }
         else if hasActiveLabel {
             hasActiveLabel = false
-            var value = label.floatValue
-            if value < parameter.minValue || value > parameter.maxValue {
-                os_log(.info, log: log, "out of bounds: %f", value)
-                value = parameter.value
-            }
-
-            os_log(.info, log: log, "applying value: %f", value)
-
-            if value != parameter.value {
-                parameter.setValue(value, originator: parameterObserverToken)
-                knob.value = value
-            }
-            showValue(value)
+            setEditedValue(label.floatValue)
         }
     }
     #endif

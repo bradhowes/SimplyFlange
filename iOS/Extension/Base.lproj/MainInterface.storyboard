@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait" appearance="dark"/>
+    <device id="retina4_7" orientation="landscape" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
@@ -14,15 +14,16 @@
             <objects>
                 <viewController id="BYZ-38-t0r" userLabel="FilterViewController" customClass="FilterViewController" customModule="FilterFramework" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-pC-dYn">
-                                <rect key="frame" x="7.5" y="225.5" width="360" height="216"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-pC-dYn" userLabel="Controls">
+                                <rect key="frame" x="167.5" y="87.5" width="332" height="200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="FilterFramework">
-                                        <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="0"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="XNk-0T-Igy"/>
                                             <constraint firstAttribute="width" constant="80" id="wlx-rv-DBt"/>
@@ -32,14 +33,16 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
-                                        <rect key="frame" x="34" y="88" width="28" height="16"/>
+                                        <rect key="frame" x="26" y="80" width="28" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="0"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="FilterFramework">
-                                        <rect key="frame" x="96" y="8" width="80" height="80"/>
+                                        <rect key="frame" x="84" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="80" id="kc7-LR-0xH"/>
                                             <constraint firstAttribute="width" constant="80" id="rGa-hf-xLW"/>
@@ -49,14 +52,16 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-HR-UOg" userLabel="Value">
-                                        <rect key="frame" x="122" y="88" width="28" height="16"/>
+                                        <rect key="frame" x="110" y="80" width="28" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="1"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="FilterFramework">
-                                        <rect key="frame" x="184" y="8" width="80" height="80"/>
+                                        <rect key="frame" x="168" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="QHV-yg-ThV"/>
                                             <constraint firstAttribute="height" constant="80" id="jf1-Ig-22b"/>
@@ -66,14 +71,16 @@
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-4e-MBG" userLabel="Value">
-                                        <rect key="frame" x="210" y="88" width="28" height="16"/>
+                                        <rect key="frame" x="194" y="80" width="28" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="2"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemYellowColor"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="FilterFramework">
-                                        <rect key="frame" x="272" y="8" width="80" height="80"/>
+                                        <rect key="frame" x="252" y="0.0" width="80" height="80"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="3"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="EOU-Ix-oTY"/>
                                             <constraint firstAttribute="height" constant="80" id="URe-tZ-2Yl"/>
@@ -82,12 +89,20 @@
                                             <action selector="feedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UU1-6z-Yjd"/>
                                         </connections>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUC-u4-A8f">
-                                        <rect key="frame" x="96" y="112" width="168" height="96"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
+                                        <rect key="frame" x="278" y="80" width="28" height="16"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="3"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUC-u4-A8f" userLabel="Mixes">
+                                        <rect key="frame" x="82" y="104" width="168" height="96"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="FilterFramework">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="6oC-7g-8AI"/>
                                                     <constraint firstAttribute="width" constant="80" id="hnM-Xb-fyQ"/>
@@ -98,13 +113,15 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-20-gAu" userLabel="Value">
                                                 <rect key="frame" x="26" y="80" width="28" height="16"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                <color key="textColor" systemColor="systemOrangeColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="FilterFramework">
                                                 <rect key="frame" x="88" y="0.0" width="80" height="80"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="Ogz-zI-bPr"/>
                                                     <constraint firstAttribute="height" constant="80" id="hUd-gk-rXl"/>
@@ -115,8 +132,9 @@
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-GK-jEJ" userLabel="Value">
                                                 <rect key="frame" x="114" y="80" width="28" height="16"/>
+                                                <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" systemColor="systemYellowColor"/>
+                                                <color key="textColor" systemColor="systemOrangeColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -137,49 +155,78 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="vUC-u4-A8f" secondAttribute="bottom" constant="8" id="4sp-5H-xgo"/>
+                                    <constraint firstAttribute="bottom" secondItem="vUC-u4-A8f" secondAttribute="bottom" id="4sp-5H-xgo"/>
                                     <constraint firstItem="vUC-u4-A8f" firstAttribute="centerX" secondItem="GTt-pC-dYn" secondAttribute="centerX" id="AwA-HB-v8b"/>
+                                    <constraint firstItem="alX-QB-0LM" firstAttribute="top" secondItem="tqE-Fz-AGz" secondAttribute="bottom" id="D1V-Bi-CEZ"/>
                                     <constraint firstItem="3TX-4e-MBG" firstAttribute="top" secondItem="Mvw-nZ-fi3" secondAttribute="bottom" id="Fod-aH-dVY"/>
                                     <constraint firstItem="GCP-HR-UOg" firstAttribute="top" secondItem="hF3-lq-xlE" secondAttribute="bottom" id="HID-5a-O8m"/>
-                                    <constraint firstItem="hui-tD-xRO" firstAttribute="leading" secondItem="GTt-pC-dYn" secondAttribute="leading" constant="8" id="NCF-LU-In3"/>
-                                    <constraint firstItem="hui-tD-xRO" firstAttribute="top" secondItem="GTt-pC-dYn" secondAttribute="top" constant="8" id="NZQ-TW-K3u"/>
+                                    <constraint firstItem="hui-tD-xRO" firstAttribute="leading" secondItem="GTt-pC-dYn" secondAttribute="leading" id="NCF-LU-In3"/>
+                                    <constraint firstItem="hui-tD-xRO" firstAttribute="top" secondItem="GTt-pC-dYn" secondAttribute="top" id="NZQ-TW-K3u"/>
                                     <constraint firstItem="GCP-HR-UOg" firstAttribute="centerX" secondItem="hF3-lq-xlE" secondAttribute="centerX" id="NuN-us-vYP"/>
                                     <constraint firstItem="T5c-Sd-KDy" firstAttribute="centerX" secondItem="hui-tD-xRO" secondAttribute="centerX" id="Ty2-15-qdD"/>
                                     <constraint firstItem="vUC-u4-A8f" firstAttribute="top" secondItem="GCP-HR-UOg" secondAttribute="bottom" constant="8" id="Vvh-mg-qeX"/>
                                     <constraint firstItem="T5c-Sd-KDy" firstAttribute="top" secondItem="hui-tD-xRO" secondAttribute="bottom" id="XHR-3B-WTr"/>
-                                    <constraint firstItem="tqE-Fz-AGz" firstAttribute="leading" secondItem="Mvw-nZ-fi3" secondAttribute="trailing" constant="8" symbolic="YES" id="Xcu-FY-C5F"/>
+                                    <constraint firstItem="tqE-Fz-AGz" firstAttribute="leading" secondItem="Mvw-nZ-fi3" secondAttribute="trailing" constant="4" id="Xcu-FY-C5F"/>
                                     <constraint firstItem="hF3-lq-xlE" firstAttribute="centerY" secondItem="hui-tD-xRO" secondAttribute="centerY" id="Xpg-gg-1Iz"/>
                                     <constraint firstItem="3TX-4e-MBG" firstAttribute="centerX" secondItem="Mvw-nZ-fi3" secondAttribute="centerX" id="a30-mh-MlU"/>
-                                    <constraint firstAttribute="trailing" secondItem="tqE-Fz-AGz" secondAttribute="trailing" constant="8" id="bO0-Xf-RZ8"/>
-                                    <constraint firstItem="Mvw-nZ-fi3" firstAttribute="leading" secondItem="hF3-lq-xlE" secondAttribute="trailing" constant="8" symbolic="YES" id="fNQ-UY-2iV"/>
+                                    <constraint firstAttribute="trailing" secondItem="tqE-Fz-AGz" secondAttribute="trailing" id="bO0-Xf-RZ8"/>
+                                    <constraint firstItem="alX-QB-0LM" firstAttribute="centerX" secondItem="tqE-Fz-AGz" secondAttribute="centerX" id="emN-IL-qyp"/>
+                                    <constraint firstItem="Mvw-nZ-fi3" firstAttribute="leading" secondItem="hF3-lq-xlE" secondAttribute="trailing" constant="4" id="fNQ-UY-2iV"/>
                                     <constraint firstItem="tqE-Fz-AGz" firstAttribute="centerY" secondItem="hui-tD-xRO" secondAttribute="centerY" id="iwT-yv-PVo"/>
                                     <constraint firstItem="Mvw-nZ-fi3" firstAttribute="centerY" secondItem="hui-tD-xRO" secondAttribute="centerY" id="kFE-gb-Cs0"/>
-                                    <constraint firstItem="hF3-lq-xlE" firstAttribute="leading" secondItem="hui-tD-xRO" secondAttribute="trailing" constant="8" symbolic="YES" id="obt-Ml-JkT"/>
+                                    <constraint firstItem="hF3-lq-xlE" firstAttribute="leading" secondItem="hui-tD-xRO" secondAttribute="trailing" constant="4" id="obt-Ml-JkT"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
-                                <rect key="frame" x="305.5" y="313.5" width="28" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" systemColor="systemYellowColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gry-aw-80i" userLabel="Value Editor">
+                                <rect key="frame" x="248.5" y="20" width="170.5" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5xm-4x-x9O">
+                                        <rect key="frame" x="50.5" y="0.0" width="120" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="dPh-GW-1UK"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.96540111299999998" green="0.5147226453" blue="0.1265030801" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
+                                        <rect key="frame" x="0.0" y="6" width="42" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemOrangeColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="5xm-4x-x9O" firstAttribute="leading" secondItem="0gm-sU-zom" secondAttribute="trailing" constant="8.5" id="36j-4e-YyK"/>
+                                    <constraint firstAttribute="trailing" secondItem="5xm-4x-x9O" secondAttribute="trailing" id="Qcx-iE-s5p"/>
+                                    <constraint firstItem="0gm-sU-zom" firstAttribute="firstBaseline" secondItem="5xm-4x-x9O" secondAttribute="firstBaseline" id="RPh-ee-zfb"/>
+                                    <constraint firstAttribute="bottom" secondItem="5xm-4x-x9O" secondAttribute="bottom" id="cmP-9m-IdQ"/>
+                                    <constraint firstItem="5xm-4x-x9O" firstAttribute="top" secondItem="gry-aw-80i" secondAttribute="top" id="gBA-8n-gHn"/>
+                                    <constraint firstItem="0gm-sU-zom" firstAttribute="leading" secondItem="gry-aw-80i" secondAttribute="leading" id="wt2-jK-nEr"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="u2v-qu-mbu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GTt-pC-dYn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8PQ-ce-8ci"/>
-                            <constraint firstItem="alX-QB-0LM" firstAttribute="centerX" secondItem="tqE-Fz-AGz" secondAttribute="centerX" id="JM7-g2-6CC"/>
-                            <constraint firstItem="alX-QB-0LM" firstAttribute="top" secondItem="tqE-Fz-AGz" secondAttribute="bottom" id="L43-BM-DJF"/>
+                            <constraint firstItem="gry-aw-80i" firstAttribute="top" secondItem="u2v-qu-mbu" secondAttribute="top" constant="20" id="Nc2-D8-ynY"/>
                             <constraint firstItem="GTt-pC-dYn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q5B-eH-rha"/>
+                            <constraint firstItem="gry-aw-80i" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aQv-IR-e6u"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="controlsView" destination="GTt-pC-dYn" id="N07-um-4hh"/>
                         <outlet property="delayControl" destination="Mvw-nZ-fi3" id="Oi6-m2-vS3"/>
                         <outlet property="delayValueLabel" destination="3TX-4e-MBG" id="Ynm-XW-nbD"/>
                         <outlet property="depthControl" destination="hui-tD-xRO" id="p7l-vd-KRC"/>
                         <outlet property="depthValueLabel" destination="T5c-Sd-KDy" id="oJw-6o-wLh"/>
                         <outlet property="dryMixControl" destination="Jzc-6g-Fgq" id="bse-aZ-kuw"/>
                         <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="Y3i-Ja-uxe"/>
+                        <outlet property="editingLabel" destination="0gm-sU-zom" id="uue-9h-waZ"/>
+                        <outlet property="editingValue" destination="5xm-4x-x9O" id="Ha9-ja-vUZ"/>
+                        <outlet property="editingView" destination="gry-aw-80i" id="4Xx-qJ-gYO"/>
                         <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="856-wz-4sh"/>
                         <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="3fl-W9-5HI"/>
                         <outlet property="rateControl" destination="hF3-lq-xlE" id="Os9-bs-hcc"/>
@@ -197,8 +244,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemYellowColor">
-            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

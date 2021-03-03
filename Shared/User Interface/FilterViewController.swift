@@ -17,6 +17,7 @@ public final class FilterViewController: AUViewController {
     private let logSliderMaxValue: Float = 9.0
     private lazy var logSliderMaxValuePower2Minus1 = Float(pow(2, logSliderMaxValue) - 1)
 
+    @IBOutlet weak var controlsView: View!
     @IBOutlet weak var depthValueLabel: Label!
     @IBOutlet weak var rateValueLabel: Label!
     @IBOutlet weak var delayValueLabel: Label!
@@ -30,6 +31,12 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var feedbackControl: Knob!
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
+
+    #if os(iOS)
+    @IBOutlet weak var editingView: View!
+    @IBOutlet weak var editingLabel: Label!
+    @IBOutlet weak var editingValue: UITextField!
+    #endif
 
     var controls = [FilterParameterAddress : KnobController]()
 
@@ -56,11 +63,6 @@ public final class FilterViewController: AUViewController {
         super.init(nibName: nibName, bundle: Bundle(for: type(of: self)))
     }
 
-    override public func mouseDown(with event: NSEvent) {
-        // Allow for clicks on the common NSView to end editing of values
-        NSApp.keyWindow?.makeFirstResponder(nil)
-    }
-
     #endif
 
     required init?(coder: NSCoder) {
@@ -73,6 +75,18 @@ public final class FilterViewController: AUViewController {
         if audioUnit != nil {
             connectViewToAU()
         }
+
+        #if os(iOS)
+
+        addTapGestureToLabel(depthValueLabel)
+        addTapGestureToLabel(rateValueLabel)
+        addTapGestureToLabel(delayValueLabel)
+        addTapGestureToLabel(feedbackValueLabel)
+        addTapGestureToLabel(dryMixValueLabel)
+        addTapGestureToLabel(wetMixValueLabel)
+        editingView.isHidden = true
+
+        #endif
     }
 
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {
@@ -86,6 +100,14 @@ public final class FilterViewController: AUViewController {
     @IBAction public func feedbackChanged(_: Knob) { controls[.feedback]?.knobChanged() }
     @IBAction public func dryMixChanged(_: Knob) { controls[.dryMix]?.knobChanged() }
     @IBAction public func wetMixChanged(_: Knob) { controls[.wetMix]?.knobChanged() }
+
+    #if os(macOS)
+    override public func mouseDown(with event: NSEvent) {
+        // Allow for clicks on the common NSView to end editing of values
+        NSApp.keyWindow?.makeFirstResponder(nil)
+    }
+    #endif
+
 }
 
 extension FilterViewController: AUAudioUnitFactory {
@@ -156,3 +178,59 @@ extension FilterViewController {
         (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
     }
 }
+
+#if os(iOS)
+
+extension FilterViewController: UITextFieldDelegate {
+
+    @IBAction func beginEditing(sender: UITapGestureRecognizer) {
+        guard let view = sender.view,
+              let identifier = view.accessibilityIdentifier,
+              let id = UInt64(identifier),
+              let address = FilterParameterAddress(rawValue: id),
+              let param = controls[address]?.parameter else { return }
+        controlsView.alpha = 0.5
+        editingView.isHidden = false
+        editingView.accessibilityIdentifier = identifier
+        editingLabel.text = param.displayName
+        editingValue.text = "\(param.value)"
+        editingValue.becomeFirstResponder()
+        editingValue.delegate = self
+    }
+
+    private func endEditing() {
+        guard let identifier = editingView.accessibilityIdentifier,
+              let id = UInt64(identifier),
+              let address = FilterParameterAddress(rawValue: id) else { fatalError() }
+        if let stringValue = editingValue.text,
+           let value = Float(stringValue) {
+            controls[address]?.setEditedValue(value)
+        }
+        editingView.isHidden = true
+        controlsView.alpha = 1.0
+        editingValue.resignFirstResponder()
+    }
+
+    override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !editingView.isHidden {
+            endEditing()
+        }
+        super.touchesBegan(touches, with: event)
+    }
+
+    private func addTapGestureToLabel(_ label: UILabel) {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(beginEditing))
+        gesture.numberOfTouchesRequired = 1
+        gesture.numberOfTapsRequired = 1
+        label.addGestureRecognizer(gesture)
+        label.isUserInteractionEnabled = true
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        endEditing()
+        return true
+    }
+}
+
+#endif
+

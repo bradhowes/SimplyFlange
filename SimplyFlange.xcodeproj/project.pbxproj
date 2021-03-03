@@ -32,6 +32,8 @@
 		BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
 		BD2FD3F6259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
 		BD3ABF6C25EEAADE00ED0D43 /* Knob_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */; };
+		BD3ABF8E25EFA13200ED0D43 /* ValueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3ABF8D25EFA13200ED0D43 /* ValueEditor.swift */; };
+		BD3ABF8F25EFA13200ED0D43 /* ValueEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD3ABF8D25EFA13200ED0D43 /* ValueEditor.swift */; };
 		BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BB625E2B741009B7347 /* DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BB525E2B741009B7347 /* DSP.h */; };
@@ -255,6 +257,7 @@
 		BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterTree+Extensions.swift"; sourceTree = "<group>"; };
 		BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterAddress+Extensions.swift"; sourceTree = "<group>"; };
 		BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob_iOS.swift; sourceTree = "<group>"; };
+		BD3ABF8D25EFA13200ED0D43 /* ValueEditor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ValueEditor.swift; sourceTree = "<group>"; };
 		BD446BAB25E2B4C5009B7347 /* LFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFO.h; sourceTree = "<group>"; };
 		BD446BB525E2B741009B7347 /* DSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSP.h; sourceTree = "<group>"; };
 		BD446BBF25E2B9CD009B7347 /* LFOTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LFOTests.mm; sourceTree = "<group>"; };
@@ -680,6 +683,7 @@
 				BD5BCED125ED9AF000735211 /* Knob_macOS.swift */,
 				BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */,
 				BDDE2B9125EE69FD00E55833 /* KnobController.swift */,
+				BD3ABF8D25EFA13200ED0D43 /* ValueEditor.swift */,
 				C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */,
 			);
 			path = "User Interface";
@@ -1125,6 +1129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD49661624A35D8700A81F0B /* FourCharCode+Extensions.swift in Sources */,
+				BD3ABF8E25EFA13200ED0D43 /* ValueEditor.swift in Sources */,
 				C4BEE80522236F6F001E6B6D /* View+Extensions.swift in Sources */,
 				C4F07731223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				BDE2CDF524A3DF24004AC8FA /* Bundle+Extensions.swift in Sources */,
@@ -1175,6 +1180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD06772D24CF9FA00039F161 /* Optional+Extensions.swift in Sources */,
+				BD3ABF8F25EFA13200ED0D43 /* ValueEditor.swift in Sources */,
 				BD18B39C24CB248100B7CB1E /* AudioComponentDescription+Extensions.swift in Sources */,
 				BD18B39F24CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */,
 				BD578EEE25D278490040D83D /* AudioUnitManager.swift in Sources */,

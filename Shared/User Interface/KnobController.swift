@@ -4,7 +4,7 @@ import CoreAudioKit
 import os
 
 /**
- Controller for a knob and text view / label
+ Controller for a knob and text view / label.
  */
 final class KnobController: NSObject {
     private let log = Logging.logger("KnobController")
@@ -20,6 +20,7 @@ final class KnobController: NSObject {
     private let label: Label
     private let useLogValues: Bool
     private var restoreNameTimer: Timer?
+    private var hasActiveLabel: Bool = false
 
     init(parameterObserverToken: AUParameterObserverToken, parameter: AUParameter,
          formatter: @escaping (AUValue) -> String, knob: Knob, label: Label,
@@ -33,6 +34,10 @@ final class KnobController: NSObject {
         super.init()
 
         self.label.text = parameter.displayName
+        #if os(macOS)
+        self.label.delegate = self
+        self.label.onFocusChange = onFocusChanged
+        #endif
 
         if useLogValues {
             knob.minimumValue = logSliderMinValue
@@ -50,18 +55,51 @@ final class KnobController: NSObject {
 extension KnobController {
 
     func knobChanged() {
+        os_log(.info, log: log, "knobChanged - %f", knob.value)
+        #if os(macOS)
+        NSApp.keyWindow?.makeFirstResponder(nil)
+        #endif
         let value = useLogValues ? parameterValueForLogSliderLocation() : knob.value
-        setValue(formatter(value))
+        showValue(value)
         parameter.setValue(value, originator: parameterObserverToken)
     }
 
     func parameterChanged() {
-        setValue(formatter(parameter.value))
+        os_log(.info, log: log, "parameterChanged - %f", parameter.value)
+        showValue(parameter.value)
         knob.value = useLogValues ? logKnobLocationForParameterValue() : parameter.value
     }
 }
 
 extension KnobController {
+
+    #if os(macOS)
+    private func onFocusChanged(hasFocus: Bool) {
+        os_log(.info, log: log, "onFocusChanged - hasFocus: %d", hasFocus)
+        if hasFocus {
+            hasActiveLabel = true
+            os_log(.info, log: log, "showing parameter value: %f", parameter.value)
+            label.floatValue = parameter.value
+            restoreNameTimer?.invalidate()
+        }
+        else if hasActiveLabel {
+            hasActiveLabel = false
+            var value = label.floatValue
+            if value < parameter.minValue || value > parameter.maxValue {
+                os_log(.info, log: log, "out of bounds: %f", value)
+                value = parameter.value
+            }
+
+            os_log(.info, log: log, "applying value: %f", value)
+
+            if value != parameter.value {
+                parameter.setValue(value, originator: parameterObserverToken)
+                knob.value = value
+            }
+            showValue(value)
+        }
+    }
+    #endif
 
     private func logKnobLocationForParameterValue() -> Float {
         log2(((parameter.value - parameter.minValue) / (parameter.maxValue - parameter.minValue)) *
@@ -73,20 +111,39 @@ extension KnobController {
             parameter.minValue
     }
 
-    private func setValue(_ value: String) {
-        label.text = value
+    private func showValue(_ value: AUValue) {
+        os_log(.info, log: log, "showValue: %s", value)
+        label.text = formatter(value)
         restoreName()
     }
 
     private func restoreName() {
         restoreNameTimer?.invalidate()
-        restoreNameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
-            guard let self = self else { return }
+        let displayName = parameter.displayName
+        let label = self.label
+        restoreNameTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            os_log(.info, log: self.log, "restoreName: %s", displayName)
+            #if os(iOS)
             UIView.transition(with: self.label, duration: 0.5, options: [.curveLinear, .transitionCrossDissolve]) {
-                self.label.text = self.parameter.displayName
+                label.text = displayName
             } completion: { _ in
-                self.label.text = self.parameter.displayName
+                label.text = displayName
             }
+            #else
+            label.text = displayName
+            #endif
         }
     }
 }
+
+#if os(macOS)
+extension KnobController: NSTextFieldDelegate {
+
+    func controlTextDidEndEditing(_ obj: Notification) {
+        os_log(.info, log: log, "controlTextDidEndEditing")
+        label.onFocusChange(false)
+        NSApp.keyWindow?.makeFirstResponder(nil)
+    }
+}
+#endif
+

@@ -44,14 +44,23 @@ public final class FilterViewController: AUViewController {
     }
 
     #if os(iOS)
+
     private var bundle: Bundle { Bundle(for: FilterViewController.self) }
     private var sliderThumbImage: UIImage { UIImage(named: "SliderThumb", in: bundle, compatibleWith: nil)! }
+
     #endif
 
     #if os(macOS)
+
     public override init(nibName: NSNib.Name?, bundle: Bundle?) {
         super.init(nibName: nibName, bundle: Bundle(for: type(of: self)))
     }
+
+    override public func mouseDown(with event: NSEvent) {
+        // Allow for clicks on the common NSView to end editing of values
+        NSApp.keyWindow?.makeFirstResponder(nil)
+    }
+
     #endif
 
     required init?(coder: NSCoder) {

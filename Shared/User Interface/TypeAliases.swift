@@ -13,7 +13,7 @@ public typealias View = UIView
 
 import AppKit
 public typealias Color = NSColor
-public typealias Label = NSTextField
+public typealias Label = FocusAwareTextField
 public typealias Slider = NSSlider
 public typealias Storyboard = NSStoryboard
 public typealias View = NSView
@@ -57,6 +57,20 @@ public extension NSSlider {
     var value: Float {
         get { self.floatValue }
         set { self.floatValue = newValue }
+    }
+}
+
+/**
+ This seems like a hack, but it works. Allow for others to identify when a NSTextField is the first responder. There
+ are notifications from the NSWindow but this seems to be the easiest for AUv3 work.
+ */
+final public class FocusAwareTextField: NSTextField {
+
+    public var onFocusChange: (Bool) -> Void = { _ in }
+
+    override public func becomeFirstResponder() -> Bool {
+        onFocusChange(true)
+        return super.becomeFirstResponder()
     }
 }
 

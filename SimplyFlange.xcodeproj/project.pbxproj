@@ -677,9 +677,9 @@
 			isa = PBXGroup;
 			children = (
 				C4F07730223AC4F5008FFF06 /* FilterViewController.swift */,
+				BDDE2B9125EE69FD00E55833 /* KnobController.swift */,
 				BD5BCED125ED9AF000735211 /* Knob_macOS.swift */,
 				BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */,
-				BDDE2B9125EE69FD00E55833 /* KnobController.swift */,
 				C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */,
 			);
 			path = "User Interface";

@@ -32,6 +32,7 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
 
+    #if os(iOS)
     @IBOutlet weak var depthTapEdit: UIView!
     @IBOutlet weak var rateTapEdit: UIView!
     @IBOutlet weak var delayTapEdit: UIView!
@@ -39,7 +40,6 @@ public final class FilterViewController: AUViewController {
     @IBOutlet weak var dryMixTapEdit: UIView!
     @IBOutlet weak var wetMixTapEdit: UIView!
 
-    #if os(iOS)
     @IBOutlet weak var editingView: View!
     @IBOutlet weak var editingLabel: Label!
     @IBOutlet weak var editingValue: UITextField!

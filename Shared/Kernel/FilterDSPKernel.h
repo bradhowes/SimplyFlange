@@ -15,11 +15,11 @@ public:
     friend super;
 
     FilterDSPKernel(std::string const& name, float maxDelayMilliseconds)
-    :
-    super(os_log_create(name.c_str(), "FilterDSPKernel")),
-    maxDelayMilliseconds_{maxDelayMilliseconds},
+    : super(os_log_create(name.c_str(), "FilterDSPKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
     delayLines_{}, lfo_()
-    {}
+    {
+        lfo_.setWaveform(LFO<float>::Waveform::triangle);
+    }
 
     /**
      Update kernel and buffers to support the given format and channel count

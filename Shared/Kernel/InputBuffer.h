@@ -2,6 +2,7 @@
 
 #pragma once
 
+#import <os/log.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <AudioUnit/AudioUnit.h>
 #import <AVFoundation/AVFoundation.h>
@@ -58,7 +59,7 @@ struct InputBuffer {
      */
     void prepareInputBufferList(AVAudioFrameCount frameCount)
     {
-        UInt32 byteSize = frameCount * sizeof(float);
+        UInt32 byteSize = frameCount * sizeof(AUValue);
         for (UInt32 i = 0; i < mutableAudioBufferList_->mNumberBuffers; ++i) {
             mutableAudioBufferList_->mBuffers[i].mDataByteSize = byteSize;
         }

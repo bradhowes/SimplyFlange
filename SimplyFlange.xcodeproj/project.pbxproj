@@ -27,6 +27,8 @@
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
+		BD24B3C325F0E12400338362 /* Biquad.h in Headers */ = {isa = PBXBuildFile; fileRef = BD24B3C225F0E12400338362 /* Biquad.h */; };
+		BD24B3C425F0E12400338362 /* Biquad.h in Headers */ = {isa = PBXBuildFile; fileRef = BD24B3C225F0E12400338362 /* Biquad.h */; };
 		BD2FD3ED259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3EE259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
@@ -252,6 +254,7 @@
 		BD1D257A25D5AAB000523748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
+		BD24B3C225F0E12400338362 /* Biquad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Biquad.h; sourceTree = "<group>"; };
 		BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterTree+Extensions.swift"; sourceTree = "<group>"; };
 		BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterAddress+Extensions.swift"; sourceTree = "<group>"; };
 		BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob_iOS.swift; sourceTree = "<group>"; };
@@ -484,6 +487,7 @@
 				BD578F0D25D2C4720040D83D /* README.md */,
 				BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */,
 				BD446BAB25E2B4C5009B7347 /* LFO.h */,
+				BD24B3C225F0E12400338362 /* Biquad.h */,
 				BD446BB525E2B741009B7347 /* DSP.h */,
 				C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */,
 				BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */,
@@ -710,6 +714,7 @@
 				BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE97249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7EF22236F24001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
+				BD24B3C325F0E12400338362 /* Biquad.h in Headers */,
 				BDB7CE90249D3C00009580D5 /* NonCopyable.hpp in Headers */,
 				C4BEE7EE22236F24001E6B6D /* FilterDSPKernel.h in Headers */,
 				C4BEE7F022236F24001E6B6D /* KernelEventProcessor.h in Headers */,
@@ -727,6 +732,7 @@
 				BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE98249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
+				BD24B3C425F0E12400338362 /* Biquad.h in Headers */,
 				BDB7CE91249D3C00009580D5 /* NonCopyable.hpp in Headers */,
 				C4BEE7F222236F27001E6B6D /* FilterDSPKernel.h in Headers */,
 				C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */,

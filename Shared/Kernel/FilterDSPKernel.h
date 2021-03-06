@@ -15,11 +15,11 @@ public:
     using super = KernelEventProcessor<FilterDSPKernel>;
     friend super;
 
-    FilterDSPKernel(std::string const& name, double maxDelayMilliseconds)
+    FilterDSPKernel(const std::string& name, double maxDelayMilliseconds)
     : super(os_log_create(name.c_str(), "FilterDSPKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
     delayLines_{}, lfo_()
     {
-        lfo_.setWaveform(LFO<double>::Waveform::triangle);
+        lfo_.setWaveform(LFOWaveform::triangle);
     }
 
     /**
@@ -100,11 +100,11 @@ public:
 
 private:
 
-    void doParameterEvent(AUParameterEvent const& event) { setParameterValue(event.parameterAddress, event.value); }
+    void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
 
     void doRendering(std::vector<AUValue const*> ins, std::vector<AUValue*> outs, AUAudioFrameCount frameCount) {
         for (int frame = 0; frame < frameCount; ++frame) {
-            auto lfoValue = lfo_.value();
+            auto lfoValue = lfo_.valueAndIncrement();
             for (int channel = 0; channel < ins.size(); ++channel) {
                 AUValue inputSample = ins[channel][frame];
                 double delayPos = lfoValue * depth_ * delayInSamples_ + delayInSamples_;
@@ -115,7 +115,7 @@ private:
         }
     }
 
-    void doMIDIEvent(AUMIDIEvent const& midiEvent) {}
+    void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
 
     double depth_; // NOTE: this ranges from 0.0 - 0.5 to absorb a / 2 operation in the delayPos calculation
     double rate_;

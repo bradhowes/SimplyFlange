@@ -20,13 +20,13 @@
 }
 
 - (void)testClamp {
-    XCTAssertEqual(DSP::clamp(0.0, 1.0, 2.0), 1.0);
-    XCTAssertEqual(DSP::clamp(1.3, 1.0, 2.0), 1.3);
-    XCTAssertEqual(DSP::clamp(2.1, 1.0, 2.0), 2.0);
+    XCTAssertEqual(std::clamp(0.0, 1.0, 2.0), 1.0);
+    XCTAssertEqual(std::clamp(1.3, 1.0, 2.0), 1.3);
+    XCTAssertEqual(std::clamp(2.1, 1.0, 2.0), 2.0);
 
-    XCTAssertEqual(DSP::clamp( 0.0, -1.0, 1.0),  0.0);
-    XCTAssertEqual(DSP::clamp(-1.3, -1.0, 1.0), -1.0);
-    XCTAssertEqual(DSP::clamp( 2.1, -1.0, 1.0),  1.0);
+    XCTAssertEqual(std::clamp( 0.0, -1.0, 1.0),  0.0);
+    XCTAssertEqual(std::clamp(-1.3, -1.0, 1.0), -1.0);
+    XCTAssertEqual(std::clamp( 2.1, -1.0, 1.0),  1.0);
 }
 
 - (void)testUnipolarModulation {

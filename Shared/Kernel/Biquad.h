@@ -150,7 +150,7 @@ struct Base {
 
 // Transform for the 'direct' biquad structure
 struct Direct : Base {
-    static double transform(double input, State& state, Coefficients const& coefficients) {
+    static double transform(double input, State& state, const Coefficients& coefficients) {
         double output = coefficients.a0 * input + coefficients.a1 * state.x_z1 + coefficients.a2 * state.x_z2 -
         coefficients.b1 * state.y_z1 - coefficients.b2 * state.y_z2;
         output = forceMinToZero(output);
@@ -161,7 +161,7 @@ struct Direct : Base {
         return output;
     }
 
-    static double storageComponent(State const& state, Coefficients const& coefficients) {
+    static double storageComponent(const State& state, const Coefficients& coefficients) {
         return coefficients.a1 * state.x_z1 + coefficients.a2 * state.x_z2 - coefficients.b1 * state.y_z1 -
         coefficients.b2 * state.y_z2;
     }
@@ -169,7 +169,7 @@ struct Direct : Base {
 
 // Transform for the 'canonical' biquad structure
 struct Canonical : Base {
-    static double transform(double input, State& state, Coefficients const& coefficients) {
+    static double transform(double input, State& state, const Coefficients& coefficients) {
         double theta = input - coefficients.b1 * state.x_z1 - coefficients.b2 * state.x_z2;
         double output = coefficients.a0 * theta + coefficients.a1 * state.x_z1 + coefficients.a2 * state.x_z2;
         output = forceMinToZero(output);
@@ -178,12 +178,12 @@ struct Canonical : Base {
         return output;
     }
 
-    static double storageComponent(State const& state, Coefficients const& coefficients) { return 0.0; }
+    static double storageComponent(const State& state, const Coefficients& coefficients) { return 0.0; }
 };
 
 // Transform for the transposed 'direct' biquad structure
 struct DirectTranspose : Base {
-    static double transform(double input, State& state, Coefficients const& coefficients) {
+    static double transform(double input, State& state, const Coefficients& coefficients) {
         double theta = input + state.y_z1;
         double output = coefficients.a0 * theta + state.x_z1;
         output = forceMinToZero(output);
@@ -194,12 +194,12 @@ struct DirectTranspose : Base {
         return output;
     }
 
-    static double storageComponent(State const& state, Coefficients const& coefficients) { return 0.0; }
+    static double storageComponent(const State& state, const Coefficients& coefficients) { return 0.0; }
 };
 
 // Transform for the transposed 'canonical' biquad structure (preferred)
 struct CanonicalTranspose : Base {
-    static double transform(double input, State& state, Coefficients const& coefficients) {
+    static double transform(double input, State& state, const Coefficients& coefficients) {
         double output = coefficients.a0 * input + state.x_z1;
         output = forceMinToZero(output);
         state.x_z1 = coefficients.a1 * input - coefficients.b1 * output + state.x_z2;
@@ -207,7 +207,7 @@ struct CanonicalTranspose : Base {
         return output;
     }
 
-    static double storageComponent(State const& state, Coefficients const& coefficients) { return state.x_z1; }
+    static double storageComponent(const State& state, const Coefficients& coefficients) { return state.x_z1; }
 };
 
 } // namespace Op
@@ -223,12 +223,12 @@ public:
     /**
      Create a new filter using the given biquad coefficients.
      */
-    Filter(Coefficients const& coefficients) : coefficients_{coefficients}, state_{} {}
+    explicit Filter(const Coefficients& coefficients) : coefficients_{coefficients}, state_{} {}
 
     /**
      Use a new set of biquad coefficients.
      */
-    void setCoefficients(Coefficients const& coefficients) {
+    void setCoefficients(const Coefficients& coefficients) {
         coefficients_ = coefficients;
         reset();
     }

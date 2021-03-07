@@ -82,15 +82,6 @@
     SamplesEqual(osc.quadPhaseValue(), -0.50);
 }
 
-- (void)testSinusoidAccuracy {
-    LFO<double> osc(360.0, 1.0, LFOWaveform::sinusoid);
-    for (int index = 0; index < 360.0; ++index) {
-        auto theta = 2 * M_PI * index / 360.0;
-        auto real = ::sin(theta);
-        XCTAssertEqualWithAccuracy(osc.valueAndIncrement(), real, 0.0011);
-    }
-}
-
 - (void)testSaveRestore {
     LFO<float> osc(8.0, 1.0, LFOWaveform::sawtooth);
     SamplesEqual(osc.valueAndIncrement(), -1.00);

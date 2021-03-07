@@ -8,7 +8,7 @@
 enum class LFOWaveform { sinusoid, triangle, sawtooth };
 
 /**
- Implementation of a low-frequency oscillator. Supports 3 waveform:
+ Implementation of a low-frequency oscillator. Can generate:
 
  - sinusoid
  - triangle
@@ -20,42 +20,85 @@ template <typename T>
 class LFO {
 public:
 
+    /**
+     Create a new instance.
+
+     @param sampleRate number of samples per second
+     @param frequency the frequency of the oscillator
+     @param waveform the waveform to emit
+     */
     LFO(T sampleRate, T frequency, LFOWaveform waveform)
     : sampleRate_{sampleRate}, frequency_{frequency}, valueGenerator_{WaveformGenerator(waveform)} {
         reset();
     }
 
+    /**
+     Create a new instance.
+     */
     LFO(T sampleRate, T frequency) : LFO(sampleRate, frequency, LFOWaveform::sinusoid) {}
 
+    /**
+     Create a new instance.
+     */
     LFO() : LFO(44100.0, 1.0, LFOWaveform::sinusoid) {}
 
+    /**
+     Initialize the LFO with the given parameters.
+
+     @param sampleRate number of samples per second
+     @param frequency the frequency of the oscillator
+     */
     void initialize(T sampleRate, T frequency) {
         sampleRate_ = sampleRate;
         frequency_ = frequency;
         reset();
     }
 
-    void setWaveform(LFOWaveform waveform) {
-        valueGenerator_ = WaveformGenerator(waveform);
-    }
+    /**
+     Set the waveform to use
 
+     @param waveform the waveform to emit
+     */
+    void setWaveform(LFOWaveform waveform) { valueGenerator_ = WaveformGenerator(waveform); }
+
+    /**
+     Set the frequency of the oscillator.
+
+     @param frequency the frequency to operate at
+     */
     void setFrequency(T frequency) {
         frequency_ = frequency;
         phaseIncrement_ = frequency_ / sampleRate_;
     }
 
+    /**
+     Restart from a known zero state.
+     */
     void reset() {
         phaseIncrement_ = frequency_ / sampleRate_;
         moduloCounter_ = phaseIncrement_ > 0 ? 0.0 : 1.0;
     }
 
+    /**
+     Save the state of the oscillator.
+
+     @returns current internal state
+     */
     T saveState() const { return moduloCounter_; }
 
+    /**
+     Restore the oscillator to a previously-saved state.
+
+     @param value the state to restore to
+     */
     void restoreState(T value) {
         moduloCounter_ = value;
         quadPhaseCounter_ = incrementModuloCounter(value, 0.25);
     }
 
+    /**
+     Increment the oscillator to the next value.
+     */
     void increment() {
         moduloCounter_ = incrementModuloCounter(moduloCounter_, phaseIncrement_);
         quadPhaseCounter_ = incrementModuloCounter(moduloCounter_, 0.25);
@@ -63,6 +106,8 @@ public:
 
     /**
      Obtain the next value of the oscillator. Advances counter before returning, so this is not idempotent.
+
+     @returns current waveform value
      */
     T valueAndIncrement() {
         auto counter = moduloCounter_;
@@ -71,10 +116,17 @@ public:
         return valueGenerator_(counter);
     }
 
+    /**
+     Obtain the current value of the oscillator.
+
+     @returns current waveform value
+     */
     T value() { return valueGenerator_(moduloCounter_); }
 
     /**
-     Obtain a 90° advanced value.
+     Obtain the current value of the oscillator that is 90° advanced from what `value()` would return.
+
+     @returns current 90° advanced waveform value
      */
     T quadPhaseValue() const { return valueGenerator_(quadPhaseCounter_); }
 

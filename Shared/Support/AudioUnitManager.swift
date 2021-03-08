@@ -44,7 +44,6 @@ public final class AudioUnitManager {
      Create a new instance. Instantiates new FilterAudioUnit and its view controller.
      */
     public init(componentDescription: AudioComponentDescription, appExtension: String) {
-        // self.viewController = Self.loadViewController(appExtension: appExtension)
         createAudioUnit(componentDescription: componentDescription)
     }
 }
@@ -100,33 +99,6 @@ extension AudioUnitManager {
         if _viewController?.audioUnit != nil {
             DispatchQueue.main.async { self.delegate?.connected() }
         }
-    }
-
-    private static func loadViewController(appExtension: String) -> FilterViewController {
-        os_log(.info, log: log, "loadViewController - %{public}s", appExtension)
-        guard let url = Bundle.main.builtInPlugInsURL?.appendingPathComponent(appExtension) else {
-            fatalError("Could not obtain extension bundle URL")
-        }
-
-        os_log(.info, log: log, "path: %{public}s", url.path)
-        guard let extensionBundle = Bundle(url: url) else { fatalError("Could not get app extension bundle") }
-
-        #if os(iOS)
-
-        let storyboard = Storyboard(name: "MainInterface", bundle: extensionBundle)
-        guard let controller = storyboard.instantiateInitialViewController() as? FilterViewController else {
-            fatalError("Unable to instantiate FilterViewController")
-        }
-        return controller
-
-        #elseif os(macOS)
-
-        os_log(.info, log: log, "creating new FilterViewController")
-        let viewController = FilterViewController(nibName: "FilterViewController", bundle: extensionBundle)
-        os_log(.info, log: log, "done")
-        return viewController
-
-        #endif
     }
 }
 

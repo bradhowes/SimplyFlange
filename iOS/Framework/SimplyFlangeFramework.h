@@ -5,7 +5,7 @@
 FOUNDATION_EXPORT double SimplyFlangeFramework_iOSVersionNumber;
 FOUNDATION_EXPORT const unsigned char SimplyFlangeFramework_iOSVersionString[];
 
-#import <SimplyFlangeFramework/FilterKernelAdapter.h>
+#import <SimplyFlangeFramework/SimplyFlangeKernelAdapter.h>
 
 @class FilterAudioUnit;
 @class FilterViewController;

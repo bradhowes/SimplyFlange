@@ -12,8 +12,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var bypassButton: UIButton!
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var preset1Button: UIButton!
-    @IBOutlet weak var preset2Button: UIButton!
+    @IBOutlet weak var presetSelection: UISegmentedControl!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +24,17 @@ final class MainViewController: UIViewController {
         reviewButton.setTitle(version, for: .normal)
 
         audioUnitManager.delegate = self
+
+        presetSelection.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
+        presetSelection.setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        presetSelection.selectedSegmentIndex = 0
+        usePreset()
+
         let showedAlertKey = "showedInitialAlert"
         guard UserDefaults.standard.bool(forKey: showedAlertKey) == false else { return }
         UserDefaults.standard.set(true, forKey: showedAlertKey)
@@ -67,12 +73,9 @@ This app uses the component to demonstrate how it works and sounds.
         bypassButton.setTitleColor(isBypassed ? .systemYellow : .systemTeal, for: .normal)
     }
 
-    @IBAction func usePreset1(_ sender: Any) {
-        audioUnitManager.audioUnit?.currentPreset = audioUnitManager.audioUnit?.factoryPresets[1]
-    }
-
-    @IBAction func usePreset2(_ sender: Any) {
-        audioUnitManager.audioUnit?.currentPreset = audioUnitManager.audioUnit?.factoryPresets[2]
+    @IBAction func usePreset(_ sender: UISegmentedControl? = nil) {
+        audioUnitManager.audioUnit?.currentPreset =
+            audioUnitManager.audioUnit?.factoryPresets[presetSelection.selectedSegmentIndex]
     }
 
     @IBAction private func reviewApp(_ sender: UIButton) {

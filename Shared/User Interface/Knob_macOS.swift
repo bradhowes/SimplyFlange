@@ -36,13 +36,13 @@ open class Knob: NSControl {
     open var progressLineWidth: CGFloat = 4 { didSet { progressLayer.lineWidth = progressLineWidth } }
 
     /// The color of the arc from the start up to the current value.
-    open var progressColor: Color = .systemOrange { didSet { progressLayer.strokeColor = progressColor.cgColor } }
+    open var progressColor: Color = Color(named: "Progress")! { didSet { progressLayer.strokeColor = progressColor.cgColor } }
 
     /// The width of the radial line drawn from the current value on the arc towards the arc center.
     open var indicatorLineWidth: CGFloat = 4 { didSet { indicatorLayer.lineWidth = indicatorLineWidth } }
 
     /// The color of the radial line drawn from the current value on the arc towards the arc center.
-    open var indicatorColor: Color = .systemOrange { didSet { indicatorLayer.strokeColor = indicatorColor.cgColor } }
+    open var indicatorColor: Color = Color(named: "Progress")! { didSet { indicatorLayer.strokeColor = progressColor.cgColor } }
 
     /// The proportion of the radial line drawn from the current value on the arc towards the arc center.
     /// Range is from 0.0 to 1.0, where 1.0 will draw a complete line, and anything less will draw that fraction of it

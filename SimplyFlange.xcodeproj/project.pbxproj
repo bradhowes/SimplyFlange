@@ -90,6 +90,18 @@
 		BDB8C67D25EA41D10012F532 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDB8C67C25EA41BD0012F532 /* 074_acoustic-guitar-strummy2.wav */; };
 		BDB8C68525EA41D30012F532 /* 074_acoustic-guitar-strummy2.wav in Resources */ = {isa = PBXBuildFile; fileRef = BDB8C67C25EA41BD0012F532 /* 074_acoustic-guitar-strummy2.wav */; };
 		BDB8C69525EA42150012F532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDB8C68D25EA42020012F532 /* Assets.xcassets */; };
+		BDDCA5E525F8E9DA009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA5E625F8E9DA009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA5E725F8E9DA009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
+		BDDCA5E825F8E9DA009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
+		BDDCA5F025F8E9EC009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA5F825F8E9ED009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA5F925F8E9EE009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA60125F8E9EE009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
+		BDDCA60925F8E9F4009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
+		BDDCA61125F8E9F4009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
+		BDDCA61225F8E9F5009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
+		BDDCA61325F8E9F6009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
 		BDDE2B9225EE69FD00E55833 /* KnobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2B9125EE69FD00E55833 /* KnobController.swift */; };
 		BDDE2B9325EE69FD00E55833 /* KnobController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2B9125EE69FD00E55833 /* KnobController.swift */; };
 		BDE2CDF124A3DEE4004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
@@ -294,6 +306,8 @@
 		BDB7CE9D249FC152009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.5.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		BDB8C67C25EA41BD0012F532 /* 074_acoustic-guitar-strummy2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy2.wav"; sourceTree = "<group>"; };
 		BDB8C68D25EA42020012F532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
+		BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Desdemona.ttf; sourceTree = "<group>"; };
 		BDDE2B9125EE69FD00E55833 /* KnobController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobController.swift; sourceTree = "<group>"; };
 		BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		BDE2CDF324A3DF13004AC8FA /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
@@ -628,6 +642,8 @@
 		C4BEE7D522236E99001E6B6D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */,
+				BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */,
 				BD1D252E25D51AD600523748 /* README.md */,
 				BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */,
 				C4F004A52239B2070014E248 /* FilterAudioUnit.swift */,
@@ -1019,8 +1035,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCA5F825F8E9ED009C1AA7 /* Media.xcassets in Resources */,
 				BD63B15624AE26020015236D /* LICENSE.md in Resources */,
 				C4BEE7B122236A29001E6B6D /* Assets.xcassets in Resources */,
+				BDDCA61125F8E9F4009C1AA7 /* Desdemona.ttf in Resources */,
 				C4BEE7B322236A29001E6B6D /* Main.storyboard in Resources */,
 				BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */,
 			);
@@ -1031,6 +1049,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB8C67D25EA41D10012F532 /* 074_acoustic-guitar-strummy2.wav in Resources */,
+				BDDCA5E725F8E9DA009C1AA7 /* Desdemona.ttf in Resources */,
+				BDDCA5E525F8E9DA009C1AA7 /* Media.xcassets in Resources */,
 				BDB8C69525EA42150012F532 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1039,6 +1059,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCA60925F8E9F4009C1AA7 /* Desdemona.ttf in Resources */,
+				BDDCA5F025F8E9EC009C1AA7 /* Media.xcassets in Resources */,
 				C4BEE8132223734E001E6B6D /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1047,8 +1069,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCA60125F8E9EE009C1AA7 /* Media.xcassets in Resources */,
 				BD63B15424AE25F80015236D /* LICENSE.md in Resources */,
 				C4BEE7D222236A58001E6B6D /* Main.storyboard in Resources */,
+				BDDCA61325F8E9F6009C1AA7 /* Desdemona.ttf in Resources */,
 				C4BEE7D122236A58001E6B6D /* Assets.xcassets in Resources */,
 				BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */,
 			);
@@ -1059,6 +1083,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB8C68525EA41D30012F532 /* 074_acoustic-guitar-strummy2.wav in Resources */,
+				BDDCA5E825F8E9DA009C1AA7 /* Desdemona.ttf in Resources */,
+				BDDCA5E625F8E9DA009C1AA7 /* Media.xcassets in Resources */,
 				C46B8B8122418B6000E00B1E /* FilterViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1067,6 +1093,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDDCA5F925F8E9EE009C1AA7 /* Media.xcassets in Resources */,
+				BDDCA61225F8E9F5009C1AA7 /* Desdemona.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

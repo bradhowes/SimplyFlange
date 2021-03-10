@@ -4,10 +4,16 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Desdemona.ttf">
+            <string>Desdemona</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--FilterViewController-->
         <scene sceneID="tne-QT-ifu">
@@ -17,103 +23,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-vA-Qxl" userLabel="Version">
+                                <rect key="frame" x="494" y="239.5" width="39.5" height="18"/>
+                                <accessibility key="accessibilityConfiguration" identifier="APP_VERSION" label="APP_VERSION"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" name="Title"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Flanger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-fp-p3P">
+                                <rect key="frame" x="133.5" y="117.5" width="400" height="140"/>
+                                <fontDescription key="fontDescription" name="Desdemona" family="Desdemona" pointSize="120"/>
+                                <color key="textColor" name="Title"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-pC-dYn" userLabel="Controls">
-                                <rect key="frame" x="167.5" y="89.5" width="332" height="196"/>
+                                <rect key="frame" x="87.5" y="65.5" width="492" height="244"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="SimplyFlangeFramework">
-                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                         <accessibility key="accessibilityConfiguration" identifier="0"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="XNk-0T-Igy"/>
-                                            <constraint firstAttribute="width" constant="80" id="wlx-rv-DBt"/>
+                                            <constraint firstAttribute="height" constant="120" id="XNk-0T-Igy"/>
+                                            <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
                                         </constraints>
                                         <connections>
                                             <action selector="depthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Fq7-6I-YOj"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
-                                        <rect key="frame" x="26" y="72" width="28" height="16"/>
+                                        <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
                                         <accessibility key="accessibilityConfiguration" identifier="0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="Labels"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-9f-pLo" userLabel="TapEdit">
-                                        <rect key="frame" x="0.0" y="72" width="80" height="22"/>
+                                        <rect key="frame" x="0.0" y="112" width="120" height="30"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="SimplyFlangeFramework">
-                                        <rect key="frame" x="84" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="124" y="0.0" width="120" height="120"/>
                                         <accessibility key="accessibilityConfiguration" identifier="1"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="80" id="kc7-LR-0xH"/>
-                                            <constraint firstAttribute="width" constant="80" id="rGa-hf-xLW"/>
+                                            <constraint firstAttribute="height" constant="120" id="kc7-LR-0xH"/>
+                                            <constraint firstAttribute="width" constant="120" id="rGa-hf-xLW"/>
                                         </constraints>
                                         <connections>
                                             <action selector="rateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="TyQ-Gi-fQf"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-HR-UOg" userLabel="Value">
-                                        <rect key="frame" x="110" y="72" width="28" height="16"/>
+                                        <rect key="frame" x="163.5" y="112" width="41.5" height="24"/>
                                         <accessibility key="accessibilityConfiguration" identifier="1"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="Labels"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-wy-l3o" userLabel="TapEdit">
-                                        <rect key="frame" x="84" y="72" width="80" height="22"/>
+                                        <rect key="frame" x="124" y="112" width="120" height="30"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="SimplyFlangeFramework">
-                                        <rect key="frame" x="168" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="248" y="0.0" width="120" height="120"/>
                                         <accessibility key="accessibilityConfiguration" identifier="2"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="QHV-yg-ThV"/>
-                                            <constraint firstAttribute="height" constant="80" id="jf1-Ig-22b"/>
+                                            <constraint firstAttribute="width" constant="120" id="QHV-yg-ThV"/>
+                                            <constraint firstAttribute="height" constant="120" id="jf1-Ig-22b"/>
                                         </constraints>
                                         <connections>
                                             <action selector="delayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rhW-go-Hzy"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-4e-MBG" userLabel="Value">
-                                        <rect key="frame" x="194" y="72" width="28" height="16"/>
+                                        <rect key="frame" x="287.5" y="112" width="41.5" height="24"/>
                                         <accessibility key="accessibilityConfiguration" identifier="2"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="Labels"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-B7-7c6" userLabel="TapEdit">
-                                        <rect key="frame" x="168" y="72" width="80" height="22"/>
+                                        <rect key="frame" x="248" y="112" width="120" height="30"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="SimplyFlangeFramework">
-                                        <rect key="frame" x="252" y="0.0" width="80" height="80"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="frame" x="372" y="0.0" width="120" height="120"/>
                                         <accessibility key="accessibilityConfiguration" identifier="3"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="80" id="EOU-Ix-oTY"/>
-                                            <constraint firstAttribute="height" constant="80" id="URe-tZ-2Yl"/>
+                                            <constraint firstAttribute="width" constant="120" id="EOU-Ix-oTY"/>
+                                            <constraint firstAttribute="height" constant="120" id="URe-tZ-2Yl"/>
                                         </constraints>
                                         <connections>
                                             <action selector="feedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UU1-6z-Yjd"/>
                                         </connections>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
-                                        <rect key="frame" x="278" y="72" width="28" height="16"/>
+                                        <rect key="frame" x="411.5" y="112" width="41.5" height="24"/>
                                         <accessibility key="accessibilityConfiguration" identifier="3"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" name="Labels"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-ks-Vdp" userLabel="TapEdit">
-                                        <rect key="frame" x="252" y="72" width="80" height="22"/>
+                                        <rect key="frame" x="372" y="112" width="120" height="30"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUC-u4-A8f" userLabel="Mixes">
-                                        <rect key="frame" x="82" y="102" width="168" height="94"/>
+                                        <rect key="frame" x="162" y="150" width="168" height="94"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="SimplyFlangeFramework">
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="80" id="6oC-7g-8AI"/>
@@ -127,7 +141,7 @@
                                                 <rect key="frame" x="26" y="72" width="28" height="16"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="Labels"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-kZ-hpS" userLabel="TapEdit">
@@ -135,7 +149,6 @@
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="SimplyFlangeFramework">
                                                 <rect key="frame" x="88" y="0.0" width="80" height="80"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="Ogz-zI-bPr"/>
@@ -149,14 +162,13 @@
                                                 <rect key="frame" x="114" y="72" width="28" height="16"/>
                                                 <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="Labels"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-yt-nYm" userLabel="TapEdit">
                                                 <rect key="frame" x="88" y="72" width="80" height="22"/>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="rYA-kZ-hpS" firstAttribute="trailing" secondItem="Jzc-6g-Fgq" secondAttribute="trailing" id="50F-hh-UJl"/>
                                             <constraint firstItem="Jzc-6g-Fgq" firstAttribute="top" secondItem="vUC-u4-A8f" secondAttribute="top" id="90a-LY-a5x"/>
@@ -179,7 +191,6 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="vUC-u4-A8f" firstAttribute="top" secondItem="8ki-wy-l3o" secondAttribute="bottom" constant="8" id="4dK-Zn-R5G"/>
                                     <constraint firstItem="mHo-9f-pLo" firstAttribute="top" secondItem="T5c-Sd-KDy" secondAttribute="top" id="8rm-ar-hRK"/>
@@ -228,7 +239,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
                                                 <rect key="frame" x="16" y="23" width="42" height="21"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="Labels"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5xm-4x-x9O">
@@ -236,7 +247,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="dPh-GW-1UK"/>
                                                 </constraints>
-                                                <color key="textColor" red="1" green="0.76140111404684852" blue="0.40116951084983088" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="textColor" name="Labels"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
@@ -263,11 +274,16 @@
                         <viewLayoutGuide key="safeArea" id="u2v-qu-mbu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="sOK-vA-Qxl" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="u2v-qu-mbu" secondAttribute="leading" priority="250" constant="16" id="4sq-nY-STJ"/>
                             <constraint firstItem="GTt-pC-dYn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8PQ-ce-8ci"/>
+                            <constraint firstItem="sOK-vA-Qxl" firstAttribute="trailing" secondItem="Vbj-fp-p3P" secondAttribute="trailing" id="J0c-xg-zSy"/>
                             <constraint firstItem="uNx-0G-OWZ" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="KTf-7X-3gR"/>
                             <constraint firstItem="uNx-0G-OWZ" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailing" id="LAe-PC-7cz"/>
+                            <constraint firstItem="Vbj-fp-p3P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PZT-6m-uLy"/>
                             <constraint firstItem="GTt-pC-dYn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Q5B-eH-rha"/>
+                            <constraint firstItem="sOK-vA-Qxl" firstAttribute="bottom" secondItem="Vbj-fp-p3P" secondAttribute="bottom" id="b5y-va-adx"/>
                             <constraint firstItem="uNx-0G-OWZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="btT-0O-AHO"/>
+                            <constraint firstItem="Vbj-fp-p3P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="naj-1p-ag8"/>
                             <constraint firstItem="uNx-0G-OWZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sHm-Sp-MHW"/>
                         </constraints>
                     </view>
@@ -303,6 +319,12 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Labels">
+            <color red="1" green="0.76441770789999997" blue="0.36662185190000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Title">
+            <color red="1" green="0.5" blue="0.0" alpha="0.34999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

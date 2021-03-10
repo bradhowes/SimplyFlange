@@ -58,6 +58,9 @@ import os
         }
     }
 
+    private var constraintValue: CGFloat = 120.0
+    private var constraintWidth: CGFloat = 0.0
+
     #if os(macOS)
 
     public override init(nibName: NSNib.Name?, bundle: Bundle?) {
@@ -90,7 +93,57 @@ import os
         addTapGesture(wetMixTapEdit)
 
         #endif
+
+        for control in [depthControl, rateControl, delayControl, feedbackControl] {
+            control?.trackLineWidth = 10
+            control?.progressLineWidth = 8
+            control?.indicatorLineWidth = 8
+        }
+
+        for control in [dryMixControl, wetMixControl] {
+            control?.trackLineWidth = 8
+            control?.progressLineWidth = 6
+            control?.indicatorLineWidth = 6
+        }
     }
+
+    #if os(iOS)
+
+    override public func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        os_log(.info, log: log, "viewDidLayoutSubviews - x: %f y: %f width: %f height: %f",
+               controlsView.frame.origin.x, controlsView.frame.origin.y,
+               controlsView.frame.width, controlsView.frame.height)
+        if controlsView.frame.origin.x < 0.0 {
+            constraintValue = 120.0 - ceil(controlsView.frame.origin.x * -2.0 / 4.0)
+            if view.frame.width != constraintWidth {
+                constraintWidth = view.frame.width
+                for control in [depthControl, rateControl, delayControl, feedbackControl] {
+                    resizeKnob(control)
+                }
+            }
+        }
+        else {
+            if view.frame.width != constraintWidth {
+                constraintValue = 120.0
+                constraintWidth = view.frame.width
+                for control in [depthControl, rateControl, delayControl, feedbackControl] {
+                    resizeKnob(control)
+                }
+            }
+        }
+    }
+
+    private func resizeKnob(_ control: UIView?) {
+        for constraint in control?.constraints ?? [] {
+            switch constraint.firstAttribute {
+            case .width, .height: constraint.constant = constraintValue
+            default: break
+            }
+        }
+    }
+
+    #endif
 
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {
         guard self.viewConfig != viewConfig else { return }

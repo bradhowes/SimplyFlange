@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Desdemona.ttf</string>
+	</array>
 	<key>APP_STORE_ID</key>
 	<string>$(APP_STORE_ID)</string>
 	<key>AU_BASE_NAME</key>

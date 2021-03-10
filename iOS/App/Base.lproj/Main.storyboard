@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,13 +19,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiJ-1a-ELQ" userLabel="Controls Header View">
-                                <rect key="frame" x="8" y="0.0" width="359" height="46"/>
+                                <rect key="frame" x="8" y="0.0" width="359" height="47"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="2HW-yE-4lC">
-                                        <rect key="frame" x="0.0" y="8" width="359" height="30"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2HW-yE-4lC">
+                                        <rect key="frame" x="58.5" y="8" width="242" height="31"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzZ-pe-UL7">
-                                                <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                <rect key="frame" x="0.0" y="0.5" width="30" height="30"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="Play">
                                                     <color key="titleColor" systemColor="systemTealColor"/>
@@ -33,35 +34,21 @@
                                                     <action selector="togglePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kt8-zh-HcD"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9za-g7-28Y">
-                                                <rect key="frame" x="64" y="0.0" width="50" height="30"/>
-                                                <state key="normal" title="Bypass">
-                                                    <color key="titleColor" systemColor="systemTealColor"/>
-                                                </state>
+                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nh4-Vf-lfu">
+                                                <rect key="frame" x="46" y="0.0" width="83" height="32"/>
+                                                <segments>
+                                                    <segment title="1"/>
+                                                    <segment title="2"/>
+                                                    <segment title="3"/>
+                                                </segments>
+                                                <color key="tintColor" systemColor="systemTealColor"/>
+                                                <color key="selectedSegmentTintColor" name="Progress"/>
                                                 <connections>
-                                                    <action selector="toggleBypass:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFb-Cz-SLh"/>
+                                                    <action selector="usePreset:" destination="BYZ-38-t0r" eventType="valueChanged" id="EUY-fz-JQi"/>
                                                 </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="act-OR-R8x">
-                                                <rect key="frame" x="148" y="0.0" width="55" height="30"/>
-                                                <state key="normal" title="Preset 1">
-                                                    <color key="titleColor" systemColor="systemTealColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="usePreset1:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cZ7-bZ-aIk"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SH0-Qn-oNO" userLabel="Preset 2">
-                                                <rect key="frame" x="237" y="0.0" width="57" height="30"/>
-                                                <state key="normal" title="Preset 2">
-                                                    <color key="titleColor" systemColor="systemTealColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="usePreset2:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Tqc-qQ-OpY"/>
-                                                </connections>
-                                            </button>
+                                            </segmentedControl>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJA-Ec-YsF" userLabel="APP_VERSION">
-                                                <rect key="frame" x="328" y="2" width="31" height="26"/>
+                                                <rect key="frame" x="145" y="2.5" width="31" height="26"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <state key="normal" title="v1.0.0">
                                                     <color key="titleColor" systemColor="systemTealColor"/>
@@ -70,14 +57,24 @@
                                                     <action selector="reviewApp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SIe-10-IRd"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9za-g7-28Y">
+                                                <rect key="frame" x="192" y="0.5" width="50" height="30"/>
+                                                <state key="normal" title="Bypass">
+                                                    <color key="titleColor" systemColor="systemTealColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="toggleBypass:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFb-Cz-SLh"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="2HW-yE-4lC" secondAttribute="trailing" id="GcU-Dk-0g5"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="2HW-yE-4lC" secondAttribute="trailing" id="GcU-Dk-0g5"/>
                                     <constraint firstAttribute="bottom" secondItem="2HW-yE-4lC" secondAttribute="bottom" constant="8" id="NkR-22-mbR"/>
+                                    <constraint firstItem="2HW-yE-4lC" firstAttribute="centerX" secondItem="YiJ-1a-ELQ" secondAttribute="centerX" id="o1F-by-JVb"/>
                                     <constraint firstItem="2HW-yE-4lC" firstAttribute="top" secondItem="YiJ-1a-ELQ" secondAttribute="top" constant="8" id="tRf-ZW-2ej"/>
-                                    <constraint firstItem="2HW-yE-4lC" firstAttribute="leading" secondItem="YiJ-1a-ELQ" secondAttribute="leading" id="xGr-93-D7t"/>
+                                    <constraint firstItem="2HW-yE-4lC" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YiJ-1a-ELQ" secondAttribute="leading" id="xGr-93-D7t"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="198-45-xa8">
@@ -87,7 +84,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68k-M7-cHK">
-                                <rect key="frame" x="8" y="54" width="359" height="605"/>
+                                <rect key="frame" x="0.0" y="47" width="375" height="620"/>
                             </containerView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -96,13 +93,13 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YiJ-1a-ELQ" secondAttribute="trailing" constant="8" id="613-tJ-dOL"/>
                             <constraint firstItem="YiJ-1a-ELQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="I7e-co-4wx"/>
-                            <constraint firstItem="68k-M7-cHK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="JSr-xN-3FD"/>
+                            <constraint firstItem="68k-M7-cHK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JSr-xN-3FD"/>
                             <constraint firstItem="198-45-xa8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VLg-w3-2DO"/>
                             <constraint firstItem="YiJ-1a-ELQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WLe-Oh-VLf"/>
-                            <constraint firstItem="68k-M7-cHK" firstAttribute="top" secondItem="YiJ-1a-ELQ" secondAttribute="bottom" constant="8" symbolic="YES" id="cNL-Kz-lhv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="68k-M7-cHK" secondAttribute="bottom" constant="8" id="f0O-Cd-IJE"/>
+                            <constraint firstItem="68k-M7-cHK" firstAttribute="top" secondItem="YiJ-1a-ELQ" secondAttribute="bottom" id="cNL-Kz-lhv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="68k-M7-cHK" secondAttribute="bottom" id="f0O-Cd-IJE"/>
                             <constraint firstItem="YiJ-1a-ELQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gcb-Ax-44p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="68k-M7-cHK" secondAttribute="trailing" constant="8" id="pxu-xY-NpT"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="68k-M7-cHK" secondAttribute="trailing" id="pxu-xY-NpT"/>
                             <constraint firstItem="198-45-xa8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xUY-C0-0hk"/>
                         </constraints>
                     </view>
@@ -112,8 +109,7 @@
                         <outlet property="bypassButton" destination="9za-g7-28Y" id="Pvy-sY-JhH"/>
                         <outlet property="containerView" destination="68k-M7-cHK" id="Vne-5l-42G"/>
                         <outlet property="playButton" destination="tzZ-pe-UL7" id="Yxx-Rt-URy"/>
-                        <outlet property="preset1Button" destination="act-OR-R8x" id="sQ5-tQ-BFW"/>
-                        <outlet property="preset2Button" destination="SH0-Qn-oNO" id="8gI-Wg-KfT"/>
+                        <outlet property="presetSelection" destination="nh4-Vf-lfu" id="0yu-hr-CRl"/>
                         <outlet property="reviewButton" destination="fJA-Ec-YsF" id="wJL-Ig-4Ro"/>
                     </connections>
                 </viewController>
@@ -123,6 +119,9 @@
         </scene>
     </scenes>
     <resources>
+        <namedColor name="Progress">
+            <color red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

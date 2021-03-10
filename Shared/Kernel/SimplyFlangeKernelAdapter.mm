@@ -2,16 +2,16 @@
 
 #import <CoreAudioKit/CoreAudioKit.h>
 
-#import "FilterDSPKernel.h"
-#import "FilterDSPKernelAdapter.h"
+#import "SimplyFlangeKernel.h"
+#import "SimplyFlangeKernelAdapter.h"
 
-@implementation FilterDSPKernelAdapter {
-    FilterDSPKernel* kernel_;
+@implementation SimplyFlangeKernelAdapter {
+    SimplyFlangeKernel* kernel_;
 }
 
 - (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay {
     if (self = [super init]) {
-        self->kernel_ = new FilterDSPKernel(std::string(appExtensionName.UTF8String), maxDelay);
+        self->kernel_ = new SimplyFlangeKernel(std::string(appExtensionName.UTF8String), maxDelay);
     }
     return self;
 }

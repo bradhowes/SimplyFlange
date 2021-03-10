@@ -2,7 +2,7 @@
 
 import UIKit
 import AVKit
-import FilterFramework
+import SimplyFlangeFramework
 import os
 
 @UIApplicationMain

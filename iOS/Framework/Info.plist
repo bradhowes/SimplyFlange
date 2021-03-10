@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AU_BASE_NAME</key>
-	<string>$(AU_BASE_NAME)</string>
-	<key>CFBundleDisplayName</key>
-	<string>FilterFramework</string>
 	<key>APP_STORE_ID</key>
 	<string>$(APP_STORE_ID)</string>
+	<key>AU_BASE_NAME</key>
+	<string>$(AU_BASE_NAME)</string>
 	<key>AU_COMPONENT_MANUFACTURER</key>
 	<string>$(AU_COMPONENT_MANUFACTURER)</string>
 	<key>AU_COMPONENT_NAME</key>
@@ -20,6 +18,8 @@
 	<string>$(AU_FACTORY_FUNCTION)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>SimplyFlangeFramework</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>

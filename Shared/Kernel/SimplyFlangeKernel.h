@@ -6,17 +6,17 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "DelayBuffer.h"
-#import "FilterFramework/FilterFramework-Swift.h"
+#import "SimplyFlangeFramework/SimplyFlangeFramework-Swift.h"
 #import "KernelEventProcessor.h"
 #import "LFO.h"
 
-class FilterDSPKernel : public KernelEventProcessor<FilterDSPKernel> {
+class SimplyFlangeKernel : public KernelEventProcessor<SimplyFlangeKernel> {
 public:
-    using super = KernelEventProcessor<FilterDSPKernel>;
+    using super = KernelEventProcessor<SimplyFlangeKernel>;
     friend super;
 
-    FilterDSPKernel(const std::string& name, double maxDelayMilliseconds)
-    : super(os_log_create(name.c_str(), "FilterDSPKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
+    SimplyFlangeKernel(const std::string& name, double maxDelayMilliseconds)
+    : super(os_log_create(name.c_str(), "SimplyFlangeKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
     delayLines_{}, lfo_()
     {
         lfo_.setWaveform(LFOWaveform::triangle);

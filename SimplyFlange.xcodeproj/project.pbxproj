@@ -14,7 +14,7 @@
 		BD18B39F24CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */; };
 		BD18B3A024CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */; };
 		BD1D249525D4831B00523748 /* BundlePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D249425D4831B00523748 /* BundlePropertiesTests.swift */; };
-		BD1D24AE25D486A800523748 /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; platformFilter = ios; };
+		BD1D24AE25D486A800523748 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; platformFilter = ios; };
 		BD1D24C625D48B8500523748 /* ValueChangeDetectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */; };
 		BD1D24CD25D48B8E00523748 /* RampingValueChangeDetectorTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */; };
 		BD1D24D425D48B9600523748 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
@@ -22,7 +22,7 @@
 		BD1D24E225D48BA200523748 /* BundlePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D249425D4831B00523748 /* BundlePropertiesTests.swift */; };
 		BD1D24E925D48BA800523748 /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
 		BD1D24F625D48D8100523748 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
-		BD1D24FE25D48DB700523748 /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; };
+		BD1D24FE25D48DB700523748 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
@@ -46,8 +46,8 @@
 		BD446C0725E2C6A0009B7347 /* DSPTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD446BE725E2C654009B7347 /* DSPTests.mm */; };
 		BD49661624A35D8700A81F0B /* FourCharCode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */; };
 		BD49661724A35D8900A81F0B /* FourCharCode+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */; };
-		BD50D29A25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BD50D29B25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD50D29A25D6D76E00375455 /* SimplyFlangeKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BD50D29B25D6D76E00375455 /* SimplyFlangeKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD578EED25D278490040D83D /* AudioUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD578EEC25D278490040D83D /* AudioUnitManager.swift */; };
 		BD578EEE25D278490040D83D /* AudioUnitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD578EEC25D278490040D83D /* AudioUnitManager.swift */; };
 		BD5BCED325ED9AF000735211 /* Knob_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BCED125ED9AF000735211 /* Knob_macOS.swift */; };
@@ -77,8 +77,6 @@
 		BDB11A6024A13FCF00DD8EF9 /* CATransaction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A5E24A13FAA00DD8EF9 /* CATransaction+Extensions.swift */; };
 		BDB11A6124A13FD000DD8EF9 /* CATransaction+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A5E24A13FAA00DD8EF9 /* CATransaction+Extensions.swift */; };
 		BDB11A6324A1530D00DD8EF9 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
-		BDB7CE90249D3C00009580D5 /* NonCopyable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BDB7CE8F249D3C00009580D5 /* NonCopyable.hpp */; };
-		BDB7CE91249D3C00009580D5 /* NonCopyable.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BDB7CE8F249D3C00009580D5 /* NonCopyable.hpp */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE95249EC570009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -99,15 +97,15 @@
 		BDE2CDF524A3DF24004AC8FA /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDF324A3DF13004AC8FA /* Bundle+Extensions.swift */; };
 		BDE2CDF624A3DF25004AC8FA /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDF324A3DF13004AC8FA /* Bundle+Extensions.swift */; };
 		C433F56122404C7C00F1B750 /* FilterViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */; };
-		C437FE59222367CD008D6C09 /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; };
-		C437FE5A222367CD008D6C09 /* FilterFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C437FE59222367CD008D6C09 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; };
+		C437FE5A222367CD008D6C09 /* SimplyFlangeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C4660A5C2225F9A0007BE3B1 /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* FilterFramework.framework */; };
-		C4660A5D2225F9A0007BE3B1 /* FilterFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* FilterFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C4660A5C2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */; };
+		C4660A5D2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C46B8B8122418B6000E00B1E /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4C9EAAB2227D79D003FEE1C /* FilterViewController.xib */; };
 		C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4737B0A2231D930002CAD0B /* AudioToolbox.framework */; };
-		C496341422238CFA001D1F5B /* FilterFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE80D2223713E001E6B6D /* FilterFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C496341422238CFA001D1F5B /* SimplyFlangeFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE80D2223713E001E6B6D /* SimplyFlangeFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C4A3D65B223FF12A002784D4 /* SimplePlayEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3D65A223FF12A002784D4 /* SimplePlayEngine.swift */; };
 		C4A3D65C223FF12A002784D4 /* SimplePlayEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4A3D65A223FF12A002784D4 /* SimplePlayEngine.swift */; };
 		C4BEE7B122236A29001E6B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE7A422236A29001E6B6D /* Assets.xcassets */; };
@@ -116,10 +114,10 @@
 		C4BEE7D122236A58001E6B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE7C622236A58001E6B6D /* Assets.xcassets */; };
 		C4BEE7D222236A58001E6B6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE7C722236A58001E6B6D /* Main.storyboard */; };
 		C4BEE7D322236A58001E6B6D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7C922236A58001E6B6D /* AppDelegate.swift */; };
-		C4BEE7EE22236F24001E6B6D /* FilterDSPKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */; };
+		C4BEE7EE22236F24001E6B6D /* SimplyFlangeKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */; };
 		C4BEE7EF22236F24001E6B6D /* RampingValueChangeDetector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */; };
 		C4BEE7F022236F24001E6B6D /* KernelEventProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */; };
-		C4BEE7F222236F27001E6B6D /* FilterDSPKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */; };
+		C4BEE7F222236F27001E6B6D /* SimplyFlangeKernel.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */; };
 		C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */; };
 		C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */; };
 		C4BEE80022236F6E001E6B6D /* TypeAliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */; };
@@ -129,11 +127,11 @@
 		C4BEE80922237078001E6B6D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE80822237078001E6B6D /* MainViewController.swift */; };
 		C4BEE81022237302001E6B6D /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4BEE80F22237302001E6B6D /* MainViewController.swift */; };
 		C4BEE8132223734E001E6B6D /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE8112223734E001E6B6D /* MainInterface.storyboard */; };
-		C4BEE8172223736F001E6B6D /* FilterFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE8162223736F001E6B6D /* FilterFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C4BEE81922237394001E6B6D /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* FilterFramework.framework */; };
-		C4BEE81A222373A6001E6B6D /* FilterFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* FilterFramework.framework */; };
-		C4F004A32239B1E10014E248 /* FilterDSPKernelAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */; };
-		C4F004A42239B1E10014E248 /* FilterDSPKernelAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */; };
+		C4BEE8172223736F001E6B6D /* SimplyFlangeFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = C4BEE8162223736F001E6B6D /* SimplyFlangeFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C4BEE81922237394001E6B6D /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; };
+		C4BEE81A222373A6001E6B6D /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */; };
+		C4F004A32239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */; };
+		C4F004A42239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */; };
 		C4F004A62239B2070014E248 /* FilterAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A52239B2070014E248 /* FilterAudioUnit.swift */; };
 		C4F004A72239B2070014E248 /* FilterAudioUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F004A52239B2070014E248 /* FilterAudioUnit.swift */; };
 		C4F07731223AC4F5008FFF06 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F07730223AC4F5008FFF06 /* FilterViewController.swift */; };
@@ -160,14 +158,14 @@
 			containerPortal = C437FE302223672C008D6C09 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C437FE8E222368A1008D6C09;
-			remoteInfo = "AUv3FilterFramework macOS";
+			remoteInfo = "AUv3SimplyFlangeFramework macOS";
 		};
 		C437FE57222367CD008D6C09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C437FE302223672C008D6C09 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C437FE51222367CD008D6C09;
-			remoteInfo = "AUv3FilterFramework iOS";
+			remoteInfo = "AUv3SimplyFlangeFramework iOS";
 		};
 		C437FE6F2223686D008D6C09 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -181,7 +179,7 @@
 			containerPortal = C437FE302223672C008D6C09 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = C437FE8E222368A1008D6C09;
-			remoteInfo = "AUv3FilterFramework macOS";
+			remoteInfo = "AUv3SimplyFlangeFramework macOS";
 		};
 		C4660A612225F9A0007BE3B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -199,7 +197,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C437FE5A222367CD008D6C09 /* FilterFramework.framework in Embed Frameworks */,
+				C437FE5A222367CD008D6C09 /* SimplyFlangeFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +219,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C4660A5D2225F9A0007BE3B1 /* FilterFramework.framework in Embed Frameworks */,
+				C4660A5D2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,7 +265,7 @@
 		BD446BE725E2C654009B7347 /* DSPTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DSPTests.mm; sourceTree = "<group>"; };
 		BD49661424A35D1E00A81F0B /* FourCharCode+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FourCharCode+Extensions.swift"; sourceTree = "<group>"; };
 		BD49661924A3605800A81F0B /* LICENSE.md */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = LICENSE.md; sourceTree = "<group>"; };
-		BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterDSPKernelAdapter.h; sourceTree = "<group>"; };
+		BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplyFlangeKernelAdapter.h; sourceTree = "<group>"; };
 		BD50D32425D75B7900375455 /* SimplyFlange.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimplyFlange.entitlements; sourceTree = "<group>"; };
 		BD578EEC25D278490040D83D /* AudioUnitManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUnitManager.swift; sourceTree = "<group>"; };
 		BD578F0D25D2C4720040D83D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -290,14 +288,12 @@
 		BDB11A5A24A13F2A00DD8EF9 /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
 		BDB11A5E24A13FAA00DD8EF9 /* CATransaction+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransaction+Extensions.swift"; sourceTree = "<group>"; };
 		BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogScaling.swift; sourceTree = "<group>"; };
-		BDB7CE8F249D3C00009580D5 /* NonCopyable.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = NonCopyable.hpp; sourceTree = "<group>"; };
 		BDB7CE92249EC556009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BDB7CE96249F7209009580D5 /* ValueChangeDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueChangeDetector.hpp; sourceTree = "<group>"; };
 		BDB7CE99249FC026009580D5 /* AUAudioUnitPreset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AUAudioUnitPreset+Extensions.swift"; sourceTree = "<group>"; };
 		BDB7CE9D249FC152009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.5.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		BDB8C67C25EA41BD0012F532 /* 074_acoustic-guitar-strummy2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "074_acoustic-guitar-strummy2.wav"; sourceTree = "<group>"; };
 		BDB8C68D25EA42020012F532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		BDB8C69D25EA44710012F532 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDDE2B9125EE69FD00E55833 /* KnobController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KnobController.swift; sourceTree = "<group>"; };
 		BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		BDE2CDF324A3DF13004AC8FA /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
@@ -307,10 +303,10 @@
 		C4201A2822403120006E4333 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C437FE52222367CD008D6C09 /* FilterFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FilterFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplyFlangeFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplyFlangeAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE7A2223688D008D6C09 /* SimplyFlange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlange.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C437FE8F222368A1008D6C09 /* FilterFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FilterFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SimplyFlangeFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplyFlangeAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C44F544422260E2500484B67 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C44F544622260E2C00484B67 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
@@ -332,19 +328,19 @@
 		C4BEE7CA22236A58001E6B6D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C4BEE7D722236E99001E6B6D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAliases.swift; sourceTree = "<group>"; };
-		C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterDSPKernel.h; sourceTree = "<group>"; };
+		C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SimplyFlangeKernel.h; sourceTree = "<group>"; };
 		C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = RampingValueChangeDetector.hpp; sourceTree = "<group>"; };
 		C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KernelEventProcessor.h; sourceTree = "<group>"; };
 		C4BEE80822237078001E6B6D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C4BEE80A222370B2001E6B6D /* App.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = App.entitlements; sourceTree = "<group>"; };
-		C4BEE80D2223713E001E6B6D /* FilterFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterFramework.h; sourceTree = "<group>"; };
+		C4BEE80D2223713E001E6B6D /* SimplyFlangeFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplyFlangeFramework.h; sourceTree = "<group>"; };
 		C4BEE80F22237302001E6B6D /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		C4BEE8122223734E001E6B6D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
-		C4BEE8162223736F001E6B6D /* FilterFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterFramework.h; sourceTree = "<group>"; };
+		C4BEE8162223736F001E6B6D /* SimplyFlangeFramework.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimplyFlangeFramework.h; sourceTree = "<group>"; };
 		C4BEE81B22237772001E6B6D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.1.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		C4C9EAAB2227D79D003FEE1C /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
 		C4CE62D8222601070055FE6B /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FilterDSPKernelAdapter.mm; sourceTree = "<group>"; };
+		C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = SimplyFlangeKernelAdapter.mm; sourceTree = "<group>"; };
 		C4F004A52239B2070014E248 /* FilterAudioUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterAudioUnit.swift; sourceTree = "<group>"; };
 		C4F07730223AC4F5008FFF06 /* FilterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -355,7 +351,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD1D24F625D48D8100523748 /* Accelerate.framework in Frameworks */,
-				BD1D24AE25D486A800523748 /* FilterFramework.framework in Frameworks */,
+				BD1D24AE25D486A800523748 /* SimplyFlangeFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,7 +366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD1D24FE25D48DB700523748 /* FilterFramework.framework in Frameworks */,
+				BD1D24FE25D48DB700523748 /* SimplyFlangeFramework.framework in Frameworks */,
 				BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +376,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */,
-				C437FE59222367CD008D6C09 /* FilterFramework.framework in Frameworks */,
+				C437FE59222367CD008D6C09 /* SimplyFlangeFramework.framework in Frameworks */,
 				C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -397,7 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BEE81922237394001E6B6D /* FilterFramework.framework in Frameworks */,
+				C4BEE81922237394001E6B6D /* SimplyFlangeFramework.framework in Frameworks */,
 				BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,7 +402,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4660A5C2225F9A0007BE3B1 /* FilterFramework.framework in Frameworks */,
+				C4660A5C2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +419,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BEE81A222373A6001E6B6D /* FilterFramework.framework in Frameworks */,
+				C4BEE81A222373A6001E6B6D /* SimplyFlangeFramework.framework in Frameworks */,
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -493,9 +489,9 @@
 				BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */,
 				BD446BB525E2B741009B7347 /* DSP.h */,
 				BD446BAB25E2B4C5009B7347 /* LFO.h */,
-				C4BEE7E322236E99001E6B6D /* FilterDSPKernel.h */,
-				BD50D29225D6D76E00375455 /* FilterDSPKernelAdapter.h */,
-				C4F004A02239B1E10014E248 /* FilterDSPKernelAdapter.mm */,
+				C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */,
+				BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */,
+				C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */,
 				BD72F2E425D1D4CE0031E422 /* InputBuffer.h */,
 				C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */,
 			);
@@ -524,10 +520,10 @@
 			isa = PBXGroup;
 			children = (
 				C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */,
-				C437FE52222367CD008D6C09 /* FilterFramework.framework */,
+				C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */,
 				C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */,
 				C437FE7A2223688D008D6C09 /* SimplyFlange.app */,
-				C437FE8F222368A1008D6C09 /* FilterFramework.framework */,
+				C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */,
 				C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */,
 				BD95147524A08BB600D8024C /* macOS Tests.xctest */,
 				BD1D24A925D486A700523748 /* iOS Tests.xctest */,
@@ -561,7 +557,7 @@
 			isa = PBXGroup;
 			children = (
 				BDB8C68D25EA42020012F532 /* Assets.xcassets */,
-				C4BEE8162223736F001E6B6D /* FilterFramework.h */,
+				C4BEE8162223736F001E6B6D /* SimplyFlangeFramework.h */,
 				C4BEE7A122236A29001E6B6D /* Info.plist */,
 			);
 			path = Framework;
@@ -607,8 +603,7 @@
 		C4BEE7C022236A58001E6B6D /* Framework */ = {
 			isa = PBXGroup;
 			children = (
-				BDB8C69D25EA44710012F532 /* Assets.xcassets */,
-				C4BEE80D2223713E001E6B6D /* FilterFramework.h */,
+				C4BEE80D2223713E001E6B6D /* SimplyFlangeFramework.h */,
 				C4BEE7C222236A58001E6B6D /* Info.plist */,
 			);
 			path = Framework;
@@ -649,7 +644,6 @@
 			children = (
 				BD578EEC25D278490040D83D /* AudioUnitManager.swift */,
 				BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */,
-				BDB7CE8F249D3C00009580D5 /* NonCopyable.hpp */,
 				C4BEE7E522236E99001E6B6D /* RampingValueChangeDetector.hpp */,
 				BDB7CE96249F7209009580D5 /* ValueChangeDetector.hpp */,
 				BD49661824A35F3900A81F0B /* Class Extensions */,
@@ -711,16 +705,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4BEE8172223736F001E6B6D /* FilterFramework.h in Headers */,
-				BD50D29A25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */,
+				C4BEE8172223736F001E6B6D /* SimplyFlangeFramework.h in Headers */,
+				BD50D29A25D6D76E00375455 /* SimplyFlangeKernelAdapter.h in Headers */,
 				BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */,
 				BD446BB625E2B741009B7347 /* DSP.h in Headers */,
 				BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE97249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7EF22236F24001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
 				BD24B3C325F0E12400338362 /* Biquad.h in Headers */,
-				BDB7CE90249D3C00009580D5 /* NonCopyable.hpp in Headers */,
-				C4BEE7EE22236F24001E6B6D /* FilterDSPKernel.h in Headers */,
+				C4BEE7EE22236F24001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F022236F24001E6B6D /* KernelEventProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -729,16 +722,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C496341422238CFA001D1F5B /* FilterFramework.h in Headers */,
-				BD50D29B25D6D76E00375455 /* FilterDSPKernelAdapter.h in Headers */,
+				C496341422238CFA001D1F5B /* SimplyFlangeFramework.h in Headers */,
+				BD50D29B25D6D76E00375455 /* SimplyFlangeKernelAdapter.h in Headers */,
 				BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */,
 				BD446BB725E2B741009B7347 /* DSP.h in Headers */,
 				BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE98249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
 				BD24B3C425F0E12400338362 /* Biquad.h in Headers */,
-				BDB7CE91249D3C00009580D5 /* NonCopyable.hpp in Headers */,
-				C4BEE7F222236F27001E6B6D /* FilterDSPKernel.h in Headers */,
+				C4BEE7F222236F27001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -835,8 +827,8 @@
 			dependencies = (
 			);
 			name = "iOS Framework";
-			productName = "AUv3FilterFramework iOS";
-			productReference = C437FE52222367CD008D6C09 /* FilterFramework.framework */;
+			productName = "AUv3SimplyFlangeFramework iOS";
+			productReference = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C437FE622223686D008D6C09 /* iOS Extension */ = {
@@ -891,8 +883,8 @@
 			dependencies = (
 			);
 			name = "macOS Framework";
-			productName = "AUv3FilterFramework macOS";
-			productReference = C437FE8F222368A1008D6C09 /* FilterFramework.framework */;
+			productName = "AUv3SimplyFlangeFramework macOS";
+			productReference = C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C437FE9F222368B7008D6C09 /* macOS Extension */ = {
@@ -1155,7 +1147,7 @@
 				BDB11A5524A13C4B00DD8EF9 /* Comparble+Extensions.swift in Sources */,
 				BDB11A5C24A13F8700DD8EF9 /* Color+Extensions.swift in Sources */,
 				BDB7CE9B249FC0AB009580D5 /* AUAudioUnitPreset+Extensions.swift in Sources */,
-				C4F004A32239B1E10014E248 /* FilterDSPKernelAdapter.mm in Sources */,
+				C4F004A32239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */,
 				BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */,
 				BD578EED25D278490040D83D /* AudioUnitManager.swift in Sources */,
 				BD18B3A024CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */,
@@ -1209,7 +1201,7 @@
 				C4A3D65C223FF12A002784D4 /* SimplePlayEngine.swift in Sources */,
 				BD49661724A35D8900A81F0B /* FourCharCode+Extensions.swift in Sources */,
 				BDB11A6124A13FD000DD8EF9 /* CATransaction+Extensions.swift in Sources */,
-				C4F004A42239B1E10014E248 /* FilterDSPKernelAdapter.mm in Sources */,
+				C4F004A42239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1770,7 +1762,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.framework;
-				PRODUCT_NAME = FilterFramework;
+				PRODUCT_NAME = SimplyFlangeFramework;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1996,8 +1988,8 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.framework;
-				PRODUCT_MODULE_NAME = FilterFramework;
-				PRODUCT_NAME = FilterFramework;
+				PRODUCT_MODULE_NAME = SimplyFlangeFramework;
+				PRODUCT_NAME = SimplyFlangeFramework;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -2245,7 +2237,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.framework;
-				PRODUCT_NAME = FilterFramework;
+				PRODUCT_NAME = SimplyFlangeFramework;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -2490,8 +2482,8 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.framework;
-				PRODUCT_MODULE_NAME = FilterFramework;
-				PRODUCT_NAME = FilterFramework;
+				PRODUCT_MODULE_NAME = SimplyFlangeFramework;
+				PRODUCT_NAME = SimplyFlangeFramework;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;

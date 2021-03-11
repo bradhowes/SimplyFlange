@@ -29,7 +29,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yz-l9v" userLabel="v1.0.0">
-                    <rect key="frame" x="484" y="64" width="40" height="17"/>
+                    <rect key="frame" x="487" y="64" width="37" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="v1.1.1" id="p30-Bk-a8R" userLabel="APP_VERSION">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="Title"/>
@@ -47,14 +47,14 @@
                 <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-wC-N8q">
                     <rect key="frame" x="42" y="24" width="504" height="252"/>
                     <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" customClass="Knob" customModule="SimplyFlangeFramework">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" customClass="Knob" customModule="SimplyFlangeFramework" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="132" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="QUK-PT-mqw"/>
                                 <constraint firstAttribute="height" constant="120" id="vAd-uR-9t8"/>
                             </constraints>
                             <connections>
-                                <action selector="depthChanged:" target="-2" id="XyO-qx-ME0"/>
+                                <action selector="depthChangedWithKnob:" target="-2" id="paL-j9-5a2"/>
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
@@ -68,14 +68,14 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="25e-Ls-Yhr" customClass="Knob" customModule="SimplyFlangeFramework">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="25e-Ls-Yhr" customClass="Knob" customModule="SimplyFlangeFramework" customModuleProvider="target">
                             <rect key="frame" x="128" y="132" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="EDP-SX-7Vf"/>
                                 <constraint firstAttribute="height" constant="120" id="V2V-kw-xaN"/>
                             </constraints>
                             <connections>
-                                <action selector="rateChanged:" target="-2" id="9xy-8C-djC"/>
+                                <action selector="rateChangedWithKnob:" target="-2" id="a3A-v6-0T5"/>
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-pJ-Rk3" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">

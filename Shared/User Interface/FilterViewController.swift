@@ -33,11 +33,11 @@ import os
     @IBOutlet weak var wetMixControl: Knob!
 
     @IBOutlet weak var altDepthControl: Knob!
-    @IBOutlet weak var altDepthValueLabel: UILabel!
-    @IBOutlet weak var altDepthTapEdit: UIView!
+    @IBOutlet weak var altDepthValueLabel: Label!
+    @IBOutlet weak var altDepthTapEdit: View!
     @IBOutlet weak var altRateControl: Knob!
-    @IBOutlet weak var altRateValueLabel: UILabel!
-    @IBOutlet weak var altRateTapEdit: UIView!
+    @IBOutlet weak var altRateValueLabel: Label!
+    @IBOutlet weak var altRateTapEdit: View!
 
     #if os(iOS)
     @IBOutlet weak var depthTapEdit: UIView!
@@ -209,19 +209,26 @@ extension FilterViewController {
         controls[.depth] = [
             KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
                            formatter: params.valueFormatter(.depth), knob: depthControl,
-                           label: depthValueLabel, logValues: false),
-            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
-                           formatter: params.valueFormatter(.depth), knob: altDepthControl,
-                           label: altDepthValueLabel, logValues: false),
-            ]
+                           label: depthValueLabel, logValues: false)
+        ]
+        if altDepthControl != nil {
+            controls[.depth]?.append(KnobController(parameterObserverToken: parameterObserverToken,
+                                                    parameter: params[.depth],
+                                                    formatter: params.valueFormatter(.depth), knob: altDepthControl,
+                                                    label: altDepthValueLabel, logValues: false))
+        }
+
         controls[.rate] = [
             KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
                            formatter: params.valueFormatter(.rate), knob: rateControl,
-                           label: rateValueLabel, logValues: true),
-            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
-                           formatter: params.valueFormatter(.rate), knob: altRateControl,
-                           label: altRateValueLabel, logValues: true)
+                           label: rateValueLabel, logValues: true)
         ]
+        if altRateControl != nil {
+            controls[.rate]?.append(KnobController(parameterObserverToken: parameterObserverToken,
+                                                   parameter: params[.rate],
+                                                   formatter: params.valueFormatter(.rate), knob: altRateControl,
+                                                   label: altRateValueLabel, logValues: true))
+        }
 
         controls[.delay] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
                                            formatter: params.valueFormatter(.delay), knob: delayControl,

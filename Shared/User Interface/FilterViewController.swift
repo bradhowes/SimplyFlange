@@ -32,6 +32,13 @@ import os
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
 
+    @IBOutlet weak var altDepthControl: Knob!
+    @IBOutlet weak var altDepthValueLabel: UILabel!
+    @IBOutlet weak var altDepthTapEdit: UIView!
+    @IBOutlet weak var altRateControl: Knob!
+    @IBOutlet weak var altRateValueLabel: UILabel!
+    @IBOutlet weak var altRateTapEdit: UIView!
+
     #if os(iOS)
     @IBOutlet weak var depthTapEdit: UIView!
     @IBOutlet weak var rateTapEdit: UIView!
@@ -46,7 +53,7 @@ import os
     @IBOutlet weak var editingBackground: UIView!
     #endif
 
-    var controls = [FilterParameterAddress : KnobController]()
+    var controls = [FilterParameterAddress : [KnobController]]()
 
     public var audioUnit: FilterAudioUnit? {
         didSet {
@@ -57,9 +64,6 @@ import os
             }
         }
     }
-
-    private var constraintValue: CGFloat = 120.0
-    private var constraintWidth: CGFloat = 0.0
 
     #if os(macOS)
 
@@ -91,10 +95,12 @@ import os
         addTapGesture(feedbackTapEdit)
         addTapGesture(dryMixTapEdit)
         addTapGesture(wetMixTapEdit)
+        addTapGesture(altDepthTapEdit)
+        addTapGesture(altRateTapEdit)
 
         #endif
 
-        for control in [depthControl, rateControl, delayControl, feedbackControl] {
+        for control in [depthControl, altDepthControl, rateControl, altRateControl, delayControl, feedbackControl] {
             control?.trackLineWidth = 10
             control?.progressLineWidth = 8
             control?.indicatorLineWidth = 8
@@ -107,55 +113,52 @@ import os
         }
     }
 
-    #if os(iOS)
-
-    override public func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        os_log(.info, log: log, "viewDidLayoutSubviews - x: %f y: %f width: %f height: %f",
-               controlsView.frame.origin.x, controlsView.frame.origin.y,
-               controlsView.frame.width, controlsView.frame.height)
-        if controlsView.frame.origin.x < 0.0 {
-            constraintValue = 120.0 - ceil(controlsView.frame.origin.x * -2.0 / 4.0)
-            if view.frame.width != constraintWidth {
-                constraintWidth = view.frame.width
-                for control in [depthControl, rateControl, delayControl, feedbackControl] {
-                    resizeKnob(control)
-                }
-            }
-        }
-        else {
-            if view.frame.width != constraintWidth {
-                constraintValue = 120.0
-                constraintWidth = view.frame.width
-                for control in [depthControl, rateControl, delayControl, feedbackControl] {
-                    resizeKnob(control)
-                }
-            }
-        }
-    }
-
-    private func resizeKnob(_ control: UIView?) {
-        for constraint in control?.constraints ?? [] {
-            switch constraint.firstAttribute {
-            case .width, .height: constraint.constant = constraintValue
-            default: break
-            }
-        }
-    }
-
-    #endif
-
     public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {
         guard self.viewConfig != viewConfig else { return }
         self.viewConfig = viewConfig
     }
 
-    @IBAction public func depthChanged(_: Knob) { controls[.depth]?.knobChanged()}
-    @IBAction public func rateChanged(_: Knob) { controls[.rate]?.knobChanged() }
-    @IBAction public func delayChanged(_: Knob) { controls[.delay]?.knobChanged() }
-    @IBAction public func feedbackChanged(_: Knob) { controls[.feedback]?.knobChanged() }
-    @IBAction public func dryMixChanged(_: Knob) { controls[.dryMix]?.knobChanged() }
-    @IBAction public func wetMixChanged(_: Knob) { controls[.wetMix]?.knobChanged() }
+    @IBAction public func depthChanged(knob: Knob) {
+        for control in controls[.depth] ?? [] {
+            if knob == control.knob {
+                control.knobChanged()
+            }
+        }
+        for control in controls[.depth] ?? [] {
+            if knob != control.knob {
+                control.parameterChanged()
+            }
+        }
+    }
+
+    @IBAction public func rateChanged(knob: Knob) {
+        for control in controls[.rate] ?? [] {
+            if knob == control.knob {
+                control.knobChanged()
+            }
+        }
+        for control in controls[.rate] ?? [] {
+            if knob != control.knob {
+                control.parameterChanged()
+            }
+        }
+    }
+
+    @IBAction public func delayChanged(_: Knob) {
+        (controls[.delay] ?? []).forEach { $0.knobChanged() }
+    }
+
+    @IBAction public func feedbackChanged(_: Knob) {
+        (controls[.feedback] ?? []).forEach { $0.knobChanged() }
+    }
+
+    @IBAction public func dryMixChanged(_: Knob) {
+        (controls[.dryMix] ?? []).forEach { $0.knobChanged() }
+    }
+
+    @IBAction public func wetMixChanged(_: Knob) {
+        (controls[.wetMix] ?? []).forEach { $0.knobChanged() }
+    }
 
     #if os(macOS)
     override public func mouseDown(with event: NSEvent) {
@@ -203,30 +206,41 @@ extension FilterViewController {
         self.parameterObserverToken = parameterObserverToken
 
         let params = audioUnit.parameterDefinitions
-        controls[.depth] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
-                                          formatter: params.valueFormatter(.depth), knob: depthControl,
-                                          label: depthValueLabel, logValues: false)
-        controls[.rate] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
-                                         formatter: params.valueFormatter(.rate), knob: rateControl,
-                                         label: rateValueLabel, logValues: true)
-        controls[.delay] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
-                                          formatter: params.valueFormatter(.delay), knob: delayControl,
-                                          label: delayValueLabel, logValues: true)
-        controls[.feedback] = KnobController(parameterObserverToken: parameterObserverToken,
-                                             parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
-                                             knob: feedbackControl, label: feedbackValueLabel, logValues: false)
-        controls[.dryMix] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-                                           formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
-                                           label: dryMixValueLabel, logValues: false)
-        controls[.wetMix] = KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-                                           formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
-                                           label:  wetMixValueLabel, logValues: false)
+        controls[.depth] = [
+            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+                           formatter: params.valueFormatter(.depth), knob: depthControl,
+                           label: depthValueLabel, logValues: false),
+            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+                           formatter: params.valueFormatter(.depth), knob: altDepthControl,
+                           label: altDepthValueLabel, logValues: false),
+            ]
+        controls[.rate] = [
+            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+                           formatter: params.valueFormatter(.rate), knob: rateControl,
+                           label: rateValueLabel, logValues: true),
+            KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+                           formatter: params.valueFormatter(.rate), knob: altRateControl,
+                           label: altRateValueLabel, logValues: true)
+        ]
+
+        controls[.delay] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
+                                           formatter: params.valueFormatter(.delay), knob: delayControl,
+                                           label: delayValueLabel, logValues: true)]
+        controls[.feedback] = [KnobController(parameterObserverToken: parameterObserverToken,
+                                              parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
+                                              knob: feedbackControl, label: feedbackValueLabel, logValues: false)]
+        controls[.dryMix] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
+                                            formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
+                                            label: dryMixValueLabel, logValues: false)]
+        controls[.wetMix] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
+                                            formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
+                                            label:  wetMixValueLabel, logValues: false)]
     }
 
     private func updateDisplay() {
         os_log(.info, log: log, "updateDisplay")
         for address in FilterParameterAddress.allCases {
-            controls[address]?.parameterChanged()
+            (controls[address] ?? []).forEach { $0.parameterChanged() }
         }
     }
 
@@ -243,7 +257,7 @@ extension FilterViewController: UITextFieldDelegate {
         guard editingView.isHidden,
               let view = sender.view,
               let address = FilterParameterAddress(rawValue: UInt64(view.tag)),
-              let param = controls[address]?.parameter else { return }
+              let param = controls[address]?.first?.parameter else { return }
 
         os_log(.info, log: log, "beginEditing - %d", view.tag)
         editingView.tag = view.tag
@@ -282,7 +296,7 @@ extension FilterViewController: UITextFieldDelegate {
             self.editingView.isHidden = true
             if let stringValue = self.editingValue.text,
                let value = Float(stringValue) {
-                self.controls[address]?.setEditedValue(value)
+                (self.controls[address] ?? []).forEach { $0.setEditedValue(value) }
             }
             os_log(.info, log: self.log, "done animation")
         }

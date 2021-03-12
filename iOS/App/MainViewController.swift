@@ -5,8 +5,7 @@ import SimplyFlangeFramework
 
 final class MainViewController: UIViewController {
 
-    private let audioUnitManager = AudioUnitManager(componentDescription: FilterAudioUnit.componentDescription,
-                                                    appExtension: Bundle.main.auExtensionName)
+    private let audioUnitManager = AudioUnitManager(interfaceName: "MainInterface")
 
     @IBOutlet weak var reviewButton: UIButton!
     @IBOutlet weak var playButton: UIButton!

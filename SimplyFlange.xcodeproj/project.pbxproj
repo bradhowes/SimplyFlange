@@ -61,6 +61,10 @@
 		BD75B68325DA9E420071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B68225DA9E420071F55E /* AppStore.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
 		BD78FDC224C2F6530091A854 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78FDC124C2F6530091A854 /* MainWindowController.swift */; };
+		BD7B1291260D42210087E8F0 /* AUParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */; };
+		BD7B1292260D42220087E8F0 /* AUParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */; };
+		BD7B12AA260D45E60087E8F0 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* SwitchController.swift */; };
+		BD7B12B2260D45E70087E8F0 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* SwitchController.swift */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
@@ -288,6 +292,8 @@
 		BD75B68225DA9E420071F55E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUParameterControl.swift; sourceTree = "<group>"; };
+		BD7B129A260D45E00087E8F0 /* SwitchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchController.swift; sourceTree = "<group>"; };
 		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSwiftTestTemplate.swift; sourceTree = "<group>"; };
@@ -698,6 +704,8 @@
 				BDDE2B9125EE69FD00E55833 /* KnobController.swift */,
 				BD5BCED125ED9AF000735211 /* Knob_macOS.swift */,
 				BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */,
+				BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */,
+				BD7B129A260D45E00087E8F0 /* SwitchController.swift */,
 				C4BEE7DB22236E99001E6B6D /* TypeAliases.swift */,
 			);
 			path = "User Interface";
@@ -1158,10 +1166,12 @@
 			files = (
 				BD49661624A35D8700A81F0B /* FourCharCode+Extensions.swift in Sources */,
 				C4BEE80522236F6F001E6B6D /* View+Extensions.swift in Sources */,
+				BD7B1291260D42210087E8F0 /* AUParameterControl.swift in Sources */,
 				C4F07731223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				BDE2CDF524A3DF24004AC8FA /* Bundle+Extensions.swift in Sources */,
 				C4F004A62239B2070014E248 /* FilterAudioUnit.swift in Sources */,
 				BDB11A5824A13CB100DD8EF9 /* CALayer+Extensions.swift in Sources */,
+				BD7B12AA260D45E60087E8F0 /* SwitchController.swift in Sources */,
 				BD2FD3ED259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */,
 				BDB11A6024A13FCF00DD8EF9 /* CATransaction+Extensions.swift in Sources */,
 				C4A3D65B223FF12A002784D4 /* SimplePlayEngine.swift in Sources */,
@@ -1208,10 +1218,12 @@
 			files = (
 				BD06772D24CF9FA00039F161 /* Optional+Extensions.swift in Sources */,
 				BD18B39C24CB248100B7CB1E /* AudioComponentDescription+Extensions.swift in Sources */,
+				BD7B1292260D42220087E8F0 /* AUParameterControl.swift in Sources */,
 				BD18B39F24CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */,
 				BD578EEE25D278490040D83D /* AudioUnitManager.swift in Sources */,
 				C4F07732223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				C4BEE80122236F6E001E6B6D /* View+Extensions.swift in Sources */,
+				BD7B12B2260D45E70087E8F0 /* SwitchController.swift in Sources */,
 				BDB11A5424A13C4A00DD8EF9 /* Comparble+Extensions.swift in Sources */,
 				BDB7CE9C249FC0AC009580D5 /* AUAudioUnitPreset+Extensions.swift in Sources */,
 				BD72F2E625D1D4CE0031E422 /* InputBuffer.h in Sources */,

@@ -50,7 +50,7 @@ open class Knob: UIControl {
     open var indicatorLineLength: CGFloat = 0.3 { didSet { createShapes() } }
 
     /// Number of ticks to show inside the track, with the first indicating the `minimumValue` and the last indicating the `maximumValue`
-    open var tickCount: Int = 3 { didSet { createShapes() } }
+    open var tickCount: Int = 0 { didSet { createShapes() } }
 
     open var tickLineOffset: CGFloat = 0.1 { didSet { createShapes() } }
 

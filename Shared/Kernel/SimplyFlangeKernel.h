@@ -50,12 +50,12 @@ public:
             case FilterParameterAddressDepth:
                 tmp = value / 200.0; // !!!
                 if (tmp == depth_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "depth - %f", tmp);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "depth - %f", tmp);
                 depth_ = tmp;
                 break;
             case FilterParameterAddressRate:
                 if (value == rate_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "rate - %f", value);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "rate - %f", value);
                 rate_ = value;
                 lfo_.setFrequency(rate_);
                 break;
@@ -63,25 +63,28 @@ public:
                 if (value == delay_) return;
                 delay_ = value;
                 delayInSamples_ = samplesPerMillisecond_ * value;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "delay - %f  delayInSamples: %f", value, delayInSamples_);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "delay - %f  delayInSamples: %f", value, delayInSamples_);
                 break;
             case FilterParameterAddressFeedback:
                 tmp = value / 100.0;
-                if (tmp == feedback_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "feedback - %f", tmp);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "feedback - %f", tmp);
                 feedback_ = tmp;
                 break;
             case FilterParameterAddressDryMix:
                 tmp = value / 100.0;
                 if (tmp == dryMix_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "dryMix - %f", tmp);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "dryMix - %f", tmp);
                 dryMix_ = tmp;
                 break;
             case FilterParameterAddressWetMix:
                 tmp = value / 100.0;
                 if (tmp == wetMix_) return;
-                os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetMix - %f", tmp);
+                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetMix - %f", tmp);
                 wetMix_ = tmp;
+                break;
+            case FilterParameterAddressNegativeFeedback:
+                negativeFeedback_ = value > 0 ? true : false;
+
                 break;
         }
     }
@@ -94,6 +97,7 @@ public:
             case FilterParameterAddressFeedback: return feedback_ * 100.0;
             case FilterParameterAddressDryMix: return dryMix_ * 100.0;
             case FilterParameterAddressWetMix: return wetMix_ * 100.0;
+            case FilterParameterAddressNegativeFeedback: return negativeFeedback_ ? 1.0 : 0.0;
         }
         return 0.0;
     }
@@ -103,13 +107,14 @@ private:
     void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
 
     void doRendering(std::vector<AUValue const*> ins, std::vector<AUValue*> outs, AUAudioFrameCount frameCount) {
+        auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
         for (int frame = 0; frame < frameCount; ++frame) {
             auto lfoValue = lfo_.valueAndIncrement();
             for (int channel = 0; channel < ins.size(); ++channel) {
                 AUValue inputSample = ins[channel][frame];
                 double delayPos = lfoValue * depth_ * delayInSamples_ + delayInSamples_;
                 AUValue delayedSample = delayLines_[channel].read(delayPos);
-                delayLines_[channel].write(inputSample + feedback_ * delayedSample);
+                delayLines_[channel].write(inputSample + signedFeedback * delayedSample);
                 outs[channel][frame] = wetMix_ * delayedSample + dryMix_ * inputSample;
             }
         }
@@ -123,6 +128,7 @@ private:
     double feedback_;
     double dryMix_;
     double wetMix_;
+    bool negativeFeedback_;
 
     double maxDelayMilliseconds_;
     double samplesPerMillisecond_;

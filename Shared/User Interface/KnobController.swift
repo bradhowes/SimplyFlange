@@ -6,7 +6,7 @@ import os
 /**
  Controller for a knob and text view / label.
  */
-final class KnobController: NSObject {
+final class KnobController: NSObject, AUParameterControl {
     private let log = Logging.logger("KnobController")
 
     private let logSliderMinValue: Float = 0.0
@@ -19,6 +19,8 @@ final class KnobController: NSObject {
     let formatter: (AUValue) -> String
     let knob: Knob
     let label: Label
+
+    var control: NSObject { return knob }
 
     private let useLogValues: Bool
     private var restoreNameTimer: Timer?
@@ -73,8 +75,8 @@ extension KnobController {
         showNewValue(value)
     }
 
-    func knobChanged() {
-        os_log(.info, log: log, "knobChanged - %f", knob.value)
+    func controlChanged() {
+        os_log(.info, log: log, "controlChanged - %f", knob.value)
         #if os(macOS)
         NSApp.keyWindow?.makeFirstResponder(nil)
         #endif

@@ -13,10 +13,6 @@ import os
     private var parameterObserverToken: AUParameterObserverToken?
     private var keyValueObserverToken: NSKeyValueObservation?
 
-    private let logSliderMinValue: Float = 0.0
-    private let logSliderMaxValue: Float = 9.0
-    private lazy var logSliderMaxValuePower2Minus1 = Float(pow(2, logSliderMaxValue) - 1)
-
     @IBOutlet weak var controlsView: View!
     @IBOutlet weak var depthValueLabel: Label!
     @IBOutlet weak var rateValueLabel: Label!
@@ -31,7 +27,9 @@ import os
     @IBOutlet weak var feedbackControl: Knob!
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
+    @IBOutlet weak var negativeFeedbackControl: Switch!
 
+    // Alternative controls for constrained width layout
     @IBOutlet weak var altDepthControl: Knob!
     @IBOutlet weak var altDepthValueLabel: Label!
     @IBOutlet weak var altDepthTapEdit: View!
@@ -53,7 +51,7 @@ import os
     @IBOutlet weak var editingBackground: UIView!
     #endif
 
-    var controls = [FilterParameterAddress : [KnobController]]()
+    var controls = [FilterParameterAddress : [AUParameterControl]]()
 
     public var audioUnit: FilterAudioUnit? {
         didSet {
@@ -120,12 +118,12 @@ import os
 
     @IBAction public func depthChanged(knob: Knob) {
         for control in controls[.depth] ?? [] {
-            if knob == control.knob {
-                control.knobChanged()
+            if knob == control.control {
+                control.controlChanged()
             }
         }
         for control in controls[.depth] ?? [] {
-            if knob != control.knob {
+            if knob != control.control {
                 control.parameterChanged()
             }
         }
@@ -133,31 +131,35 @@ import os
 
     @IBAction public func rateChanged(knob: Knob) {
         for control in controls[.rate] ?? [] {
-            if knob == control.knob {
-                control.knobChanged()
+            if knob == control.control {
+                control.controlChanged()
             }
         }
         for control in controls[.rate] ?? [] {
-            if knob != control.knob {
+            if knob != control.control {
                 control.parameterChanged()
             }
         }
     }
 
     @IBAction public func delayChanged(_: Knob) {
-        (controls[.delay] ?? []).forEach { $0.knobChanged() }
+        (controls[.delay] ?? []).forEach { $0.controlChanged() }
     }
 
     @IBAction public func feedbackChanged(_: Knob) {
-        (controls[.feedback] ?? []).forEach { $0.knobChanged() }
+        (controls[.feedback] ?? []).forEach { $0.controlChanged() }
     }
 
     @IBAction public func dryMixChanged(_: Knob) {
-        (controls[.dryMix] ?? []).forEach { $0.knobChanged() }
+        (controls[.dryMix] ?? []).forEach { $0.controlChanged() }
     }
 
     @IBAction public func wetMixChanged(_: Knob) {
-        (controls[.wetMix] ?? []).forEach { $0.knobChanged() }
+        (controls[.wetMix] ?? []).forEach { $0.controlChanged() }
+    }
+
+    @IBAction public func negativeFeedbackChanged(_: Switch) {
+        (controls[.negativeFeedback] ?? []).forEach { $0.controlChanged() }
     }
 
     #if os(macOS)
@@ -242,6 +244,9 @@ extension FilterViewController {
         controls[.wetMix] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
                                             formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
                                             label:  wetMixValueLabel, logValues: false)]
+        controls[.negativeFeedback] = [SwitchController(parameterObserverToken: parameterObserverToken,
+                                                        parameter: params[.negativeFeedback],
+                                                        control: negativeFeedbackControl)]
     }
 
     private func updateDisplay() {

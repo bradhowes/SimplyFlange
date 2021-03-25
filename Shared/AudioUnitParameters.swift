@@ -13,6 +13,7 @@ import os
     case feedback
     case dryMix
     case wetMix
+    case negativeFeedback
 }
 
 private extension Array where Element == AUParameter {
@@ -40,7 +41,9 @@ public final class AudioUnitParameters: NSObject {
         AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: .dryMix,
                                         min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: .wetMix,
-                                        min: 0.0, max: 100.0, unit: .percent)
+                                        min: 0.0, max: 100.0, unit: .percent),
+        AUParameterTree.createParameter(withIdentifier: "-feedback", name: "-Feedback", address: .negativeFeedback,
+                                        min: 0.0, max: 1.0, unit: .boolean)
     ]
 
     /// AUParameterTree created with the parameter definitions for the audio unit
@@ -52,6 +55,7 @@ public final class AudioUnitParameters: NSObject {
     public var feedback: AUParameter { parameters[.feedback] }
     public var dryMix: AUParameter { parameters[.dryMix] }
     public var wetMix: AUParameter { parameters[.wetMix] }
+    public var negativeFeedback: AUParameter { parameters[.negativeFeedback] }
 
     /**
      Create a new AUParameterTree for the defined filter parameters.
@@ -114,6 +118,7 @@ extension AudioUnitParameters {
         self.feedback.value = preset.feedback
         self.dryMix.value = preset.dryMix
         self.wetMix.value = preset.wetMix
+        self.negativeFeedback.value = preset.negativeFeedback
     }
 }
 
@@ -123,7 +128,7 @@ extension AudioUnitParameters {
         case .depth, .feedback: return "%.2f"
         case .rate: return "%.2f"
         case .delay: return "%.2f"
-        case .dryMix, .wetMix: return "%.0f"
+        case .dryMix, .wetMix, .negativeFeedback: return "%.0f"
         default: return "?"
         }
     }

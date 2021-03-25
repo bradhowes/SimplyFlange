@@ -10,4 +10,5 @@ public struct FilterPreset {
     let feedback: AUValue
     let dryMix: AUValue
     let wetMix: AUValue
+    let negativeFeedback: AUValue
 }

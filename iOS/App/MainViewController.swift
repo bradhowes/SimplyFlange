@@ -7,7 +7,7 @@ final class MainViewController: UIViewController {
 
     private let audioUnitManager = AudioUnitManager(interfaceName: "MainInterface")
 
-    @IBOutlet weak var reviewButton: UIButton!
+    @IBOutlet weak var reviewButton: UILabel!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var bypassButton: UIButton!
     @IBOutlet weak var containerView: UIView!
@@ -20,13 +20,14 @@ final class MainViewController: UIViewController {
         guard let delegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
         delegate.setMainViewController(self)
 
-        let version = Bundle.main.releaseVersionNumber
-        reviewButton.setTitle(version, for: .normal)
-
         audioUnitManager.delegate = self
 
         presetSelection.setTitleTextAttributes([.foregroundColor : UIColor.white], for: .normal)
         presetSelection.setTitleTextAttributes([.foregroundColor : UIColor.black], for: .selected)
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(reviewApp(_:)))
+        reviewButton.isUserInteractionEnabled = true
+        reviewButton.addGestureRecognizer(tap)
     }
 
     override func viewDidAppear(_ animated: Bool) {

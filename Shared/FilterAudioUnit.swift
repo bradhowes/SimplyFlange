@@ -35,6 +35,12 @@ public final class FilterAudioUnit: AUAudioUnit {
         set { fatalError("attempted to set new parameterTree") }
     }
 
+    private var factoryPresetValues: [(name: String, preset: FilterPreset)] { parameterDefinitions.factoryPresetValues };
+
+    private lazy var _factoryPresets = factoryPresetValues.enumerated().map {
+        AUAudioUnitPreset(number: $0, name: $1.name)
+    }
+
     /// Factory presets for the filter
     override public var factoryPresets: [AUAudioUnitPreset] { _factoryPresets }
     /// Announce support for user presets as well
@@ -123,18 +129,8 @@ public final class FilterAudioUnit: AUAudioUnit {
     private let kernel = SimplyFlangeKernelAdapter(Bundle.main.auBaseName,
                                                    maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
 
-    private let factoryPresetValues:[(name: String, preset: FilterPreset)] = [
-        ("Flangie", FilterPreset(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dryMix: 50, wetMix: 50, negativeFeedback: 0)),
-        ("Sweeper", FilterPreset(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dryMix: 50, wetMix: 50, negativeFeedback: 0)),
-        ("Lord Tremolo", FilterPreset(depth: 100, rate: 8.6, delay: 0.07, feedback: 90, dryMix: 0, wetMix: 100, negativeFeedback: 0))
-    ]
-
     private var _currentPreset: AUAudioUnitPreset? {
         didSet { os_log(.debug, log: log, "* _currentPreset name: %{public}s", _currentPreset.descriptionOrNil) }
-    }
-
-    private lazy var _factoryPresets = factoryPresetValues.enumerated().map {
-        AUAudioUnitPreset(number: $0, name: $1.name)
     }
 
     private var inputBus: AUAudioUnitBus

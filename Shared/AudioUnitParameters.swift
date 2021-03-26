@@ -14,6 +14,7 @@ import os
     case dryMix
     case wetMix
     case negativeFeedback
+    case odd90
 }
 
 private extension Array where Element == AUParameter {
@@ -43,8 +44,26 @@ public final class AudioUnitParameters: NSObject {
         AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: .wetMix,
                                         min: 0.0, max: 100.0, unit: .percent),
         AUParameterTree.createParameter(withIdentifier: "-feedback", name: "-Feedback", address: .negativeFeedback,
-                                        min: 0.0, max: 1.0, unit: .boolean)
+                                        min: 0.0, max: 1.0, unit: .boolean),
+        AUParameterTree.createParameter(withIdentifier: "odd90", name: "odd90", address: .odd90, min: 0.0, max: 1.0,
+                                        unit: .boolean)
     ]
+
+    public let factoryPresetValues: [(name: String, preset: FilterPreset)] = [
+        ("Flangie", FilterPreset(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dryMix: 50, wetMix: 50,
+                                 negativeFeedback: 0, odd90: 0)),
+        ("Sweeper", FilterPreset(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dryMix: 50, wetMix: 50,
+                                 negativeFeedback: 0, odd90: 0)),
+        ("Chorious", FilterPreset(depth: 64, rate: 1.8, delay: 3.23, feedback: 0, dryMix: 50, wetMix: 50,
+                                      negativeFeedback: 0, odd90:1)),
+        ("Lord Tremolo", FilterPreset(depth: 100, rate: 8.6, delay: 0.07, feedback: 90, dryMix: 0, wetMix: 100,
+                                      negativeFeedback: 0, odd90:0)),
+        ("Wide Flangie", FilterPreset(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dryMix: 50, wetMix: 50,
+                                      negativeFeedback: 0, odd90: 1)),
+        ("Wide Sweeper", FilterPreset(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dryMix: 50, wetMix: 50,
+                                      negativeFeedback: 0, odd90: 1)),
+    ]
+
 
     /// AUParameterTree created with the parameter definitions for the audio unit
     public let parameterTree: AUParameterTree
@@ -56,6 +75,7 @@ public final class AudioUnitParameters: NSObject {
     public var dryMix: AUParameter { parameters[.dryMix] }
     public var wetMix: AUParameter { parameters[.wetMix] }
     public var negativeFeedback: AUParameter { parameters[.negativeFeedback] }
+    public var odd90: AUParameter { parameters[.odd90] }
 
     /**
      Create a new AUParameterTree for the defined filter parameters.
@@ -119,6 +139,7 @@ extension AudioUnitParameters {
         self.dryMix.value = preset.dryMix
         self.wetMix.value = preset.wetMix
         self.negativeFeedback.value = preset.negativeFeedback
+        self.odd90.value = preset.odd90
     }
 }
 
@@ -128,7 +149,7 @@ extension AudioUnitParameters {
         case .depth, .feedback: return "%.2f"
         case .rate: return "%.2f"
         case .delay: return "%.2f"
-        case .dryMix, .wetMix, .negativeFeedback: return "%.0f"
+        case .dryMix, .wetMix, .negativeFeedback, .odd90: return "%.0f"
         default: return "?"
         }
     }

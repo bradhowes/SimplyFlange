@@ -28,6 +28,7 @@ import os
     @IBOutlet weak var dryMixControl: Knob!
     @IBOutlet weak var wetMixControl: Knob!
     @IBOutlet weak var negativeFeedbackControl: Switch!
+    @IBOutlet weak var odd90Control: Switch!
 
     // Alternative controls for constrained width layout
     @IBOutlet weak var altDepthControl: Knob!
@@ -162,6 +163,10 @@ import os
         (controls[.negativeFeedback] ?? []).forEach { $0.controlChanged() }
     }
 
+    @IBAction public func odd90Changed(_: Switch) {
+        (controls[.odd90] ?? []).forEach { $0.controlChanged() }
+    }
+
     #if os(macOS)
     override public func mouseDown(with event: NSEvent) {
         // Allow for clicks on the common NSView to end editing of values
@@ -247,6 +252,9 @@ extension FilterViewController {
         controls[.negativeFeedback] = [SwitchController(parameterObserverToken: parameterObserverToken,
                                                         parameter: params[.negativeFeedback],
                                                         control: negativeFeedbackControl)]
+        controls[.odd90] = [SwitchController(parameterObserverToken: parameterObserverToken,
+                                                        parameter: params[.odd90],
+                                                        control: odd90Control)]
     }
 
     private func updateDisplay() {

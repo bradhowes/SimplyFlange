@@ -38,13 +38,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-pC-dYn" userLabel="Controls">
-                                <rect key="frame" x="65.5" y="136.5" width="244" height="394"/>
+                                <rect key="frame" x="42" y="136.5" width="291" height="394"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nB9-xP-QOJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="244" height="394"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="291" height="394"/>
                                         <subviews>
                                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Th3-tm-Tp2" userLabel="Row 1">
-                                                <rect key="frame" x="2" y="0.0" width="240" height="142"/>
+                                                <rect key="frame" x="25.5" y="0.0" width="240" height="142"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zc-Wu-SkW" userLabel="Depth">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
@@ -126,7 +126,7 @@
                                                 <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-Eg-mZb" userLabel="Row 2">
-                                                <rect key="frame" x="0.0" y="150" width="244" height="142"/>
+                                                <rect key="frame" x="23.5" y="150" width="244" height="142"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-Iz-NtY" userLabel="Depth">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
@@ -285,13 +285,32 @@
                                                 </subviews>
                                             </stackView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vUC-u4-A8f" userLabel="Mixes">
-                                                <rect key="frame" x="8.5" y="300" width="227.5" height="94"/>
+                                                <rect key="frame" x="0.0" y="300" width="291" height="94"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="S15-Af-nsy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="227.5" height="94"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="291" height="94"/>
                                                         <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="90V-qZ-kNG" userLabel="Odd 90°">
+                                                                <rect key="frame" x="0.0" y="21.5" width="59.5" height="51"/>
+                                                                <subviews>
+                                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olm-sN-GtT" userLabel="Odd 90°">
+                                                                        <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
+                                                                        <color key="onTintColor" name="Progress"/>
+                                                                        <color key="thumbTintColor" name="Labels"/>
+                                                                        <connections>
+                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="05y-H7-UV7"/>
+                                                                        </connections>
+                                                                    </switch>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odd 90°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pj-Eh-BZS">
+                                                                        <rect key="frame" x="4" y="35" width="52" height="16"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                                        <color key="textColor" name="Labels"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                            </stackView>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLB-i6-tzJ" userLabel="Dry">
-                                                                <rect key="frame" x="0.0" y="0.0" width="80" height="94"/>
+                                                                <rect key="frame" x="63.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="SimplyFlangeFramework">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -305,7 +324,7 @@
                                                                         </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-20-gAu" userLabel="Value">
-                                                                        <rect key="frame" x="25.5" y="72" width="28.5" height="16"/>
+                                                                        <rect key="frame" x="26" y="72" width="28.5" height="16"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <color key="textColor" name="Labels"/>
@@ -329,7 +348,7 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-pE-hNg" userLabel="Wet">
-                                                                <rect key="frame" x="84" y="0.0" width="80" height="94"/>
+                                                                <rect key="frame" x="147.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="SimplyFlangeFramework">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
@@ -343,7 +362,7 @@
                                                                         </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-GK-jEJ" userLabel="Value">
-                                                                        <rect key="frame" x="25.5" y="72" width="28.5" height="16"/>
+                                                                        <rect key="frame" x="26" y="72" width="28.5" height="16"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                         <color key="textColor" name="Labels"/>
@@ -368,10 +387,10 @@
                                                                 </constraints>
                                                             </view>
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lAa-l2-n91" userLabel="Neg Feedback">
-                                                                <rect key="frame" x="168" y="13.5" width="59.5" height="67"/>
+                                                                <rect key="frame" x="231.5" y="13.5" width="59.5" height="67"/>
                                                                 <subviews>
                                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-h7-UiY" userLabel="Neg Feedback">
-                                                                        <rect key="frame" x="5" y="0.0" width="51" height="31"/>
+                                                                        <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
@@ -382,7 +401,7 @@
                                                                         <rect key="frame" x="0.0" y="35" width="59.5" height="32"/>
                                                                         <subviews>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Negative" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsL-Pr-7EI" userLabel="Neg">
-                                                                                <rect key="frame" x="2.5" y="0.0" width="54" height="16"/>
+                                                                                <rect key="frame" x="3" y="0.0" width="54" height="16"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                 <color key="textColor" name="Labels"/>
                                                                                 <nil key="highlightedColor"/>
@@ -501,6 +520,7 @@
                         <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="V6V-aC-Bxf"/>
                         <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="3fl-W9-5HI"/>
                         <outlet property="negativeFeedbackControl" destination="fvV-h7-UiY" id="BoV-76-him"/>
+                        <outlet property="odd90Control" destination="olm-sN-GtT" id="17o-aU-iox"/>
                         <outlet property="rateControl" destination="hF3-lq-xlE" id="Os9-bs-hcc"/>
                         <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="J24-33-9kh"/>
                         <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="R7f-vX-qPY"/>

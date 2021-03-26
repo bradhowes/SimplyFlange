@@ -48,7 +48,7 @@ public:
         double tmp;
         switch (address) {
             case FilterParameterAddressDepth:
-                tmp = value / 200.0; // !!!
+                tmp = value / 100.0;
                 if (tmp == depth_) return;
                 // os_log_with_type(log_, OS_LOG_TYPE_INFO, "depth - %f", tmp);
                 depth_ = tmp;
@@ -84,20 +84,23 @@ public:
                 break;
             case FilterParameterAddressNegativeFeedback:
                 negativeFeedback_ = value > 0 ? true : false;
-
+                break;
+            case FilterParameterAddressOdd90:
+                odd90_ = value > 0 ? true : false;
                 break;
         }
     }
 
     AUValue getParameterValue(AUParameterAddress address) const {
         switch (address) {
-            case FilterParameterAddressDepth: return depth_ * 200.0; // !!!
+            case FilterParameterAddressDepth: return depth_ * 100.0;
             case FilterParameterAddressRate: return rate_;
             case FilterParameterAddressDelay: return delay_;
             case FilterParameterAddressFeedback: return feedback_ * 100.0;
             case FilterParameterAddressDryMix: return dryMix_ * 100.0;
             case FilterParameterAddressWetMix: return wetMix_ * 100.0;
             case FilterParameterAddressNegativeFeedback: return negativeFeedback_ ? 1.0 : 0.0;
+            case FilterParameterAddressOdd90: return odd90_ ? 1.0 : 0.0;
         }
         return 0.0;
     }
@@ -107,15 +110,22 @@ private:
     void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
 
     void doRendering(std::vector<AUValue const*> ins, std::vector<AUValue*> outs, AUAudioFrameCount frameCount) {
+        auto depth = depth_ / 2.0;
         auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
-        for (int frame = 0; frame < frameCount; ++frame) {
-            auto lfoValue = lfo_.valueAndIncrement();
-            for (int channel = 0; channel < ins.size(); ++channel) {
-                AUValue inputSample = ins[channel][frame];
-                double delayPos = lfoValue * depth_ * delayInSamples_ + delayInSamples_;
-                AUValue delayedSample = delayLines_[channel].read(delayPos);
-                delayLines_[channel].write(inputSample + signedFeedback * delayedSample);
-                outs[channel][frame] = wetMix_ * delayedSample + dryMix_ * inputSample;
+        auto lfoState = lfo_.saveState();
+        for (int channel = 0; channel < ins.size(); ++channel) {
+            auto input{ins[channel]};
+            auto output{outs[channel]};
+            auto& delay{delayLines_[channel]};
+            if (channel > 0) lfo_.restoreState(lfoState);
+            for (int frame = 0; frame < frameCount; ++frame) {
+                auto inputSample = *input++;
+                auto lfoValue = (odd90_ && channel & 1) ? lfo_.quadPhaseValue() : lfo_.value();
+                auto delayPos = lfoValue * depth * delayInSamples_ + delayInSamples_;
+                lfo_.increment();
+                auto delayedSample = delay.read(delayPos);
+                delay.write(inputSample + signedFeedback * delayedSample);
+                *output++ = wetMix_ * delayedSample + dryMix_ * inputSample;
             }
         }
     }
@@ -129,6 +139,7 @@ private:
     double dryMix_;
     double wetMix_;
     bool negativeFeedback_;
+    bool odd90_;
 
     double maxDelayMilliseconds_;
     double samplesPerMillisecond_;

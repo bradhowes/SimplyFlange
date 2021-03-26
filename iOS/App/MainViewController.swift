@@ -12,6 +12,7 @@ final class MainViewController: UIViewController {
     @IBOutlet weak var bypassButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var presetSelection: UISegmentedControl!
+    @IBOutlet weak var presetName: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +76,9 @@ If you delete this app from your device, the AUv3 component will no longer be av
     }
 
     @IBAction func usePreset(_ sender: UISegmentedControl? = nil) {
-        audioUnitManager.audioUnit?.currentPreset =
-            audioUnitManager.audioUnit?.factoryPresets[presetSelection.selectedSegmentIndex]
+        let preset = audioUnitManager.audioUnit?.factoryPresets[presetSelection.selectedSegmentIndex]
+        audioUnitManager.audioUnit?.currentPreset = preset
+        presetName.text = preset?.name
     }
 
     @IBAction private func reviewApp(_ sender: UIButton) {
@@ -102,5 +104,14 @@ extension MainViewController {
         addChild(viewController)
         view.setNeedsLayout()
         containerView.setNeedsLayout()
+
+        let presetCount = audioUnitManager.audioUnit?.parameterDefinitions.factoryPresetValues.count ?? 0
+        while presetSelection.numberOfSegments < presetCount {
+            let index = presetSelection.numberOfSegments + 1
+            presetSelection.insertSegment(withTitle: "\(index)", at: index - 1, animated: false)
+        }
+        while presetSelection.numberOfSegments > presetCount {
+            presetSelection.removeSegment(at: presetSelection.numberOfSegments - 1, animated: false)
+        }
     }
 }

@@ -65,42 +65,27 @@ public:
     void stopProcessing() { super::stopProcessing(); }
 
     void setParameterValue(AUParameterAddress address, AUValue value) {
-        double tmp;
         switch (address) {
             case FilterParameterAddressDepth:
-                tmp = value / 100.0;
-                if (tmp == depth_) return;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "depth - %f", tmp);
-                depth_ = tmp;
+                depth_ = value / 100.0;
                 break;
             case FilterParameterAddressRate:
                 if (value == rate_) return;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "rate - %f", value);
                 rate_ = value;
                 lfo_.setFrequency(rate_);
                 break;
             case FilterParameterAddressDelay:
-                if (value == delay_) return;
                 delay_ = value;
                 delayInSamples_ = samplesPerMillisecond_ * value;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "delay - %f  delayInSamples: %f", value, delayInSamples_);
                 break;
             case FilterParameterAddressFeedback:
-                tmp = value / 100.0;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "feedback - %f", tmp);
-                feedback_ = tmp;
+                feedback_ = value / 100.0;
                 break;
             case FilterParameterAddressDryMix:
-                tmp = value / 100.0;
-                if (tmp == dryMix_) return;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "dryMix - %f", tmp);
-                dryMix_ = tmp;
+                dryMix_ = value / 100.0;
                 break;
             case FilterParameterAddressWetMix:
-                tmp = value / 100.0;
-                if (tmp == wetMix_) return;
-                // os_log_with_type(log_, OS_LOG_TYPE_INFO, "wetMix - %f", tmp);
-                wetMix_ = tmp;
+                wetMix_ = value / 100.0;
                 break;
             case FilterParameterAddressNegativeFeedback:
                 negativeFeedback_ = value > 0 ? true : false;
@@ -132,7 +117,6 @@ private:
     void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount)
     {
         auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
-
         for (int channel = 0; channel < ins.size(); ++channel) {
             auto input{ins[channel]};
             auto output{outs[channel]};

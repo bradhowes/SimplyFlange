@@ -7,6 +7,8 @@
 #import <AudioUnit/AudioUnit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "BufferFacet.h"
+
 /**
  Maintains a buffer of PCM samples which is used to save samples from an upstream node.
  */
@@ -23,6 +25,7 @@ struct InputBuffer {
         maxFramesToRender_ = maxFrames;
         buffer_ = [[AVAudioPCMBuffer alloc] initWithPCMFormat: format frameCapacity: maxFrames];
         mutableAudioBufferList_ = buffer_.mutableAudioBufferList;
+        bufferFacet_.setBufferList(mutableAudioBufferList_);
     }
 
     /**
@@ -32,6 +35,7 @@ struct InputBuffer {
     {
         buffer_ = nullptr;
         mutableAudioBufferList_ = nullptr;
+        bufferFacet_.release();
     }
 
     /**
@@ -48,7 +52,7 @@ struct InputBuffer {
                                 AURenderPullInputBlock pullInputBlock)
     {
         if (pullInputBlock == nullptr) return kAudioUnitErr_NoConnection;
-        prepareInputBufferList(frameCount);
+        prepareBufferList(frameCount);
         return pullInputBlock(actionFlags, timestamp, frameCount, inputBusNumber, mutableAudioBufferList_);
     }
 
@@ -57,19 +61,25 @@ struct InputBuffer {
 
      @param frameCount the number of frames to expect to place in the buffer
      */
-    void prepareInputBufferList(AVAudioFrameCount frameCount)
+    void prepareBufferList(AVAudioFrameCount frameCount)
     {
         UInt32 byteSize = frameCount * sizeof(AUValue);
-        for (UInt32 i = 0; i < mutableAudioBufferList_->mNumberBuffers; ++i) {
-            mutableAudioBufferList_->mBuffers[i].mDataByteSize = byteSize;
+        for (auto channel = 0; channel < mutableAudioBufferList_->mNumberBuffers; ++channel) {
+            mutableAudioBufferList_->mBuffers[channel].mDataByteSize = byteSize;
         }
     }
 
     AudioBufferList* mutableAudioBufferList() const { return mutableAudioBufferList_; }
+
+    BufferFacet& bufferFacet() { return bufferFacet_; }
+
+    size_t channelCount() const { return bufferFacet_.channelCount(); }
+    AUValue* operator[](size_t index) const { return bufferFacet_[index]; }
 
 private:
     os_log_t logger_ = os_log_create("SimplyFlange", "BufferedInputBus");
     AUAudioFrameCount maxFramesToRender_ = 0;
     AVAudioPCMBuffer* buffer_ = nullptr;
     AudioBufferList* mutableAudioBufferList_ = nullptr;
+    BufferFacet bufferFacet_;
 };

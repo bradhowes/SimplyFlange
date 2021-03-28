@@ -65,6 +65,8 @@
 		BD7B1292260D42220087E8F0 /* AUParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */; };
 		BD7B12AA260D45E60087E8F0 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* SwitchController.swift */; };
 		BD7B12B2260D45E70087E8F0 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* SwitchController.swift */; };
+		BD7B130E261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
+		BD7B130F261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
@@ -294,6 +296,7 @@
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUParameterControl.swift; sourceTree = "<group>"; };
 		BD7B129A260D45E00087E8F0 /* SwitchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchController.swift; sourceTree = "<group>"; };
+		BD7B130D261088DC0087E8F0 /* BufferFacet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferFacet.h; sourceTree = "<group>"; };
 		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSwiftTestTemplate.swift; sourceTree = "<group>"; };
@@ -512,6 +515,7 @@
 				C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */,
 				BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */,
 				C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */,
+				BD7B130D261088DC0087E8F0 /* BufferFacet.h */,
 				BD72F2E425D1D4CE0031E422 /* InputBuffer.h */,
 				C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */,
 			);
@@ -739,6 +743,7 @@
 				BD24B3C325F0E12400338362 /* Biquad.h in Headers */,
 				C4BEE7EE22236F24001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F022236F24001E6B6D /* KernelEventProcessor.h in Headers */,
+				BD7B130E261088DC0087E8F0 /* BufferFacet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -756,6 +761,7 @@
 				BD24B3C425F0E12400338362 /* Biquad.h in Headers */,
 				C4BEE7F222236F27001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */,
+				BD7B130F261088DC0087E8F0 /* BufferFacet.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1632,7 +1638,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1702,7 +1708,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1774,7 +1780,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
@@ -1857,7 +1863,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1927,7 +1933,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1999,7 +2005,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2166,7 +2172,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2242,7 +2248,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2328,7 +2334,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -2409,7 +2415,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -2486,7 +2492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = "";
@@ -2573,7 +2579,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20210326153620;
+				CURRENT_PROJECT_VERSION = 20210326172426;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;

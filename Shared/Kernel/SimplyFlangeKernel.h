@@ -28,6 +28,7 @@ public:
     void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender) {
         super::startProcessing(format, maxFramesToRender);
         initialize(format.channelCount, format.sampleRate);
+        delayPos_.allocateBuffers(format, maxFramesToRender);
     }
 
     void initialize(int channelCount, double sampleRate) {
@@ -40,6 +41,25 @@ public:
         delayLines_.clear();
         for (int index = 0; index < channelCount; ++index)
             delayLines_.emplace_back(size);
+    }
+
+    void prepareToRender(AUAudioFrameCount frameCount) {
+
+        // Generate all delay position values necessary to render `frameCount` samples.
+        auto scale = depth_ / 2.0 * delayInSamples_;
+        auto state = lfo_.saveState();
+        auto buffer = delayPos_[0];
+        for (auto index = 0; index < frameCount; ++index) {
+            *buffer++ = lfo_.valueAndIncrement() * scale + delayInSamples_;
+        }
+
+        if (odd90_) {
+            lfo_.restoreState(state);
+            buffer = delayPos_[1];
+            for (auto index = 0; index < frameCount; ++index) {
+                *buffer++ = lfo_.quadPhaseValueAndIncrement() * scale + delayInSamples_;
+            }
+        }
     }
 
     void stopProcessing() { super::stopProcessing(); }
@@ -109,21 +129,18 @@ private:
 
     void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
 
-    void doRendering(std::vector<AUValue const*> ins, std::vector<AUValue*> outs, AUAudioFrameCount frameCount) {
-        auto depth = depth_ / 2.0;
+    void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount)
+    {
         auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
-        auto lfoState = lfo_.saveState();
+
         for (int channel = 0; channel < ins.size(); ++channel) {
             auto input{ins[channel]};
             auto output{outs[channel]};
+            auto delayPos{delayPos_[(odd90_ && (channel & 1)) ? 1 : 0]};
             auto& delay{delayLines_[channel]};
-            if (channel > 0) lfo_.restoreState(lfoState);
             for (int frame = 0; frame < frameCount; ++frame) {
                 auto inputSample = *input++;
-                auto lfoValue = (odd90_ && channel & 1) ? lfo_.quadPhaseValue() : lfo_.value();
-                auto delayPos = lfoValue * depth * delayInSamples_ + delayInSamples_;
-                lfo_.increment();
-                auto delayedSample = delay.read(delayPos);
+                auto delayedSample = delay.read(*delayPos++);
                 delay.write(inputSample + signedFeedback * delayedSample);
                 *output++ = wetMix_ * delayedSample + dryMix_ * inputSample;
             }
@@ -144,6 +161,8 @@ private:
     double maxDelayMilliseconds_;
     double samplesPerMillisecond_;
     double delayInSamples_;
+
     std::vector<DelayBuffer<AUValue>> delayLines_;
     LFO<double> lfo_;
+    InputBuffer delayPos_;
 };

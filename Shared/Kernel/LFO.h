@@ -116,6 +116,13 @@ public:
         return valueGenerator_(counter);
     }
 
+    T quadPhaseValueAndIncrement() {
+        auto counter = moduloCounter_;
+        quadPhaseCounter_ = incrementModuloCounter(counter, 0.25);
+        moduloCounter_ = incrementModuloCounter(counter, phaseIncrement_);
+        return valueGenerator_(quadPhaseCounter_);
+    }
+
     /**
      Obtain the current value of the oscillator.
 

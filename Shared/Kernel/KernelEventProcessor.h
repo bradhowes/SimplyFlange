@@ -77,16 +77,8 @@ public:
             return status;
         }
 
-        // If performing in-place operation, set output to use input buffers
-        auto inPlace = output->mBuffers[0].mData == nullptr;
-        if (inPlace) {
-            AudioBufferList* input = inputBuffer_.mutableAudioBufferList();
-            for (auto i = 0; i < output->mNumberBuffers; ++i) {
-                output->mBuffers[i].mData = input->mBuffers[i].mData;
-            }
-        }
-
-        setBuffers(inputBuffer_.mutableAudioBufferList(), output);
+        setOutputBuffer(output, frameCount);
+        injected()->prepareToRender(frameCount);
         render(timestamp, frameCount, realtimeEventListHead);
         clearBuffers();
 
@@ -121,25 +113,15 @@ private:
         }
     }
 
-    void setBuffers(AudioBufferList const* inputs, AudioBufferList* outputs)
+    void setOutputBuffer(AudioBufferList* outputs, AUAudioFrameCount frameCount)
     {
-        if (inputs == inputs_ && outputs_ == outputs) return;
-        inputs_ = inputs;
-        outputs_ = outputs;
-        ins_.clear();
-        outs_.clear();
-        for (size_t channel = 0; channel < inputs->mNumberBuffers; ++channel) {
-            ins_.emplace_back(static_cast<AUValue*>(inputs_->mBuffers[channel].mData));
-            outs_.emplace_back(static_cast<AUValue*>(outputs_->mBuffers[channel].mData));
-        }
+        outputs_.setBufferList(outputs, inputBuffer_.mutableAudioBufferList());
+        outputs_.setFrameCount(frameCount);
     }
 
     void clearBuffers()
     {
-        inputs_ = nullptr;
-        outputs_ = nullptr;
-        ins_.clear();
-        outs_.clear();
+        outputs_.release();
     }
 
     AURenderEvent const* renderEventsUntil(AUEventSampleTime now, AURenderEvent const* event)
@@ -165,37 +147,22 @@ private:
 
     void renderFrames(AUAudioFrameCount frameCount, AUAudioFrameCount processedFrameCount)
     {
-        if (isBypassed()) {
-            for (size_t channel = 0; channel < inputs_->mNumberBuffers; ++channel) {
-                if (inputs_->mBuffers[channel].mData == outputs_->mBuffers[channel].mData) {
-                    continue;
-                }
+        auto& inputs{inputBuffer_.bufferFacet()};
 
-                auto in = static_cast<AUValue*>(inputs_->mBuffers[channel].mData) + processedFrameCount;
-                auto out = static_cast<AUValue*>(outputs_->mBuffers[channel].mData) + processedFrameCount;
-                memcpy(out, in, frameCount * sizeof(AUValue));
-            }
+        if (isBypassed()) {
+            inputs.copyInto(outputs_, processedFrameCount, frameCount);
             return;
         }
 
-        for (size_t channel = 0; channel < inputs_->mNumberBuffers; ++channel) {
-            ins_[channel] = static_cast<AUValue*>(inputs_->mBuffers[channel].mData) + processedFrameCount;
-            outs_[channel] = static_cast<AUValue*>(outputs_->mBuffers[channel].mData) + processedFrameCount;
-            outputs_->mBuffers[channel].mDataByteSize = sizeof(AUValue) * (processedFrameCount + frameCount);
-        }
-
-        injected()->doRendering(ins_, outs_, frameCount);
+        inputs.setOffset(processedFrameCount);
+        outputs_.setOffset(processedFrameCount);
+        injected()->doRendering(inputs.V(), outputs_.V(), frameCount);
     }
 
     T* injected() { return static_cast<T*>(this); }
 
     InputBuffer inputBuffer_;
-
-    AudioBufferList const* inputs_ = nullptr;
-    AudioBufferList* outputs_ = nullptr;
-
-    std::vector<AUValue const*> ins_;
-    std::vector<AUValue*> outs_;
+    BufferFacet outputs_;
 
     bool bypassed_ = false;
 };

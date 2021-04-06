@@ -31,18 +31,6 @@ public:
         delayPos_.allocateBuffers(format, maxFramesToRender);
     }
 
-    void initialize(int channelCount, double sampleRate) {
-        samplesPerMillisecond_ = sampleRate / 1000.0;
-        delayInSamples_ = delay_ * samplesPerMillisecond_;
-        lfo_.initialize(sampleRate, rate_);
-
-        auto size = maxDelayMilliseconds_ * samplesPerMillisecond_ + 1;
-        os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f delayInSamples: %f", size, delayInSamples_);
-        delayLines_.clear();
-        for (int index = 0; index < channelCount; ++index)
-            delayLines_.emplace_back(size);
-    }
-
     void prepareToRender(AUAudioFrameCount frameCount) {
 
         // Generate all delay position values necessary to render `frameCount` samples.
@@ -61,8 +49,6 @@ public:
             }
         }
     }
-
-    void stopProcessing() { super::stopProcessing(); }
 
     void setParameterValue(AUParameterAddress address, AUValue value) {
         switch (address) {
@@ -111,6 +97,19 @@ public:
     }
 
 private:
+
+    void initialize(int channelCount, double sampleRate) {
+        samplesPerMillisecond_ = sampleRate / 1000.0;
+        delayInSamples_ = delay_ * samplesPerMillisecond_;
+        lfo_.initialize(sampleRate, rate_);
+
+        auto size = maxDelayMilliseconds_ * samplesPerMillisecond_ + 1;
+        os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f delayInSamples: %f", size, delayInSamples_);
+        delayLines_.clear();
+        for (auto index = 0; index < channelCount; ++index) {
+            delayLines_.emplace_back(size);
+        }
+    }
 
     void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
 

@@ -13,16 +13,10 @@
 struct BufferFacet {
     BufferFacet() : bufferList_{nullptr}, pointers_{} {}
 
-    void setFrameCount(AUAudioFrameCount frameCount) {
-        UInt32 byteSize = frameCount * sizeof(AUValue);
-        for (auto channel = 0; channel < bufferList_->mNumberBuffers; ++channel) {
-            bufferList_->mBuffers[channel].mDataByteSize = byteSize;
-        }
-    }
-
     void setBufferList(AudioBufferList* bufferList, AudioBufferList* inPlaceSource = nullptr) {
         bufferList_ = bufferList;
         if (bufferList->mBuffers[0].mData == nullptr) {
+            assert(inPlaceSource != nullptr);
             for (auto channel = 0; channel < bufferList->mNumberBuffers; ++channel) {
                 bufferList->mBuffers[channel].mData = inPlaceSource->mBuffers[channel].mData;
             }
@@ -33,6 +27,14 @@ struct BufferFacet {
         pointers_.clear();
         for (auto channel = 0; channel < numBuffers; ++channel) {
             pointers_.push_back(static_cast<AUValue*>(bufferList_->mBuffers[channel].mData));
+        }
+    }
+
+    void setFrameCount(AUAudioFrameCount frameCount) {
+        assert(bufferList_ != nullptr);
+        UInt32 byteSize = frameCount * sizeof(AUValue);
+        for (auto channel = 0; channel < bufferList_->mNumberBuffers; ++channel) {
+            bufferList_->mBuffers[channel].mDataByteSize = byteSize;
         }
     }
 
@@ -62,6 +64,7 @@ struct BufferFacet {
 
     size_t channelCount() const { return pointers_.size(); }
     AUValue* operator[](size_t index) const { return pointers_[index]; }
+
     const std::vector<AUValue*>& V() const { return pointers_; }
 
 private:

@@ -501,15 +501,15 @@
 			isa = PBXGroup;
 			children = (
 				BD578F0D25D2C4720040D83D /* README.md */,
+				BD7B130D261088DC0087E8F0 /* BufferFacet.h */,
 				BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */,
 				BD446BB525E2B741009B7347 /* DSP.h */,
+				BD72F2E425D1D4CE0031E422 /* InputBuffer.h */,
+				C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */,
 				BD446BAB25E2B4C5009B7347 /* LFO.h */,
 				C4BEE7E322236E99001E6B6D /* SimplyFlangeKernel.h */,
 				BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */,
 				C4F004A02239B1E10014E248 /* SimplyFlangeKernelAdapter.mm */,
-				BD7B130D261088DC0087E8F0 /* BufferFacet.h */,
-				BD72F2E425D1D4CE0031E422 /* InputBuffer.h */,
-				C4BEE7E622236E99001E6B6D /* KernelEventProcessor.h */,
 			);
 			path = Kernel;
 			sourceTree = "<group>";

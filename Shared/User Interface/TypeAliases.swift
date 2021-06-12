@@ -21,52 +21,52 @@ public typealias Switch = NSSwitch
 public typealias View = NSView
 
 public extension NSView {
-    func setNeedsDisplay() { self.needsDisplay = true }
-    func setNeedsLayout() { self.needsLayout = true }
-
-    @objc func layoutSubviews() { self.layout() }
-
-    var backgroundColor: NSColor? {
-        get {
-            guard let colorRef = self.layer?.backgroundColor else { return nil }
-            return NSColor(cgColor: colorRef)
-        }
-        set {
-            self.wantsLayer = true
-            self.layer?.backgroundColor = newValue?.cgColor
-        }
+  func setNeedsDisplay() { self.needsDisplay = true }
+  func setNeedsLayout() { self.needsLayout = true }
+  
+  @objc func layoutSubviews() { self.layout() }
+  
+  var backgroundColor: NSColor? {
+    get {
+      guard let colorRef = self.layer?.backgroundColor else { return nil }
+      return NSColor(cgColor: colorRef)
     }
+    set {
+      self.wantsLayer = true
+      self.layer?.backgroundColor = newValue?.cgColor
+    }
+  }
 }
 
 public extension NSTextField {
-    var text: String? {
-        get { self.stringValue }
-        set { self.stringValue = newValue ?? "" }
-    }
+  var text: String? {
+    get { self.stringValue }
+    set { self.stringValue = newValue ?? "" }
+  }
 }
 
 public extension NSSwitch {
-    var isOn: Bool {
-        get { state == .on }
-        set { state = newValue ? .on : .off }
-    }
+  var isOn: Bool {
+    get { state == .on }
+    set { state = newValue ? .on : .off }
+  }
 }
 
 public extension NSSlider {
-    var minimumValue: Float {
-        get { Float(self.minValue) }
-        set { self.minValue = Double(newValue) }
-    }
-
-    var maximumValue: Float {
-        get { Float(self.maxValue) }
-        set { self.maxValue = Double(newValue) }
-    }
-
-    var value: Float {
-        get { self.floatValue }
-        set { self.floatValue = newValue }
-    }
+  var minimumValue: Float {
+    get { Float(self.minValue) }
+    set { self.minValue = Double(newValue) }
+  }
+  
+  var maximumValue: Float {
+    get { Float(self.maxValue) }
+    set { self.maxValue = Double(newValue) }
+  }
+  
+  var value: Float {
+    get { self.floatValue }
+    set { self.floatValue = newValue }
+  }
 }
 
 /**
@@ -74,13 +74,13 @@ public extension NSSlider {
  are notifications from the NSWindow but this seems to be the easiest for AUv3 work.
  */
 final public class FocusAwareTextField: NSTextField {
-
-    public var onFocusChange: (Bool) -> Void = { _ in }
-
-    override public func becomeFirstResponder() -> Bool {
-        onFocusChange(true)
-        return super.becomeFirstResponder()
-    }
+  
+  public var onFocusChange: (Bool) -> Void = { _ in }
+  
+  override public func becomeFirstResponder() -> Bool {
+    onFocusChange(true)
+    return super.becomeFirstResponder()
+  }
 }
 
 #endif

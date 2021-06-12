@@ -4,12 +4,12 @@ import Foundation
 import AudioUnit
 
 public struct FilterPreset {
-    let depth: AUValue
-    let rate: AUValue
-    let delay: AUValue
-    let feedback: AUValue
-    let dryMix: AUValue
-    let wetMix: AUValue
-    let negativeFeedback: AUValue
-    let odd90: AUValue
+  let depth: AUValue
+  let rate: AUValue
+  let delay: AUValue
+  let feedback: AUValue
+  let dryMix: AUValue
+  let wetMix: AUValue
+  let negativeFeedback: AUValue
+  let odd90: AUValue
 }

@@ -27,8 +27,6 @@
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
-		BD24B3DD25F0FA0200338362 /* BiquadTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD24B3CC25F0F9C900338362 /* BiquadTests.mm */; };
-		BD24B3EC25F0FA0400338362 /* BiquadTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD24B3CC25F0F9C900338362 /* BiquadTests.mm */; };
 		BD2FD3ED259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3EE259B5104004A3196 /* AUParameterTree+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */; };
 		BD2FD3F5259B5130004A3196 /* AUParameterAddress+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */; };
@@ -65,8 +63,6 @@
 		BD7B12B2260D45E70087E8F0 /* SwitchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* SwitchController.swift */; };
 		BD7B130E261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
 		BD7B130F261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
-		BD7D898A2674B1CC0042DC38 /* Biquad.h in Headers */ = {isa = PBXBuildFile; fileRef = BD24B3C225F0E12400338362 /* Biquad.h */; };
-		BD7D898B2674B1CD0042DC38 /* Biquad.h in Headers */ = {isa = PBXBuildFile; fileRef = BD24B3C225F0E12400338362 /* Biquad.h */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
@@ -272,8 +268,6 @@
 		BD1D257A25D5AAB000523748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
-		BD24B3C225F0E12400338362 /* Biquad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Biquad.h; sourceTree = "<group>"; };
-		BD24B3CC25F0F9C900338362 /* BiquadTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = BiquadTests.mm; sourceTree = "<group>"; };
 		BD2FD3EC259B5104004A3196 /* AUParameterTree+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterTree+Extensions.swift"; sourceTree = "<group>"; };
 		BD2FD3F4259B512F004A3196 /* AUParameterAddress+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AUParameterAddress+Extensions.swift"; sourceTree = "<group>"; };
 		BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Knob_iOS.swift; sourceTree = "<group>"; };
@@ -498,7 +492,6 @@
 				BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */,
 				BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */,
 				BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */,
-				BD24B3CC25F0F9C900338362 /* BiquadTests.mm */,
 				BD95147924A08BB600D8024C /* Info.plist */,
 			);
 			path = macOSFrameworkTests;
@@ -508,7 +501,6 @@
 			isa = PBXGroup;
 			children = (
 				BD578F0D25D2C4720040D83D /* README.md */,
-				BD24B3C225F0E12400338362 /* Biquad.h */,
 				BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */,
 				BD446BB525E2B741009B7347 /* DSP.h */,
 				BD446BAB25E2B4C5009B7347 /* LFO.h */,
@@ -740,7 +732,6 @@
 				BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE97249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7EF22236F24001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
-				BD7D898B2674B1CD0042DC38 /* Biquad.h in Headers */,
 				C4BEE7EE22236F24001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F022236F24001E6B6D /* KernelEventProcessor.h in Headers */,
 				BD7B130E261088DC0087E8F0 /* BufferFacet.h in Headers */,
@@ -758,7 +749,6 @@
 				BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */,
 				BDB7CE98249F7694009580D5 /* ValueChangeDetector.hpp in Headers */,
 				C4BEE7F322236F27001E6B6D /* RampingValueChangeDetector.hpp in Headers */,
-				BD7D898A2674B1CC0042DC38 /* Biquad.h in Headers */,
 				C4BEE7F222236F27001E6B6D /* SimplyFlangeKernel.h in Headers */,
 				C4BEE7F422236F27001E6B6D /* KernelEventProcessor.h in Headers */,
 				BD7B130F261088DC0087E8F0 /* BufferFacet.h in Headers */,
@@ -1119,7 +1109,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD24B3DD25F0FA0200338362 /* BiquadTests.mm in Sources */,
 				BD446BD025E2BA4C009B7347 /* LFOTests.mm in Sources */,
 				BD1D24CD25D48B8E00523748 /* RampingValueChangeDetectorTests.mm in Sources */,
 				BD1D24D425D48B9600523748 /* LogScaling.swift in Sources */,
@@ -1144,7 +1133,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD24B3EC25F0FA0400338362 /* BiquadTests.mm in Sources */,
 				BD446BD825E2BA4E009B7347 /* LFOTests.mm in Sources */,
 				BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */,
 				BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */,

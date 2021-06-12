@@ -12,12 +12,12 @@
 /**
  Set an AUParameter to a new value
  */
- - (void)set:(nonnull AUParameter *)parameter value:(AUValue)value;
+- (void)set:(nonnull AUParameter *)parameter value:(AUValue)value;
 
 /**
  Get the current value of an AUParameter
  */
- - (AUValue)get:(nonnull AUParameter *)parameter;
+- (AUValue)get:(nonnull AUParameter *)parameter;
 
 @end
 
@@ -31,7 +31,7 @@
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
-
+ 
  @param inputFormat the current format of the input bus
  @param maxFramesToRender the max frames to expect in a render request
  */
@@ -44,7 +44,7 @@
 
 /**
  Process upstream input
-
+ 
  @param timestamp the timestamp for the rendering
  @param frameCount the number of frames to render
  @param output the buffer to hold the rendered samples
@@ -59,7 +59,7 @@
 
 /**
  Set the bypass state.
-
+ 
  @param state new bypass value
  */
 - (void)setBypass:(BOOL)state;

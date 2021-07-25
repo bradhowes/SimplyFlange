@@ -10,11 +10,20 @@
 #import "KernelEventProcessor.h"
 #import "LFO.h"
 
+/**
+ The audio processing kernel that generates a "flange" effect.
+ */
 class SimplyFlangeKernel : public KernelEventProcessor<SimplyFlangeKernel> {
 public:
   using super = KernelEventProcessor<SimplyFlangeKernel>;
   friend super;
-  
+
+  /**
+   Construct new kernel
+
+   @param name the name to use for logging purposes.
+   @param maxDelayMilliseconds the max number of seconds of audio samples to keep in delay buffer
+   */
   SimplyFlangeKernel(const std::string& name, double maxDelayMilliseconds)
   : super(os_log_create(name.c_str(), "SimplyFlangeKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
   delayLines_{}, lfo_()
@@ -24,32 +33,56 @@ public:
   
   /**
    Update kernel and buffers to support the given format and channel count
+
+   @param format the audio format to render
+   @param maxFramesToRender the maximum number of samples we will be asked to render in one go
    */
   void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender) {
     super::startProcessing(format, maxFramesToRender);
     initialize(format.channelCount, format.sampleRate);
     delayPos_.allocateBuffers(format, maxFramesToRender);
   }
-  
+
+  /**
+   Start of a rendering operation. Note that actual calls to doRendering() below may contain smaller frameCount values
+   due to interleaving of MIDI events.
+
+   @param frameCount the number of frames that will be processed during this rendering pass.
+   */
   void prepareToRender(AUAudioFrameCount frameCount) {
     
-    // Generate all delay position values necessary to render `frameCount` samples.
-    auto scale = depth_ / 2.0 * delayInSamples_;
+    // Generate all delay position values necessary to render `frameCount` samples. Doing so up-front here saves some
+    // cycles if odd90 is false or there are more than 2 input channels to render.
+    auto scale = depth_ * delayInSamples_;
     auto state = lfo_.saveState();
     auto buffer = delayPos_[0];
+
+    // Obtain delay buffer position values using in-phase LFO values
     for (auto index = 0; index < frameCount; ++index) {
-      *buffer++ = lfo_.valueAndIncrement() * scale + delayInSamples_;
+      auto value = DSP::bipolarToUnipolar(lfo_.valueAndIncrement()) * scale;
+      assert(value >= 0.0 && value < delayLines_[0].size());
+      *buffer++ = value;
     }
     
     if (odd90_) {
       lfo_.restoreState(state);
       buffer = delayPos_[1];
+
+      // Obtain delay buffer position values using out-of-phase LFO values
       for (auto index = 0; index < frameCount; ++index) {
-        *buffer++ = lfo_.quadPhaseValueAndIncrement() * scale + delayInSamples_;
+        auto value = DSP::bipolarToUnipolar(lfo_.quadPhaseValueAndIncrement()) * scale;
+        assert(value >= 0.0 && value < delayLines_[1].size());
+        *buffer++ = value;
       }
     }
   }
-  
+
+  /**
+   Process an AU parameter value change.
+
+   @param address the address of the parameter that changed
+   @param value the new value for the parameter
+   */
   void setParameterValue(AUParameterAddress address, AUValue value) {
     switch (address) {
       case FilterParameterAddressDepth:
@@ -81,7 +114,13 @@ public:
         break;
     }
   }
-  
+
+  /**
+   Obtain the current value of an AU parameter.
+
+   @param address the address of the parameter to return
+   @returns current parameter value
+   */
   AUValue getParameterValue(AUParameterAddress address) const {
     switch (address) {
       case FilterParameterAddressDepth: return depth_ * 100.0;
@@ -97,7 +136,7 @@ public:
   }
   
 private:
-  
+
   void initialize(int channelCount, double sampleRate) {
     samplesPerMillisecond_ = sampleRate / 1000.0;
     delayInSamples_ = delay_ * samplesPerMillisecond_;
@@ -113,8 +152,7 @@ private:
   
   void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
   
-  void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount)
-  {
+  void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount) {
     auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
     for (int channel = 0; channel < ins.size(); ++channel) {
       auto input{ins[channel]};
@@ -132,7 +170,7 @@ private:
   
   void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
   
-  double depth_; // NOTE: this ranges from 0.0 - 0.5 to absorb a / 2 operation in the delayPos calculation
+  double depth_;
   double rate_;
   double delay_;
   double feedback_;

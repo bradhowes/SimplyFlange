@@ -28,15 +28,15 @@ public final class AudioUnitParameters: NSObject {
   
   private let log = Logging.logger("FilterParameters")
   
-  static public let maxDelayMilliseconds: AUValue = 15.0
+  static public let maxDelayMilliseconds: AUValue = 50.0
   
   public let parameters: [AUParameter] = [
     AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: .depth,
                                     min: 0.0, max: 100.0, unit: .percent),
     AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: .rate,
-                                    min: 0.01, max: 10.0, unit: .hertz),
+                                    min: 0.01, max: 20.0, unit: .hertz),
     AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: .delay,
-                                    min: 0.01, max: AudioUnitParameters.maxDelayMilliseconds, unit: .milliseconds),
+                                    min: 1.0, max: AudioUnitParameters.maxDelayMilliseconds, unit: .milliseconds),
     AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: .feedback,
                                     min: 0.0, max: 100.0, unit: .percent),
     AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: .dryMix,

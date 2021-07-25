@@ -68,7 +68,9 @@ struct InputBuffer {
       mutableAudioBufferList_->mBuffers[channel].mDataByteSize = byteSize;
     }
   }
-  
+
+  AUAudioFrameCount size() const { return maxFramesToRender_; }
+
   AudioBufferList* mutableAudioBufferList() const { return mutableAudioBufferList_; }
   
   BufferFacet& bufferFacet() { return bufferFacet_; }

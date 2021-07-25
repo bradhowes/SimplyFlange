@@ -14,7 +14,9 @@ enum class LFOWaveform { sinusoid, triangle, sawtooth };
  - triangle
  - sawtooth
  
- Loosely based on code found in "Designing Audio Effect Plugins in C++" by Will C. Pirkle (2019)
+ The output is bipolar ([-1.0, 1.0]). Use DSP::bipolarToUnipolar to generate values in [0.0, 1.0].
+
+ Loosely based on code found in "Designing Audio Effect Plugins in C++" by Will C. Pirkle (2019).
  */
 template <typename T>
 class LFO {

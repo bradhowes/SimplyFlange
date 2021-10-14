@@ -1,6 +1,6 @@
 ![CI](https://github.com/bradhowes/SimplyFlange/workflows/CI/badge.svg?branch=main)
 
-![](image.png)
+![](image.jpeg)
 
 # About SimplyFlange
 
@@ -28,6 +28,17 @@ GarageBand, but also using test hosts on both devices as well as the excellent
   controls how much of the manipulated signal to inject.
 * Dry -- the amount of original signal that is used in the output signal.
 * Wet -- the amount of the modified signal that is used in the output signal.
+
+There are two esoteric toggles which can dramatically affect the resulting sound:
+
+* Odd 90° -- the low-frequency oscillator (LFO) of every other input audio channel is 90° out-ot-phase with the
+rest. For stereo (left and right) inputs and indices starting at zero, the left channel is considered "even" and
+the right is "odd". Having out-of-phase LFO signals usually results in a fuller sound.
+
+* Negative Feedback -- this affects how a feedback is summed with the input signal before it reaches the delay
+unit. When negative, the feedback signal is essentially subtracted from the input signal which will dramatically
+affect the frequencies of the signal sent to the delay unit. Again, this can result in a more interesting and
+sonically complex effect than the usual summing that is often done.
 
 The row of buttons at the top of the host demonstration app let you play a prerecorded sample throught the
 effect and try out different pre-installed or "factory" presets. Note that these controls are not present in the

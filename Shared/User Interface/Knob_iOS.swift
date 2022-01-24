@@ -1,5 +1,6 @@
 // Copyright © 2018 Brad Howes. All rights reserved.
 
+import AUv3Support
 import UIKit
 import os
 

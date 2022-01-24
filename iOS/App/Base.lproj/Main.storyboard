@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,109 +16,12 @@
                     <view key="view" contentMode="scaleAspectFit" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YiJ-1a-ELQ" userLabel="Controls Header View">
-                                <rect key="frame" x="8" y="0.0" width="359" height="67.5"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6SP-IR-0pE" userLabel="Header">
-                                        <rect key="frame" x="82" y="8" width="195" height="59.5"/>
-                                        <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="2HW-yE-4lC" userLabel="Controls">
-                                                <rect key="frame" x="0.0" y="0.0" width="195" height="31"/>
-                                                <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tzZ-pe-UL7">
-                                                        <rect key="frame" x="0.0" y="0.5" width="30" height="30"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                        <state key="normal" title="Play">
-                                                            <color key="titleColor" systemColor="systemTealColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="togglePlay:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kt8-zh-HcD"/>
-                                                        </connections>
-                                                    </button>
-                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nh4-Vf-lfu">
-                                                        <rect key="frame" x="46" y="0.0" width="83" height="32"/>
-                                                        <segments>
-                                                            <segment title="1"/>
-                                                            <segment title="2"/>
-                                                            <segment title="3"/>
-                                                        </segments>
-                                                        <color key="tintColor" systemColor="systemTealColor"/>
-                                                        <color key="selectedSegmentTintColor" name="Progress"/>
-                                                        <connections>
-                                                            <action selector="usePreset:" destination="BYZ-38-t0r" eventType="valueChanged" id="EUY-fz-JQi"/>
-                                                        </connections>
-                                                    </segmentedControl>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9za-g7-28Y">
-                                                        <rect key="frame" x="145" y="0.5" width="50" height="30"/>
-                                                        <state key="normal" title="Bypass">
-                                                            <color key="titleColor" systemColor="systemTealColor"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="toggleBypass:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AFb-Cz-SLh"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                            </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="presetName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rex-SM-lPc">
-                                                <rect key="frame" x="51" y="39" width="93.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="Labels"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="6SP-IR-0pE" firstAttribute="top" secondItem="YiJ-1a-ELQ" secondAttribute="top" constant="8" id="Df0-Br-F14"/>
-                                    <constraint firstItem="6SP-IR-0pE" firstAttribute="centerX" secondItem="YiJ-1a-ELQ" secondAttribute="centerX" id="FkR-sD-NgC"/>
-                                    <constraint firstAttribute="bottom" secondItem="6SP-IR-0pE" secondAttribute="bottom" id="huK-lJ-OB2"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="198-45-xa8">
-                                <rect key="frame" x="130.5" y="317" width="114.5" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="68k-M7-cHK">
-                                <rect key="frame" x="0.0" y="67.5" width="375" height="599.5"/>
-                            </containerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.2.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="euF-MY-jxs" userLabel="APP_VERSION">
-                                <rect key="frame" x="334" y="636.5" width="33" height="14.5"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
-                                <color key="textColor" systemColor="systemTealColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <accessibility key="accessibilityConfiguration" identifier="MainView" label="MainView"/>
-                        <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YiJ-1a-ELQ" secondAttribute="trailing" constant="8" id="613-tJ-dOL"/>
-                            <constraint firstItem="YiJ-1a-ELQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="I7e-co-4wx"/>
-                            <constraint firstItem="68k-M7-cHK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JSr-xN-3FD"/>
-                            <constraint firstItem="euF-MY-jxs" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="PrT-DL-hIS"/>
-                            <constraint firstItem="198-45-xa8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="VLg-w3-2DO"/>
-                            <constraint firstItem="68k-M7-cHK" firstAttribute="top" secondItem="YiJ-1a-ELQ" secondAttribute="bottom" id="cNL-Kz-lhv"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="68k-M7-cHK" secondAttribute="bottom" id="f0O-Cd-IJE"/>
-                            <constraint firstItem="YiJ-1a-ELQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="gcb-Ax-44p"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="euF-MY-jxs" secondAttribute="trailing" constant="8" id="hak-l3-tVJ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="euF-MY-jxs" secondAttribute="bottom" constant="16" id="n4g-ac-rXG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="68k-M7-cHK" secondAttribute="trailing" id="pxu-xY-NpT"/>
-                            <constraint firstItem="198-45-xa8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="xUY-C0-0hk"/>
-                        </constraints>
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="bypassButton" destination="9za-g7-28Y" id="Pvy-sY-JhH"/>
-                        <outlet property="containerView" destination="68k-M7-cHK" id="Vne-5l-42G"/>
-                        <outlet property="playButton" destination="tzZ-pe-UL7" id="Yxx-Rt-URy"/>
-                        <outlet property="presetName" destination="rex-SM-lPc" id="ELC-Wh-80U"/>
-                        <outlet property="presetSelection" destination="nh4-Vf-lfu" id="0yu-hr-CRl"/>
-                        <outlet property="reviewButton" destination="euF-MY-jxs" id="tZf-bO-f3b"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,17 +29,8 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Labels">
-            <color red="1" green="0.76399999856948853" blue="0.36700001358985901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Progress">
-            <color red="1" green="0.57599997520446777" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

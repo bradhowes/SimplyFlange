@@ -1,12 +1,13 @@
 // Copyright © 2021 Brad Howes. All rights reserved.
 
+import AUv3Support
 import Foundation
 import os
 
 /**
  Address definitions for AUParameter settings.
  */
-@objc public enum FilterParameterAddress: UInt64, CaseIterable {
+@objc public enum FilterParameterAddress: UInt64, CaseIterable, ParameterAddressEnum {
   case depth = 0
   case rate
   case delay
@@ -31,26 +32,26 @@ public final class AudioUnitParameters: NSObject {
   static public let maxDelayMilliseconds: AUValue = 50.0
   
   public let parameters: [AUParameter] = [
-    AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: .depth,
+    AUParameterTree.createParameter(withIdentifier: "depth", name: "Depth", address: FilterParameterAddress.depth,
                                     min: 0.0, max: 100.0, unit: .percent),
-    AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: .rate,
+    AUParameterTree.createParameter(withIdentifier: "rate", name: "Rate", address: FilterParameterAddress.rate,
                                     min: 0.01, max: 20.0, unit: .hertz),
-    AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: .delay,
+    AUParameterTree.createParameter(withIdentifier: "delay", name: "Delay", address: FilterParameterAddress.delay,
                                     min: 1.0, max: AudioUnitParameters.maxDelayMilliseconds, unit: .milliseconds),
-    AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: .feedback,
+    AUParameterTree.createParameter(withIdentifier: "feedback", name: "Feedback", address: FilterParameterAddress.feedback,
                                     min: 0.0, max: 100.0, unit: .percent),
-    AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: .dryMix,
+    AUParameterTree.createParameter(withIdentifier: "dry", name: "Dry", address: FilterParameterAddress.dryMix,
                                     min: 0.0, max: 100.0, unit: .percent),
-    AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: .wetMix,
+    AUParameterTree.createParameter(withIdentifier: "wet", name: "Wet", address: FilterParameterAddress.wetMix,
                                     min: 0.0, max: 100.0, unit: .percent),
-    AUParameterTree.createParameter(withIdentifier: "-feedback", name: "-Feedback", address: .negativeFeedback,
+    AUParameterTree.createParameter(withIdentifier: "-feedback", name: "-Feedback", address: FilterParameterAddress.negativeFeedback,
                                     min: 0.0, max: 1.0, unit: .boolean),
-    AUParameterTree.createParameter(withIdentifier: "odd90", name: "odd90", address: .odd90, min: 0.0, max: 1.0,
+    AUParameterTree.createParameter(withIdentifier: "odd90", name: "odd90", address: FilterParameterAddress.odd90, min: 0.0, max: 1.0,
                                     unit: .boolean)
   ]
   
   public let factoryPresetValues: [(name: String, preset: FilterPreset)] = [
-    ("Flangie", FilterPreset(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dryMix: 50, wetMix: 50,
+    ("Flangie", FilterPreset(depth: 100, rate: 0.14, delay: 1.10, feedback: 20, dryMix: 50, wetMix: 50,
                              negativeFeedback: 0, odd90: 0)),
     ("Sweeper", FilterPreset(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dryMix: 50, wetMix: 50,
                              negativeFeedback: 0, odd90: 0)),
@@ -94,7 +95,7 @@ public final class AudioUnitParameters: NSObject {
     parameterTree.implementorValueObserver = { parameterHandler.set($0, value: $1) }
     parameterTree.implementorValueProvider = { parameterHandler.get($0) }
     parameterTree.implementorStringFromValueCallback = { param, value in
-      let formatted = self.formatValue(param.address.filterParameter, value: param.value)
+      let formatted = self.formatValue(FilterParameterAddress(rawValue: param.address), value: param.value)
       os_log(.debug, log: self.log, "parameter %d as string: %d %f %{public}s",
              param.address, param.value, formatted)
       return formatted

@@ -1,5 +1,6 @@
 // Copyright © 2021 Brad Howes. All rights reserved.
 
+import AUv3Support
 import CoreAudioKit
 import os
 
@@ -185,8 +186,7 @@ extension FilterViewController: AUAudioUnitFactory {
    - returns: new FilterAudioUnit
    */
   public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
-    os_log(.info, log: log, "creating new audio unit")
-    componentDescription.log(log, type: .debug)
+    os_log(.info, log: log, "createAudioUnit BEGIN - %{public}s", componentDescription.description)
     audioUnit = try FilterAudioUnit(componentDescription: componentDescription, options: [.loadOutOfProcess])
     return audioUnit!
   }

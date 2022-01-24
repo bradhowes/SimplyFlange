@@ -49,7 +49,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zc-Wu-SkW" userLabel="Depth">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okm-Gk-DO2" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okm-Gk-DO2" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <constraints>
@@ -87,7 +87,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba2-M2-1tZ" userLabel="Rate">
                                                         <rect key="frame" x="120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-HD-UuC" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-HD-UuC" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <constraints>
@@ -131,7 +131,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-Iz-NtY" userLabel="Depth">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <constraints>
@@ -170,7 +170,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDd-k9-ILX" userLabel="Rate">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <constraints>
@@ -209,7 +209,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-o8-Nqf" userLabel="Delay">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="2"/>
                                                                 <constraints>
@@ -247,7 +247,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzR-gn-frA" userLabel="Feedback">
                                                         <rect key="frame" x="124" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="Knob">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="3"/>
                                                                 <constraints>
@@ -312,7 +312,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLB-i6-tzJ" userLabel="Dry">
                                                                 <rect key="frame" x="63.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="Knob">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                                         <constraints>
@@ -350,7 +350,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-pE-hNg" userLabel="Wet">
                                                                 <rect key="frame" x="147.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="SimplyFlangeFramework">
+                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="Knob">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                                         <constraints>

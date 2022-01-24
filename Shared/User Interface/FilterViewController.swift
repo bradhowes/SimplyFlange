@@ -2,6 +2,7 @@
 
 import AUv3Support
 import CoreAudioKit
+import Knob
 import os
 
 extension Switch: AUParameterValueProvider {

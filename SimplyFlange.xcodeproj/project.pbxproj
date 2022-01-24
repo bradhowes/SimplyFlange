@@ -45,10 +45,6 @@
 		BD75B68325DA9E420071F55E /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD75B68225DA9E420071F55E /* AppStore.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
 		BD78FDC224C2F6530091A854 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD78FDC124C2F6530091A854 /* MainWindowController.swift */; };
-		BD7B1291260D42210087E8F0 /* AUParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */; };
-		BD7B1292260D42220087E8F0 /* AUParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */; };
-		BD7B12AA260D45E60087E8F0 /* BooleanParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* BooleanParameterControl.swift */; };
-		BD7B12B2260D45E70087E8F0 /* BooleanParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7B129A260D45E00087E8F0 /* BooleanParameterControl.swift */; };
 		BD7B130E261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
 		BD7B130F261088DC0087E8F0 /* BufferFacet.h in Headers */ = {isa = PBXBuildFile; fileRef = BD7B130D261088DC0087E8F0 /* BufferFacet.h */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
@@ -80,8 +76,6 @@
 		BDDCA61125F8E9F4009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
 		BDDCA61225F8E9F5009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
 		BDDCA61325F8E9F6009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
-		BDDE2B9225EE69FD00E55833 /* FloatParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2B9125EE69FD00E55833 /* FloatParameterControl.swift */; };
-		BDDE2B9325EE69FD00E55833 /* FloatParameterControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDDE2B9125EE69FD00E55833 /* FloatParameterControl.swift */; };
 		BDE2CDF124A3DEE4004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
 		BDE2CDF224A3DEE5004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
 		C433F56122404C7C00F1B750 /* FilterViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */; };
@@ -250,8 +244,6 @@
 		BD75B68225DA9E420071F55E /* AppStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStore.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
 		BD78FDC124C2F6530091A854 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
-		BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AUParameterControl.swift; sourceTree = "<group>"; };
-		BD7B129A260D45E00087E8F0 /* BooleanParameterControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BooleanParameterControl.swift; sourceTree = "<group>"; };
 		BD7B130D261088DC0087E8F0 /* BufferFacet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BufferFacet.h; sourceTree = "<group>"; };
 		BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = DelayBufferTests.mm; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,7 +259,6 @@
 		BDCD2037279ECAD1006F6021 /* AUv3Support */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AUv3Support; path = ../AUv3Support; sourceTree = "<group>"; };
 		BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Desdemona.ttf; sourceTree = "<group>"; };
-		BDDE2B9125EE69FD00E55833 /* FloatParameterControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatParameterControl.swift; sourceTree = "<group>"; };
 		BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Dev.xcconfig; path = Configuration/Dev.xcconfig; sourceTree = "<group>"; };
 		BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Staging.xcconfig; path = Configuration/Staging.xcconfig; sourceTree = "<group>"; };
@@ -627,11 +618,8 @@
 			isa = PBXGroup;
 			children = (
 				C4F07730223AC4F5008FFF06 /* FilterViewController.swift */,
-				BDDE2B9125EE69FD00E55833 /* FloatParameterControl.swift */,
 				BD5BCED125ED9AF000735211 /* Knob_macOS.swift */,
 				BD3ABF6B25EEAADE00ED0D43 /* Knob_iOS.swift */,
-				BD7B127A260D41B40087E8F0 /* AUParameterControl.swift */,
-				BD7B129A260D45E00087E8F0 /* BooleanParameterControl.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -1087,14 +1075,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7B1291260D42210087E8F0 /* AUParameterControl.swift in Sources */,
 				C4F07731223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
 				C4F004A62239B2070014E248 /* FilterAudioUnit.swift in Sources */,
-				BD7B12AA260D45E60087E8F0 /* BooleanParameterControl.swift in Sources */,
 				BDE2CDF124A3DEE4004AC8FA /* Logging.swift in Sources */,
 				BD72F2E525D1D4CE0031E422 /* InputBuffer.h in Sources */,
 				BD71E31925E1AFB5005C5E1E /* FilterPreset.swift in Sources */,
-				BDDE2B9225EE69FD00E55833 /* FloatParameterControl.swift in Sources */,
 				C4F004A32239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */,
 				BD18B3A024CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */,
 				BD3ABF6C25EEAADE00ED0D43 /* Knob_iOS.swift in Sources */,
@@ -1124,14 +1109,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD7B1292260D42220087E8F0 /* AUParameterControl.swift in Sources */,
 				BD18B39F24CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */,
 				C4F07732223AC4F5008FFF06 /* FilterViewController.swift in Sources */,
-				BD7B12B2260D45E70087E8F0 /* BooleanParameterControl.swift in Sources */,
 				BD72F2E625D1D4CE0031E422 /* InputBuffer.h in Sources */,
 				BDE2CDF224A3DEE5004AC8FA /* Logging.swift in Sources */,
 				BD71E31125E1AFB4005C5E1E /* FilterPreset.swift in Sources */,
-				BDDE2B9325EE69FD00E55833 /* FloatParameterControl.swift in Sources */,
 				C4F004A72239B2070014E248 /* FilterAudioUnit.swift in Sources */,
 				BD5BCED325ED9AF000735211 /* Knob_macOS.swift in Sources */,
 				C4F004A42239B1E10014E248 /* SimplyFlangeKernelAdapter.mm in Sources */,

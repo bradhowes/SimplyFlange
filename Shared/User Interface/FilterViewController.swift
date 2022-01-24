@@ -119,43 +119,25 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     }
   }
   
-  public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) {
+  public func selectViewConfiguration(_ viewConfig: AUAudioUnitViewConfiguration) { 
     guard self.viewConfig != viewConfig else { return }
     self.viewConfig = viewConfig
   }
   
-  @IBAction public func depthChanged(_ control: Knob) {
-    (controls[.depth] ?? []).forEach { $0.controlChanged(source: control) }
+  @IBAction public func depthChanged(_ control: Knob) { controlChanged(control, address: .depth) }
+  @IBAction public func rateChanged(_ control: Knob) { controlChanged(control, address: .rate) }
+  @IBAction public func delayChanged(_ control: Knob) { controlChanged(control, address: .delay) }
+  @IBAction public func feedbackChanged(_ control: Knob) { controlChanged(control, address: .feedback) }
+  @IBAction public func dryMixChanged(_ control: Knob) { controlChanged(control, address: .dryMix) }
+  @IBAction public func wetMixChanged(_ control: Knob) { controlChanged(control, address: .wetMix) }
+  @IBAction public func negativeFeedbackChanged(_ control: Switch) { controlChanged(control, address: .negativeFeedback) }
+  @IBAction public func odd90Changed(_ control: Switch) { controlChanged(control, address: .odd90) }
+
+  private func controlChanged(_ control: AUParameterValueProvider, address: FilterParameterAddress) {
+    audioUnit?.currentPreset = nil
+    (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
   }
-  
-  @IBAction public func rateChanged(_ control: Knob) {
-    (controls[.rate] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func delayChanged(_ control: Knob) {
-    (controls[.delay] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func feedbackChanged(_ control: Knob) {
-    (controls[.feedback] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func dryMixChanged(_ control: Knob) {
-    (controls[.dryMix] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func wetMixChanged(_ control: Knob) {
-    (controls[.wetMix] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func negativeFeedbackChanged(_ control: Switch) {
-    (controls[.negativeFeedback] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
-  @IBAction public func odd90Changed(_ control: Switch) {
-    (controls[.odd90] ?? []).forEach { $0.controlChanged(source: control) }
-  }
-  
+
 #if os(macOS)
   override public func mouseDown(with event: NSEvent) {
     // Allow for clicks on the common NSView to end editing of values

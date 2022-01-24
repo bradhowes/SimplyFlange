@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.2.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-vA-Qxl" userLabel="APP_VERSION">
-                                <rect key="frame" x="347.5" y="385.5" width="40" height="18"/>
+                                <rect key="frame" x="361" y="384.5" width="40" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -32,7 +32,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Flanger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-fp-p3P">
-                                <rect key="frame" x="-12.5" y="263.5" width="400" height="140"/>
+                                <rect key="frame" x="-26" y="264.5" width="427" height="138"/>
                                 <fontDescription key="fontDescription" name="Desdemona" family="Desdemona" pointSize="120"/>
                                 <color key="textColor" name="Title"/>
                                 <nil key="highlightedColor"/>
@@ -57,7 +57,7 @@
                                                                     <constraint firstAttribute="height" constant="120" id="Yks-2G-BfC"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="depthChangedWithKnob:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qk5-0L-4Hc"/>
+                                                                    <action selector="depthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ess-5i-XMa"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aa-JQ-dr0" userLabel="Value">
@@ -95,7 +95,7 @@
                                                                     <constraint firstAttribute="width" constant="120" id="2Hj-Eh-bGa"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="rateChangedWithKnob:" destination="BYZ-38-t0r" eventType="valueChanged" id="ilk-28-EBr"/>
+                                                                    <action selector="rateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="L8h-VL-Fot"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1V-1T-DQD" userLabel="Value">
@@ -139,7 +139,7 @@
                                                                     <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="depthChangedWithKnob:" destination="BYZ-38-t0r" eventType="valueChanged" id="mlI-8u-g2f"/>
+                                                                    <action selector="depthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VIq-bC-zQ9"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
@@ -178,7 +178,7 @@
                                                                     <constraint firstAttribute="width" constant="120" id="rGa-hf-xLW"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="rateChangedWithKnob:" destination="BYZ-38-t0r" eventType="valueChanged" id="YJm-qO-Hdp"/>
+                                                                    <action selector="rateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NBN-4l-cvb"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-HR-UOg" userLabel="Value">
@@ -217,7 +217,7 @@
                                                                     <constraint firstAttribute="height" constant="120" id="jf1-Ig-22b"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="delayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="moo-uZ-eiD"/>
+                                                                    <action selector="delayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qcp-MK-1vq"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-4e-MBG" userLabel="Value">
@@ -255,7 +255,7 @@
                                                                     <constraint firstAttribute="height" constant="120" id="URe-tZ-2Yl"/>
                                                                 </constraints>
                                                                 <connections>
-                                                                    <action selector="feedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="UU1-6z-Yjd"/>
+                                                                    <action selector="feedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bod-Pa-Ek9"/>
                                                                 </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
@@ -298,7 +298,7 @@
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="05y-H7-UV7"/>
+                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="dCC-aX-guL"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odd 90°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pj-Eh-BZS">
@@ -320,7 +320,7 @@
                                                                             <constraint firstAttribute="width" constant="80" id="hnM-Xb-fyQ"/>
                                                                         </constraints>
                                                                         <connections>
-                                                                            <action selector="dryMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="tSZ-Ao-sqZ"/>
+                                                                            <action selector="dryMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eSt-fx-4AK"/>
                                                                         </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-20-gAu" userLabel="Value">
@@ -358,7 +358,7 @@
                                                                             <constraint firstAttribute="height" constant="80" id="hUd-gk-rXl"/>
                                                                         </constraints>
                                                                         <connections>
-                                                                            <action selector="wetMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="6IM-4D-Hzp"/>
+                                                                            <action selector="wetMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="S18-8j-faa"/>
                                                                         </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-GK-jEJ" userLabel="Value">
@@ -394,7 +394,7 @@
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="negativeFeedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="80o-lI-OvA"/>
+                                                                            <action selector="negativeFeedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NJ2-Um-nX2"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="o6M-W6-I9I" userLabel="Labels">

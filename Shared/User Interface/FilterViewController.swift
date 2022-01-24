@@ -4,6 +4,12 @@ import AUv3Support
 import CoreAudioKit
 import os
 
+extension Switch: AUParameterValueProvider {
+  public var value: AUValue { isOn ? 1.0 : 0.0 }
+}
+
+extension Knob: AUParameterValueProvider, RangedControl {}
+
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
@@ -39,7 +45,7 @@ import os
   @IBOutlet weak var altRateValueLabel: Label!
   @IBOutlet weak var altRateTapEdit: View!
   
-  #if os(iOS)
+#if os(iOS)
   @IBOutlet weak var depthTapEdit: UIView!
   @IBOutlet weak var rateTapEdit: UIView!
   @IBOutlet weak var delayTapEdit: UIView!
@@ -51,7 +57,7 @@ import os
   @IBOutlet weak var editingLabel: Label!
   @IBOutlet weak var editingValue: UITextField!
   @IBOutlet weak var editingBackground: UIView!
-  #endif
+#endif
   
   var controls = [FilterParameterAddress : [AUParameterControl]]()
   
@@ -65,13 +71,13 @@ import os
     }
   }
   
-  #if os(macOS)
+#if os(macOS)
   
   public override init(nibName: NSNib.Name?, bundle: Bundle?) {
     super.init(nibName: nibName, bundle: Bundle(for: type(of: self)))
   }
   
-  #endif
+#endif
   
   required init?(coder: NSCoder) {
     super.init(coder: coder)
@@ -84,7 +90,7 @@ import os
       connectViewToAU()
     }
     
-    #if os(iOS)
+#if os(iOS)
     
     editingBackground.layer.cornerRadius = 8.0
     
@@ -98,7 +104,7 @@ import os
     addTapGesture(altDepthTapEdit)
     addTapGesture(altRateTapEdit)
     
-    #endif
+#endif
     
     for control in [depthControl, altDepthControl, rateControl, altRateControl, delayControl, feedbackControl] {
       control?.trackLineWidth = 10
@@ -118,62 +124,44 @@ import os
     self.viewConfig = viewConfig
   }
   
-  @IBAction public func depthChanged(knob: Knob) {
-    for control in controls[.depth] ?? [] {
-      if knob == control.control {
-        control.controlChanged()
-      }
-    }
-    for control in controls[.depth] ?? [] {
-      if knob != control.control {
-        control.parameterChanged()
-      }
-    }
+  @IBAction public func depthChanged(_ control: Knob) {
+    (controls[.depth] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func rateChanged(knob: Knob) {
-    for control in controls[.rate] ?? [] {
-      if knob == control.control {
-        control.controlChanged()
-      }
-    }
-    for control in controls[.rate] ?? [] {
-      if knob != control.control {
-        control.parameterChanged()
-      }
-    }
+  @IBAction public func rateChanged(_ control: Knob) {
+    (controls[.rate] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func delayChanged(_: Knob) {
-    (controls[.delay] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func delayChanged(_ control: Knob) {
+    (controls[.delay] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func feedbackChanged(_: Knob) {
-    (controls[.feedback] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func feedbackChanged(_ control: Knob) {
+    (controls[.feedback] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func dryMixChanged(_: Knob) {
-    (controls[.dryMix] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func dryMixChanged(_ control: Knob) {
+    (controls[.dryMix] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func wetMixChanged(_: Knob) {
-    (controls[.wetMix] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func wetMixChanged(_ control: Knob) {
+    (controls[.wetMix] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func negativeFeedbackChanged(_: Switch) {
-    (controls[.negativeFeedback] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func negativeFeedbackChanged(_ control: Switch) {
+    (controls[.negativeFeedback] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  @IBAction public func odd90Changed(_: Switch) {
-    (controls[.odd90] ?? []).forEach { $0.controlChanged() }
+  @IBAction public func odd90Changed(_ control: Switch) {
+    (controls[.odd90] ?? []).forEach { $0.controlChanged(source: control) }
   }
   
-  #if os(macOS)
+#if os(macOS)
   override public func mouseDown(with event: NSEvent) {
     // Allow for clicks on the common NSView to end editing of values
     NSApp.keyWindow?.makeFirstResponder(nil)
   }
-  #endif
+#endif
   
 }
 
@@ -214,47 +202,47 @@ extension FilterViewController {
     
     let params = audioUnit.parameterDefinitions
     controls[.depth] = [
-      KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
-                     formatter: params.valueFormatter(.depth), knob: depthControl,
-                     label: depthValueLabel, logValues: false)
+      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+                            formatter: params.valueFormatter(.depth), knob: depthControl,
+                            label: depthValueLabel, logValues: false)
     ]
     if altDepthControl != nil {
-      controls[.depth]?.append(KnobController(parameterObserverToken: parameterObserverToken,
-                                              parameter: params[.depth],
-                                              formatter: params.valueFormatter(.depth), knob: altDepthControl,
-                                              label: altDepthValueLabel, logValues: false))
+      controls[.depth]?.append(FloatParameterControl(parameterObserverToken: parameterObserverToken,
+                                                     parameter: params[.depth],
+                                                     formatter: params.valueFormatter(.depth), knob: altDepthControl,
+                                                     label: altDepthValueLabel, logValues: false))
     }
     
     controls[.rate] = [
-      KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
-                     formatter: params.valueFormatter(.rate), knob: rateControl,
-                     label: rateValueLabel, logValues: true)
+      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+                            formatter: params.valueFormatter(.rate), knob: rateControl,
+                            label: rateValueLabel, logValues: true)
     ]
     if altRateControl != nil {
-      controls[.rate]?.append(KnobController(parameterObserverToken: parameterObserverToken,
-                                             parameter: params[.rate],
-                                             formatter: params.valueFormatter(.rate), knob: altRateControl,
-                                             label: altRateValueLabel, logValues: true))
+      controls[.rate]?.append(FloatParameterControl(parameterObserverToken: parameterObserverToken,
+                                                    parameter: params[.rate],
+                                                    formatter: params.valueFormatter(.rate), knob: altRateControl,
+                                                    label: altRateValueLabel, logValues: true))
     }
     
-    controls[.delay] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
-                                       formatter: params.valueFormatter(.delay), knob: delayControl,
-                                       label: delayValueLabel, logValues: true)]
-    controls[.feedback] = [KnobController(parameterObserverToken: parameterObserverToken,
-                                          parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
-                                          knob: feedbackControl, label: feedbackValueLabel, logValues: false)]
-    controls[.dryMix] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-                                        formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
-                                        label: dryMixValueLabel, logValues: false)]
-    controls[.wetMix] = [KnobController(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-                                        formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
-                                        label:  wetMixValueLabel, logValues: false)]
-    controls[.negativeFeedback] = [SwitchController(parameterObserverToken: parameterObserverToken,
-                                                    parameter: params[.negativeFeedback],
-                                                    control: negativeFeedbackControl)]
-    controls[.odd90] = [SwitchController(parameterObserverToken: parameterObserverToken,
-                                         parameter: params[.odd90],
-                                         control: odd90Control)]
+    controls[.delay] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
+                                              formatter: params.valueFormatter(.delay), knob: delayControl,
+                                              label: delayValueLabel, logValues: true)]
+    controls[.feedback] = [FloatParameterControl(parameterObserverToken: parameterObserverToken,
+                                                 parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
+                                                 knob: feedbackControl, label: feedbackValueLabel, logValues: false)]
+    controls[.dryMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
+                                               formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
+                                               label: dryMixValueLabel, logValues: false)]
+    controls[.wetMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
+                                               formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
+                                               label:  wetMixValueLabel, logValues: false)]
+    controls[.negativeFeedback] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
+                                                           parameter: params[.negativeFeedback],
+                                                           control: negativeFeedbackControl)]
+    controls[.odd90] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
+                                                parameter: params[.odd90],
+                                                control: odd90Control)]
   }
   
   private func updateDisplay() {

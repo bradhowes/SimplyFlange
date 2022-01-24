@@ -22,7 +22,10 @@ final class MainViewController: UIViewController {
 
     let config = HostViewConfig(name: bundle.auBaseName, version: bundle.releaseVersionNumber,
                                 appStoreId: bundle.appStoreId,
-                                componentDescription: component, sampleLoop: .sample1)
+                                componentDescription: component, sampleLoop: .sample1) { url in
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+
     hostViewController = Shared.embedHostUIView(into: self, config: config)
   }
 

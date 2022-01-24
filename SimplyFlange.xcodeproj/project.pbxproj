@@ -61,7 +61,6 @@
 		BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
 		BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
 		BDB7CEA0249FC162009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
-		BDCD2039279ECAF1006F6021 /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDCD2038279ECAF1006F6021 /* AUv3-Support-Static */; };
 		BDDCA5E525F8E9DA009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
 		BDDCA5E625F8E9DA009C1AA7 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */; };
 		BDDCA5E725F8E9DA009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
@@ -76,7 +75,8 @@
 		BDDCA61325F8E9F6009C1AA7 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */; };
 		BDE2CDF124A3DEE4004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
 		BDE2CDF224A3DEE5004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
-		BDE45855279F60DF0033F69C /* Knob-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE45854279F60DF0033F69C /* Knob-Static */; };
+		BDE45858279F625B0033F69C /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE45857279F625B0033F69C /* AUv3-Support-Static */; };
+		BDE4585B279F62810033F69C /* Knob-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE4585A279F62810033F69C /* Knob-Static */; };
 		C433F56122404C7C00F1B750 /* FilterViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */; };
 		C437FE59222367CD008D6C09 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; };
 		C437FE5A222367CD008D6C09 /* SimplyFlangeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -253,14 +253,12 @@
 		BDB7CE92249EC556009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		BDB7CE96249F7209009580D5 /* ValueChangeDetector.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ValueChangeDetector.hpp; sourceTree = "<group>"; };
 		BDB7CE9D249FC152009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.5.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
-		BDCD2037279ECAD1006F6021 /* AUv3Support */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AUv3Support; path = ../AUv3Support; sourceTree = "<group>"; };
 		BDDCA5E325F8E9DA009C1AA7 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BDDCA5E425F8E9DA009C1AA7 /* Desdemona.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Desdemona.ttf; sourceTree = "<group>"; };
 		BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Dev.xcconfig; path = Configuration/Dev.xcconfig; sourceTree = "<group>"; };
 		BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Staging.xcconfig; path = Configuration/Staging.xcconfig; sourceTree = "<group>"; };
 		BDE2CE1924A3EBD1004AC8FA /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configuration/Common.xcconfig; sourceTree = "<group>"; };
-		BDE45853279F60010033F69C /* Knob */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Knob; path = ../Knob; sourceTree = "<group>"; };
 		C4201A2822403120006E4333 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -344,8 +342,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CEA0249FC162009580D5 /* Accelerate.framework in Frameworks */,
-				BDCD2039279ECAF1006F6021 /* AUv3-Support-Static in Frameworks */,
-				BDE45855279F60DF0033F69C /* Knob-Static in Frameworks */,
+				BDE45858279F625B0033F69C /* AUv3-Support-Static in Frameworks */,
+				BDE4585B279F62810033F69C /* Knob-Static in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -441,8 +439,6 @@
 		BDCD2036279ECAD1006F6021 /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				BDCD2037279ECAD1006F6021 /* AUv3Support */,
-				BDE45853279F60010033F69C /* Knob */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -763,8 +759,8 @@
 			);
 			name = "iOS Framework";
 			packageProductDependencies = (
-				BDCD2038279ECAF1006F6021 /* AUv3-Support-Static */,
-				BDE45854279F60DF0033F69C /* Knob-Static */,
+				BDE45857279F625B0033F69C /* AUv3-Support-Static */,
+				BDE4585A279F62810033F69C /* Knob-Static */,
 			);
 			productName = "AUv3SimplyFlangeFramework iOS";
 			productReference = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */;
@@ -915,6 +911,10 @@
 				Base,
 			);
 			mainGroup = C437FE2F2223672C008D6C09;
+			packageReferences = (
+				BDE45856279F625B0033F69C /* XCRemoteSwiftPackageReference "AUv3Support" */,
+				BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */,
+			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2581,13 +2581,34 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		BDE45856279F625B0033F69C /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bradhowes/AUv3Support";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bradhowes/knob";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
-		BDCD2038279ECAF1006F6021 /* AUv3-Support-Static */ = {
+		BDE45857279F625B0033F69C /* AUv3-Support-Static */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = BDE45856279F625B0033F69C /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-Static";
 		};
-		BDE45854279F60DF0033F69C /* Knob-Static */ = {
+		BDE4585A279F62810033F69C /* Knob-Static */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */;
 			productName = "Knob-Static";
 		};
 /* End XCSwiftPackageProductDependency section */

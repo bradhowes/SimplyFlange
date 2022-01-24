@@ -3,7 +3,7 @@
 import AUv3Support
 import CoreAudioKit
 import Knob
-import os
+import os.log
 
 extension Switch: AUParameterValueProvider {
   public var value: AUValue { isOn ? 1.0 : 0.0 }

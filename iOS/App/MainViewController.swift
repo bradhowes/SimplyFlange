@@ -7,7 +7,7 @@ import UIKit
 
 final class MainViewController: UIViewController {
 
-  private var hostViewController: HostUIViewController!
+  private var hostViewController: HostViewController!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,7 +27,7 @@ final class MainViewController: UIViewController {
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    hostViewController = Shared.embedHostUIView(into: self, config: config)
+    hostViewController = Shared.embedHostView(into: self, config: config)
   }
 
   public func stopPlaying() {

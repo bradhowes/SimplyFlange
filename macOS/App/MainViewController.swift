@@ -202,14 +202,6 @@ extension MainViewController {
     os_log(.debug, log: log, "connectParametersToControls END")
   }
 
-  public func usePreset(number: Int) {
-    os_log(.debug, log: log, "usePreset BEGIN")
-    guard let userPresetManager = userPresetsManager else { return }
-    userPresetManager.makeCurrentPreset(number: number)
-    updatePresetMenu()
-    os_log(.debug, log: log, "usePreset BEGIN")
-  }
-
   func updatePresetMenu() {
     os_log(.debug, log: log, "updatePresetMenu BEGIN")
     presetsMenuManager?.selectActive()
@@ -235,18 +227,5 @@ extension MainViewController {
     controller.messageText = message
     controller.addButton(withTitle: "OK")
     DispatchQueue.main.async { controller.runModal() }
-  }
-
-  public func yesOrNo(title: String, message: String, continuation: @escaping (Bool) -> Void) {
-
-    let controller = NSAlert()
-    controller.informativeText = title
-    controller.messageText = message
-    controller.addButton(withTitle: "Continue")
-    controller.addButton(withTitle: "Cancel")
-    DispatchQueue.main.async {
-      let outcome = controller.runModal()
-      continuation(outcome == .OK)
-    }
   }
 }

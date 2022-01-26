@@ -135,7 +135,12 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   @IBAction public func odd90Changed(_ control: Switch) { controlChanged(control, address: .odd90) }
 
   private func controlChanged(_ control: AUParameterValueProvider, address: FilterParameterAddress) {
-    audioUnit?.currentPreset = nil
+
+    // If current preset is a factory preset, then clear it.
+    if (audioUnit?.currentPreset?.number ?? -1) > 0 {
+      audioUnit?.currentPreset = nil
+    }
+
     (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
   }
 

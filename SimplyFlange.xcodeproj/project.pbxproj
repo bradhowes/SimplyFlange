@@ -23,6 +23,8 @@
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
+		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
+		BD34880727A19AF700CAD24A /* PresetMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD34880627A19AF700CAD24A /* PresetMenuManager.swift */; };
 		BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BB625E2B741009B7347 /* DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BB525E2B741009B7347 /* DSP.h */; };
@@ -229,6 +231,8 @@
 		BD1D257A25D5AAB000523748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
+		BD34880427A1791F00CAD24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		BD34880627A19AF700CAD24A /* PresetMenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetMenuManager.swift; sourceTree = "<group>"; };
 		BD446BAB25E2B4C5009B7347 /* LFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFO.h; sourceTree = "<group>"; };
 		BD446BB525E2B741009B7347 /* DSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSP.h; sourceTree = "<group>"; };
 		BD446BBF25E2B9CD009B7347 /* LFOTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LFOTests.mm; sourceTree = "<group>"; };
@@ -562,8 +566,10 @@
 		C4BEE7C322236A58001E6B6D /* App */ = {
 			isa = PBXGroup;
 			children = (
+				BD34880427A1791F00CAD24A /* Assets.xcassets */,
 				BD6E935627A06C3800230C02 /* AppStore.swift */,
 				BD6E935527A06C3800230C02 /* MainViewController.swift */,
+				BD34880627A19AF700CAD24A /* PresetMenuManager.swift */,
 				BD6E935727A06C3800230C02 /* MainWindowController.swift */,
 				BD75B6B925DAA6680071F55E /* Credits.rtf */,
 				BD6E935327A06B1700230C02 /* AppDelegate.swift */,
@@ -1007,6 +1013,7 @@
 				BD63B15424AE25F80015236D /* LICENSE.md in Resources */,
 				C4BEE7D222236A58001E6B6D /* Main.storyboard in Resources */,
 				BDDCA61325F8E9F6009C1AA7 /* Desdemona.ttf in Resources */,
+				BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */,
 				C4BEE7D122236A58001E6B6D /* Assets.xcassets in Resources */,
 				BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */,
 			);
@@ -1108,6 +1115,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD34880727A19AF700CAD24A /* PresetMenuManager.swift in Sources */,
 				BD6E935927A06C3800230C02 /* AppStore.swift in Sources */,
 				BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */,
 				BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */,

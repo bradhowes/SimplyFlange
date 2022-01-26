@@ -4,10 +4,10 @@ import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-  
+
   @IBOutlet weak var playMenuItem: NSMenuItem!
   @IBOutlet weak var bypassMenuItem: NSMenuItem!
-  @IBOutlet weak var savePresetMenuItem: NSMenuItem!
+  @IBOutlet weak var presetsMenu: NSMenu!
   
   func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool { true }
   

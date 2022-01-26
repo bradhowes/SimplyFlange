@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19529"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -57,10 +57,14 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Presets" id="GEO-Iw-cKr">
                                     <items>
-                                        <menuItem title="Save" enabled="NO" id="9NY-AS-9aU">
+                                        <menuItem title="User" id="TqP-Wv-WCI">
                                             <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="User" autoenablesItems="NO" id="rGD-aC-IqC"/>
                                         </menuItem>
-                                        <menuItem isSeparatorItem="YES" id="gsf-1N-Qsg"/>
+                                        <menuItem title="Factory" id="zdG-Kd-AOc">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Factory" autoenablesItems="NO" id="tgG-kY-gLV"/>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -111,7 +115,7 @@
                     <connections>
                         <outlet property="bypassMenuItem" destination="Bvy-ud-WPR" id="TDv-X8-WS4"/>
                         <outlet property="playMenuItem" destination="Flz-EE-5KD" id="5E5-IR-Gxn"/>
-                        <outlet property="savePresetMenuItem" destination="9NY-AS-9aU" id="H1m-5w-gvK"/>
+                        <outlet property="presetsMenu" destination="GEO-Iw-cKr" id="M2X-h8-PTm"/>
                     </connections>
                 </customObject>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -130,13 +134,13 @@
                         <toolbar key="toolbar" implicitIdentifier="5207E1E8-A93F-4F10-9C18-0E48AC0FF7E7" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="BM6-k9-grP">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Rub-ZQ-gKo"/>
-                                <toolbarItem implicitItemIdentifier="290CDF7D-A4F5-4CB1-8BAB-065BEAC4FDC3" label="Play" paletteLabel="Play Button" sizingBehavior="auto" id="gZY-Pi-OZc">
+                                <toolbarItem implicitItemIdentifier="290CDF7D-A4F5-4CB1-8BAB-065BEAC4FDC3" label="Play" paletteLabel="Play Button" image="play" sizingBehavior="auto" id="gZY-Pi-OZc">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="ogO-fI-sF4">
-                                        <rect key="frame" x="4" y="14" width="60" height="32"/>
+                                        <rect key="frame" x="21" y="14" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <buttonCell key="cell" type="push" title="Play" alternateTitle="Stop" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="7Br-57-RWg">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="play" imagePosition="only" alignment="center" alternateImage="stop" imageScaling="proportionallyDown" inset="2" id="7Br-57-RWg">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
@@ -144,13 +148,13 @@
                                         </connections>
                                     </button>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="2AC2063E-880F-4AEB-A2B8-5747B89394F6" label="Bypass" paletteLabel="Bypass Button" sizingBehavior="auto" id="3w5-Pk-Kuc" userLabel="Bypass Button">
+                                <toolbarItem implicitItemIdentifier="2AC2063E-880F-4AEB-A2B8-5747B89394F6" label="Bypass" paletteLabel="Bypass Button" image="enabled" sizingBehavior="auto" id="3w5-Pk-Kuc" userLabel="Bypass Button">
                                     <nil key="toolTip"/>
                                     <button key="view" verticalHuggingPriority="750" id="WpS-Vu-loZ" userLabel="Bypass">
-                                        <rect key="frame" x="3" y="14" width="78" height="32"/>
+                                        <rect key="frame" x="29" y="14" width="25" height="25"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <buttonCell key="cell" type="push" title="Bypass" alternateTitle="Resume" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="W6e-XW-QNj">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                        <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="enabled" imagePosition="only" alignment="center" alternateImage="bypassed" imageScaling="proportionallyDown" inset="2" id="W6e-XW-QNj">
+                                            <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
                                         <connections>
@@ -159,11 +163,36 @@
                                     </button>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="fUX-bF-tWt"/>
+                                <toolbarItem implicitItemIdentifier="13BEF38E-4EC7-4F38-9298-EB07A2A64A0D" label="Presets" paletteLabel="Presets Button" image="user" sizingBehavior="auto" id="Uiw-dc-iYP" userLabel="Presets">
+                                    <nil key="toolTip"/>
+                                    <popUpButton key="view" id="tha-ev-mRZ">
+                                        <rect key="frame" x="0.0" y="14" width="112" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <popUpButtonCell key="cell" type="bevel" bezelStyle="regularSquare" image="user" imagePosition="only" alignment="left" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" autoenablesItems="NO" altersStateOfSelectedItem="NO" id="LMW-6t-3wK">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="menu"/>
+                                            <menu key="menu" autoenablesItems="NO" id="jPS-hh-jJH">
+                                                <items>
+                                                    <menuItem state="on" image="user" hidden="YES" id="g4v-Oe-t3z" userLabel="Button Item"/>
+                                                    <menuItem title="User" id="uyt-Sg-aPd">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <menu key="submenu" title="User" autoenablesItems="NO" id="onk-5q-7Wf"/>
+                                                    </menuItem>
+                                                    <menuItem title="Factory" id="UvN-wH-ihO">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
+                                                        <menu key="submenu" autoenablesItems="NO" id="x31-pt-lBJ"/>
+                                                    </menuItem>
+                                                </items>
+                                            </menu>
+                                        </popUpButtonCell>
+                                    </popUpButton>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="Rub-ZQ-gKo"/>
                                 <toolbarItem reference="gZY-Pi-OZc"/>
                                 <toolbarItem reference="3w5-Pk-Kuc"/>
+                                <toolbarItem reference="Uiw-dc-iYP"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -173,6 +202,7 @@
                     <connections>
                         <outlet property="bypassButton" destination="WpS-Vu-loZ" id="vss-i2-oQd"/>
                         <outlet property="playButton" destination="ogO-fI-sF4" id="mnc-aK-30h"/>
+                        <outlet property="presetsButton" destination="tha-ev-mRZ" id="NKr-05-WUT"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="4gy-rt-TT0"/>
                     </connections>
                 </windowController>
@@ -223,4 +253,11 @@
             <point key="canvasLocation" x="159.5" y="1122"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bypassed" width="25" height="25"/>
+        <image name="enabled" width="25" height="25"/>
+        <image name="play" width="25" height="25"/>
+        <image name="stop" width="25" height="25"/>
+        <image name="user" width="25" height="25"/>
+    </resources>
 </document>

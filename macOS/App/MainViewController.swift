@@ -11,6 +11,7 @@ final class MainViewController: NSViewController {
 
   private var audioUnitLoader: AudioUnitLoader!
   private var userPresetsManager: UserPresetsManager?
+  private var presetsMenuManager: PresetsMenuManager?
 
   private var avAudioUnit: AVAudioUnit?
   private var auAudioUnit: AUAudioUnit? { avAudioUnit?.auAudioUnit }
@@ -18,9 +19,11 @@ final class MainViewController: NSViewController {
 
   private var playButton: NSButton!
   private var bypassButton: NSButton!
+  private var presetsButton: NSPopUpButton!
+
   private var playMenuItem: NSMenuItem!
   private var bypassMenuItem: NSMenuItem!
-  private var savePresetMenuItem: NSMenuItem!
+  private var presetsMenu: NSMenu!
   
   @IBOutlet weak var containerView: NSView!
   @IBOutlet weak var loadingText: NSTextField!
@@ -62,21 +65,19 @@ extension MainViewController {
     }
     
     view.window?.delegate = self
-    savePresetMenuItem = appDelegate.savePresetMenuItem
-    guard savePresetMenuItem != nil else { fatalError() }
+    presetsMenu = appDelegate.presetsMenu
+    guard presetsMenu != nil else { fatalError() }
     
-    playButton = windowController.playButton
     playMenuItem = appDelegate.playMenuItem
-    
-    bypassButton = windowController.bypassButton
     bypassMenuItem = appDelegate.bypassMenuItem
-    bypassButton.isEnabled = false
     bypassMenuItem.isEnabled = false
-    
-    savePresetMenuItem.isHidden = true
-    savePresetMenuItem.isEnabled = false
-    savePresetMenuItem.target = self
-    savePresetMenuItem.action = #selector(handleSavePresetMenuSelection(_:))
+
+    playButton = windowController.playButton
+    bypassButton = windowController.bypassButton
+    bypassButton.isEnabled = false
+
+    presetsButton = windowController.presetsButton
+    presetsButton.isEnabled = false
   }
   
   override func viewDidLayout() {
@@ -109,7 +110,14 @@ extension MainViewController: AudioUnitLoaderDelegate {
 
   public func connected(audioUnit: AVAudioUnit, viewController: NSViewController) {
     os_log(.debug, log: log, "connected BEGIN")
-    userPresetsManager = .init(for: audioUnit.auAudioUnit)
+    let userPresetsManager = UserPresetsManager(for: audioUnit.auAudioUnit)
+    self.userPresetsManager = userPresetsManager
+
+    let presetsMenuManager = PresetsMenuManager(button: presetsButton, appMenu: presetsMenu,
+                                                userPresetsManager: userPresetsManager)
+    self.presetsMenuManager = presetsMenuManager
+    presetsMenuManager.build()
+
     avAudioUnit = audioUnit
     audioUnitViewController = viewController
     connectFilterView(audioUnit, viewController)
@@ -130,7 +138,7 @@ extension MainViewController {
   @IBAction private func togglePlay(_ sender: NSButton) {
     audioUnitLoader.togglePlayback()
     playButton?.state = audioUnitLoader.isPlaying ? .on : .off
-    playButton?.title = audioUnitLoader.isPlaying ? "Stop" : "Play"
+
     playMenuItem?.title = audioUnitLoader.isPlaying ? "Stop" : "Play"
     bypassButton?.isEnabled = audioUnitLoader.isPlaying
     bypassMenuItem?.isEnabled = audioUnitLoader.isPlaying
@@ -141,69 +149,7 @@ extension MainViewController {
     let isBypassed = !wasBypassed
     auAudioUnit?.shouldBypassEffect = isBypassed
     bypassButton?.state = isBypassed ? .on : .off
-    bypassButton?.title = isBypassed ? "Resume" : "Bypass"
     bypassMenuItem?.title = isBypassed ? "Resume" : "Bypass"
-  }
-
-  private func getPresetName(default: String) -> String? {
-    let prompt = NSAlert()
-    prompt.addButton(withTitle: "Continue")
-    prompt.addButton(withTitle: "Cancel")
-    prompt.messageText = "New Preset Name"
-    prompt.informativeText = "Enter the name to use for the new preset"
-
-    let textField = NSTextField(frame: NSRect(x: 0, y: 0, width: 200, height: 24))
-    textField.stringValue = `default`
-    prompt.accessoryView = textField
-    let response: NSApplication.ModalResponse = prompt.runModal()
-
-    if response == .OK {
-      return textField.stringValue.trimmingCharacters(in: .whitespaces)
-    } else {
-      return nil
-    }
-  }
-
-  @objc private func handleSavePresetMenuSelection(_ sender: NSMenuItem) throws {
-    guard let userPresetsManager = userPresetsManager else { return }
-    guard let presetMenu = NSApplication.shared.mainMenu?.item(withTag: 666)?.submenu else { return }
-
-    let index = userPresetsManager.nextNumber
-    let defaultName = "Preset \(index)"
-
-    guard
-      let name = getPresetName(default: defaultName),
-      !name.isEmpty
-    else {
-      return
-    }
-
-    var preset: AUAudioUnitPreset!
-    do {
-      preset = try userPresetsManager.create(name: name)
-    } catch {
-      print(error.localizedDescription)
-      return
-    }
-
-    let menuItem = NSMenuItem(title: preset.name,
-                              action: #selector(handlePresetMenuSelection(_:)),
-                              keyEquivalent: "")
-    menuItem.tag = preset.number
-    presetMenu.addItem(menuItem)
-  }
-  
-  @objc private func handlePresetMenuSelection(_ sender: NSMenuItem) {
-    guard let audioUnit = auAudioUnit else { return }
-    sender.menu?.items.forEach { $0.state = .off }
-    if sender.tag >= 0 {
-      audioUnit.currentPreset = audioUnit.factoryPresetsNonNil[sender.tag]
-    }
-    else {
-      audioUnit.currentPreset = audioUnit.userPresets[sender.tag]
-    }
-    
-    sender.state = .on
   }
 }
 
@@ -228,20 +174,8 @@ extension MainViewController {
     containerView.needsLayout = true
 
     playButton.isEnabled = true
-    // presetSelection.isEnabled = true
-    // userPresetsMenuButton.isEnabled = true
+    presetsButton.isEnabled = true
 
-//    let presetCount = auAudioUnit?.factoryPresetsNonNil.count ?? 0
-//    while presetSelection.numberOfSegments < presetCount {
-//      let index = presetSelection.numberOfSegments + 1
-//      presetSelection.insertSegment(withTitle: "\(index)", at: index - 1, animated: false)
-//    }
-//    while presetSelection.numberOfSegments > presetCount {
-//      presetSelection.removeSegment(at: presetSelection.numberOfSegments - 1, animated: false)
-//    }
-
-//    presetSelection.selectedSegmentIndex = 0
-    // useFactoryPreset(nil)
     os_log(.debug, log: log, "connectFilterView END")
   }
 
@@ -252,7 +186,6 @@ extension MainViewController {
     }
 
     audioUnitLoader.restore()
-    updatePresetMenu()
 
     allParameterValuesObserverToken = audioUnit.observe(\.allParameterValues) { [weak self] _, _ in
       guard let self = self else { return }
@@ -279,64 +212,15 @@ extension MainViewController {
 
   func updatePresetMenu() {
     os_log(.debug, log: log, "updatePresetMenu BEGIN")
-//    guard let userPresetsManager = userPresetsManager else {
-//      os_log(.debug, log: log, "updatePresetMenu END - nil userPresetsManager")
-//      return
-//    }
-//
-//    let active = userPresetsManager.audioUnit.currentPreset?.number ?? Int.max
-//
-//    let factoryPresets = userPresetsManager.audioUnit.factoryPresetsNonNil.map { (preset: AUAudioUnitPreset) -> UIAction in
-//      let action = UIAction(title: preset.name, handler: { _ in self.usePreset(number: preset.number) })
-//      action.state = active == preset.number ? .on : .off
-//      return action
-//    }
-//
-//    os_log(.debug, log: log, "updatePresetMenu - adding %d factory presets", factoryPresets.count)
-//    let factoryPresetsMenu = UIMenu(title: "Factory", options: .displayInline, children: factoryPresets)
-//
-//    let userPresets = userPresetsManager.presetsOrderedByName.map { (preset: AUAudioUnitPreset) -> UIAction in
-//      let action = UIAction(title: preset.name, handler: { _ in self.usePreset(number: preset.number) })
-//      action.state = active == preset.number ? .on : .off
-//      return action
-//    }
-//
-//    os_log(.debug, log: log, "updatePresetMenu - adding %d user presets", userPresets.count)
-//
-//    let userPresetsMenu = UIMenu(title: "User", options: .displayInline, children: userPresets)
-//
-//    let actionsGroup = UIMenu(title: "Actions", options: .displayInline,
-//                              children: active < 0 ? [saveAction, renameAction, deleteAction] : [saveAction])
-//
-//    let menu = UIMenu(title: "Presets", options: [], children: [userPresetsMenu, factoryPresetsMenu, actionsGroup])
-//
-//    if #available(iOS 14, *) {
-//      userPresetsMenuButton.menu = menu
-//      userPresetsMenuButton.showsMenuAsPrimaryAction = true
-//    }
-
+    presetsMenuManager?.selectActive()
     os_log(.debug, log: log, "updatePresetMenu END")
   }
 
   private func updateView() {
     os_log(.debug, log: log, "updateView BEGIN")
-    guard let auAudioUnit = auAudioUnit else { return }
     updatePresetMenu()
-    updatePresetSelection(auAudioUnit)
     audioUnitLoader.save()
     os_log(.debug, log: log, "updateView END")
-  }
-
-  private func updatePresetSelection(_ auAudioUnit: AUAudioUnit) {
-    os_log(.debug, log: log, "updatePresetSelection BEGIN")
-//    if let presetNumber = auAudioUnit.currentPreset?.number {
-//      os_log(.info, log: log, "updatePresetSelection: %d", presetNumber)
-//      presetSelection.selectedSegmentIndex = presetNumber
-//      presetName.text = auAudioUnit.currentPreset?.name
-//    } else {
-//      presetSelection.selectedSegmentIndex = -1
-//    }
-    os_log(.debug, log: log, "updatePresetSelection END")
   }
 }
 

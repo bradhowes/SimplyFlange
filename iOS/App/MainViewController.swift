@@ -1,8 +1,9 @@
 // Copyright © 2021 Brad Howes. All rights reserved.
 
 import AUv3Support
+import AUv3Support_iOS
+import CoreAudioKit
 import UIKit
-import SimplyFlangeFramework
 
 final class MainViewController: UIViewController {
 

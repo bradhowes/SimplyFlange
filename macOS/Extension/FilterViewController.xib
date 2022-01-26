@@ -9,6 +9,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="FilterViewController" customModule="SimplyFlangeFramework">
             <connections>
+                <outlet property="controlsView" destination="oPI-wC-N8q" id="b1n-xP-3ex"/>
                 <outlet property="delayControl" destination="1VT-Na-dOb" id="SJt-NU-97M"/>
                 <outlet property="delayValueLabel" destination="aOT-T3-0Np" id="wc3-cA-O6c"/>
                 <outlet property="depthControl" destination="vJE-Qk-G6z" id="ccY-rd-Ozp"/>
@@ -56,7 +57,7 @@
                                 <constraint firstAttribute="height" constant="120" id="vAd-uR-9t8"/>
                             </constraints>
                             <connections>
-                                <action selector="depthChangedWithKnob:" target="-2" id="paL-j9-5a2"/>
+                                <action selector="depthChanged:" target="-2" id="nAs-7q-jtE"/>
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
@@ -77,7 +78,7 @@
                                 <constraint firstAttribute="height" constant="120" id="V2V-kw-xaN"/>
                             </constraints>
                             <connections>
-                                <action selector="rateChangedWithKnob:" target="-2" id="a3A-v6-0T5"/>
+                                <action selector="rateChanged:" target="-2" id="N1g-EG-lyq"/>
                             </connections>
                         </customView>
                         <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-pJ-Rk3" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">

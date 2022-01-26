@@ -24,7 +24,7 @@
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
-		BD34880727A19AF700CAD24A /* PresetMenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD34880627A19AF700CAD24A /* PresetMenuManager.swift */; };
+		BD34880927A1EDF700CAD24A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */; };
 		BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BB625E2B741009B7347 /* DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BB525E2B741009B7347 /* DSP.h */; };
@@ -232,7 +232,6 @@
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DelayBuffer.h; sourceTree = "<group>"; };
 		BD34880427A1791F00CAD24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
-		BD34880627A19AF700CAD24A /* PresetMenuManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresetMenuManager.swift; sourceTree = "<group>"; };
 		BD446BAB25E2B4C5009B7347 /* LFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFO.h; sourceTree = "<group>"; };
 		BD446BB525E2B741009B7347 /* DSP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSP.h; sourceTree = "<group>"; };
 		BD446BBF25E2B9CD009B7347 /* LFOTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = LFOTests.mm; sourceTree = "<group>"; };
@@ -367,6 +366,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD34880927A1EDF700CAD24A /* AUv3-Support-macOS in Frameworks */,
 				C4660A5C2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
 			);
@@ -569,7 +569,6 @@
 				BD34880427A1791F00CAD24A /* Assets.xcassets */,
 				BD6E935627A06C3800230C02 /* AppStore.swift */,
 				BD6E935527A06C3800230C02 /* MainViewController.swift */,
-				BD34880627A19AF700CAD24A /* PresetMenuManager.swift */,
 				BD6E935727A06C3800230C02 /* MainWindowController.swift */,
 				BD75B6B925DAA6680071F55E /* Credits.rtf */,
 				BD6E935327A06B1700230C02 /* AppDelegate.swift */,
@@ -815,6 +814,7 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
+				BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -1115,7 +1115,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD34880727A19AF700CAD24A /* PresetMenuManager.swift in Sources */,
 				BD6E935927A06C3800230C02 /* AppStore.swift in Sources */,
 				BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */,
 				BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */,
@@ -2613,6 +2612,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-Support-macOS";
+		};
 		BD6E934A27A0166100230C02 /* AUv3-Support-Static */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "AUv3-Support-Static";

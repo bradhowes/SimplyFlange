@@ -126,7 +126,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="SimplyFlange" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="SimplyFlange" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SimplyFlange" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="IQv-IB-iLA" userLabel="SimplyFlange">
+                    <window key="window" title="SimplyFlange" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SimplyFlange" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA" userLabel="SimplyFlange">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
                         <rect key="contentRect" x="81" y="580" width="600" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
@@ -250,7 +250,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="159.5" y="1122"/>
+            <point key="canvasLocation" x="167" y="1026"/>
         </scene>
     </scenes>
     <resources>

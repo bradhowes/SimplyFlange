@@ -411,13 +411,6 @@
 			path = Snapshots;
 			sourceTree = "<group>";
 		};
-		BD26EC3927A21DE60023CFCE /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		BD95147624A08BB600D8024C /* macOSFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -454,7 +447,6 @@
 		C437FE2F2223672C008D6C09 = {
 			isa = PBXGroup;
 			children = (
-				BD26EC3927A21DE60023CFCE /* Packages */,
 				BD50D32425D75B7900375455 /* SimplyFlange.entitlements */,
 				7E56CF207E56CEE000000001 /* README.md */,
 				BD49661924A3605800A81F0B /* LICENSE.md */,

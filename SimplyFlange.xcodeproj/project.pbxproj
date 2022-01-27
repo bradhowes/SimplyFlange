@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD01DD7227A2259E0069B0F7 /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BD01DD7127A2259E0069B0F7 /* AUv3-Support-Static */; };
+		BD01DD7427A2259E0069B0F7 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD01DD7327A2259E0069B0F7 /* AUv3-Support-iOS */; };
+		BD01DD7627A2259E0069B0F7 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD01DD7527A2259E0069B0F7 /* AUv3-Support-macOS */; };
+		BD01DD7827A225A80069B0F7 /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BD01DD7727A225A80069B0F7 /* AUv3-Support-Static */; };
 		BD18B39F24CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */; };
 		BD18B3A024CB31B200B7CB1E /* AudioUnitParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD18B39E24CB31B200B7CB1E /* AudioUnitParameters.swift */; };
 		BD1D249525D4831B00523748 /* BundlePropertiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D249425D4831B00523748 /* BundlePropertiesTests.swift */; };
@@ -24,7 +28,6 @@
 		BD1F7BAE249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD1F7BAF249FF7EF00960DA3 /* DelayBuffer.h in Headers */ = {isa = PBXBuildFile; fileRef = BD1F7BAB249FF7EF00960DA3 /* DelayBuffer.h */; };
 		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
-		BD34880927A1EDF700CAD24A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */; };
 		BD446BAC25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BAD25E2B4C5009B7347 /* LFO.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BAB25E2B4C5009B7347 /* LFO.h */; };
 		BD446BB625E2B741009B7347 /* DSP.h in Headers */ = {isa = PBXBuildFile; fileRef = BD446BB525E2B741009B7347 /* DSP.h */; };
@@ -37,8 +40,6 @@
 		BD50D29B25D6D76E00375455 /* SimplyFlangeKernelAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = BD50D29225D6D76E00375455 /* SimplyFlangeKernelAdapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD63B15424AE25F80015236D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BD49661924A3605800A81F0B /* LICENSE.md */; };
 		BD63B15624AE26020015236D /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = BD49661924A3605800A81F0B /* LICENSE.md */; };
-		BD6E934B27A0166100230C02 /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BD6E934A27A0166100230C02 /* AUv3-Support-Static */; };
-		BD6E934D27A019E400230C02 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD6E934C27A019E400230C02 /* AUv3-Support-iOS */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935927A06C3800230C02 /* AppStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935627A06C3800230C02 /* AppStore.swift */; };
@@ -82,7 +83,6 @@
 		BDE2CDF224A3DEE5004AC8FA /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDE2CDEF24A3DE9F004AC8FA /* Logging.swift */; };
 		BDE4585B279F62810033F69C /* Knob-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE4585A279F62810033F69C /* Knob-Static */; };
 		BDE4585F279FEC910033F69C /* Knob-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE4585E279FEC910033F69C /* Knob-Static */; };
-		BDE4586327A010BE0033F69C /* AUv3-Support-Static in Frameworks */ = {isa = PBXBuildFile; productRef = BDE4586227A010BE0033F69C /* AUv3-Support-Static */; };
 		C433F56122404C7C00F1B750 /* FilterViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */; };
 		C437FE59222367CD008D6C09 /* SimplyFlangeFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; };
 		C437FE5A222367CD008D6C09 /* SimplyFlangeFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -265,7 +265,6 @@
 		BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Dev.xcconfig; path = Configuration/Dev.xcconfig; sourceTree = "<group>"; };
 		BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Staging.xcconfig; path = Configuration/Staging.xcconfig; sourceTree = "<group>"; };
 		BDE2CE1924A3EBD1004AC8FA /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configuration/Common.xcconfig; sourceTree = "<group>"; };
-		BDE4586127A0107D0033F69C /* AUv3Support */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AUv3Support; path = ../AUv3Support; sourceTree = "<group>"; };
 		C4201A2822403120006E4333 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C433F56022404C7C00F1B750 /* FilterViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterViewControllerExtension.swift; sourceTree = "<group>"; };
 		C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -337,7 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */,
-				BD6E934D27A019E400230C02 /* AUv3-Support-iOS in Frameworks */,
+				BD01DD7427A2259E0069B0F7 /* AUv3-Support-iOS in Frameworks */,
 				C437FE59222367CD008D6C09 /* SimplyFlangeFramework.framework in Frameworks */,
 				C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */,
 			);
@@ -347,7 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDE4586327A010BE0033F69C /* AUv3-Support-Static in Frameworks */,
+				BD01DD7227A2259E0069B0F7 /* AUv3-Support-Static in Frameworks */,
 				BDB7CEA0249FC162009580D5 /* Accelerate.framework in Frameworks */,
 				BDE4585B279F62810033F69C /* Knob-Static in Frameworks */,
 			);
@@ -366,7 +365,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD34880927A1EDF700CAD24A /* AUv3-Support-macOS in Frameworks */,
+				BD01DD7627A2259E0069B0F7 /* AUv3-Support-macOS in Frameworks */,
 				C4660A5C2225F9A0007BE3B1 /* SimplyFlangeFramework.framework in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
 			);
@@ -376,7 +375,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD6E934B27A0166100230C02 /* AUv3-Support-Static in Frameworks */,
+				BD01DD7827A225A80069B0F7 /* AUv3-Support-Static in Frameworks */,
 				BDB7CE95249EC570009580D5 /* Accelerate.framework in Frameworks */,
 				BDE4585F279FEC910033F69C /* Knob-Static in Frameworks */,
 			);
@@ -412,6 +411,13 @@
 			path = Snapshots;
 			sourceTree = "<group>";
 		};
+		BD26EC3927A21DE60023CFCE /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		BD95147624A08BB600D8024C /* macOSFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -445,18 +451,10 @@
 			path = Kernel;
 			sourceTree = "<group>";
 		};
-		BDCD2036279ECAD1006F6021 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				BDE4586127A0107D0033F69C /* AUv3Support */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		C437FE2F2223672C008D6C09 = {
 			isa = PBXGroup;
 			children = (
-				BDCD2036279ECAD1006F6021 /* Packages */,
+				BD26EC3927A21DE60023CFCE /* Packages */,
 				BD50D32425D75B7900375455 /* SimplyFlange.entitlements */,
 				7E56CF207E56CEE000000001 /* README.md */,
 				BD49661924A3605800A81F0B /* LICENSE.md */,
@@ -751,7 +749,7 @@
 			);
 			name = "iOS App";
 			packageProductDependencies = (
-				BD6E934C27A019E400230C02 /* AUv3-Support-iOS */,
+				BD01DD7327A2259E0069B0F7 /* AUv3-Support-iOS */,
 			);
 			productName = "AUv3Filter iOS";
 			productReference = C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */;
@@ -773,7 +771,7 @@
 			name = "iOS Framework";
 			packageProductDependencies = (
 				BDE4585A279F62810033F69C /* Knob-Static */,
-				BDE4586227A010BE0033F69C /* AUv3-Support-Static */,
+				BD01DD7127A2259E0069B0F7 /* AUv3-Support-Static */,
 			);
 			productName = "AUv3SimplyFlangeFramework iOS";
 			productReference = C437FE52222367CD008D6C09 /* SimplyFlangeFramework.framework */;
@@ -814,7 +812,7 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
-				BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */,
+				BD01DD7527A2259E0069B0F7 /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -836,7 +834,7 @@
 			name = "macOS Framework";
 			packageProductDependencies = (
 				BDE4585E279FEC910033F69C /* Knob-Static */,
-				BD6E934A27A0166100230C02 /* AUv3-Support-Static */,
+				BD01DD7727A225A80069B0F7 /* AUv3-Support-Static */,
 			);
 			productName = "AUv3SimplyFlangeFramework macOS";
 			productReference = C437FE8F222368A1008D6C09 /* SimplyFlangeFramework.framework */;
@@ -933,6 +931,7 @@
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
 				BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */,
+				BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -2601,6 +2600,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/bradhowes/AUv3Support";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/knob";
@@ -2612,17 +2619,25 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BD34880827A1EDF700CAD24A /* AUv3-Support-macOS */ = {
+		BD01DD7127A2259E0069B0F7 /* AUv3-Support-Static */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "AUv3-Support-macOS";
-		};
-		BD6E934A27A0166100230C02 /* AUv3-Support-Static */ = {
-			isa = XCSwiftPackageProductDependency;
+			package = BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-Static";
 		};
-		BD6E934C27A019E400230C02 /* AUv3-Support-iOS */ = {
+		BD01DD7327A2259E0069B0F7 /* AUv3-Support-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-iOS";
+		};
+		BD01DD7527A2259E0069B0F7 /* AUv3-Support-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */;
+			productName = "AUv3-Support-macOS";
+		};
+		BD01DD7727A225A80069B0F7 /* AUv3-Support-Static */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BD01DD7027A2259E0069B0F7 /* XCRemoteSwiftPackageReference "AUv3Support" */;
+			productName = "AUv3-Support-Static";
 		};
 		BDE4585A279F62810033F69C /* Knob-Static */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2633,10 +2648,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BDE45859279F62810033F69C /* XCRemoteSwiftPackageReference "knob" */;
 			productName = "Knob-Static";
-		};
-		BDE4586227A010BE0033F69C /* AUv3-Support-Static */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = "AUv3-Support-Static";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

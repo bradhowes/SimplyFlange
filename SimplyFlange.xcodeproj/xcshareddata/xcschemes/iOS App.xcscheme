@@ -10,7 +10,7 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "${PROJECT_DIR}/scripts/post-build.sh&#10;">
+               scriptText = "exec /bin/bash &quot;${PROJECT_DIR}/scripts/post-build.sh&quot;&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"

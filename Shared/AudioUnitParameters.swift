@@ -7,7 +7,9 @@ import os
 /**
  Address definitions for AUParameter settings.
  */
-@objc public enum FilterParameterAddress: UInt64, CaseIterable, ParameterAddressEnum {
+@objc public enum FilterParameterAddress: UInt64, CaseIterable, ParameterAddressProvider {
+  public var parameterAddress: AUParameterAddress { rawValue }
+
   case depth = 0
   case rate
   case delay

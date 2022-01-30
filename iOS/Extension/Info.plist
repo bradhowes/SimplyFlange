@@ -45,8 +45,6 @@
 				<dict>
 					<key>description</key>
 					<string>$(AU_BASE_NAME)</string>
-					<key>factoryFunction</key>
-					<string>$(AU_FACTORY_FUNCTION)</string>
 					<key>manufacturer</key>
 					<string>$(AU_COMPONENT_MANUFACTURER)</string>
 					<key>name</key>

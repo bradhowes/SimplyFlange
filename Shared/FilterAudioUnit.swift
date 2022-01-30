@@ -4,6 +4,9 @@ import AUv3Support
 import AudioToolbox
 import AVFoundation
 import CoreAudioKit
+import Logging
+import Parameters
+import SwiftKernel
 import os
 
 /**

@@ -5,9 +5,13 @@ import AUv3Support_macOS
 import CoreAudioKit
 import Cocoa
 import AVFAudio
+import Logging
 import os.log
+// import SimplyFlangeAU
 
 final class MainViewController: NSViewController {
+  private let log = OSLog(subsystem: "SimplyFlange", category: "MainViewController")
+
   @IBOutlet weak var containerView: NSView!
   @IBOutlet weak var loadingText: NSTextField!
   

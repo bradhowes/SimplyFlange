@@ -14,16 +14,16 @@
         </array>
     </customFonts>
     <scenes>
-        <!--FilterViewController-->
+        <!--ViewController-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" userLabel="FilterViewController" customClass="FilterViewController" customModule="SimplyFlangeFramework" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" userLabel="ViewController" customClass="ViewController_iOS" customModule="SimplyFlangeAU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.3.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-vA-Qxl" userLabel="APP_VERSION">
-                                <rect key="frame" x="361" y="384.5" width="40" height="18"/>
+                                <rect key="frame" x="363.5" y="384.5" width="37.5" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
@@ -49,16 +49,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8zc-Wu-SkW" userLabel="Depth">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okm-Gk-DO2" customClass="Knob" customModule="Knob">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="okm-Gk-DO2" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="120" id="FtR-Lj-lB0"/>
                                                                     <constraint firstAttribute="height" constant="120" id="Yks-2G-BfC"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="depthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Ess-5i-XMa"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aa-JQ-dr0" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="30"/>
@@ -87,16 +84,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba2-M2-1tZ" userLabel="Rate">
                                                         <rect key="frame" x="120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-HD-UuC" customClass="Knob" customModule="Knob">
+                                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jXf-HD-UuC" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="120" id="0iT-gO-BhY"/>
                                                                     <constraint firstAttribute="width" constant="120" id="2Hj-Eh-bGa"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="rateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="L8h-VL-Fot"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1V-1T-DQD" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -131,16 +125,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-Iz-NtY" userLabel="Depth">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="Knob">
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="120" id="XNk-0T-Igy"/>
                                                                     <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="depthChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="VIq-bC-zQ9"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
                                                                 <rect key="frame" x="39" y="112" width="42" height="30"/>
@@ -170,16 +161,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDd-k9-ILX" userLabel="Rate">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="Knob">
+                                                            <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hF3-lq-xlE" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="120" id="kc7-LR-0xH"/>
                                                                     <constraint firstAttribute="width" constant="120" id="rGa-hf-xLW"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="rateChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NBN-4l-cvb"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-HR-UOg" userLabel="Value">
                                                                 <rect key="frame" x="39" y="112" width="42" height="24"/>
@@ -206,19 +194,16 @@
                                                         </constraints>
                                                         <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-o8-Nqf" userLabel="Delay">
+                                                    <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-o8-Nqf" userLabel="Delay">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="Knob">
+                                                            <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvw-nZ-fi3" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="2"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="120" id="QHV-yg-ThV"/>
                                                                     <constraint firstAttribute="height" constant="120" id="jf1-Ig-22b"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="delayChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Qcp-MK-1vq"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-4e-MBG" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -247,16 +232,13 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LzR-gn-frA" userLabel="Feedback">
                                                         <rect key="frame" x="124" y="0.0" width="120" height="142"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="Knob">
+                                                            <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tqE-Fz-AGz" customClass="Knob" customModule="Knob_iOS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="120" id="EOU-Ix-oTY"/>
                                                                     <constraint firstAttribute="height" constant="120" id="URe-tZ-2Yl"/>
                                                                 </constraints>
-                                                                <connections>
-                                                                    <action selector="feedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Bod-Pa-Ek9"/>
-                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -293,12 +275,12 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="90V-qZ-kNG" userLabel="Odd 90°">
                                                                 <rect key="frame" x="0.0" y="21.5" width="59.5" height="51"/>
                                                                 <subviews>
-                                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olm-sN-GtT" userLabel="Odd 90°">
+                                                                    <switch opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olm-sN-GtT" userLabel="Odd 90°">
                                                                         <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="dCC-aX-guL"/>
+                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="D0O-qs-16b"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odd 90°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pj-Eh-BZS">
@@ -312,16 +294,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLB-i6-tzJ" userLabel="Dry">
                                                                 <rect key="frame" x="63.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="Knob">
+                                                                    <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jzc-6g-Fgq" customClass="Knob" customModule="Knob_iOS">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="80" id="6oC-7g-8AI"/>
                                                                             <constraint firstAttribute="width" constant="80" id="hnM-Xb-fyQ"/>
                                                                         </constraints>
-                                                                        <connections>
-                                                                            <action selector="dryMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="eSt-fx-4AK"/>
-                                                                        </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-20-gAu" userLabel="Value">
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
@@ -350,16 +329,13 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-pE-hNg" userLabel="Wet">
                                                                 <rect key="frame" x="147.5" y="0.0" width="80" height="94"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="Knob">
+                                                                    <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xjB-dE-KcA" customClass="Knob" customModule="Knob_iOS">
                                                                         <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="80" id="Ogz-zI-bPr"/>
                                                                             <constraint firstAttribute="height" constant="80" id="hUd-gk-rXl"/>
                                                                         </constraints>
-                                                                        <connections>
-                                                                            <action selector="wetMixChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="S18-8j-faa"/>
-                                                                        </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-GK-jEJ" userLabel="Value">
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
@@ -389,12 +365,12 @@
                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lAa-l2-n91" userLabel="Neg Feedback">
                                                                 <rect key="frame" x="231.5" y="13.5" width="59.5" height="67"/>
                                                                 <subviews>
-                                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-h7-UiY" userLabel="Neg Feedback">
+                                                                    <switch opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-h7-UiY" userLabel="Neg Feedback">
                                                                         <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="negativeFeedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="NJ2-Um-nX2"/>
+                                                                            <action selector="negativeFeedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rfB-g8-IUx"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="o6M-W6-I9I" userLabel="Labels">
@@ -441,7 +417,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gry-aw-80i" userLabel="Value Editor">
-                                        <rect key="frame" x="66.5" y="20" width="242" height="66"/>
+                                        <rect key="frame" x="66.5" y="601" width="242" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
                                                 <rect key="frame" x="16" y="23" width="41.5" height="20.5"/>
@@ -474,8 +450,8 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.045474425056912252" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="gry-aw-80i" secondAttribute="bottom" id="1CF-ek-3Xc"/>
                                     <constraint firstItem="gry-aw-80i" firstAttribute="centerX" secondItem="uNx-0G-OWZ" secondAttribute="centerX" id="U5P-bv-jpS"/>
-                                    <constraint firstItem="gry-aw-80i" firstAttribute="top" secondItem="uNx-0G-OWZ" secondAttribute="top" constant="20" symbolic="YES" id="rfc-aW-xqN"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -496,37 +472,38 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="altDepthControl" destination="okm-Gk-DO2" id="fex-ks-BkL"/>
-                        <outlet property="altDepthTapEdit" destination="sGQ-s4-7ru" id="gXM-QP-Ns2"/>
-                        <outlet property="altDepthValueLabel" destination="4aa-JQ-dr0" id="EoU-5y-gGH"/>
-                        <outlet property="altRateControl" destination="jXf-HD-UuC" id="UsH-Df-rcV"/>
-                        <outlet property="altRateTapEdit" destination="xLK-EJ-lhl" id="DeW-Q5-Ikl"/>
-                        <outlet property="altRateValueLabel" destination="O1V-1T-DQD" id="YH1-aF-Ht9"/>
-                        <outlet property="controlsView" destination="GTt-pC-dYn" id="ZEV-JI-t9U"/>
-                        <outlet property="delayControl" destination="Mvw-nZ-fi3" id="Oi6-m2-vS3"/>
-                        <outlet property="delayTapEdit" destination="OdN-B7-7c6" id="7SC-dR-C8x"/>
-                        <outlet property="delayValueLabel" destination="3TX-4e-MBG" id="Ynm-XW-nbD"/>
-                        <outlet property="depthControl" destination="hui-tD-xRO" id="p7l-vd-KRC"/>
-                        <outlet property="depthTapEdit" destination="mHo-9f-pLo" id="cum-Ov-JPM"/>
-                        <outlet property="depthValueLabel" destination="T5c-Sd-KDy" id="oJw-6o-wLh"/>
-                        <outlet property="dryMixControl" destination="Jzc-6g-Fgq" id="bse-aZ-kuw"/>
-                        <outlet property="dryMixTapEdit" destination="rYA-kZ-hpS" id="neD-xu-2Gp"/>
-                        <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="Y3i-Ja-uxe"/>
-                        <outlet property="editingBackground" destination="gry-aw-80i" id="3lD-fA-5dE"/>
-                        <outlet property="editingLabel" destination="0gm-sU-zom" id="uue-9h-waZ"/>
-                        <outlet property="editingValue" destination="5xm-4x-x9O" id="Ha9-ja-vUZ"/>
-                        <outlet property="editingView" destination="uNx-0G-OWZ" id="QYG-go-1OT"/>
-                        <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="856-wz-4sh"/>
-                        <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="V6V-aC-Bxf"/>
-                        <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="3fl-W9-5HI"/>
-                        <outlet property="negativeFeedbackControl" destination="fvV-h7-UiY" id="BoV-76-him"/>
-                        <outlet property="odd90Control" destination="olm-sN-GtT" id="17o-aU-iox"/>
-                        <outlet property="rateControl" destination="hF3-lq-xlE" id="Os9-bs-hcc"/>
-                        <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="J24-33-9kh"/>
-                        <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="R7f-vX-qPY"/>
-                        <outlet property="wetMixControl" destination="xjB-dE-KcA" id="ctu-DR-LOS"/>
-                        <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="DNW-UC-Fto"/>
-                        <outlet property="wetMixValueLabel" destination="OFy-GK-jEJ" id="cUQ-mp-I71"/>
+                        <outlet property="altDepthControl" destination="hui-tD-xRO" id="TD7-P9-5s5"/>
+                        <outlet property="altDepthTapEdit" destination="mHo-9f-pLo" id="7ty-Nj-VAm"/>
+                        <outlet property="altDepthValueLabel" destination="T5c-Sd-KDy" id="Jj9-HH-sgs"/>
+                        <outlet property="altRateControl" destination="hF3-lq-xlE" id="vql-n2-uwh"/>
+                        <outlet property="altRateTapEdit" destination="8ki-wy-l3o" id="c2m-75-vsR"/>
+                        <outlet property="altRateValueLabel" destination="GCP-HR-UOg" id="DdC-dV-54A"/>
+                        <outlet property="controlsView" destination="GTt-pC-dYn" id="ubw-u6-3cl"/>
+                        <outlet property="delayControl" destination="Mvw-nZ-fi3" id="dFA-ez-AYE"/>
+                        <outlet property="delayTapEdit" destination="OdN-B7-7c6" id="3B5-JI-mr4"/>
+                        <outlet property="delayValueLabel" destination="3TX-4e-MBG" id="4QD-Sy-v5M"/>
+                        <outlet property="depthControl" destination="okm-Gk-DO2" id="oUc-Mw-wjP"/>
+                        <outlet property="depthTapEdit" destination="sGQ-s4-7ru" id="cYK-Qg-rRH"/>
+                        <outlet property="depthValueLabel" destination="4aa-JQ-dr0" id="xK0-V6-mrl"/>
+                        <outlet property="dryMixControl" destination="Jzc-6g-Fgq" id="MBg-yn-xk2"/>
+                        <outlet property="dryMixTapEdit" destination="rYA-kZ-hpS" id="DfF-pr-lgO"/>
+                        <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="WCe-vp-LRL"/>
+                        <outlet property="editingBackground" destination="gry-aw-80i" id="PBp-Ji-ZTa"/>
+                        <outlet property="editingLabel" destination="0gm-sU-zom" id="hYQ-kP-vfa"/>
+                        <outlet property="editingValue" destination="5xm-4x-x9O" id="iyh-yu-IH4"/>
+                        <outlet property="editingView" destination="uNx-0G-OWZ" id="8IF-jT-EXh"/>
+                        <outlet property="editingViewBottomConstraint" destination="1CF-ek-3Xc" id="dPt-gM-ygo"/>
+                        <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="zLv-dE-aCy"/>
+                        <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="fYJ-e4-p80"/>
+                        <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="IPJ-RV-wnA"/>
+                        <outlet property="negativeFeedbackControl" destination="fvV-h7-UiY" id="OZa-FI-EQU"/>
+                        <outlet property="odd90Control" destination="olm-sN-GtT" id="DNj-Fx-3tr"/>
+                        <outlet property="rateControl" destination="jXf-HD-UuC" id="jYS-jf-EZo"/>
+                        <outlet property="rateTapEdit" destination="xLK-EJ-lhl" id="lOi-zc-4w4"/>
+                        <outlet property="rateValueLabel" destination="O1V-1T-DQD" id="sqm-Jd-yix"/>
+                        <outlet property="wetMixControl" destination="xjB-dE-KcA" id="9bZ-cp-CVC"/>
+                        <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="MaS-FM-vIp"/>
+                        <outlet property="wetMixValueLabel" destination="OFy-GK-jEJ" id="2mZ-Gs-4QQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

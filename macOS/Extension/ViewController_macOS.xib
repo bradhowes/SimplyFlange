@@ -7,24 +7,24 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="FilterViewController" customModule="SimplyFlangeFramework">
+        <customObject id="-2" userLabel="File's Owner" customClass="ViewController_macOS" customModule="SimplyFlangeAU">
             <connections>
-                <outlet property="controlsView" destination="oPI-wC-N8q" id="b1n-xP-3ex"/>
-                <outlet property="delayControl" destination="1VT-Na-dOb" id="SJt-NU-97M"/>
-                <outlet property="delayValueLabel" destination="aOT-T3-0Np" id="wc3-cA-O6c"/>
-                <outlet property="depthControl" destination="vJE-Qk-G6z" id="ccY-rd-Ozp"/>
-                <outlet property="depthValueLabel" destination="FNZ-OF-PRt" id="wWs-vp-8bJ"/>
-                <outlet property="dryMixControl" destination="oTi-Ii-NHh" id="FEL-iw-XkT"/>
-                <outlet property="dryMixValueLabel" destination="k3X-9K-MVH" id="AAn-IR-g5f"/>
-                <outlet property="feedbackControl" destination="nyC-Ao-wzj" id="zeZ-OL-Pf2"/>
-                <outlet property="feedbackValueLabel" destination="NVU-LP-fEC" id="Py7-qS-NBm"/>
-                <outlet property="negativeFeedbackControl" destination="oCS-oA-s1A" id="qqh-2u-vqX"/>
-                <outlet property="odd90Control" destination="l5S-ZP-tBO" id="vAV-PE-1zB"/>
-                <outlet property="rateControl" destination="25e-Ls-Yhr" id="D9p-f2-PUM"/>
-                <outlet property="rateValueLabel" destination="YuF-pJ-Rk3" id="ea4-pA-2h4"/>
-                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
-                <outlet property="wetMixControl" destination="KfU-K8-Mrs" id="bVp-Tv-NNA"/>
-                <outlet property="wetMixValueLabel" destination="Bgn-eW-ymD" id="2Z6-O9-xWd"/>
+                <outlet property="controlsView" destination="oPI-wC-N8q" id="ydd-bK-CXa"/>
+                <outlet property="delayControl" destination="1VT-Na-dOb" id="R6W-EF-15Y"/>
+                <outlet property="delayValueLabel" destination="aOT-T3-0Np" id="14z-5b-pbg"/>
+                <outlet property="depthControl" destination="vJE-Qk-G6z" id="rZO-Ex-FLY"/>
+                <outlet property="depthValueLabel" destination="FNZ-OF-PRt" id="ynb-op-Lc3"/>
+                <outlet property="dryMixControl" destination="oTi-Ii-NHh" id="y9w-8H-WuB"/>
+                <outlet property="dryMixValueLabel" destination="k3X-9K-MVH" id="0Sh-Fi-vk3"/>
+                <outlet property="feedbackControl" destination="nyC-Ao-wzj" id="H8W-Ny-2J5"/>
+                <outlet property="feedbackValueLabel" destination="NVU-LP-fEC" id="TYe-vq-u3A"/>
+                <outlet property="negativeFeedbackControl" destination="oCS-oA-s1A" id="Ng3-ZA-r6T"/>
+                <outlet property="odd90Control" destination="l5S-ZP-tBO" id="5gW-JJ-2bq"/>
+                <outlet property="rateControl" destination="25e-Ls-Yhr" id="IXb-YA-hk3"/>
+                <outlet property="rateValueLabel" destination="YuF-pJ-Rk3" id="YGK-LB-1Gf"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="H7S-LS-0kL"/>
+                <outlet property="wetMixControl" destination="KfU-K8-Mrs" id="WS3-JG-NDI"/>
+                <outlet property="wetMixValueLabel" destination="Bgn-eW-ymD" id="gjL-qm-sml"/>
             </connections>
         </customObject>
         <customView wantsLayer="YES" appearanceType="darkAqua" id="Hz6-mo-xeY" userLabel="AUv3 FilterView">
@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yz-l9v" userLabel="v1.0.0">
-                    <rect key="frame" x="482" y="64" width="42" height="17"/>
+                    <rect key="frame" x="484" y="64" width="40" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="v1.3.1" id="p30-Bk-a8R" userLabel="APP_VERSION">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="Title"/>
@@ -50,17 +50,14 @@
                 <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-wC-N8q">
                     <rect key="frame" x="42" y="20" width="504" height="260"/>
                     <subviews>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" userLabel="Depth" customClass="Knob" customModule="Knob">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" userLabel="Depth" customClass="Knob" customModule="Knob_macOS">
                             <rect key="frame" x="0.0" y="140" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="QUK-PT-mqw"/>
                                 <constraint firstAttribute="height" constant="120" id="vAd-uR-9t8"/>
                             </constraints>
-                            <connections>
-                                <action selector="depthChanged:" target="-2" id="nAs-7q-jtE"/>
-                            </connections>
                         </customView>
-                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="AUv3Support">
                             <rect key="frame" x="-2" y="124" width="124" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="wMm-uE-pHU"/>
@@ -71,17 +68,14 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="25e-Ls-Yhr" userLabel="Rate" customClass="Knob" customModule="Knob">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="25e-Ls-Yhr" userLabel="Rate" customClass="Knob" customModule="Knob_macOS">
                             <rect key="frame" x="128" y="140" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="EDP-SX-7Vf"/>
                                 <constraint firstAttribute="height" constant="120" id="V2V-kw-xaN"/>
                             </constraints>
-                            <connections>
-                                <action selector="rateChanged:" target="-2" id="N1g-EG-lyq"/>
-                            </connections>
                         </customView>
-                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-pJ-Rk3" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YuF-pJ-Rk3" customClass="FocusAwareTextField" customModule="AUv3Support">
                             <rect key="frame" x="126" y="124" width="124" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="A7M-iM-efX"/>
@@ -92,17 +86,14 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VT-Na-dOb" userLabel="Delay" customClass="Knob" customModule="Knob">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VT-Na-dOb" userLabel="Delay" customClass="Knob" customModule="Knob_macOS">
                             <rect key="frame" x="256" y="140" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="C1h-AW-fOA"/>
                                 <constraint firstAttribute="width" constant="120" id="nK3-Ah-NbH"/>
                             </constraints>
-                            <connections>
-                                <action selector="delayChanged:" target="-2" id="TWP-Z8-m03"/>
-                            </connections>
                         </customView>
-                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOT-T3-0Np" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aOT-T3-0Np" customClass="FocusAwareTextField" customModule="AUv3Support">
                             <rect key="frame" x="254" y="124" width="124" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="eeP-Bv-mve"/>
@@ -113,17 +104,14 @@
                                 <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textFieldCell>
                         </textField>
-                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="nyC-Ao-wzj" userLabel="Feedback" customClass="Knob" customModule="Knob">
+                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="nyC-Ao-wzj" userLabel="Feedback" customClass="Knob" customModule="Knob_macOS">
                             <rect key="frame" x="384" y="140" width="120" height="120"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="120" id="gXp-Wc-TyK"/>
                                 <constraint firstAttribute="width" constant="120" id="ukV-Dz-hMY"/>
                             </constraints>
-                            <connections>
-                                <action selector="feedbackChanged:" target="-2" id="pUJ-TA-dO7"/>
-                            </connections>
                         </customView>
-                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVU-LP-fEC" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NVU-LP-fEC" customClass="FocusAwareTextField" customModule="AUv3Support">
                             <rect key="frame" x="382" y="124" width="124" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="120" id="FRm-Hh-rJg"/>
@@ -143,7 +131,7 @@
                                         <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="l5S-ZP-tBO">
                                             <rect key="frame" x="7" y="18" width="42" height="25"/>
                                             <connections>
-                                                <action selector="odd90Changed:" target="-2" id="bhx-Jd-p9n"/>
+                                                <action selector="odd90Changed:" target="-2" id="uNJ-8F-nIx"/>
                                             </connections>
                                         </switch>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eOb-pQ-h5V">
@@ -167,17 +155,14 @@
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="Gho-Yc-bsF" userLabel="Dry">
                                     <rect key="frame" x="63" y="0.0" width="80" height="88"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="oTi-Ii-NHh" userLabel="Dry" customClass="Knob" customModule="Knob">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="oTi-Ii-NHh" userLabel="Dry" customClass="Knob" customModule="Knob_macOS">
                                             <rect key="frame" x="0.0" y="8" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="Vze-vS-v09"/>
                                                 <constraint firstAttribute="width" constant="80" id="cgS-KS-MTB"/>
                                             </constraints>
-                                            <connections>
-                                                <action selector="dryMixChanged:" target="-2" id="PEG-Zb-Jqb"/>
-                                            </connections>
                                         </customView>
-                                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3X-9K-MVH" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3X-9K-MVH" customClass="FocusAwareTextField" customModule="AUv3Support">
                                             <rect key="frame" x="-2" y="0.0" width="84" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="Ob0-G4-Fbi"/>
@@ -201,17 +186,14 @@
                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="MeM-HX-zlS" userLabel="Wet">
                                     <rect key="frame" x="150" y="0.0" width="80" height="88"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="KfU-K8-Mrs" userLabel="Wet" customClass="Knob" customModule="Knob">
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="KfU-K8-Mrs" userLabel="Wet" customClass="Knob" customModule="Knob_macOS">
                                             <rect key="frame" x="0.0" y="8" width="80" height="80"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="80" id="6WU-mH-P2b"/>
                                                 <constraint firstAttribute="width" constant="80" id="czU-wj-DBM"/>
                                             </constraints>
-                                            <connections>
-                                                <action selector="wetMixChanged:" target="-2" id="sh6-IC-ufg"/>
-                                            </connections>
                                         </customView>
-                                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-eW-ymD" customClass="FocusAwareTextField" customModule="SimplyFlangeFramework">
+                                        <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-eW-ymD" customClass="FocusAwareTextField" customModule="AUv3Support">
                                             <rect key="frame" x="-2" y="0.0" width="84" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="80" id="7Ss-uv-eri"/>
@@ -238,7 +220,7 @@
                                         <switch wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-oA-s1A" userLabel="Neg Feedback">
                                             <rect key="frame" x="11" y="34" width="42" height="25"/>
                                             <connections>
-                                                <action selector="negativeFeedbackChanged:" target="-2" id="KJS-Dj-mP8"/>
+                                                <action selector="negativeFeedbackChanged:" target="-2" id="74U-JJ-Koo"/>
                                             </connections>
                                         </switch>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu1-EE-DQZ">

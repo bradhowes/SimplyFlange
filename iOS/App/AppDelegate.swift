@@ -2,7 +2,7 @@
 
 import UIKit
 import AVKit
-import SimplyFlangeFramework
+import Logging
 import os
 
 @UIApplicationMain

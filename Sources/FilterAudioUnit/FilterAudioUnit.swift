@@ -6,7 +6,7 @@ import AVFoundation
 import CoreAudioKit
 import Logging
 import Parameters
-import SwiftKernel
+import Kernel
 import os
 
 public protocol AudioUnitViewConfigurationManager: AnyObject {
@@ -137,8 +137,7 @@ public final class FilterAudioUnit: AUAudioUnit {
   /// Maximum frames to render
   private let maxFramesToRender: UInt32 = 512
   /// Objective-C bridge into the C++ kernel
-  private let kernel = SimplyFlangeKernelAdapter(Bundle.main.auBaseName,
-                                                 maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
+  private let kernel = Adapter(Bundle.main.auBaseName, maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
   
   private var _currentPreset: AUAudioUnitPreset? {
     didSet { os_log(.debug, log: log, "* _currentPreset name: %{public}s", _currentPreset.descriptionOrNil) }

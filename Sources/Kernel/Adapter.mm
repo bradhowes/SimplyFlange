@@ -2,16 +2,16 @@
 
 #import <CoreAudioKit/CoreAudioKit.h>
 
-#import "C++/SimplyFlangeKernel.hpp"
-#import "SimplyFlangeKernelAdapter.h"
+#import "C++/Kernel.hpp"
+#import "Adapter.h"
 
-@implementation SimplyFlangeKernelAdapter {
-  SimplyFlangeKernel* kernel_;
+@implementation Adapter {
+  Kernel* kernel_;
 }
 
 - (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay {
   if (self = [super init]) {
-    self->kernel_ = new SimplyFlangeKernel(std::string(appExtensionName.UTF8String), maxDelay);
+    self->kernel_ = new Kernel(std::string(appExtensionName.UTF8String), maxDelay);
   }
   return self;
 }

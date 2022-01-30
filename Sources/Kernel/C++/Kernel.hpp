@@ -6,16 +6,16 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "DelayBuffer.hpp"
-#import "KernelEventProcessor.hpp"
+#import "EventProcessor.hpp"
 #import "LFO.hpp"
 #import "Kernel.h"
 
 /**
  The audio processing kernel that generates a "flange" effect.
  */
-class SimplyFlangeKernel : public KernelEventProcessor<SimplyFlangeKernel> {
+class Kernel : public EventProcessor<Kernel> {
 public:
-  using super = KernelEventProcessor<SimplyFlangeKernel>;
+  using super = EventProcessor<Kernel>;
   friend super;
 
   /**
@@ -24,13 +24,13 @@ public:
    @param name the name to use for logging purposes.
    @param maxDelayMilliseconds the max number of seconds of audio samples to keep in delay buffer
    */
-  SimplyFlangeKernel(const std::string& name, double maxDelayMilliseconds)
-  : super(os_log_create(name.c_str(), "SimplyFlangeKernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
+  Kernel(const std::string& name, double maxDelayMilliseconds)
+  : super(os_log_create(name.c_str(), "Kernel")), maxDelayMilliseconds_{maxDelayMilliseconds},
   delayLines_{}, lfo_()
   {
     lfo_.setWaveform(LFOWaveform::triangle);
   }
-  
+
   /**
    Update kernel and buffers to support the given format and channel count
 
@@ -50,7 +50,7 @@ public:
    @param frameCount the number of frames that will be processed during this rendering pass.
    */
   void prepareToRender(AUAudioFrameCount frameCount) {
-    
+
     // Generate all delay position values necessary to render `frameCount` samples. Doing so up-front here saves some
     // cycles if odd90 is false or there are more than 2 input channels to render.
     auto scale = depth_ * delayInSamples_;
@@ -63,7 +63,7 @@ public:
       assert(value >= 0.0 && value < delayLines_[0].size());
       *buffer++ = value;
     }
-    
+
     if (odd90_) {
       lfo_.restoreState(state);
       buffer = delayPos_[1];
@@ -134,14 +134,14 @@ public:
     }
     return 0.0;
   }
-  
+
 private:
 
   void initialize(int channelCount, double sampleRate) {
     samplesPerMillisecond_ = sampleRate / 1000.0;
     delayInSamples_ = delay_ * samplesPerMillisecond_;
     lfo_.initialize(sampleRate, rate_);
-    
+
     auto size = maxDelayMilliseconds_ * samplesPerMillisecond_ + 1;
     os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f delayInSamples: %f", size, delayInSamples_);
     delayLines_.clear();
@@ -149,9 +149,9 @@ private:
       delayLines_.emplace_back(size);
     }
   }
-  
+
   void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
-  
+
   void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount) {
     auto signedFeedback = negativeFeedback_ ? -feedback_ : feedback_;
     for (int channel = 0; channel < ins.size(); ++channel) {
@@ -167,9 +167,9 @@ private:
       }
     }
   }
-  
+
   void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
-  
+
   double depth_;
   double rate_;
   double delay_;
@@ -178,11 +178,11 @@ private:
   double wetMix_;
   bool negativeFeedback_;
   bool odd90_;
-  
+
   double maxDelayMilliseconds_;
   double samplesPerMillisecond_;
   double delayInSamples_;
-  
+
   std::vector<DelayBuffer<AUValue>> delayLines_;
   LFO<double> lfo_;
   InputBuffer delayPos_;

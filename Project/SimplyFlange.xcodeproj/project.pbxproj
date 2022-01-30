@@ -22,10 +22,8 @@
 		BD38A30227A5C80900405CBC /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30127A5C80900405CBC /* Kernel */; };
 		BD38A30427A5C80900405CBC /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30327A5C80900405CBC /* Logging */; };
 		BD38A30627A5C80900405CBC /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30527A5C80900405CBC /* Parameters */; };
-		BD38A30827A5C80900405CBC /* SwiftKernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30727A5C80900405CBC /* SwiftKernel */; };
 		BD38A30E27A5CA8000405CBC /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30D27A5CA8000405CBC /* Logging */; };
 		BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD38A31627A5D16200405CBC /* MainInterface.storyboard */; };
-		BD38A31B27A5D39500405CBC /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A31A27A5D39500405CBC /* UI */; };
 		BD38A31E27A5D63500405CBC /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A31D27A5D63500405CBC /* AUv3-Support-iOS */; };
 		BD38A32027A5D63500405CBC /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A31F27A5D63500405CBC /* AUv3-Support-macOS */; };
 		BD38A32327A5D84700405CBC /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD38A32127A5D84700405CBC /* Desdemona.ttf */; };
@@ -36,19 +34,12 @@
 		BD446C0725E2C6A0009B7347 /* DSPTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD446BE725E2C654009B7347 /* DSPTests.mm */; };
 		BD4F06A127A605F00019CB0D /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06A027A605F00019CB0D /* Logging */; };
 		BD4F06AC27A60C3D0019CB0D /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06AB27A60C3D0019CB0D /* FilterAudioUnit */; };
-		BD4F06AE27A60C3D0019CB0D /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06AD27A60C3D0019CB0D /* Kernel */; };
-		BD4F06B027A60C3D0019CB0D /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06AF27A60C3D0019CB0D /* Parameters */; };
-		BD4F06B227A60C3D0019CB0D /* SwiftKernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06B127A60C3D0019CB0D /* SwiftKernel */; };
-		BD4F06B427A60C3D0019CB0D /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06B327A60C3D0019CB0D /* UI */; };
-		BD4F06B627A60C540019CB0D /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06B527A60C540019CB0D /* Knob-macOS */; };
 		BD4F06B727A60E160019CB0D /* ViewController_macOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */; };
 		BD4F06B827A60E1B0019CB0D /* ViewController_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
-		BD7AA22A27A5F9F6003CAE1D /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD7AA22927A5F9F6003CAE1D /* Knob-macOS */; };
-		BD7AA22C27A5FA02003CAE1D /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD7AA22B27A5FA02003CAE1D /* Knob-iOS */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
@@ -58,8 +49,8 @@
 		BD96F30427A57C160001C2B9 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30327A57C160001C2B9 /* Kernel */; };
 		BD96F30627A57C160001C2B9 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30527A57C160001C2B9 /* Logging */; };
 		BD96F30827A57C160001C2B9 /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30727A57C160001C2B9 /* Parameters */; };
-		BD96F30A27A57C160001C2B9 /* SwiftKernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30927A57C160001C2B9 /* SwiftKernel */; };
-		BD96F31427A580780001C2B9 /* UI in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F31327A580780001C2B9 /* UI */; };
+		BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9227A6EC450081337C /* Knob-iOS */; };
+		BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9427A6EC450081337C /* Knob-macOS */; };
 		BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */; };
 		BDB11A6324A1530D00DD8EF9 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -249,10 +240,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD38A31B27A5D39500405CBC /* UI in Frameworks */,
-				BD7AA22C27A5FA02003CAE1D /* Knob-iOS in Frameworks */,
 				BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */,
-				BD38A30827A5C80900405CBC /* SwiftKernel in Frameworks */,
+				BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */,
 				BD38A30227A5C80900405CBC /* Kernel in Frameworks */,
 				BD38A30427A5C80900405CBC /* Logging in Frameworks */,
 				BD38A30627A5C80900405CBC /* Parameters in Frameworks */,
@@ -264,12 +253,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD4F06B627A60C540019CB0D /* Knob-macOS in Frameworks */,
-				BD4F06B427A60C3D0019CB0D /* UI in Frameworks */,
-				BD4F06AE27A60C3D0019CB0D /* Kernel in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
-				BD4F06B027A60C3D0019CB0D /* Parameters in Frameworks */,
-				BD4F06B227A60C3D0019CB0D /* SwiftKernel in Frameworks */,
 				BD38A32027A5D63500405CBC /* AUv3-Support-macOS in Frameworks */,
 				BD4F06A127A605F00019CB0D /* Logging in Frameworks */,
 				BD4F06AC27A60C3D0019CB0D /* FilterAudioUnit in Frameworks */,
@@ -281,11 +265,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
-				BD96F30A27A57C160001C2B9 /* SwiftKernel in Frameworks */,
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
 				BD96F30627A57C160001C2B9 /* Logging in Frameworks */,
-				BD7AA22A27A5F9F6003CAE1D /* Knob-macOS in Frameworks */,
-				BD96F31427A580780001C2B9 /* UI in Frameworks */,
+				BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
 				BD96F30227A57C160001C2B9 /* FilterAudioUnit in Frameworks */,
 			);
@@ -554,9 +536,7 @@
 				BD38A30127A5C80900405CBC /* Kernel */,
 				BD38A30327A5C80900405CBC /* Logging */,
 				BD38A30527A5C80900405CBC /* Parameters */,
-				BD38A30727A5C80900405CBC /* SwiftKernel */,
-				BD38A31A27A5D39500405CBC /* UI */,
-				BD7AA22B27A5FA02003CAE1D /* Knob-iOS */,
+				BD9BFB9227A6EC450081337C /* Knob-iOS */,
 			);
 			productName = "AUv3FilterExtension iOS";
 			productReference = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */;
@@ -581,11 +561,6 @@
 				BD38A31F27A5D63500405CBC /* AUv3-Support-macOS */,
 				BD4F06A027A605F00019CB0D /* Logging */,
 				BD4F06AB27A60C3D0019CB0D /* FilterAudioUnit */,
-				BD4F06AD27A60C3D0019CB0D /* Kernel */,
-				BD4F06AF27A60C3D0019CB0D /* Parameters */,
-				BD4F06B127A60C3D0019CB0D /* SwiftKernel */,
-				BD4F06B327A60C3D0019CB0D /* UI */,
-				BD4F06B527A60C540019CB0D /* Knob-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -610,9 +585,7 @@
 				BD96F30327A57C160001C2B9 /* Kernel */,
 				BD96F30527A57C160001C2B9 /* Logging */,
 				BD96F30727A57C160001C2B9 /* Parameters */,
-				BD96F30927A57C160001C2B9 /* SwiftKernel */,
-				BD96F31327A580780001C2B9 /* UI */,
-				BD7AA22927A5F9F6003CAE1D /* Knob-macOS */,
+				BD9BFB9427A6EC450081337C /* Knob-macOS */,
 			);
 			productName = "AUv3FilterExtension macOS";
 			productReference = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */;
@@ -684,7 +657,7 @@
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
 				BD38A31C27A5D63500405CBC /* XCRemoteSwiftPackageReference "AUv3Support" */,
-				BD38A32527A5D9E100405CBC /* XCRemoteSwiftPackageReference "knob" */,
+				BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -1923,7 +1896,7 @@
 				kind = branch;
 			};
 		};
-		BD38A32527A5D9E100405CBC /* XCRemoteSwiftPackageReference "knob" */ = {
+		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/knob";
 			requirement = {
@@ -1950,17 +1923,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
-		BD38A30727A5C80900405CBC /* SwiftKernel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftKernel;
-		};
 		BD38A30D27A5CA8000405CBC /* Logging */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Logging;
-		};
-		BD38A31A27A5D39500405CBC /* UI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UI;
 		};
 		BD38A31D27A5D63500405CBC /* AUv3-Support-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1980,37 +1945,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = FilterAudioUnit;
 		};
-		BD4F06AD27A60C3D0019CB0D /* Kernel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Kernel;
-		};
-		BD4F06AF27A60C3D0019CB0D /* Parameters */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Parameters;
-		};
-		BD4F06B127A60C3D0019CB0D /* SwiftKernel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = SwiftKernel;
-		};
-		BD4F06B327A60C3D0019CB0D /* UI */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = UI;
-		};
-		BD4F06B527A60C540019CB0D /* Knob-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD38A32527A5D9E100405CBC /* XCRemoteSwiftPackageReference "knob" */;
-			productName = "Knob-macOS";
-		};
-		BD7AA22927A5F9F6003CAE1D /* Knob-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD38A32527A5D9E100405CBC /* XCRemoteSwiftPackageReference "knob" */;
-			productName = "Knob-macOS";
-		};
-		BD7AA22B27A5FA02003CAE1D /* Knob-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD38A32527A5D9E100405CBC /* XCRemoteSwiftPackageReference "knob" */;
-			productName = "Knob-iOS";
-		};
 		BD96F30127A57C160001C2B9 /* FilterAudioUnit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FilterAudioUnit;
@@ -2027,13 +1961,15 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
-		BD96F30927A57C160001C2B9 /* SwiftKernel */ = {
+		BD9BFB9227A6EC450081337C /* Knob-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SwiftKernel;
+			package = BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */;
+			productName = "Knob-iOS";
 		};
-		BD96F31327A580780001C2B9 /* UI */ = {
+		BD9BFB9427A6EC450081337C /* Knob-macOS */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = UI;
+			package = BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */;
+			productName = "Knob-macOS";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

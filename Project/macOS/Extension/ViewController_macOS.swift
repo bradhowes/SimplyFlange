@@ -3,10 +3,10 @@
 import AUv3Support
 import CoreAudioKit
 import FilterAudioUnit
+import Kernel
 import Knob_macOS
 import Logging
 import Parameters
-import SwiftKernel
 import os.log
 
 extension Switch: AUParameterValueProvider {

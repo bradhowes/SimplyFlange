@@ -37,16 +37,16 @@ typedef NS_ENUM(UInt64, ParameterAddress) {
 @end
 
 /**
- Small Obj-C wrapper around the FilterKernel C++ class. Handles AUParameter get/set requests by forwarding them to
+ Small Obj-C wrapper around the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
  the kernel.
  */
-@interface SimplyFlangeKernelAdapter : NSObject <AUParameterHandler>
+@interface Adapter : NSObject <AUParameterHandler>
 
 - (nonnull id)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay;
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
- 
+
  @param inputFormat the current format of the input bus
  @param maxFramesToRender the max frames to expect in a render request
  */
@@ -59,7 +59,7 @@ typedef NS_ENUM(UInt64, ParameterAddress) {
 
 /**
  Process upstream input
- 
+
  @param timestamp the timestamp for the rendering
  @param frameCount the number of frames to render
  @param output the buffer to hold the rendered samples
@@ -74,7 +74,7 @@ typedef NS_ENUM(UInt64, ParameterAddress) {
 
 /**
  Set the bypass state.
- 
+
  @param state new bypass value
  */
 - (void)setBypass:(BOOL)state;

@@ -6,7 +6,7 @@ import FilterAudioUnit
 import Knob_iOS
 import Logging
 import Parameters
-import SwiftKernel
+import Kernel
 import os.log
 
 extension Switch: AUParameterValueProvider {

@@ -1,16 +1,10 @@
-# Kernel Directory
+# Kernel Package
 
-This directory contains the files involved in filtering.
+This directory contains the files make up the kernel that does the actual filtering of audio samples.
 
-- [FilterKernel](FilterKernel.hpp) -- holds parameters that define the filter (cutoff and resonance) and applies the filter to
-  samples during audio unit rendering.
+- [KernelAdapter](KernelAdapter.hpp) -- provides simple interface in Obj-C for the kernel.
 
-- [FilterKernelAdapter](FilterKernelAdapter.h) -- tiny Objective-C wrapper for the [FilterKernel](FilterKernel.hpp) so that
-  Swift can work with it
+- [C++](C++) -- holds the C++ header files that perform the actual sample rendering.
 
-- [InputBuffer](InputBuffer.hpp) -- manages an [AVAudioPCMBuffer](https://developer.apple.com/documentation/avfaudio/avaudiopcmbuffer)
-  that holds audio samples from an upstream node for processing by the filter.
-
-- [KernelEventProcessor](KernelEventProcessor.hpp) -- templated base class that understands how to properly interleave events
-  and sample renderings for sample-accurate events. Uses the "curiously recurring template pattern" to do so
-  without need of virtual method calls. [FilterKernel](FilterKernel.hpp) derives from this.
+- [include](include) -- holds just a [Kernel.h](Sources/Kernel/include/Kernel.h) file that controls what items
+  are exposed to Swift.

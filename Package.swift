@@ -19,8 +19,7 @@ let package = Package(
   targets: [
     .target(
       name: "FilterAudioUnit",
-      dependencies: ["Parameters"],
-      exclude: ["README.md"]
+      dependencies: ["Parameters"]
     ),
     .target(
       name: "Kernel",

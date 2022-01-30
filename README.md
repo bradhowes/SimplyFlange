@@ -1,6 +1,6 @@
 ![CI](https://github.com/bradhowes/SimplyFlange/workflows/CI/badge.svg?branch=main)
 
-![](image.jpeg)
+![](Media/image.jpeg)
 
 # About SimplyFlange
 
@@ -63,7 +63,7 @@ tests, so it should work in your AUv3-compatible host application:
 
 # Building
 
-To successfully compile you will need to edit [Configuration/Common.xcconfig](Configuration/Common.xcconfig) and
+To successfully compile you will need to edit [Common.xcconfig](Project/Configuration/Common.xcconfig) and
 change `DEVELOPMENT_TEAM` to hold your own Apple developer account ID so you can sign the binaries. You should
 also adjust other settings as well to properly identify you and/or your company if you desire.
 
@@ -73,7 +73,7 @@ also adjust other settings as well to properly identify you and/or your company 
 There are additional values in this file that you really should change, especially to remove any risk of
 collision with other AUv3 effects you may have on your system.
 
-The script [newRelease.sh](newRelease.sh) automates generating new archive versions of both the macOS and iOS
+The script [newRelease.sh](Project/newRelease.sh) automates generating new archive versions of both the macOS and iOS
 apps and uploads them to the App Store if everything checks out. It uses the DEVELOPMENT_TEAM setting in the
 `Common.xcconfig` to handle the authentication and signing.
 
@@ -92,19 +92,17 @@ MIDI controller might do.
 
 ## Code Layout
 
-Each OS ([macOS](macOS) and [iOS](iOS)) have the same code layout:
+Each OS ([macOS](Project/macOS) and [iOS](Project/iOS)) have the same code layout:
 
 * `App` -- code and configury for the application that hosts the AUv3 app extension
 * `Extension` -- code and configury for the extension itself
-* `Framework` -- code configury for the framework that contains the shared code by the app and the extension
 
-The [Shared](Shared) folder holds all of the code that is used by the above products. In it you will find
+The [Sources](Sources) folder holds all of the common code that is used by the above products. In it you will find
 
-* [DelayBuffer](Shared/Kernel/DelayBuffer.h) -- simple C++ class that holds the samples in a circular buffer
-* [LFO](Shared/Kernel/LFO.h) -- simple low-frequency oscillator that varies the delay amount
-* [FilterDSPKernel](Shared/Kernel/FilterDSPKernel.h) -- another C++ class that does the rendering of audio samples by sending them through the filter.
-* [FilterAudioUnit](Shared/FilterAudioUnit.swift) -- the actual AUv3 AudioUnit written in Swift.
-* [FilterViewController](Shared/User%20Interface/FilterViewController.swift) -- a custom view controller that
-works with both UIView and NSView views to show the effect's controls.
+* [Kernel](Sources/Kernel) -- the Obj-C++ kernel adapter and C++ classes that perform the rendering of audio samples
+* [FilterAudioUnit](Sources/FilterAudioUnit) -- the actual AUv3 AudioUnit written in Swift.
+* [Parameters](Sources/Parameters) -- definitions for the AudioUnit runtime parameters as well as a preset
+  definition using the parameters
+* [SwiftKernel](Sources/SwiftKernel) -- provides a bridge from Obj-C++ to Swift for the kerenl
 
-Additional supporting files can be found in [Support](Shared/Support).
+Additional supporting files can be found in the [AUv3Support](https://github.com/bradhowes/AUv3Support) project.

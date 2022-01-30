@@ -13,7 +13,20 @@ extension Switch: AUParameterValueProvider {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
-extension Knob: AUParameterValueProvider, RangedControl {}
+extension Knob: AUParameterValueProvider, RangedControl {
+
+  func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
+
+  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag) ) }
+}
+
+extension FocusAwareTextField {
+
+  func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
+
+  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag) ) }
+}
+
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
@@ -24,7 +37,8 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   private var viewConfig: AUAudioUnitViewConfiguration!
   private var parameterObserverToken: AUParameterObserverToken?
   private var keyValueObserverToken: NSKeyValueObservation?
-  
+  private var hasActiveLabel = false
+
   @IBOutlet private weak var controlsView: NSView!
 
   @IBOutlet private weak var depthControl: Knob!
@@ -67,12 +81,25 @@ extension Knob: AUParameterValueProvider, RangedControl {}
       connectViewToAU()
     }
 
-    depthControl.tag = Int(ParameterAddress.depth.rawValue)
-    rateControl.tag = Int(ParameterAddress.rate.rawValue)
-    delayControl.tag = Int(ParameterAddress.delay.rawValue)
-    feedbackControl.tag = Int(ParameterAddress.feedback.rawValue)
-    wetMixControl.tag = Int(ParameterAddress.wetMix.rawValue)
-    dryMixControl.tag = Int(ParameterAddress.dryMix.rawValue)
+    // Set tag values to AUParameter address values for use in editing tasks
+    //
+    depthControl.setParameterAddress(.depth)
+    depthValueLabel.setParameterAddress(.depth)
+
+    rateControl.setParameterAddress(.rate)
+    rateValueLabel.setParameterAddress(.rate)
+
+    delayControl.setParameterAddress(.delay)
+    delayValueLabel.setParameterAddress(.delay)
+
+    feedbackControl.setParameterAddress(.feedback)
+    feedbackValueLabel.setParameterAddress(.feedback)
+
+    wetMixControl.setParameterAddress(.wetMix)
+    wetMixValueLabel.setParameterAddress(.wetMix)
+
+    dryMixControl.setParameterAddress(.dryMix)
+    dryMixValueLabel.setParameterAddress(.dryMix)
 
     for control in [depthControl, rateControl, delayControl, feedbackControl] {
       if let control = control {
@@ -94,9 +121,10 @@ extension Knob: AUParameterValueProvider, RangedControl {}
       }
     }
   }
-  
+
   @IBAction public func valueChanged(_ control: Knob) {
-    controlChanged(control, address: ParameterAddress(rawValue: UInt64(control.tag))!)
+    guard let address = control.parameterAddress else { fatalError() }
+    controlChanged(control, address: address)
   }
 
   @IBAction public func odd90Changed(_ control: Switch) { controlChanged(control, address: .odd90) }
@@ -160,36 +188,40 @@ extension ViewController_macOS {
     self.parameterObserverToken = parameterObserverToken
     
     let params = audioUnit.parameterDefinitions
-    controls[.depth] = [
-      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
-                            formatter: params.valueFormatter(.depth), knob: depthControl,
-                            label: depthValueLabel, logValues: false)
-    ]
-
-    controls[.rate] = [
-      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
-                            formatter: params.valueFormatter(.rate), knob: rateControl,
-                            label: rateValueLabel, logValues: true)
-    ]
-
-    controls[.delay] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
-                                              formatter: params.valueFormatter(.delay), knob: delayControl,
-                                              label: delayValueLabel, logValues: true)]
-    controls[.feedback] = [FloatParameterControl(parameterObserverToken: parameterObserverToken,
-                                                 parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
-                                                 knob: feedbackControl, label: feedbackValueLabel, logValues: false)]
-    controls[.dryMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-                                               formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
-                                               label: dryMixValueLabel, logValues: false)]
-    controls[.wetMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-                                               formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
-                                               label:  wetMixValueLabel, logValues: false)]
-    controls[.negativeFeedback] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
-                                                           parameter: params[.negativeFeedback],
-                                                           control: negativeFeedbackControl)]
-    controls[.odd90] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
-                                                parameter: params[.odd90],
-                                                control: odd90Control)]
+    controls[.depth] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+      formatter: params.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
+    )]
+    controls[.rate] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.rate], formatter: params.valueFormatter(.rate),
+      rangedControl: rateControl, label: rateValueLabel, logValues: true
+    )]
+    controls[.delay] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.delay],
+      formatter: params.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel, logValues: true
+    )]
+    controls[.feedback] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.feedback],
+      formatter: params.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
+      logValues: false
+    )]
+    controls[.dryMix] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
+      formatter: params.valueFormatter(.dryMix), rangedControl: dryMixControl, label: dryMixValueLabel,
+      logValues: false
+    )]
+    controls[.wetMix] = [FloatParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
+      formatter: params.valueFormatter(.wetMix), rangedControl: wetMixControl, label:  wetMixValueLabel,
+      logValues: false
+    )]
+    controls[.negativeFeedback] = [BooleanParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.negativeFeedback],
+      booleanControl: negativeFeedbackControl
+    )]
+    controls[.odd90] = [BooleanParameterControl(
+      parameterObserverToken: parameterObserverToken, parameter: params[.odd90], booleanControl: odd90Control
+    )]
 
     // Let us manage view configuration changes
     audioUnit.viewConfigurationManager = self

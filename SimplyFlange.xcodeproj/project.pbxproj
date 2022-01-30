@@ -32,14 +32,14 @@
 		BD446BD825E2BA4E009B7347 /* LFOTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD446BBF25E2B9CD009B7347 /* LFOTests.mm */; };
 		BD446BF125E2C69C009B7347 /* DSPTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD446BE725E2C654009B7347 /* DSPTests.mm */; };
 		BD446C0725E2C6A0009B7347 /* DSPTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD446BE725E2C654009B7347 /* DSPTests.mm */; };
-		BD4F06A127A605F00019CB0D /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06A027A605F00019CB0D /* Logging */; };
-		BD4F06AC27A60C3D0019CB0D /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD4F06AB27A60C3D0019CB0D /* FilterAudioUnit */; };
 		BD4F06B727A60E160019CB0D /* ViewController_macOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */; };
 		BD4F06B827A60E1B0019CB0D /* ViewController_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
+		BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD8FC33227A71F56002D09F6 /* FilterAudioUnit */; };
+		BD8FC33527A71F56002D09F6 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD8FC33427A71F56002D09F6 /* Logging */; };
 		BD938B5024A6BC1F00892358 /* DelayBufferTests.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD938B4F24A6BC1F00892358 /* DelayBufferTests.mm */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD95147824A08BB600D8024C /* NewSwiftTestTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95147724A08BB600D8024C /* NewSwiftTestTemplate.swift */; };
@@ -169,7 +169,7 @@
 		BD95147924A08BB600D8024C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ValueChangeDetectorTests.mm; sourceTree = "<group>"; };
 		BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RampingValueChangeDetectorTests.mm; sourceTree = "<group>"; };
-		BD96F2EA27A53E260001C2B9 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Packages; path = Packages; sourceTree = "<group>"; };
+		BD96F2EA27A53E260001C2B9 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Packages; sourceTree = "<group>"; };
 		BD9BFB9627A6F0B70081337C /* Knob+Label.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Knob+Label.xib"; sourceTree = "<group>"; };
 		BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobLabelControl.swift; sourceTree = "<group>"; };
 		BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -257,10 +257,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
+				BD8FC33527A71F56002D09F6 /* Logging in Frameworks */,
 				BD38A32027A5D63500405CBC /* AUv3-Support-macOS in Frameworks */,
-				BD4F06A127A605F00019CB0D /* Logging in Frameworks */,
-				BD4F06AC27A60C3D0019CB0D /* FilterAudioUnit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,8 +565,8 @@
 			name = SimplyFlange;
 			packageProductDependencies = (
 				BD38A31F27A5D63500405CBC /* AUv3-Support-macOS */,
-				BD4F06A027A605F00019CB0D /* Logging */,
-				BD4F06AB27A60C3D0019CB0D /* FilterAudioUnit */,
+				BD8FC33227A71F56002D09F6 /* FilterAudioUnit */,
+				BD8FC33427A71F56002D09F6 /* Logging */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -1945,13 +1945,13 @@
 			package = BD38A31C27A5D63500405CBC /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-macOS";
 		};
-		BD4F06A027A605F00019CB0D /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Logging;
-		};
-		BD4F06AB27A60C3D0019CB0D /* FilterAudioUnit */ = {
+		BD8FC33227A71F56002D09F6 /* FilterAudioUnit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FilterAudioUnit;
+		};
+		BD8FC33427A71F56002D09F6 /* Logging */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Logging;
 		};
 		BD96F30127A57C160001C2B9 /* FilterAudioUnit */ = {
 			isa = XCSwiftPackageProductDependency;

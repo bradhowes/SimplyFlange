@@ -30,7 +30,8 @@ let package = Package(
               .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
               "Kernel",
               "Logging"
-            ]
+            ],
+            exclude: ["README.md"]
            ),
     .testTarget(
       name: "ParametersTests",

@@ -67,12 +67,12 @@ extension Knob: AUParameterValueProvider, RangedControl {}
       connectViewToAU()
     }
 
-//    depthControl.tag = Int(ParameterAddress.depth.rawValue)
-//    rateControl.tag = Int(ParameterAddress.rate.rawValue)
-//    delayControl.tag = Int(ParameterAddress.delay.rawValue)
-//    feedbackControl.tag = Int(ParameterAddress.feedback.rawValue)
-//    wetMixControl.tag = Int(ParameterAddress.wetMix.rawValue)
-//    dryMixControl.tag = Int(ParameterAddress.dryMix.rawValue)
+    depthControl.tag = Int(ParameterAddress.depth.rawValue)
+    rateControl.tag = Int(ParameterAddress.rate.rawValue)
+    delayControl.tag = Int(ParameterAddress.delay.rawValue)
+    feedbackControl.tag = Int(ParameterAddress.feedback.rawValue)
+    wetMixControl.tag = Int(ParameterAddress.wetMix.rawValue)
+    dryMixControl.tag = Int(ParameterAddress.dryMix.rawValue)
 
     for control in [depthControl, rateControl, delayControl, feedbackControl] {
       if let control = control {
@@ -103,6 +103,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   @IBAction public func negativeFeedbackChanged(_ control: Switch) { controlChanged(control, address: .negativeFeedback) }
 
   private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
+    os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
 
     // If current preset is a factory preset, then clear it.
     if (audioUnit?.currentPreset?.number ?? -1) > 0 {

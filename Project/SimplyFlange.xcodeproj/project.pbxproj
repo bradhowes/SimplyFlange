@@ -51,6 +51,8 @@
 		BD96F30827A57C160001C2B9 /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30727A57C160001C2B9 /* Parameters */; };
 		BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9227A6EC450081337C /* Knob-iOS */; };
 		BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9427A6EC450081337C /* Knob-macOS */; };
+		BD9BFB9727A6F0B70081337C /* Knob+Label.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9BFB9627A6F0B70081337C /* Knob+Label.xib */; };
+		BD9BFB9927A6F2E30081337C /* KnobLabelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */; };
 		BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */; };
 		BDB11A6324A1530D00DD8EF9 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -167,7 +169,9 @@
 		BD95147924A08BB600D8024C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD95148224A090E400D8024C /* ValueChangeDetectorTests.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ValueChangeDetectorTests.mm; sourceTree = "<group>"; };
 		BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RampingValueChangeDetectorTests.mm; sourceTree = "<group>"; };
-		BD96F2EA27A53E260001C2B9 /* SimplyFlangeSPM */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = SimplyFlangeSPM; path = ..; sourceTree = "<group>"; };
+		BD96F2EA27A53E260001C2B9 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Packages; path = Packages; sourceTree = "<group>"; };
+		BD9BFB9627A6F0B70081337C /* Knob+Label.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Knob+Label.xib"; sourceTree = "<group>"; };
+		BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobLabelControl.swift; sourceTree = "<group>"; };
 		BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogScaling.swift; sourceTree = "<group>"; };
 		BDB7CE92249EC556009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -313,7 +317,7 @@
 		C437FE2F2223672C008D6C09 = {
 			isa = PBXGroup;
 			children = (
-				BD96F2EA27A53E260001C2B9 /* SimplyFlangeSPM */,
+				BD96F2EA27A53E260001C2B9 /* Packages */,
 				BD50D32425D75B7900375455 /* SimplyFlange.entitlements */,
 				F1464A50F1463F7000000001 /* Configuration */,
 				C4BEE79622236A29001E6B6D /* iOS */,
@@ -391,10 +395,12 @@
 		C4BEE7B722236A58001E6B6D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				BD9BFB9627A6F0B70081337C /* Knob+Label.xib */,
 				BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */,
 				BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */,
 				C4BEE7BE22236A58001E6B6D /* Info.plist */,
 				C4BEE7BD22236A58001E6B6D /* Extension.entitlements */,
+				BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -710,6 +716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9BFB9727A6F0B70081337C /* Knob+Label.xib in Resources */,
 				BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */,
 				BD38A32427A5D84700405CBC /* Media.xcassets in Resources */,
 				BD38A32327A5D84700405CBC /* Desdemona.ttf in Resources */,
@@ -789,6 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BD9BFB9927A6F2E30081337C /* KnobLabelControl.swift in Sources */,
 				C433F56122404C7C00F1B750 /* ViewController_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

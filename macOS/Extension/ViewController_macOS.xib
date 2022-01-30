@@ -131,7 +131,7 @@
                                         <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="l5S-ZP-tBO">
                                             <rect key="frame" x="7" y="18" width="42" height="25"/>
                                             <connections>
-                                                <action selector="odd90Changed:" target="-2" id="uNJ-8F-nIx"/>
+                                                <action selector="handleOdd90Changed:" target="-2" id="QiG-qG-Pcq"/>
                                             </connections>
                                         </switch>
                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eOb-pQ-h5V">
@@ -220,7 +220,7 @@
                                         <switch wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-oA-s1A" userLabel="Neg Feedback">
                                             <rect key="frame" x="11" y="34" width="42" height="25"/>
                                             <connections>
-                                                <action selector="negativeFeedbackChanged:" target="-2" id="74U-JJ-Koo"/>
+                                                <action selector="handleNegativeFeedbackChanged:" target="-2" id="Ez5-4a-IVu"/>
                                             </connections>
                                         </switch>
                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu1-EE-DQZ">

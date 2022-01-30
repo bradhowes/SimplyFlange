@@ -107,7 +107,7 @@ extension FocusAwareTextField {
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
         control.target = self
-        control.action = #selector(valueChanged(_:))
+        control.action = #selector(handleKnobValueChanged(_:))
       }
     }
     
@@ -117,18 +117,23 @@ extension FocusAwareTextField {
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6
         control.target = self
-        control.action = #selector(valueChanged(_:))
+        control.action = #selector(handleKnobValueChanged(_:))
       }
     }
   }
 
-  @IBAction public func valueChanged(_ control: Knob) {
-    guard let address = control.parameterAddress else { fatalError() }
-    controlChanged(control, address: address)
+  @IBAction public func handleKnobValueChanged(_ control: Knob) {
+     guard let address = control.parameterAddress else { fatalError() }
+     controlChanged(control, address: address)
   }
 
-  @IBAction public func odd90Changed(_ control: Switch) { controlChanged(control, address: .odd90) }
-  @IBAction public func negativeFeedbackChanged(_ control: Switch) { controlChanged(control, address: .negativeFeedback) }
+  @IBAction public func handleOdd90Changed(_ control: Switch) {
+    controlChanged(control, address: .odd90)
+  }
+
+  @IBAction public func handleNegativeFeedbackChanged(_ control: Switch) {
+    controlChanged(control, address: .negativeFeedback)
+  }
 
   private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
     os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)

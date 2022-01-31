@@ -63,8 +63,8 @@ tests, so it should work in your AUv3-compatible host application:
 
 # Building
 
-To successfully compile you will need to edit [Common.xcconfig](Project/Configuration/Common.xcconfig) and
-change `DEVELOPMENT_TEAM` to hold your own Apple developer account ID so you can sign the binaries. You should
+To successfully compile you will need to edit [Common.xcconfig](Configuration/Common.xcconfig) and change 
+`DEVELOPMENT_TEAM` to hold your own Apple developer account ID so you can sign the binaries. You should
 also adjust other settings as well to properly identify you and/or your company if you desire.
 
 > :warning: You are free to use the code according to [LICENSE.md](LICENSE.md), but you must not replicate
@@ -92,17 +92,20 @@ MIDI controller might do.
 
 ## Code Layout
 
-Each OS ([macOS](Project/macOS) and [iOS](Project/iOS)) have the same code layout:
+Each OS ([macOS](macOS) and [iOS](iOS)) have pretty much the same code layout:
 
-* `App` -- code and configury for the application that hosts the AUv3 app extension
-* `Extension` -- code and configury for the extension itself
+* `App` -- code for the application that hosts the AUv3 app extension. Note that most of the code is actually found in
+the external AUv3Support package.
+* `Extension` -- UI for the extension. Most of the code is found in the [Packages/Sources](Packages/Sources) folder 
+which holds the code for internally-defined Swift packages.
 
-The [Sources](Sources) folder holds all of the common code that is used by the above products. In it you will find
+As mentioned above, the [Packages](Packages/Sources) folder holds all of the common code that is used by the above 
+products. In it you will find
 
-* [Kernel](Sources/Kernel) -- the Obj-C++ kernel adapter and C++ classes that perform the rendering of audio samples
-* [FilterAudioUnit](Sources/FilterAudioUnit) -- the actual AUv3 AudioUnit written in Swift.
-* [Parameters](Sources/Parameters) -- definitions for the AudioUnit runtime parameters as well as a preset
-  definition using the parameters
-* [SwiftKernel](Sources/SwiftKernel) -- provides a bridge from Obj-C++ to Swift for the kerenl
+* [FilterAudioUnit](Packages/Sources/FilterAudioUnit) -- the actual AUv3 AudioUnit written in Swift.
+* [Kernel](Packages/Sources/Kernel) -- the Obj-C++ kernel adapter and C++ classes that perform the rendering of audio 
+samples.
+* [Parameters](Packages/Sources/Parameters) -- definitions for the AudioUnit runtime parameters as well as a preset
+definition using the parameters.
 
 Additional supporting files can be found in the [AUv3Support](https://github.com/bradhowes/AUv3Support) project.

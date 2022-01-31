@@ -1,9 +1,16 @@
-// Copyright © 2021 Brad Howes. All rights reserved.
+// Copyright © 2022 Brad Howes. All rights reserved.
 
 import Cocoa
+import AUv3Support
 
+/**
+ The app delegate for the host application.
+ */
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+
+  // NOTE: this special form sets the subsystem name and must run before any other logger calls.
+  private let log = Shared.logger(Bundle.main.auBaseName + "Host", "AppDelegate")
 
   @IBOutlet weak var playMenuItem: NSMenuItem!
   @IBOutlet weak var bypassMenuItem: NSMenuItem!

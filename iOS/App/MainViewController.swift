@@ -13,7 +13,6 @@ final class MainViewController: UIViewController {
     super.viewDidLoad()
     
     guard let delegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }
-    delegate.setMainViewController(self)
 
     let bundle = Bundle.main
     let component = AudioComponentDescription(componentType: bundle.auComponentType,
@@ -27,11 +26,9 @@ final class MainViewController: UIViewController {
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 
-    hostViewController = Shared.embedHostView(into: self, config: config)
-  }
-
-  public func stopPlaying() {
-
+    let hostViewController = Shared.embedHostView(into: self, config: config)
+    delegate.setStopPlayingBlock { hostViewController.stopPlaying() }
+    self.hostViewController = hostViewController
   }
 }
 

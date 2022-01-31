@@ -1,4 +1,4 @@
-// Copyright © 2021 Brad Howes. All rights reserved.
+// Copyright © 2022 Brad Howes. All rights reserved.
 
 import AUv3Support
 import CoreAudioKit
@@ -9,31 +9,21 @@ import Logging
 import Parameters
 import os.log
 
-extension Switch: AUParameterValueProvider {
+extension NSSwitch: AUParameterValueProvider, TagHolder {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
-extension Knob: AUParameterValueProvider, RangedControl {
-
-  func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
-
-  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag) ) }
-}
-
-extension FocusAwareTextField {
-
-  func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
-
-  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag) ) }
-}
-
+extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
+extension FocusAwareTextField: TagHolder {}
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
 @objc open class ViewController_macOS: AUViewController {
-  private let log = Logging.logger("ViewController_macOS")
-  
+
+  // NOTE: this special form sets the subsystem name and must run before any other logger calls.
+  private let log: OSLog = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController_iOS")
+
   private var viewConfig: AUAudioUnitViewConfiguration!
   private var parameterObserverToken: AUParameterObserverToken?
   private var keyValueObserverToken: NSKeyValueObservation?
@@ -59,8 +49,8 @@ extension FocusAwareTextField {
   @IBOutlet private weak var dryMixControl: Knob!
   @IBOutlet private weak var dryMixValueLabel: FocusAwareTextField!
 
-  @IBOutlet private weak var odd90Control: Switch!
-  @IBOutlet private weak var negativeFeedbackControl: Switch!
+  @IBOutlet private weak var odd90Control: NSSwitch!
+  @IBOutlet private weak var negativeFeedbackControl: NSSwitch!
 
   var controls = [ParameterAddress : [AUParameterEditor]]()
   
@@ -127,11 +117,11 @@ extension FocusAwareTextField {
      controlChanged(control, address: address)
   }
 
-  @IBAction public func handleOdd90Changed(_ control: Switch) {
+  @IBAction public func handleOdd90Changed(_ control: NSSwitch) {
     controlChanged(control, address: .odd90)
   }
 
-  @IBAction public func handleNegativeFeedbackChanged(_ control: Switch) {
+  @IBAction public func handleNegativeFeedbackChanged(_ control: NSSwitch) {
     controlChanged(control, address: .negativeFeedback)
   }
 

@@ -7,10 +7,13 @@ import Cocoa
 import AVFAudio
 import Logging
 import os.log
-// import SimplyFlangeAU
 
+/**
+ Main view controller for the host app. When all UI items are available, it puts them into a config file and creates a
+ new HostViewManager with it. It is this class that does all of the work.
+ */
 final class MainViewController: NSViewController {
-  private let log = OSLog(subsystem: "SimplyFlange", category: "MainViewController")
+  private let log = Shared.logger("MainViewController")
 
   @IBOutlet weak var containerView: NSView!
   @IBOutlet weak var loadingText: NSTextField!

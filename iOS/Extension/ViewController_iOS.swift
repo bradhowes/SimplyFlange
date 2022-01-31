@@ -1,25 +1,27 @@
-// Copyright © 2021 Brad Howes. All rights reserved.
+// Copyright © 2022 Brad Howes. All rights reserved.
 
 import AUv3Support
 import CoreAudioKit
 import FilterAudioUnit
+import Kernel
 import Knob_iOS
 import Logging
 import Parameters
-import Kernel
 import os.log
 
-extension Switch: AUParameterValueProvider {
+extension UISwitch: AUParameterValueProvider, TagHolder {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
-extension Knob: AUParameterValueProvider, RangedControl {}
+extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
 @objc open class ViewController_iOS: AUViewController {
-  private let log = Logging.logger("ViewController_iOS")
+
+  // NOTE: this special form sets the subsystem name and must run before any other logger calls.
+  private let log = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController_iOS")
 
   private var viewConfig: AUAudioUnitViewConfiguration!
   private var parameterObserverToken: AUParameterObserverToken?

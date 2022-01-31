@@ -73,7 +73,7 @@ also adjust other settings as well to properly identify you and/or your company 
 There are additional values in this file that you really should change, especially to remove any risk of
 collision with other AUv3 effects you may have on your system.
 
-The script [newRelease.sh](Project/newRelease.sh) automates generating new archive versions of both the macOS and iOS
+The script [newRelease.sh](scripts/newRelease.sh) automates generating new archive versions of both the macOS and iOS
 apps and uploads them to the App Store if everything checks out. It uses the DEVELOPMENT_TEAM setting in the
 `Common.xcconfig` to handle the authentication and signing.
 

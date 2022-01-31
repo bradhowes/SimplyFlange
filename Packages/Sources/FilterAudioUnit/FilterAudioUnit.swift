@@ -124,6 +124,10 @@ public final class FilterAudioUnit: AUAudioUnit {
       os_log(.info, log: log, "fullStateForDocument SET")
       os_log(.info, log: log, "value: %{public}s", newValue.descriptionOrNil)
       super.fullStateForDocument = newValue
+      if let presetNumber = newValue?["preset-number"] as? Int,
+         let presetName = newValue?["name"] as? String {
+        _currentPreset = AUAudioUnitPreset(number: presetNumber, name: presetName)
+      }
     }
   }
   

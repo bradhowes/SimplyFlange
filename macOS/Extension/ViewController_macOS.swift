@@ -62,7 +62,7 @@ extension FocusAwareTextField {
   @IBOutlet private weak var odd90Control: Switch!
   @IBOutlet private weak var negativeFeedbackControl: Switch!
 
-  var controls = [ParameterAddress : [AUParameterControl]]()
+  var controls = [ParameterAddress : [AUParameterEditor]]()
   
   public var audioUnit: FilterAudioUnit? {
     didSet {
@@ -193,38 +193,38 @@ extension ViewController_macOS {
     self.parameterObserverToken = parameterObserverToken
     
     let params = audioUnit.parameterDefinitions
-    controls[.depth] = [FloatParameterControl(
+    controls[.depth] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.depth],
       formatter: params.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
     )]
-    controls[.rate] = [FloatParameterControl(
+    controls[.rate] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.rate], formatter: params.valueFormatter(.rate),
       rangedControl: rateControl, label: rateValueLabel, logValues: true
     )]
-    controls[.delay] = [FloatParameterControl(
+    controls[.delay] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.delay],
       formatter: params.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel, logValues: true
     )]
-    controls[.feedback] = [FloatParameterControl(
+    controls[.feedback] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.feedback],
       formatter: params.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
       logValues: false
     )]
-    controls[.dryMix] = [FloatParameterControl(
+    controls[.dryMix] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
       formatter: params.valueFormatter(.dryMix), rangedControl: dryMixControl, label: dryMixValueLabel,
       logValues: false
     )]
-    controls[.wetMix] = [FloatParameterControl(
+    controls[.wetMix] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
       formatter: params.valueFormatter(.wetMix), rangedControl: wetMixControl, label:  wetMixValueLabel,
       logValues: false
     )]
-    controls[.negativeFeedback] = [BooleanParameterControl(
+    controls[.negativeFeedback] = [BooleanParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.negativeFeedback],
       booleanControl: negativeFeedbackControl
     )]
-    controls[.odd90] = [BooleanParameterControl(
+    controls[.odd90] = [BooleanParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.odd90], booleanControl: odd90Control
     )]
 

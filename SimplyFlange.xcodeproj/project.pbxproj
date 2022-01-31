@@ -52,7 +52,6 @@
 		BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9227A6EC450081337C /* Knob-iOS */; };
 		BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9427A6EC450081337C /* Knob-macOS */; };
 		BD9BFB9727A6F0B70081337C /* Knob+Label.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD9BFB9627A6F0B70081337C /* Knob+Label.xib */; };
-		BD9BFB9927A6F2E30081337C /* KnobLabelControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */; };
 		BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */; };
 		BDB11A6324A1530D00DD8EF9 /* LogScaling.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
@@ -171,7 +170,6 @@
 		BD95148424A092E800D8024C /* RampingValueChangeDetectorTests.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RampingValueChangeDetectorTests.mm; sourceTree = "<group>"; };
 		BD96F2EA27A53E260001C2B9 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Packages; sourceTree = "<group>"; };
 		BD9BFB9627A6F0B70081337C /* Knob+Label.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "Knob+Label.xib"; sourceTree = "<group>"; };
-		BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KnobLabelControl.swift; sourceTree = "<group>"; };
 		BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		BDB11A6224A1530D00DD8EF9 /* LogScaling.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogScaling.swift; sourceTree = "<group>"; };
 		BDB7CE92249EC556009580D5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -400,7 +398,6 @@
 				BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */,
 				C4BEE7BE22236A58001E6B6D /* Info.plist */,
 				C4BEE7BD22236A58001E6B6D /* Extension.entitlements */,
-				BD9BFB9827A6F2E30081337C /* KnobLabelControl.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -796,7 +793,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD9BFB9927A6F2E30081337C /* KnobLabelControl.swift in Sources */,
 				C433F56122404C7C00F1B750 /* ViewController_iOS.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

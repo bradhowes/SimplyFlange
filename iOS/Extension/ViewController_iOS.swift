@@ -68,7 +68,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   @IBOutlet weak var editingValue: UITextField!
   @IBOutlet weak var editingBackground: UIView!
 
-  var controls = [ParameterAddress : [AUParameterControl]]()
+  var controls = [ParameterAddress : [AUParameterEditor]]()
 
   public var audioUnit: FilterAudioUnit? {
     didSet {
@@ -137,8 +137,13 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     controlChanged(control, address: ParameterAddress(rawValue: UInt64(control.tag))!)
   }
 
-  @IBAction public func odd90Changed(_ control: Switch) { controlChanged(control, address: .odd90) }
-  @IBAction public func negativeFeedbackChanged(_ control: Switch) { controlChanged(control, address: .negativeFeedback) }
+  @IBAction public func odd90Changed(_ control: Switch) {
+    controlChanged(control, address: .odd90)
+  }
+
+  @IBAction public func negativeFeedbackChanged(_ control: Switch) {
+    controlChanged(control, address: .negativeFeedback)
+  }
 
   private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
 
@@ -188,48 +193,56 @@ extension ViewController_iOS {
     self.parameterObserverToken = parameterObserverToken
 
     let params = audioUnit.parameterDefinitions
-    controls[.depth] = [
-      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.depth],
-                            formatter: params.valueFormatter(.depth), knob: depthControl,
-                            label: depthValueLabel, logValues: false)
-    ]
+    controls[.depth] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+      formatter: params.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
+    )]
     if altDepthControl != nil {
-      controls[.depth]?.append(FloatParameterControl(parameterObserverToken: parameterObserverToken,
-                                                     parameter: params[.depth],
-                                                     formatter: params.valueFormatter(.depth), knob: altDepthControl,
-                                                     label: altDepthValueLabel, logValues: false))
+      controls[.depth]?.append(FloatParameterEditor(
+        parameterObserverToken: parameterObserverToken, parameter: params[.depth],
+        formatter: params.valueFormatter(.depth), rangedControl: altDepthControl, label: altDepthValueLabel,
+        logValues: false
+      ))
     }
 
-    controls[.rate] = [
-      FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.rate],
-                            formatter: params.valueFormatter(.rate), knob: rateControl,
-                            label: rateValueLabel, logValues: true)
-    ]
+    controls[.rate] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+      formatter: params.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel, logValues: true
+    )]
     if altRateControl != nil {
-      controls[.rate]?.append(FloatParameterControl(parameterObserverToken: parameterObserverToken,
-                                                    parameter: params[.rate],
-                                                    formatter: params.valueFormatter(.rate), knob: altRateControl,
-                                                    label: altRateValueLabel, logValues: true))
+      controls[.rate]?.append(FloatParameterEditor(
+        parameterObserverToken: parameterObserverToken, parameter: params[.rate],
+        formatter: params.valueFormatter(.rate), rangedControl: altRateControl, label: altRateValueLabel,
+        logValues: true
+      ))
     }
 
-    controls[.delay] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.delay],
-                                              formatter: params.valueFormatter(.delay), knob: delayControl,
-                                              label: delayValueLabel, logValues: true)]
-    controls[.feedback] = [FloatParameterControl(parameterObserverToken: parameterObserverToken,
-                                                 parameter: params[.feedback], formatter: params.valueFormatter(.feedback),
-                                                 knob: feedbackControl, label: feedbackValueLabel, logValues: false)]
-    controls[.dryMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-                                               formatter: params.valueFormatter(.dryMix), knob: dryMixControl,
-                                               label: dryMixValueLabel, logValues: false)]
-    controls[.wetMix] = [FloatParameterControl(parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-                                               formatter: params.valueFormatter(.wetMix), knob: wetMixControl,
-                                               label:  wetMixValueLabel, logValues: false)]
-    controls[.negativeFeedback] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
-                                                           parameter: params[.negativeFeedback],
-                                                           control: negativeFeedbackControl)]
-    controls[.odd90] = [BooleanParameterControl(parameterObserverToken: parameterObserverToken,
-                                                parameter: params[.odd90],
-                                                control: odd90Control)]
+    controls[.delay] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.delay],
+      formatter: params.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel, logValues: true
+    )]
+    controls[.feedback] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.feedback],
+      formatter: params.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
+      logValues: false
+    )]
+    controls[.dryMix] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
+      formatter: params.valueFormatter(.dryMix), rangedControl: dryMixControl, label: dryMixValueLabel,
+      logValues: false
+    )]
+    controls[.wetMix] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
+      formatter: params.valueFormatter(.wetMix), rangedControl: wetMixControl, label:  wetMixValueLabel,
+      logValues: false
+    )]
+    controls[.negativeFeedback] = [BooleanParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.negativeFeedback],
+      booleanControl: negativeFeedbackControl
+    )]
+    controls[.odd90] = [BooleanParameterEditor(
+      parameterObserverToken: parameterObserverToken,parameter: params[.odd90], booleanControl: odd90Control
+    )]
 
     // Let us manage view configuration changes
     audioUnit.viewConfigurationManager = self

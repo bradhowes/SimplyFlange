@@ -2,7 +2,7 @@
 
 #import <XCTest/XCTest.h>
 
-#import "ValueChangeDetector.hpp"
+#import "../../Sources/Kernel/C++/ValueChangeDetector.hpp"
 
 @interface ValueChangeDetectorTests : XCTestCase
 @end

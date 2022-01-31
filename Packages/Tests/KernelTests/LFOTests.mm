@@ -3,7 +3,7 @@
 #import <XCTest/XCTest.h>
 #import <vector>
 
-#import "LFO.h"
+#import "../../Sources/Kernel/C++/LFO.hpp"
 
 #define SamplesEqual(A, B) XCTAssertEqualWithAccuracy(A, B, _epsilon)
 

@@ -69,13 +69,19 @@ struct InputBuffer {
     }
   }
 
-  AUAudioFrameCount size() const { return maxFramesToRender_; }
+  /// Obtain the maximum size of the input buffer
+  AUAudioFrameCount capacity() const { return maxFramesToRender_; }
 
+  /// Obtain a mutable version of the internal AudioBufferList.
   AudioBufferList* mutableAudioBufferList() const { return mutableAudioBufferList_; }
-  
+
+  /// Obtain a C++ vector facet using the internal buffer.
   BufferFacet& bufferFacet() { return bufferFacet_; }
-  
+
+  /// Obtain the number of channels in the buffer
   size_t channelCount() const { return bufferFacet_.channelCount(); }
+
+  /// Obtain a pointer to a sample for the given channel index
   AUValue* operator[](size_t index) const { return bufferFacet_[index]; }
   
 private:

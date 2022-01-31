@@ -13,8 +13,25 @@
  Provides a simple std::vector view of an AudioBufferList.
  */
 struct BufferFacet {
+
+  /**
+   Construct new instance. NOTE: no need to allocate on heap.
+
+   @param sizeInSamples capacity of the buffer
+   */
+
   BufferFacet() : bufferList_{nullptr}, pointers_{} {}
-  
+
+  /**
+   Set the underlying buffers to use to hold and report out data. There are two options:
+
+   - bufferList has non-nullptr mData values -- use it as the source
+   - bufferList has nullptr mData values && inPlaceSource != nullptr -- use the inPlaceSource mData elements
+
+   @param bufferList the collection of buffers to use
+   @param inPlaceSource if not nullptr, use their mData elements for storage
+   */
+
   void setBufferList(AudioBufferList* bufferList, AudioBufferList* inPlaceSource = nullptr) {
     bufferList_ = bufferList;
     if (bufferList->mBuffers[0].mData == nullptr) {
@@ -23,7 +40,8 @@ struct BufferFacet {
         bufferList->mBuffers[channel].mData = inPlaceSource->mBuffers[channel].mData;
       }
     }
-    
+
+    // Create the std::vector facet.
     size_t numBuffers = bufferList_->mNumberBuffers;
     pointers_.reserve(numBuffers);
     pointers_.clear();
@@ -31,7 +49,12 @@ struct BufferFacet {
       pointers_.push_back(static_cast<AUValue*>(bufferList_->mBuffers[channel].mData));
     }
   }
-  
+
+  /**
+   Set the number of frames (samples) that are in each buffer.
+
+   @param frameCount number of samples in a buffer.
+   */
   void setFrameCount(AUAudioFrameCount frameCount) {
     assert(bufferList_ != nullptr);
     UInt32 byteSize = frameCount * sizeof(AUValue);
@@ -40,17 +63,29 @@ struct BufferFacet {
     }
   }
   
+  /**
+   Set the facet to start at the given offset into the source buffers. Once done, the std::vector and AUValue
+   pointers will start `offset` samples into the underlying buffer.
+
+   @param offset number of samples to offset.
+   */
   void setOffset(AUAudioFrameCount offset) {
     for (size_t channel = 0; channel < pointers_.size(); ++channel) {
       pointers_[channel] = static_cast<AUValue*>(bufferList_->mBuffers[channel].mData) + offset;
     }
   }
-  
+
+  /**
+   Release the underlying buffers.
+   */
   void release() {
     bufferList_ = nullptr;
     pointers_.clear();
   }
-  
+
+  /// Copy contents of the buffers into the given destination, starting at the offset and
+  /// copying frameCount bytes. Currently this is only used when an audio unit is in
+  /// bypass mode.
   void copyInto(BufferFacet& destination, AUAudioFrameCount offset, AUAudioFrameCount frameCount) const {
     auto outputs = destination.bufferList_;
     for (auto channel = 0; channel < bufferList_->mNumberBuffers; ++channel) {
@@ -63,10 +98,14 @@ struct BufferFacet {
       memcpy(out, in, frameCount * sizeof(AUValue));
     }
   }
-  
+
+  /// Obtain the number of channels
   size_t channelCount() const { return pointers_.size(); }
+
+  /// Obtain a value pointer for the given channel index
   AUValue* operator[](size_t index) const { return pointers_[index]; }
   
+  /// Obtain a std::vector reference for the given channel index
   const std::vector<AUValue*>& V() const { return pointers_; }
   
 private:

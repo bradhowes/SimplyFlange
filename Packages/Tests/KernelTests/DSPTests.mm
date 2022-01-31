@@ -3,7 +3,7 @@
 #import <XCTest/XCTest.h>
 #import <cmath>
 
-#import "DSP.h"
+#import "../../Sources/Kernel/C++/DSP.hpp"
 
 @interface DSPTests : XCTestCase
 

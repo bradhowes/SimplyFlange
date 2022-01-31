@@ -34,6 +34,13 @@ let package = Package(
             exclude: ["README.md"]
            ),
     .testTarget(
+      name: "KernelTests",
+      dependencies: ["Kernel"],
+      linkerSettings: [
+        .linkedFramework("AVFoundation")
+      ]
+    ),
+    .testTarget(
       name: "ParametersTests",
       dependencies: ["Parameters"]),
   ],

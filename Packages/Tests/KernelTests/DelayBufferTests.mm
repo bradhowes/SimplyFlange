@@ -3,7 +3,7 @@
 #import <XCTest/XCTest.h>
 #import <vector>
 
-#import "DelayBuffer.h"
+#import "../../Sources/Kernel/C++/DelayBuffer.hpp"
 
 @interface DelayBufferTests : XCTestCase
 

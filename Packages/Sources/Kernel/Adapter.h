@@ -45,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)stopProcessing;
 
+/**
+ Obtain a block to use for rendering with the kernel.
+
+ @returns AUInternalRenderBlock instance
+ */
 - (AUInternalRenderBlock)renderBlock;
 
 /**

@@ -1,4 +1,4 @@
-// Copyright © 2021 Brad Howes. All rights reserved.
+// Copyright © 2022 Brad Howes. All rights reserved.
 
 #import <CoreAudioKit/CoreAudioKit.h>
 
@@ -25,12 +25,16 @@
 }
 
 - (AUInternalRenderBlock) renderBlock {
+  // This is probably not necessary...
+  auto& kernel = *kernel_;
+  NSInteger bus = 0;
   return ^(AudioUnitRenderActionFlags * _Nonnull flags, const AudioTimeStamp * _Nonnull timestamp,
            AUAudioFrameCount frameCount, NSInteger, AudioBufferList * _Nonnull output,
            const AURenderEvent * _Nullable realtimeEventListHead,
           AURenderPullInputBlock  _Nullable __unsafe_unretained pullInputBlock) {
+    // My reading of the flags is that they should all be zero on input for normal rendering.
     if (*flags != 0) return 0;
-    return kernel_->processAndRender(timestamp, frameCount, 0, output, realtimeEventListHead, pullInputBlock);
+    return kernel.processAndRender(timestamp, frameCount, bus, output, realtimeEventListHead, pullInputBlock);
   };
 }
 

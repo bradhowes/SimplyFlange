@@ -9,8 +9,11 @@
 #import "InputBuffer.hpp"
 
 /**
- Base template class for DSP kernels that provides common functionality. It properly interleaves render events with
- parameter updates. It is expected that the template parameter defines the following methods which this class will
+ Base template class for DSP kernels that provides common functionality. It uses the "Curiously Recurring Template
+ Pattern (CRTP)" to interleave base functionality contained in this class with custom functionality from the derived
+ class without the need for virtual dispatching.
+
+ It is expected that the template parameter class T defines the following methods which this class will
  invoke at the appropriate times but without any virtual dispatching.
 
  - doParameterEvent
@@ -26,7 +29,7 @@ public:
 
    @param log the log identifier to use for our logging statements
    */
-  EventProcessor(os_log_t log) : log_{log} {}
+  EventProcessor(os_log_t log) : derived_{static_cast<T&>(*this)}, log_{log} {}
 
   /**
    Set the bypass mode.
@@ -77,9 +80,13 @@ public:
       return status;
     }
 
+    // Initialize the output buffer for our kernel to render into.
     setOutputBuffer(output, frameCount);
-    injected()->prepareToRender(frameCount);
+    // Give the kernel a chance to prepare to render 'frameCount' samples.
+    derived_.prepareToRender(frameCount);
+    // Do the rendering, properly interleaving parameter and MIDI events.
     render(timestamp, frameCount, realtimeEventListHead);
+    // Done. Release any buffers.
     clearBuffers();
 
     return noErr;
@@ -97,6 +104,8 @@ private:
     auto framesRemaining = frameCount;
 
     while (framesRemaining > 0) {
+
+      // Short-circuit if there are no more events to interleave
       if (events == nullptr) {
         renderFrames(framesRemaining, frameCount - framesRemaining);
         return;
@@ -129,16 +138,8 @@ private:
     while (event != nullptr && event->head.eventSampleTime <= now) {
       switch (event->head.eventType) {
         case AURenderEventParameter:
-        case AURenderEventParameterRamp:
-          injected()->doParameterEvent(event->parameter);
-          break;
-
-        case AURenderEventMIDI:
-          injected()->doMIDIEvent(event->MIDI);
-          break;
-
-        default:
-          break;
+        case AURenderEventParameterRamp: derived_.doParameterEvent(event->parameter); break;
+        case AURenderEventMIDI: derived_.doMIDIEvent(event->MIDI); break;
       }
       event = event->head.next;
     }
@@ -156,11 +157,10 @@ private:
 
     inputs.setOffset(processedFrameCount);
     outputs_.setOffset(processedFrameCount);
-    injected()->doRendering(inputs.V(), outputs_.V(), frameCount);
+    derived_.doRendering(inputs.V(), outputs_.V(), frameCount);
   }
 
-  T* injected() { return static_cast<T*>(this); }
-
+  T& derived_;
   InputBuffer inputBuffer_;
   BufferFacet outputs_;
 

@@ -24,22 +24,24 @@
   kernel_->stopProcessing();
 }
 
-- (void)set:(AUParameter *)parameter value:(AUValue)value { kernel_->setParameterValue(parameter.address, value); }
-
-- (AUValue)get:(AUParameter *)parameter { return kernel_->getParameterValue(parameter.address); }
-
-- (AUAudioUnitStatus) process:(AudioTimeStamp*)timestamp
-                   frameCount:(UInt32)frameCount
-                       output:(AudioBufferList*)output
-                       events:(AURenderEvent*)realtimeEventListHead
-               pullInputBlock:(AURenderPullInputBlock)pullInputBlock
-{
-  auto inputBus = 0;
-  return kernel_->processAndRender(timestamp, frameCount, inputBus, output, realtimeEventListHead, pullInputBlock);
+- (AUInternalRenderBlock) renderBlock {
+  return ^(AudioUnitRenderActionFlags * _Nonnull flags, const AudioTimeStamp * _Nonnull timestamp,
+           AUAudioFrameCount frameCount, NSInteger, AudioBufferList * _Nonnull output,
+           const AURenderEvent * _Nullable realtimeEventListHead,
+          AURenderPullInputBlock  _Nullable __unsafe_unretained pullInputBlock) {
+    if (*flags != 0) return 0;
+    return kernel_->processAndRender(timestamp, frameCount, 0, output, realtimeEventListHead, pullInputBlock);
+  };
 }
 
 - (void)setBypass:(BOOL)state {
   kernel_->setBypass(state);
 }
+
+// AUParameterHandler conformance
+
+- (void)set:(AUParameter *)parameter value:(AUValue)value { kernel_->setParameterValue(parameter.address, value); }
+
+- (AUValue)get:(AUParameter *)parameter { return kernel_->getParameterValue(parameter.address); }
 
 @end

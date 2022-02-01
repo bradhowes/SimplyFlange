@@ -2,8 +2,8 @@
 
 This directory contains the files make up the kernel that does the actual filtering of audio samples. Most of the
 actual work is performed in classes defined in C++ header files. There is a Obj-C++
-[Adapter](Packages/Sources/Kernel/Adapter.h) class that provides an interface that Swift can use, but it just wraps a C++ Kernel
-object.
+[Adapter](Packages/Sources/Kernel/Adapter.h) class that provides an interface that Swift can use, but it just wraps a 
+C++ Kernel object.
 
 - [Adapter](Packages/Sources/Kernel/Adapter.h) -- provides simple interface in Obj-C for the kernel.
 

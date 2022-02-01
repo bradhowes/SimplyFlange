@@ -6,6 +6,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Protocol for entities that can respond to get/set requests in the AUParameterTree. The Adapter will conform to this
+ protocol, but the C++ kernel will actually handle the requests.
+ */
 @protocol AUParameterHandler
 
 /**
@@ -41,20 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)stopProcessing;
 
-/**
- Process upstream input
-
- @param timestamp the timestamp for the rendering
- @param frameCount the number of frames to render
- @param output the buffer to hold the rendered samples
- @param realtimeEventListHead the first AURenderEvent to process (may be null)
- @param pullInputBlock the closure to invoke to fetch upstream samples
- */
-- (AUAudioUnitStatus)process:(AudioTimeStamp*)timestamp
-                  frameCount:(UInt32)frameCount
-                      output:(AudioBufferList*)output
-                      events:(nullable AURenderEvent*)realtimeEventListHead
-              pullInputBlock:(AURenderPullInputBlock)pullInputBlock;
+- (AUInternalRenderBlock)renderBlock;
 
 /**
  Set the bypass state.

@@ -10,9 +10,9 @@ struct MillisecondsParameter {
   explicit MillisecondsParameter(double milliseconds) : value_{milliseconds} {}
   ~MillisecondsParameter() = default;
 
-  void set(AUValue seconds) { value_ = seconds * 1000.0; }
+  void set(AUValue milliseconds) { value_ = milliseconds; }
 
-  AUValue get() const { return value_ / 1000.0; }
+  AUValue get() const { return value_; }
 
   double milliseconds() const { return value_; }
 

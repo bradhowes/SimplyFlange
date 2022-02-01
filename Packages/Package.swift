@@ -10,19 +10,24 @@ let package = Package(
     .library(name: "Kernel", targets: ["Kernel"]),
     .library(name: "Logging", targets: ["Logging"]),
     .library(name: "Parameters", targets: ["Parameters"]),
+    .library(name: "ParameterAddress", targets: ["ParameterAddress"]),
   ],
   dependencies: [
     .package(name: "AUv3SupportPackage", url: "https://github.com/bradhowes/AUv3Support", branch: "main"),
   ],
   targets: [
-    .target(name: "FilterAudioUnit",
-            dependencies: ["Parameters"],
+    .target(name: "ParameterAddress",
+            dependencies: [],
             exclude: ["README.md"]
            ),
     .target(name: "Kernel",
-            dependencies: [],
+            dependencies: ["ParameterAddress"],
             exclude: ["README.md"],
-            cxxSettings: []
+            cxxSettings: [.unsafeFlags(["-fmodules", "-fcxx-modules"], .none)]
+           ),
+    .target(name: "FilterAudioUnit",
+            dependencies: ["Parameters"],
+            exclude: ["README.md"]
            ),
     .target(name: "Logging"),
     .target(name: "Parameters",

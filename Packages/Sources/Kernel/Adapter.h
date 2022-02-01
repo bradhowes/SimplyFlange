@@ -6,22 +6,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Address definitions for the AUParameter settings of the filter. Available in Swift as `FilterParameterAddress` enum.
- NOTE: changes made here must also be reflected in the `allCases` property created in the `Parameters.swift` file of the
- `Parameters` library.
- */
-typedef NS_ENUM(UInt64, ParameterAddress) {
-  ParameterAddress_Depth = 0,
-  ParameterAddress_Rate,
-  ParameterAddress_Delay,
-  ParameterAddress_Feedback,
-  ParameterAddress_DryMix,
-  ParameterAddress_WetMix,
-  ParameterAddress_NegativeFeedback,
-  ParameterAddress_Odd90
-};
-
 @protocol AUParameterHandler
 
 /**

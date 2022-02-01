@@ -1,7 +1,7 @@
 // Copyright © 2022 Brad Howes. All rights reserved.
 
 import Foundation
-import Kernel
+import ParameterAddress
 
 /**
  Protocol for objects that can hold tag values. Useful for mapping from UI elements to specific parameters.
@@ -24,5 +24,5 @@ public extension TagHolder {
 
    - returns optional `ParameterAddress` value.
    */
-  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag) ) }
+  var parameterAddress: ParameterAddress? { tag >= 0 ? ParameterAddress(rawValue: UInt64(tag)) : nil }
 }

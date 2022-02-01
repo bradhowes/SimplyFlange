@@ -6,6 +6,7 @@ import FilterAudioUnit
 import Kernel
 import Knob_macOS
 import Logging
+import ParameterAddress
 import Parameters
 import os.log
 

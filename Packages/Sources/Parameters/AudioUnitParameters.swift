@@ -5,21 +5,12 @@ import CoreAudioKit
 import Kernel
 import Foundation
 import Logging
+import ParameterAddress
 
 import os.log
 
 private extension Array where Element == AUParameter {
   subscript(index: ParameterAddress) -> AUParameter { self[Int(index.rawValue)] }
-}
-
-extension ParameterAddress: ParameterAddressProvider {
-  public var parameterAddress: AUParameterAddress { UInt64(self.rawValue) }
-}
-
-extension ParameterAddress: CaseIterable {
-  public static var allCases: [ParameterAddress] {
-    [.depth, .rate, .delay, .feedback, .dryMix, .wetMix, .negativeFeedback, .odd90]
-  }
 }
 
 /**
@@ -65,7 +56,6 @@ public final class AudioUnitParameters: NSObject {
                                   negativeFeedback: 0, odd90: 1)),
   ]
 
-
   /// AUParameterTree created with the parameter definitions for the audio unit
   public let parameterTree: AUParameterTree
 
@@ -105,7 +95,11 @@ public final class AudioUnitParameters: NSObject {
 
 extension AudioUnitParameters {
 
-  public subscript(address: ParameterAddress) -> AUParameter { parameters[address] }
+  private var missingParameter: AUParameter { fatalError() }
+
+  public subscript(address: ParameterAddress) -> AUParameter {
+    parameterTree.parameter(withAddress: address.parameterAddress) ?? missingParameter
+  }
 
   public func valueFormatter(_ address: ParameterAddress) -> (AUValue) -> String {
     let unitName = self[address].unitName ?? ""

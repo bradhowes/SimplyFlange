@@ -70,10 +70,12 @@ public:
    @param frequency the frequency to operate at
    */
   void setFrequency(T frequency) {
-    frequency_ = frequency;
-    phaseIncrement_ = frequency_ / sampleRate_;
+    if (frequency_ != frequency || phaseIncrement_ == 0.0) {
+      frequency_ = frequency;
+      phaseIncrement_ = frequency_ / sampleRate_;
+    }
   }
-  
+
   /**
    Restart from a known zero state.
    */
@@ -125,7 +127,9 @@ public:
     moduloCounter_ = incrementModuloCounter(counter, phaseIncrement_);
     return valueGenerator_(quadPhaseCounter_);
   }
-  
+
+  T frequency() const { return frequency_; }
+
   /**
    Obtain the current value of the oscillator.
    

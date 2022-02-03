@@ -8,7 +8,6 @@ let package = Package(
   products: [
     .library(name: "FilterAudioUnit", targets: ["FilterAudioUnit"]),
     .library(name: "Kernel", targets: ["Kernel"]),
-    .library(name: "Logging", targets: ["Logging"]),
     .library(name: "Parameters", targets: ["Parameters"]),
     .library(name: "ParameterAddress", targets: ["ParameterAddress"]),
   ],
@@ -17,7 +16,9 @@ let package = Package(
   ],
   targets: [
     .target(name: "ParameterAddress",
-            dependencies: [],
+            dependencies: [
+              .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+            ],
             exclude: ["README.md"]
            ),
     .target(name: "Kernel",
@@ -29,12 +30,10 @@ let package = Package(
             dependencies: ["Parameters"],
             exclude: ["README.md"]
            ),
-    .target(name: "Logging"),
     .target(name: "Parameters",
             dependencies: [
               .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
-              "Kernel",
-              "Logging"
+              "Kernel"
             ],
             exclude: ["README.md"]
            ),

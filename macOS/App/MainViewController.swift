@@ -5,7 +5,6 @@ import AUv3Support_macOS
 import CoreAudioKit
 import Cocoa
 import AVFAudio
-import Logging
 import os.log
 
 /**

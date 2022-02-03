@@ -25,10 +25,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 /**
- Small Obj-C wrapper around the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
+ Small Obj-C bridge between Swift and the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
  the kernel.
  */
-@interface Adapter : NSObject <AUParameterHandler>
+@interface Bridge : NSObject <AUParameterHandler>
 
 - (nonnull id)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay;
 

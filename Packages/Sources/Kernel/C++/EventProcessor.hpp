@@ -140,6 +140,7 @@ private:
         case AURenderEventParameter:
         case AURenderEventParameterRamp: derived_.doParameterEvent(event->parameter); break;
         case AURenderEventMIDI: derived_.doMIDIEvent(event->MIDI); break;
+        default: break;
       }
       event = event->head.next;
     }

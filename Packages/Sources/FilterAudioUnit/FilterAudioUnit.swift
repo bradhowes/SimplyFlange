@@ -4,27 +4,39 @@ import AUv3Support
 import AudioToolbox
 import AVFoundation
 import CoreAudioKit
-import Logging
 import Parameters
 import Kernel
 import os
 
+/// Protocol for delegates that handle view configuration. The FilterAudioUnit has no concern for this stuff.
 public protocol AudioUnitViewConfigurationManager: AnyObject {
 
+  /**
+   Request from the AU host for what view configurations are acceptable to use when showing the view for this effect.
+
+   - parameter available: array of available configurations
+   - returns: set of indices into `available` that are acceptable to use
+   */
   func supportedViewConfigurations(_ available: [AUAudioUnitViewConfiguration]) -> IndexSet
 
+  /**
+   Request from the AU host for the effect to use a specific view configuration.
+
+   - parameter viewConfiguration: the configuration to use
+   */
   func selectViewConfiguration(_ viewConfiguration: AUAudioUnitViewConfiguration)
 }
 
 /**
- Derivation of AUAudioUnit that provides a Swift container for the C++ FilterKernel (by way of the Obj-C
- FilterKernelAdapter). Also provides for factory presets and preset management. The actual filtering logic
- resides in the FilterKernel class.
+ Derivation of AUAudioUnit that provides a Swift container for the C++ Kernel (by way of the Obj-C
+ Bridge adapter). Also provides for factory presets and user preset management. This basically a generic container for
+ audio filtering as all of the elements specific to a particular filter/effect are found elsewhere.
+
+ The actual filtering logic resides in the Kernel C++ code.
  */
 public final class FilterAudioUnit: AUAudioUnit {
-  private static let log = Logging.logger("FilterAudioUnit")
-  private var log: OSLog { Self.log }
-  
+  private let log = Shared.logger("FilterAudioUnit")
+
   public enum Failure: Swift.Error {
     case statusError(OSStatus)
     case unableToInitialize(String)
@@ -47,9 +59,8 @@ public final class FilterAudioUnit: AUAudioUnit {
   }
   
   private var factoryPresetValues: [(name: String, preset: FilterPreset)] { parameterDefinitions.factoryPresetValues };
-  
-  private lazy var _factoryPresets = factoryPresetValues.enumerated().map {
-    AUAudioUnitPreset(number: $0, name: $1.name)
+  private lazy var _factoryPresets: [AUAudioUnitPreset] = factoryPresetValues.enumerated().map {
+    .init(number: $0, name: $1.name)
   }
   
   /// Factory presets for the filter
@@ -90,6 +101,8 @@ public final class FilterAudioUnit: AUAudioUnit {
   override public var fullState: [String : Any]? {
     get {
       os_log(.info, log: log, "fullState GET")
+
+      // The AUAudioUnit class will provide the current settings from the AUParameterTree. We only add any preset info.
       var value = super.fullState ?? [String: Any]()
       if let preset = _currentPreset {
         value[kAUPresetNameKey] = preset.name
@@ -102,6 +115,7 @@ public final class FilterAudioUnit: AUAudioUnit {
       os_log(.info, log: log, "fullState SET")
       os_log(.info, log: log, "value: %{public}s", newValue.descriptionOrNil)
       super.fullState = newValue
+      // Restore current preset if there was one.
       if let newValue = newValue,
          let name = newValue[kAUPresetNameKey] as? String,
          let number = newValue[kAUPresetNumberKey] as? NSNumber {
@@ -112,25 +126,10 @@ public final class FilterAudioUnit: AUAudioUnit {
   }
   
   override public var shouldBypassEffect: Bool { didSet { kernel.setBypass(shouldBypassEffect); }}
-  
-  override public var fullStateForDocument: [String : Any]? {
-    get {
-      os_log(.info, log: log, "fullStateForDocument GET")
-      let value = super.fullStateForDocument
-      os_log(.info, log: log, "value: %{public}s", value.descriptionOrNil)
-      return value
-    }
-    set {
-      os_log(.info, log: log, "fullStateForDocument SET")
-      os_log(.info, log: log, "value: %{public}s", newValue.descriptionOrNil)
-      super.fullStateForDocument = newValue
-      if let presetNumber = newValue?["preset-number"] as? Int,
-         let presetName = newValue?["name"] as? String {
-        _currentPreset = AUAudioUnitPreset(number: presetNumber, name: presetName)
-      }
-    }
-  }
-  
+
+  // We don't have any additional state beyond what is in `fullState`.
+  // override public var fullStateForDocument: [String : Any]?
+
   /// Announce that the filter can work directly on upstream sample buffers
   override public var canProcessInPlace: Bool { true }
   
@@ -141,7 +140,7 @@ public final class FilterAudioUnit: AUAudioUnit {
   /// Maximum frames to render
   private let maxFramesToRender: UInt32 = 512
   /// Objective-C bridge into the C++ kernel
-  private let kernel = Adapter(Bundle.main.auBaseName, maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
+  private let kernel = Bridge(Bundle.main.auBaseName, maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
   
   private var _currentPreset: AUAudioUnitPreset? {
     didSet { os_log(.debug, log: log, "* _currentPreset name: %{public}s", _currentPreset.descriptionOrNil) }
@@ -184,15 +183,15 @@ public final class FilterAudioUnit: AUAudioUnit {
     // Start with the default format. Host or downstream AudioUnit can change the format of the input/output bus
     // objects later between calls to allocateRenderResources().
     guard let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 2) else {
-      os_log(.error, log: Self.log, "failed to create AVAudioFormat format")
+      os_log(.error, log: log, "failed to create AVAudioFormat format")
       throw Failure.unableToInitialize(String(describing: AVAudioFormat.self))
     }
     
-    os_log(.debug, log: Self.log, "format: %{public}s", format.description)
+    os_log(.debug, log: log, "format: %{public}s", format.description)
     inputBus = try AUAudioUnitBus(format: format)
     inputBus.maximumChannelCount = maxNumberOfChannels
     
-    os_log(.debug, log: Self.log, "creating output bus")
+    os_log(.debug, log: log, "creating output bus")
     outputBus = try AUAudioUnitBus(format: format)
     outputBus.maximumChannelCount = maxNumberOfChannels
     

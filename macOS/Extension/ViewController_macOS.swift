@@ -5,12 +5,11 @@ import CoreAudioKit
 import FilterAudioUnit
 import Kernel
 import Knob_macOS
-import Logging
 import ParameterAddress
 import Parameters
 import os.log
 
-extension NSSwitch: AUParameterValueProvider, TagHolder {
+extension NSSwitch: AUParameterValueProvider, BooleanControl, TagHolder {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
@@ -86,11 +85,11 @@ extension FocusAwareTextField: TagHolder {}
     feedbackControl.setParameterAddress(.feedback)
     feedbackValueLabel.setParameterAddress(.feedback)
 
-    wetMixControl.setParameterAddress(.wetMix)
-    wetMixValueLabel.setParameterAddress(.wetMix)
+    wetMixControl.setParameterAddress(.wet)
+    wetMixValueLabel.setParameterAddress(.wet)
 
-    dryMixControl.setParameterAddress(.dryMix)
-    dryMixValueLabel.setParameterAddress(.dryMix)
+    dryMixControl.setParameterAddress(.dry)
+    dryMixValueLabel.setParameterAddress(.dry)
 
     for control in [depthControl, rateControl, delayControl, feedbackControl] {
       if let control = control {
@@ -201,14 +200,14 @@ extension ViewController_macOS {
       formatter: params.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
       logValues: false
     )]
-    controls[.dryMix] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-      formatter: params.valueFormatter(.dryMix), rangedControl: dryMixControl, label: dryMixValueLabel,
+    controls[.dry] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.dry],
+      formatter: params.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel,
       logValues: false
     )]
-    controls[.wetMix] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-      formatter: params.valueFormatter(.wetMix), rangedControl: wetMixControl, label:  wetMixValueLabel,
+    controls[.wet] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.wet],
+      formatter: params.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel,
       logValues: false
     )]
     controls[.negativeFeedback] = [BooleanParameterEditor(

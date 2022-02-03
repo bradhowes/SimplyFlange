@@ -1,4 +1,6 @@
+import AudioUnit
 import Foundation
+import AUv3Support
 
 /**
  These are the unique addresses for the runtime parameters used by the audio unit.
@@ -8,41 +10,27 @@ import Foundation
   case rate
   case delay
   case feedback
-  case dryMix
-  case wetMix
+  case dry
+  case wet
   case negativeFeedback
   case odd90
 };
 
-public extension ParameterAddress {
+extension ParameterAddress: ParameterAddressProvider {
+  public var parameterAddress: AUParameterAddress { UInt64(self.rawValue) }
+}
 
-  // NOTE: according to Apple, these values should never change across releases.
-  var identifier: String {
+extension ParameterAddress {
+  public var parameterDefinition: ParameterDefinition {
     switch self {
-    case .depth: return "depth"
-    case .rate: return "rate"
-    case .delay: return "delay"
-    case .feedback: return "feedback"
-    case .dryMix: return "dry"
-    case .wetMix: return "wet"
-    case .negativeFeedback: return "-feedback"
-    case .odd90: return "odd90"
-    @unknown default: fatalError()
-    }
-  }
-
-  // NOTE: these should be localized as they could be displayed to users
-  var displayName: String {
-    switch self {
-    case .depth: return "Depth"
-    case .rate: return "Rate"
-    case .delay: return "Delay"
-    case .feedback: return "Feedback"
-    case .dryMix: return "Dry"
-    case .wetMix: return "Wet"
-    case .negativeFeedback: return "-Feedback"
-    case .odd90: return "Odd 90°"
-    @unknown default: fatalError()
+    case .depth: return .defPercent("depth", localized: "Depth", address: .depth)
+    case .rate: return .defFloat("rate", localized: "Rate", address: .rate, range: 0.01...20.0, unit: .hertz)
+    case .delay: return .defFloat("delay", localized: "Delay", address: .delay, range: 1.0...50.0, unit: .milliseconds)
+    case .feedback: return .defPercent("feedback", localized: "Feedback", address: .feedback)
+    case .dry: return .defPercent("dry", localized: "Dry", address: .dry)
+    case .wet: return .defPercent("wet", localized: "Wet", address: .wet)
+    case .negativeFeedback: return .defBool("-feedback", localized: "-Feedback", address: .negativeFeedback)
+    case .odd90: return .defBool("odd90", localized: "Odd 90°", address: .odd90)
     }
   }
 }

@@ -32,11 +32,9 @@
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
 		BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD8FC33227A71F56002D09F6 /* FilterAudioUnit */; };
-		BD8FC33527A71F56002D09F6 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD8FC33427A71F56002D09F6 /* Logging */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BD96F30227A57C160001C2B9 /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30127A57C160001C2B9 /* FilterAudioUnit */; };
 		BD96F30427A57C160001C2B9 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30327A57C160001C2B9 /* Kernel */; };
-		BD96F30627A57C160001C2B9 /* Logging in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30527A57C160001C2B9 /* Logging */; };
 		BD96F30827A57C160001C2B9 /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30727A57C160001C2B9 /* Parameters */; };
 		BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9227A6EC450081337C /* Knob-iOS */; };
 		BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9427A6EC450081337C /* Knob-macOS */; };
@@ -241,7 +239,6 @@
 			files = (
 				BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
-				BD8FC33527A71F56002D09F6 /* Logging in Frameworks */,
 				BD38A32027A5D63500405CBC /* AUv3-Support-macOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -252,7 +249,6 @@
 			files = (
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
-				BD96F30627A57C160001C2B9 /* Logging in Frameworks */,
 				BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
 				BD96F30227A57C160001C2B9 /* FilterAudioUnit in Frameworks */,
@@ -546,7 +542,6 @@
 			packageProductDependencies = (
 				BD38A31F27A5D63500405CBC /* AUv3-Support-macOS */,
 				BD8FC33227A71F56002D09F6 /* FilterAudioUnit */,
-				BD8FC33427A71F56002D09F6 /* Logging */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -569,7 +564,6 @@
 			packageProductDependencies = (
 				BD96F30127A57C160001C2B9 /* FilterAudioUnit */,
 				BD96F30327A57C160001C2B9 /* Kernel */,
-				BD96F30527A57C160001C2B9 /* Logging */,
 				BD96F30727A57C160001C2B9 /* Parameters */,
 				BD9BFB9427A6EC450081337C /* Knob-macOS */,
 			);
@@ -1923,10 +1917,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = FilterAudioUnit;
 		};
-		BD8FC33427A71F56002D09F6 /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Logging;
-		};
 		BD96F30127A57C160001C2B9 /* FilterAudioUnit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FilterAudioUnit;
@@ -1934,10 +1924,6 @@
 		BD96F30327A57C160001C2B9 /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Kernel;
-		};
-		BD96F30527A57C160001C2B9 /* Logging */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Logging;
 		};
 		BD96F30727A57C160001C2B9 /* Parameters */ = {
 			isa = XCSwiftPackageProductDependency;

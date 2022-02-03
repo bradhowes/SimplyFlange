@@ -72,11 +72,11 @@ public:
    @param delay distance from the current write position to return
    @return interpolated sample from buffer
    */
-  T read(double delay) const {
+  T read(T delay) const {
     auto offset = int(delay);
     T y1 = readFromOffset(offset);
     T y2 = readFromOffset(offset + 1);
-    auto partial = delay - offset;
+    T partial = delay - offset;
     assert(partial >= 0.0 && partial < 1.0);
     return y2 * partial + (1.0 - partial) * y1;
   }

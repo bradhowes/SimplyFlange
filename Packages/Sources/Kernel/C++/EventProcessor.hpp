@@ -80,13 +80,8 @@ public:
       return status;
     }
 
-    // Initialize the output buffer for our kernel to render into.
     setOutputBuffer(output, frameCount);
-    // Give the kernel a chance to prepare to render 'frameCount' samples.
-    derived_.prepareToRender(frameCount);
-    // Do the rendering, properly interleaving parameter and MIDI events.
     render(timestamp, frameCount, realtimeEventListHead);
-    // Done. Release any buffers.
     clearBuffers();
 
     return noErr;
@@ -138,7 +133,9 @@ private:
     while (event != nullptr && event->head.eventSampleTime <= now) {
       switch (event->head.eventType) {
         case AURenderEventParameter:
-        case AURenderEventParameterRamp: derived_.doParameterEvent(event->parameter); break;
+        case AURenderEventParameterRamp:
+          derived_.setParameterFromEvent(*reinterpret_cast<const AUParameterEvent*>(event));
+          break;
         case AURenderEventMIDI: derived_.doMIDIEvent(event->MIDI); break;
         default: break;
       }
@@ -158,7 +155,7 @@ private:
 
     inputs.setOffset(processedFrameCount);
     outputs_.setOffset(processedFrameCount);
-    derived_.doRendering(inputs.V(), outputs_.V(), frameCount);
+    derived_.doRendering(inputs.pointers(), outputs_.pointers(), frameCount);
   }
 
   T& derived_;

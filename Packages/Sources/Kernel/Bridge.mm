@@ -10,16 +10,18 @@
   AUAudioFrameCount maxFramesToRender_;
 }
 
-- (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay {
+- (instancetype)init:(NSString*)appExtensionName {
   if (self = [super init]) {
-    self->kernel_ = new Kernel(std::string(appExtensionName.UTF8String), maxDelay);
+    self->kernel_ = new Kernel(std::string(appExtensionName.UTF8String));
     self->maxFramesToRender_ = 0;
   }
   return self;
 }
 
-- (void)startProcessing:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender {
-  kernel_->startProcessing(inputFormat, maxFramesToRender);
+- (void)startProcessing:(AVAudioFormat*)inputFormat
+      maxFramesToRender:(AUAudioFrameCount)maxFramesToRender
+   maxDelayMilliseconds:(AUValue)maxDelayMilliseconds{
+  kernel_->startProcessing(inputFormat, maxFramesToRender, maxDelayMilliseconds);
   maxFramesToRender_ = maxFramesToRender;
 }
 

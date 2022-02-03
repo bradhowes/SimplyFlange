@@ -2,25 +2,15 @@
 
 #pragma once
 
-#import <AVFoundation/AVFoundation.h>
+#import "RampingParameter.hpp"
 
-struct MillisecondsParameter {
+template <typename T>
+struct MillisecondsParameter : public RampingParameter<T> {
+public:
+  using super = RampingParameter<T>;
 
   MillisecondsParameter() = default;
-  explicit MillisecondsParameter(double milliseconds) : value_{milliseconds} {}
+  explicit MillisecondsParameter(T milliseconds) : super(milliseconds) {}
   ~MillisecondsParameter() = default;
-
-  void set(AUValue milliseconds) { value_ = milliseconds; }
-
-  AUValue get() const { return value_; }
-
-  double milliseconds() const { return value_; }
-
-private:
-  double value_;
-
-  MillisecondsParameter(const MillisecondsParameter&) = delete;
-  MillisecondsParameter(MillisecondsParameter&&) = delete;
-  MillisecondsParameter& operator =(const MillisecondsParameter&) = delete;
-  MillisecondsParameter& operator =(MillisecondsParameter&&) = delete;
 };
+

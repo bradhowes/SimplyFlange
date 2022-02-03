@@ -24,10 +24,9 @@ public:
    Construct new kernel
 
    @param name the name to use for logging purposes.
-   @param maxDelayMilliseconds the max number of milliseconds of audio samples to keep in delay buffer
    */
-  Kernel(const std::string& name, double maxDelayMilliseconds)
-  : super(os_log_create(name.c_str(), "Kernel")), maxDelay_{maxDelayMilliseconds}, delayLines_{}, lfo_()
+  Kernel(const std::string& name)
+  : super(os_log_create(name.c_str(), "Kernel")), delayLines_{}, lfo_()
   {
     lfo_.setWaveform(LFOWaveform::triangle);
   }
@@ -37,45 +36,11 @@ public:
 
    @param format the audio format to render
    @param maxFramesToRender the maximum number of samples we will be asked to render in one go
+   @param maxDelayMilliseconds the max number of milliseconds of audio samples to keep in delay buffer
    */
-  void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender) {
+  void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender, double maxDelayMilliseconds) {
     super::startProcessing(format, maxFramesToRender);
-    initialize(format.channelCount, format.sampleRate);
-    delayPos_.allocateBuffers(format, maxFramesToRender);
-  }
-
-  /**
-   Start of a rendering operation. Note that actual calls to doRendering() below may contain smaller frameCount values
-   due to interleaving of MIDI events.
-
-   @param frameCount the number of frames that will be processed during this rendering pass.
-   */
-  void prepareToRender(AUAudioFrameCount frameCount) {
-
-    // Generate all delay position values necessary to render `frameCount` samples. Doing so up-front here saves some
-    // cycles if odd90 is false or there are more than 2 input channels to render.
-    auto scale = depth_.norm() * delay_.milliseconds() * samplesPerMillisecond_;
-    auto state = lfo_.saveState();
-    auto buffer = delayPos_[0];
-
-    // Obtain delay buffer position values using in-phase LFO values
-    for (auto index = 0; index < frameCount; ++index) {
-      auto value = DSP::bipolarToUnipolar(lfo_.valueAndIncrement()) * scale;
-      assert(value >= 0.0 && value < delayLines_[0].size());
-      *buffer++ = value;
-    }
-
-    if (odd90_) {
-      lfo_.restoreState(state);
-      buffer = delayPos_[1];
-
-      // Obtain delay buffer position values using out-of-phase LFO values
-      for (auto index = 0; index < frameCount; ++index) {
-        auto value = DSP::bipolarToUnipolar(lfo_.quadPhaseValueAndIncrement()) * scale;
-        assert(value >= 0.0 && value < delayLines_[1].size());
-        *buffer++ = value;
-      }
-    }
+    initialize(format.channelCount, format.sampleRate, maxDelayMilliseconds);
   }
 
   /**
@@ -96,11 +61,11 @@ public:
 
 private:
 
-  void initialize(int channelCount, double sampleRate) {
+  void initialize(int channelCount, double sampleRate, double maxDelayMilliseconds) {
     samplesPerMillisecond_ = sampleRate / 1000.0;
     lfo_.initialize(sampleRate, 0.0);
 
-    auto size = maxDelay_.milliseconds() * samplesPerMillisecond_ + 1;
+    auto size = maxDelayMilliseconds * samplesPerMillisecond_ + 1;
     os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f", size);
     delayLines_.clear();
     for (auto index = 0; index < channelCount; ++index) {
@@ -108,38 +73,52 @@ private:
     }
   }
 
-  void doParameterEvent(const AUParameterEvent& event) { setParameterValue(event.parameterAddress, event.value); }
+  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration);
 
-  void doRendering(const std::vector<AUValue*>& ins, const std::vector<AUValue*>& outs, AUAudioFrameCount frameCount) {
-    auto signedFeedback = negativeFeedback_ ? -feedback_.norm() : feedback_.norm();
-    for (int channel = 0; channel < ins.size(); ++channel) {
-      auto input{ins[channel]};
-      auto output{outs[channel]};
-      auto delayPos{delayPos_[(odd90_ && (channel & 1)) ? 1 : 0]};
-      auto& delay{delayLines_[channel]};
-      for (int frame = 0; frame < frameCount; ++frame) {
-        auto inputSample = *input++;
-        auto delayedSample = delay.read(*delayPos++);
-        delay.write(inputSample + signedFeedback * delayedSample);
-        *output++ = wetMix_.norm() * delayedSample + dryMix_.norm() * inputSample;
+  void setParameterFromEvent(const AUParameterEvent& event) {
+    if (event.rampDurationSampleFrames == 0) {
+      setParameterValue(event.parameterAddress, event.value);
+    } else {
+      setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
+    }
+  }
+
+  void doRendering(std::vector<AUValue*>& ins, std::vector<AUValue*>& outs, AUAudioFrameCount frameCount) {
+
+    // Advance by frames in outer loop so we can ramp values when they change without having to save/restore state.
+    for (int frame = 0; frame < frameCount; ++frame) {
+      auto signedFeedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
+      auto scale = depth_.frameValue() * delay_.frameValue() * samplesPerMillisecond_;
+
+      auto evenLFO = DSP::bipolarToUnipolar(lfo_.value()) * scale;
+      auto oddLFO = DSP::bipolarToUnipolar(lfo_.quadPhaseValue()) * scale;
+      lfo_.increment();
+
+      auto wetMix = wetMix_.frameValue();
+      auto dryMix = dryMix_.frameValue();
+
+      for (int channel = 0; channel < ins.size(); ++channel) {
+        auto inputSample = *ins[channel]++;
+        auto delayedSample = scale != 0.0 ? delayLines_[channel].read((channel & 1) ? oddLFO : evenLFO) : inputSample;
+        delayLines_[channel].write(inputSample + signedFeedback * delayedSample);
+        *outs[channel]++ = wetMix * delayedSample + dryMix * inputSample;
       }
     }
   }
 
   void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
 
-  PercentageParameter depth_;
-  MillisecondsParameter delay_;
-  PercentageParameter feedback_;
-  PercentageParameter dryMix_;
-  PercentageParameter wetMix_;
+  PercentageParameter<AUValue> depth_;
+  MillisecondsParameter<AUValue> delay_;
+  PercentageParameter<AUValue> feedback_;
+  PercentageParameter<AUValue> dryMix_;
+  PercentageParameter<AUValue> wetMix_;
   BoolParameter negativeFeedback_;
   BoolParameter odd90_;
 
-  MillisecondsParameter maxDelay_;
   double samplesPerMillisecond_;
 
   std::vector<DelayBuffer<AUValue>> delayLines_;
-  LFO<double> lfo_;
+  LFO<AUValue> lfo_;
   InputBuffer delayPos_;
 };

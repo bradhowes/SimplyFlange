@@ -16,9 +16,7 @@ private extension Array where Element == AUParameter {
  Definitions for the runtime parameters of the filter.
  */
 public final class AudioUnitParameters: NSObject {
-  private let log = Shared.logger("FilterParameters")
-
-  static public let maxDelayMilliseconds: AUValue = 50.0
+  private let log = Shared.logger("AudioUnitParameters")
 
   public let parameters: [AUParameter] = ParameterAddress.allCases.map { $0.parameterDefinition.parameter }
 

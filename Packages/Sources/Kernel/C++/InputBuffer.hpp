@@ -81,9 +81,6 @@ struct InputBuffer {
   /// Obtain the number of channels in the buffer
   size_t channelCount() const { return bufferFacet_.channelCount(); }
 
-  /// Obtain a pointer to a sample for the given channel index
-  AUValue* operator[](size_t index) const { return bufferFacet_[index]; }
-  
 private:
   os_log_t logger_ = os_log_create("SimplyFlange", "BufferedInputBus");
   AUAudioFrameCount maxFramesToRender_ = 0;

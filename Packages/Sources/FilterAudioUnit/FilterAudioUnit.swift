@@ -37,28 +37,31 @@ public protocol AudioUnitViewConfigurationManager: AnyObject {
 public final class FilterAudioUnit: AUAudioUnit {
   private let log = Shared.logger("FilterAudioUnit")
 
+  /// Name of the component
+  // public static let componentName = Bundle(for: FilterAudioUnit.self).auComponentName
+
   public enum Failure: Swift.Error {
     case statusError(OSStatus)
     case unableToInitialize(String)
   }
-  
-  /// Name of the component
-  public static let componentName = Bundle(for: FilterAudioUnit.self).auComponentName
+
+  /// The signal processing kernel that performs the rendering of audio samples
+  private var kernel: Bridge = Bridge(Bundle.main.auBaseName)
+  /// Runtime parameter definitions for the audio unit
+  public lazy var parameters: AudioUnitParameters = .init(parameterHandler: kernel)
   /// The associated view controller for the audio unit that shows the controls
   public weak var viewConfigurationManager: AudioUnitViewConfigurationManager?
-  /// Runtime parameter definitions for the audio unit
-  public lazy var parameterDefinitions: AudioUnitParameters = AudioUnitParameters(parameterHandler: kernel)
   /// Support one input bus
   override public var inputBusses: AUAudioUnitBusArray { _inputBusses }
   /// Support one output bus
   override public var outputBusses: AUAudioUnitBusArray { _outputBusses }
   /// Parameter tree containing filter parameter values
   override public var parameterTree: AUParameterTree? {
-    get { parameterDefinitions.parameterTree }
+    get { parameters.parameterTree }
     set { fatalError("attempted to set new parameterTree") }
   }
   
-  private var factoryPresetValues: [(name: String, preset: FilterPreset)] { parameterDefinitions.factoryPresetValues };
+  private var factoryPresetValues: [(name: String, preset: FilterPreset)] { parameters.factoryPresetValues };
   private lazy var _factoryPresets: [AUAudioUnitPreset] = factoryPresetValues.enumerated().map {
     .init(number: $0, name: $1.name)
   }
@@ -85,7 +88,7 @@ public final class FilterAudioUnit: AUAudioUnit {
         let settings = factoryPresetValues[preset.number]
         _currentPreset = preset
         os_log(.info, log: log, "updating parameters")
-        parameterDefinitions.setValues(settings.preset)
+        parameters.setValues(settings.preset)
       }
       else {
         os_log(.info, log: log, "userPreset %d", preset.number)
@@ -140,8 +143,6 @@ public final class FilterAudioUnit: AUAudioUnit {
   /// Maximum frames to render
   private let maxFramesToRender: UInt32 = 512
   /// Objective-C bridge into the C++ kernel
-  private let kernel = Bridge(Bundle.main.auBaseName, maxDelayMilliseconds: AudioUnitParameters.maxDelayMilliseconds)
-  
   private var _currentPreset: AUAudioUnitPreset? {
     didSet { os_log(.debug, log: log, "* _currentPreset name: %{public}s", _currentPreset.descriptionOrNil) }
   }
@@ -179,7 +180,7 @@ public final class FilterAudioUnit: AUAudioUnit {
    */
   override public init(componentDescription: AudioComponentDescription,
                        options: AudioComponentInstantiationOptions = []) throws {
-    
+
     // Start with the default format. Host or downstream AudioUnit can change the format of the input/output bus
     // objects later between calls to allocateRenderResources().
     guard let format = AVAudioFormat(standardFormatWithSampleRate: sampleRate, channels: 2) else {
@@ -208,9 +209,10 @@ public final class FilterAudioUnit: AUAudioUnit {
     
     // This really should be postponed until allocateRenderResources is called. However, for some weird reason
     // internalRenderBlock is fetched before allocateRenderResources() gets called, so we need to preflight here.
-    kernel.startProcessing(format, maxFramesToRender: maxFramesToRender)
+    kernel.startProcessing(format, maxFramesToRender: maxFramesToRender,
+                           maxDelayMilliseconds: parameters.delay.maxValue)
   }
-  
+
   /**
    Take notice of input/output bus formats and prepare for rendering. If there are any errors getting things ready,
    routine should `setRenderResourcesAllocated(false)`.
@@ -229,9 +231,10 @@ public final class FilterAudioUnit: AUAudioUnit {
       //
       throw NSError(domain: NSOSStatusErrorDomain, code: Int(kAudioUnitErr_FailedInitialization), userInfo: nil)
     }
-    
+
     // Communicate to the kernel the new formats being used
-    kernel.startProcessing(inputBus.format, maxFramesToRender: maximumFramesToRender)
+    kernel.startProcessing(inputBus.format, maxFramesToRender: maximumFramesToRender,
+                           maxDelayMilliseconds: parameters.delay.maxValue)
     
     try super.allocateRenderResources()
   }
@@ -252,7 +255,7 @@ public final class FilterAudioUnit: AUAudioUnit {
   }
   
   override public func parametersForOverview(withCount: Int) -> [NSNumber] {
-    parameterDefinitions.parameters[0..<withCount].map { NSNumber(value: $0.address) }
+    parameters.parameters[0..<withCount].map { NSNumber(value: $0.address) }
   }
   
   override public func supportedViewConfigurations(_ available: [AUAudioUnitViewConfiguration]) -> IndexSet {

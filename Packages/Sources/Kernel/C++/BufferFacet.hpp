@@ -102,12 +102,9 @@ struct BufferFacet {
   /// Obtain the number of channels
   size_t channelCount() const { return pointers_.size(); }
 
-  /// Obtain a value pointer for the given channel index
-  AUValue* operator[](size_t index) const { return pointers_[index]; }
-  
-  /// Obtain a std::vector reference for the given channel index
-  const std::vector<AUValue*>& V() const { return pointers_; }
-  
+  /// Obtain reference to the std::vector of AUValue pointers. Callers must not change the size of the vector.
+  std::vector<AUValue*>& pointers() { return pointers_; }
+
 private:
   AudioBufferList* bufferList_;
   std::vector<AUValue*> pointers_;

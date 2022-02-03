@@ -30,15 +30,18 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @interface Bridge : NSObject <AUParameterHandler>
 
-- (nonnull id)init:(NSString*)appExtensionName maxDelayMilliseconds:(float)maxDelay;
+- (nonnull id)init:(NSString*)appExtensionName;
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
 
  @param inputFormat the current format of the input bus
  @param maxFramesToRender the max frames to expect in a render request
+ @param maxDelayMilliseconds the max delay time in milliseconds
  */
-- (void)startProcessing:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender;
+- (void)startProcessing:(AVAudioFormat*)inputFormat
+      maxFramesToRender:(AUAudioFrameCount)maxFramesToRender
+   maxDelayMilliseconds:(AUValue)maxDelayMilliseconds;
 
 /**
  Stop processing, releasing any resources used to support rendering.

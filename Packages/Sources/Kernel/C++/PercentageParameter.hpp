@@ -2,25 +2,18 @@
 
 #pragma once
 
-#import <AVFoundation/AVFoundation.h>
+#import "RampingParameter.hpp"
 
-struct PercentageParameter {
+template <typename T>
+class PercentageParameter : public RampingParameter<T> {
+public:
+  using super = RampingParameter<T>;
 
   PercentageParameter() = default;
-  explicit PercentageParameter(double value) : value_{value} {}
+  explicit PercentageParameter(T value) : super(value) {}
   ~PercentageParameter() = default;
 
-  void set(AUValue value) { value_ = value / 100.0; }
+  void set(T value, AUAudioFrameCount frameCount) { super::set(value / 100.0, frameCount); }
 
-  AUValue get() const { return value_ * 100.0; }
-
-  double norm() const { return value_; }
-
-private:
-  double value_;
-
-  PercentageParameter(const PercentageParameter&) = delete;
-  PercentageParameter(PercentageParameter&&) = delete;
-  PercentageParameter& operator =(const PercentageParameter&) = delete;
-  PercentageParameter& operator =(PercentageParameter&&) = delete;
+  T get() const { return super::get() * 100.0; }
 };

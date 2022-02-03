@@ -182,7 +182,7 @@ extension ViewController_macOS {
     
     self.parameterObserverToken = parameterObserverToken
     
-    let params = audioUnit.parameterDefinitions
+    let params = audioUnit.parameters
     controls[.depth] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.depth],
       formatter: params.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false

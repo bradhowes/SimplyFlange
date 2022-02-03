@@ -39,7 +39,7 @@ public:
    Create a new instance.
    */
   LFO(T sampleRate, T frequency) : LFO(sampleRate, frequency, LFOWaveform::sinusoid) {}
-  
+
   /**
    Create a new instance.
    */
@@ -56,7 +56,7 @@ public:
     frequency_ = frequency;
     reset();
   }
-  
+
   /**
    Set the waveform to use
    
@@ -69,10 +69,10 @@ public:
    
    @param frequency the frequency to operate at
    */
-  void setFrequency(T frequency) {
-    if (frequency_ != frequency || phaseIncrement_ == 0.0) {
+  void setFrequency(T frequency, AUAudioFrameCount duration) {
+    if (frequency_ != frequency || phaseIncrement_.get() == 0.0) {
       frequency_ = frequency;
-      phaseIncrement_ = frequency_ / sampleRate_;
+      phaseIncrement_.set(frequency_ / sampleRate_, duration);
     }
   }
 
@@ -80,56 +80,10 @@ public:
    Restart from a known zero state.
    */
   void reset() {
-    phaseIncrement_ = frequency_ / sampleRate_;
-    moduloCounter_ = phaseIncrement_ > 0 ? 0.0 : 1.0;
+    phaseIncrement_.set(frequency_ / sampleRate_, 0);
+    moduloCounter_ = phaseIncrement_.get() > 0 ? 0.0 : 1.0;
   }
   
-  /**
-   Save the state of the oscillator.
-   
-   @returns current internal state
-   */
-  T saveState() const { return moduloCounter_; }
-  
-  /**
-   Restore the oscillator to a previously-saved state.
-   
-   @param value the state to restore to
-   */
-  void restoreState(T value) {
-    moduloCounter_ = value;
-    quadPhaseCounter_ = incrementModuloCounter(value, 0.25);
-  }
-  
-  /**
-   Increment the oscillator to the next value.
-   */
-  void increment() {
-    moduloCounter_ = incrementModuloCounter(moduloCounter_, phaseIncrement_);
-    quadPhaseCounter_ = incrementModuloCounter(moduloCounter_, 0.25);
-  }
-  
-  /**
-   Obtain the next value of the oscillator. Advances counter before returning, so this is not idempotent.
-   
-   @returns current waveform value
-   */
-  T valueAndIncrement() {
-    auto counter = moduloCounter_;
-    quadPhaseCounter_ = incrementModuloCounter(counter, 0.25);
-    moduloCounter_ = incrementModuloCounter(counter, phaseIncrement_);
-    return valueGenerator_(counter);
-  }
-  
-  T quadPhaseValueAndIncrement() {
-    auto counter = moduloCounter_;
-    quadPhaseCounter_ = incrementModuloCounter(counter, 0.25);
-    moduloCounter_ = incrementModuloCounter(counter, phaseIncrement_);
-    return valueGenerator_(quadPhaseCounter_);
-  }
-
-  T frequency() const { return frequency_; }
-
   /**
    Obtain the current value of the oscillator.
    
@@ -144,6 +98,16 @@ public:
    */
   T quadPhaseValue() const { return valueGenerator_(quadPhaseCounter_); }
   
+  /**
+   Increment the oscillator to the next value.
+   */
+  void increment() {
+    moduloCounter_ = incrementModuloCounter(moduloCounter_, phaseIncrement_.frameValue());
+    quadPhaseCounter_ = incrementModuloCounter(moduloCounter_, 0.25);
+  }
+
+  T frequency() const { return frequency_; }
+
 private:
   using ValueGenerator = std::function<T(T)>;
   
@@ -155,7 +119,7 @@ private:
     }
   }
   
-  static T wrappedModuloCounter(T counter, T inc) {
+  static double wrappedModuloCounter(T counter, T inc) {
     if (inc > 0 && counter >= 1.0) return counter - 1.0;
     if (inc < 0 && counter <= 0.0) return counter + 1.0;
     return counter;
@@ -171,5 +135,5 @@ private:
   std::function<T(T)> valueGenerator_;
   T moduloCounter_ = {0.0};
   T quadPhaseCounter_ = {0.0};
-  T phaseIncrement_;
+  RampingParameter<T> phaseIncrement_;
 };

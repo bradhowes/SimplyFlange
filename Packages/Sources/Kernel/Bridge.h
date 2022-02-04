@@ -6,8 +6,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-// #import "AUv3Support_AUv3Support.h"
-
 /**
  Small Obj-C bridge between Swift and the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
  the kernel.

@@ -106,6 +106,7 @@ private:
         return;
       }
 
+      // Render the frames for the times between now and the time of the first event.
       auto framesThisSegment = AUAudioFrameCount(std::max(events->head.eventSampleTime - now, zero));
       if (framesThisSegment > 0) {
         renderFrames(framesThisSegment, frameCount - framesRemaining);
@@ -113,7 +114,8 @@ private:
         now += AUEventSampleTime(framesThisSegment);
       }
 
-      events = renderEventsUntil(now, events);
+      // Process the events for the current time
+      events = processEventsUntil(now, events);
     }
   }
 
@@ -128,8 +130,10 @@ private:
     outputs_.release();
   }
 
-  AURenderEvent const* renderEventsUntil(AUEventSampleTime now, AURenderEvent const* event)
+  AURenderEvent const* processEventsUntil(AUEventSampleTime now, AURenderEvent const* event)
   {
+    // See http://devnotes.kymatica.com/auv3_parameters.html for some nice details and advice about parameter event
+    // processing.
     while (event != nullptr && event->head.eventSampleTime <= now) {
       switch (event->head.eventType) {
         case AURenderEventParameter:

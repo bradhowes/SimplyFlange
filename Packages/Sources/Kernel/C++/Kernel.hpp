@@ -26,7 +26,7 @@ public:
    @param name the name to use for logging purposes.
    */
   Kernel(const std::string& name)
-  : super(os_log_create(name.c_str(), "Kernel")), delayLines_{}, lfo_()
+  : super(os_log_create(name.c_str(), "Kernel"))
   {
     lfo_.setWaveform(LFOWaveform::triangle);
   }

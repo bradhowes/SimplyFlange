@@ -71,33 +71,38 @@ public final class FilterAudioUnit: AUAudioUnit {
   /// Announce support for user presets as well
   override public var supportsUserPresets: Bool { true }
   /// Preset get/set
-  override public var currentPreset: AUAudioUnitPreset? {
+  @objc override public var currentPreset: AUAudioUnitPreset? {
     get {
       os_log(.info, log: log, "get currentPreset - %{public}s", _currentPreset.descriptionOrNil)
       return _currentPreset
     }
     set {
       os_log(.info, log: log, "set currentPreset - %{public}s", newValue.descriptionOrNil)
-      guard let preset = newValue else {
-        _currentPreset = nil
-        return
-      }
-      
-      if preset.number >= 0 {
-        os_log(.info, log: log, "factoryPreset %d", preset.number)
-        let settings = factoryPresetValues[preset.number]
-        _currentPreset = preset
-        os_log(.info, log: log, "updating parameters")
-        parameters.setValues(settings.preset)
-      }
-      else {
+      if let preset = newValue {
+        if preset.number >= 0 {
+          os_log(.info, log: log, "factoryPreset %d", preset.number)
+          let settings = factoryPresetValues[preset.number]
+          willChangeValue(for: \.currentPreset)
+          _currentPreset = preset
+          didChangeValue(for: \.currentPreset)
+          os_log(.info, log: log, "updating parameters")
+          parameters.setValues(settings.preset)
+          return
+        }
+
         os_log(.info, log: log, "userPreset %d", preset.number)
         if let state = try? presetState(for: preset) {
           os_log(.info, log: log, "state: %{public}s", state.debugDescription)
           fullState = state
+          willChangeValue(for: \.currentPreset)
           _currentPreset = preset
+          didChangeValue(for: \.currentPreset)
+          return
         }
       }
+      willChangeValue(for: \.currentPreset)
+      _currentPreset = nil
+      didChangeValue(for: \.currentPreset)
     }
   }
   
@@ -208,7 +213,8 @@ public final class FilterAudioUnit: AUAudioUnit {
     currentPreset = factoryPresets.first
     
     // This really should be postponed until allocateRenderResources is called. However, for some weird reason
-    // internalRenderBlock is fetched before allocateRenderResources() gets called, so we need to preflight here.
+    // internalRenderBlock is fetched before allocateRenderResources() gets called, so we need to preflight here or else
+    // we crash.
     kernel.startProcessing(format, maxFramesToRender: maxFramesToRender,
                            maxDelayMilliseconds: parameters.delay.maxValue)
   }
@@ -226,6 +232,7 @@ public final class FilterAudioUnit: AUAudioUnit {
     if outputBus.format.channelCount != inputBus.format.channelCount {
       os_log(.error, log: log, "unequal channel count")
       setRenderResourcesAllocated(false)
+
       // NOTE: changing this to something else will cause `auval` to emit the following:
       //   WARNING: Can Initialize Unit to un-supported num channels:InputChan:1, OutputChan:2
       //

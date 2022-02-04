@@ -5,12 +5,11 @@ import CoreAudioKit
 import FilterAudioUnit
 import Kernel
 import Knob_iOS
-import Logging
 import ParameterAddress
 import Parameters
 import os.log
 
-extension UISwitch: AUParameterValueProvider, TagHolder {
+extension UISwitch: AUParameterValueProvider, TagHolder, BooleanControl {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
@@ -149,13 +148,27 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   }
 
   private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
+    os_log(.debug, log: log, "controlChanged BEGIN")
 
-    // If current preset is a factory preset, then clear it.
-    if (audioUnit?.currentPreset?.number ?? -1) > 0 {
-      audioUnit?.currentPreset = nil
+    guard let audioUnit = audioUnit else {
+      os_log(.debug, log: log, "controlChanged END - nil audioUnit")
+      return
+    }
+
+    guard let preset = audioUnit.currentPreset else {
+      os_log(.debug, log: log, "controlChanged END - nil currentPreset")
+      return
+    }
+
+    // When user changes something and a factory preset was active, clear it.
+    if preset.number >= 0 {
+      os_log(.debug, log: log, "controlChanged - clearing currentPreset")
+      audioUnit.currentPreset = nil
     }
 
     (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
+
+    os_log(.debug, log: log, "controlChanged END")
   }
 }
 
@@ -195,7 +208,7 @@ extension ViewController_iOS {
 
     self.parameterObserverToken = parameterObserverToken
 
-    let params = audioUnit.parameterDefinitions
+    let params = audioUnit.parameters
     controls[.depth] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: params[.depth],
       formatter: params.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
@@ -229,14 +242,14 @@ extension ViewController_iOS {
       formatter: params.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
       logValues: false
     )]
-    controls[.dryMix] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: params[.dryMix],
-      formatter: params.valueFormatter(.dryMix), rangedControl: dryMixControl, label: dryMixValueLabel,
+    controls[.dry] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.dry],
+      formatter: params.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel,
       logValues: false
     )]
-    controls[.wetMix] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: params[.wetMix],
-      formatter: params.valueFormatter(.wetMix), rangedControl: wetMixControl, label:  wetMixValueLabel,
+    controls[.wet] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: params[.wet],
+      formatter: params.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel,
       logValues: false
     )]
     controls[.negativeFeedback] = [BooleanParameterEditor(

@@ -128,9 +128,20 @@ extension FocusAwareTextField: TagHolder {}
   private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
     os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
 
-    // If current preset is a factory preset, then clear it.
-    if (audioUnit?.currentPreset?.number ?? -1) > 0 {
-      audioUnit?.currentPreset = nil
+    guard let audioUnit = audioUnit else {
+      os_log(.debug, log: log, "controlChanged END - nil audioUnit")
+      return
+    }
+
+    guard let preset = audioUnit.currentPreset else {
+      os_log(.debug, log: log, "controlChanged END - nil currentPreset")
+      return
+    }
+
+    // When user changes something and a factory preset was active, clear it.
+    if preset.number >= 0 {
+      os_log(.debug, log: log, "controlChanged - clearing currentPreset")
+      audioUnit.currentPreset = nil
     }
 
     (controls[address] ?? []).forEach { $0.controlChanged(source: control) }

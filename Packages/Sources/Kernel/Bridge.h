@@ -6,31 +6,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-/**
- Protocol for entities that can respond to get/set requests in the AUParameterTree. The Adapter will conform to this
- protocol, but the C++ kernel will actually handle the requests.
- */
-@protocol AUParameterHandler
-
-/**
- Set an AUParameter to a new value
- */
-- (void)set:(AUParameter *)parameter value:(AUValue)value;
-
-/**
- Get the current value of an AUParameter
- */
-- (AUValue)get:(AUParameter *)parameter;
-
-@end
+// #import "AUv3Support_AUv3Support.h"
 
 /**
  Small Obj-C bridge between Swift and the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
  the kernel.
  */
-@interface Bridge : NSObject <AUParameterHandler>
+@interface Bridge : NSObject
 
-- (nonnull id)init:(NSString*)appExtensionName;
+- (nonnull id)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds;
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
@@ -39,9 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param maxFramesToRender the max frames to expect in a render request
  @param maxDelayMilliseconds the max delay time in milliseconds
  */
-- (void)startProcessing:(AVAudioFormat*)inputFormat
-      maxFramesToRender:(AUAudioFrameCount)maxFramesToRender
-   maxDelayMilliseconds:(AUValue)maxDelayMilliseconds;
+- (void)startProcessing:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender;
 
 /**
  Stop processing, releasing any resources used to support rendering.
@@ -53,7 +35,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @returns AUInternalRenderBlock instance
  */
-- (AUInternalRenderBlock)renderBlock;
+- (AUInternalRenderBlock)internalRenderBlock;
 
 /**
  Set the bypass state.
@@ -61,6 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
  @param state new bypass value
  */
 - (void)setBypass:(BOOL)state;
+
+- (void)set:(AUParameter *)parameter value:(AUValue)value;
+
+- (AUValue)get:(AUParameter *)parameter;
 
 @end
 

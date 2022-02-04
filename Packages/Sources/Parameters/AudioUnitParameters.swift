@@ -2,7 +2,6 @@
 
 import AUv3Support
 import CoreAudioKit
-import Kernel
 import Foundation
 import ParameterAddress
 
@@ -15,7 +14,8 @@ private extension Array where Element == AUParameter {
 /**
  Definitions for the runtime parameters of the filter.
  */
-public final class AudioUnitParameters: NSObject {
+public final class AudioUnitParameters: NSObject, ParameterSource {
+
   private let log = Shared.logger("AudioUnitParameters")
 
   public let parameters: [AUParameter] = ParameterAddress.allCases.map { $0.parameterDefinition.parameter }
@@ -35,6 +35,16 @@ public final class AudioUnitParameters: NSObject {
                                   negativeFeedback: 0, odd90: 1)),
   ]
 
+  public var factoryPresets: [AUAudioUnitPreset] {
+    factoryPresetValues.enumerated().map { .init(number: $0.0, name: $0.1.name ) }
+  }
+
+  public func usePreset(_ preset: AUAudioUnitPreset) {
+    if preset.number >= 0 {
+      setValues(factoryPresetValues[preset.number].preset)
+    }
+  }
+
   /// AUParameterTree created with the parameter definitions for the audio unit
   public let parameterTree: AUParameterTree
 
@@ -49,18 +59,21 @@ public final class AudioUnitParameters: NSObject {
 
   /**
    Create a new AUParameterTree for the defined filter parameters.
+   */
+  override public init() {
+    parameterTree = AUParameterTree.createTree(withChildren: parameters)
+    super.init()
+  }
 
-   Installs three closures in the tree:
+  /**
+   Installs three closures in the tree based on the given parameter handler
    - one for providing values
    - one for accepting new values from other sources
    - and one for obtaining formatted string values
 
    - parameter parameterHandler the object to use to handle the AUParameterTree requests
    */
-  public init(parameterHandler: AUParameterHandler) {
-    parameterTree = AUParameterTree.createTree(withChildren: parameters)
-    super.init()
-
+  public func setParameterHandler(_ parameterHandler: AUParameterHandler) {
     parameterTree.implementorValueObserver = { parameterHandler.set($0, value: $1) }
     parameterTree.implementorValueProvider = { parameterHandler.get($0) }
     parameterTree.implementorStringFromValueCallback = { param, value in

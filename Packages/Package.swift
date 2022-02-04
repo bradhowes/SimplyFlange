@@ -6,7 +6,6 @@ let package = Package(
   name: "Packages",
   platforms: [.iOS(.v13), .macOS(.v10_15)],
   products: [
-    .library(name: "FilterAudioUnit", targets: ["FilterAudioUnit"]),
     .library(name: "Kernel", targets: ["Kernel"]),
     .library(name: "Parameters", targets: ["Parameters"]),
     .library(name: "ParameterAddress", targets: ["ParameterAddress"]),
@@ -22,13 +21,12 @@ let package = Package(
             exclude: ["README.md"]
            ),
     .target(name: "Kernel",
-            dependencies: ["ParameterAddress"],
+            dependencies: [
+              .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+              "ParameterAddress"
+            ],
             exclude: ["README.md"],
             cxxSettings: [.unsafeFlags(["-fmodules", "-fcxx-modules"], .none)]
-           ),
-    .target(name: "FilterAudioUnit",
-            dependencies: ["Parameters"],
-            exclude: ["README.md"]
            ),
     .target(name: "Parameters",
             dependencies: [

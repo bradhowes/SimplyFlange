@@ -8,20 +8,20 @@
 @implementation Bridge {
   Kernel* kernel_;
   AUAudioFrameCount maxFramesToRender_;
+  AUValue maxDelayMilliseconds_;
 }
 
-- (instancetype)init:(NSString*)appExtensionName {
+- (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds {
   if (self = [super init]) {
     self->kernel_ = new Kernel(std::string(appExtensionName.UTF8String));
     self->maxFramesToRender_ = 0;
+    self->maxDelayMilliseconds_ = maxDelayMilliseconds;
   }
   return self;
 }
 
-- (void)startProcessing:(AVAudioFormat*)inputFormat
-      maxFramesToRender:(AUAudioFrameCount)maxFramesToRender
-   maxDelayMilliseconds:(AUValue)maxDelayMilliseconds{
-  kernel_->startProcessing(inputFormat, maxFramesToRender, maxDelayMilliseconds);
+- (void)startProcessing:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender {
+  kernel_->startProcessing(inputFormat, maxFramesToRender, maxDelayMilliseconds_);
   maxFramesToRender_ = maxFramesToRender;
 }
 
@@ -29,7 +29,7 @@
   kernel_->stopProcessing();
 }
 
-- (AUInternalRenderBlock) renderBlock {
+- (AUInternalRenderBlock)internalRenderBlock {
   auto& kernel = *kernel_;
   auto maxFramesToRender = maxFramesToRender_;
   NSInteger bus = 0;

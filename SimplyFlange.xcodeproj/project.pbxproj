@@ -23,19 +23,17 @@
 		BD1F64A427ADC97E002FD8C1 /* AUv3-Support in Frameworks */ = {isa = PBXBuildFile; productRef = BD1F64A327ADC97E002FD8C1 /* AUv3-Support */; };
 		BD1F64A627ADC97E002FD8C1 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD1F64A527ADC97E002FD8C1 /* AUv3-Support-macOS */; };
 		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
-		BD38A30027A5C80900405CBC /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A2FF27A5C80900405CBC /* FilterAudioUnit */; };
 		BD38A30227A5C80900405CBC /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30127A5C80900405CBC /* Kernel */; };
 		BD38A30627A5C80900405CBC /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30527A5C80900405CBC /* Parameters */; };
 		BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD38A31627A5D16200405CBC /* MainInterface.storyboard */; };
 		BD4F06B727A60E160019CB0D /* ViewController_macOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */; };
 		BD4F06B827A60E1B0019CB0D /* ViewController_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */; };
+		BD668E8C27ADE7F40038D980 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD668E8B27ADE7F40038D980 /* Kernel */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
 		BD75B6BA25DAA6680071F55E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = BD75B6B925DAA6680071F55E /* Credits.rtf */; };
-		BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD8FC33227A71F56002D09F6 /* FilterAudioUnit */; };
 		BD938B5724A781C200892358 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
-		BD96F30227A57C160001C2B9 /* FilterAudioUnit in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30127A57C160001C2B9 /* FilterAudioUnit */; };
 		BD96F30427A57C160001C2B9 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30327A57C160001C2B9 /* Kernel */; };
 		BD96F30827A57C160001C2B9 /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30727A57C160001C2B9 /* Parameters */; };
 		BD9BFB9327A6EC450081337C /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD9BFB9227A6EC450081337C /* Knob-iOS */; };
@@ -233,7 +231,6 @@
 				BD38A30227A5C80900405CBC /* Kernel in Frameworks */,
 				BD38A30627A5C80900405CBC /* Parameters in Frameworks */,
 				BD1F64A227ADC669002FD8C1 /* AUv3-Support-iOS in Frameworks */,
-				BD38A30027A5C80900405CBC /* FilterAudioUnit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,10 +238,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD8FC33327A71F56002D09F6 /* FilterAudioUnit in Frameworks */,
 				BD1F64A427ADC97E002FD8C1 /* AUv3-Support in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
 				BD1F64A627ADC97E002FD8C1 /* AUv3-Support-macOS in Frameworks */,
+				BD668E8C27ADE7F40038D980 /* Kernel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +253,6 @@
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
 				BD9BFB9527A6EC450081337C /* Knob-macOS in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
-				BD96F30227A57C160001C2B9 /* FilterAudioUnit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -528,7 +524,6 @@
 			);
 			name = "iOS Extension";
 			packageProductDependencies = (
-				BD38A2FF27A5C80900405CBC /* FilterAudioUnit */,
 				BD38A30127A5C80900405CBC /* Kernel */,
 				BD38A30527A5C80900405CBC /* Parameters */,
 				BD9BFB9227A6EC450081337C /* Knob-iOS */,
@@ -555,9 +550,9 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
-				BD8FC33227A71F56002D09F6 /* FilterAudioUnit */,
 				BD1F64A327ADC97E002FD8C1 /* AUv3-Support */,
 				BD1F64A527ADC97E002FD8C1 /* AUv3-Support-macOS */,
+				BD668E8B27ADE7F40038D980 /* Kernel */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -578,7 +573,6 @@
 			);
 			name = "macOS Extension";
 			packageProductDependencies = (
-				BD96F30127A57C160001C2B9 /* FilterAudioUnit */,
 				BD96F30327A57C160001C2B9 /* Kernel */,
 				BD96F30727A57C160001C2B9 /* Parameters */,
 				BD9BFB9427A6EC450081337C /* Knob-macOS */,
@@ -1914,10 +1908,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = "AUv3-Support-macOS";
 		};
-		BD38A2FF27A5C80900405CBC /* FilterAudioUnit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FilterAudioUnit;
-		};
 		BD38A30127A5C80900405CBC /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Kernel;
@@ -1926,13 +1916,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
-		BD8FC33227A71F56002D09F6 /* FilterAudioUnit */ = {
+		BD668E8B27ADE7F40038D980 /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = FilterAudioUnit;
-		};
-		BD96F30127A57C160001C2B9 /* FilterAudioUnit */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = FilterAudioUnit;
+			productName = Kernel;
 		};
 		BD96F30327A57C160001C2B9 /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;

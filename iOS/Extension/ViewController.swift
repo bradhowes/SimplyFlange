@@ -160,7 +160,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
       // When user changes something and a factory preset was active, clear it.
       os_log(.debug, log: log, "controlChanged - clearing currentPreset")
       audioUnit.currentPreset = nil
-    }
+    }
 
     (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
 

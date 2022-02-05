@@ -3,13 +3,11 @@
 import AUv3Support
 import CoreAudioKit
 import Kernel
+import KernelBridge
 import Knob_macOS
 import ParameterAddress
 import Parameters
 import os.log
-
-extension Bridge: AUParameterHandler {}
-extension Bridge: AudioRenderer {}
 
 extension NSSwitch: AUParameterValueProvider, BooleanControl, TagHolder {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
@@ -167,7 +165,7 @@ extension ViewController_macOS: AUAudioUnitFactory {
   public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
     os_log(.info, log: log, "createAudioUnit BEGIN - %{public}s", componentDescription.description)
 
-    let kernel = Bridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
+    let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
     parameters.setParameterHandler(kernel)
 
     let audioUnit = try FilterAudioUnit(componentDescription: componentDescription, options: [.loadOutOfProcess])
@@ -223,7 +221,7 @@ extension ViewController_macOS {
       logValues: false
     )]
     controls[.dry] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: paparametersrams[.dry],
+      parameterObserverToken: parameterObserverToken, parameter: parameters[.dry],
       formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel,
       logValues: false
     )]

@@ -83,8 +83,8 @@ struct InputBuffer {
 
 private:
   os_log_t logger_ = os_log_create("SimplyFlange", "BufferedInputBus");
-  AUAudioFrameCount maxFramesToRender_ = 0;
-  AVAudioPCMBuffer* buffer_ = nullptr;
-  AudioBufferList* mutableAudioBufferList_ = nullptr;
-  BufferFacet bufferFacet_;
+  AUAudioFrameCount maxFramesToRender_;
+  AVAudioPCMBuffer* buffer_{nullptr};
+  AudioBufferList* mutableAudioBufferList_{nullptr};
+  BufferFacet bufferFacet_{};
 };

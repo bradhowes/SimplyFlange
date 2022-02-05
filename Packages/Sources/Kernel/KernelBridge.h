@@ -7,7 +7,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Small Obj-C bridge between Swift and the C++ kernel classes. Best to use the `Bridge`
+ Small Obj-C bridge between Swift and the C++ kernel classes. The `Bridge` package contains the actual adoption of the
+ `AUParameterHandler` and `AudioRenderer` protocols.
  */
 @interface KernelBridge : NSObject
 

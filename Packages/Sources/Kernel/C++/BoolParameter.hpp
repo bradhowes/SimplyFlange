@@ -4,6 +4,9 @@
 
 #import <AVFoundation/AVFoundation.h>
 
+/**
+ Holds a boolean value and handles conversion from/to AUValue representations.
+ */
 struct BoolParameter {
 
   BoolParameter() = default;

@@ -1,5 +1,7 @@
 #import "C++/Kernel.hpp"
 
+// This must be done in a source file -- include files cannot see the Swift bridging file.
+
 @import ParameterAddress;
 
 void Kernel::setParameterValue(AUParameterAddress address, AUValue value) {

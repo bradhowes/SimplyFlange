@@ -30,8 +30,9 @@ public:
    @param frequency the frequency of the oscillator
    @param waveform the waveform to emit
    */
-  LFO(T sampleRate, T frequency, LFOWaveform waveform)
-  : sampleRate_{sampleRate}, frequency_{frequency}, valueGenerator_{WaveformGenerator(waveform)} {
+  LFO(T sampleRate, T frequency, LFOWaveform waveform) : valueGenerator_{WaveformGenerator(waveform)}
+  {
+    initialize(sampleRate, frequency);
     reset();
   }
   
@@ -53,7 +54,7 @@ public:
    */
   void initialize(T sampleRate, T frequency) {
     sampleRate_ = sampleRate;
-    frequency_ = frequency;
+    setFrequency(frequency, 0);
     reset();
   }
 
@@ -70,17 +71,13 @@ public:
    @param frequency the frequency to operate at
    */
   void setFrequency(T frequency, AUAudioFrameCount duration) {
-    if (frequency_ != frequency || phaseIncrement_.get() == 0.0) {
-      frequency_ = frequency;
-      phaseIncrement_.set(frequency_ / sampleRate_, duration);
-    }
+    phaseIncrement_.set(frequency / sampleRate_, duration);
   }
 
   /**
    Restart from a known zero state.
    */
   void reset() {
-    phaseIncrement_.set(frequency_ / sampleRate_, 0);
     moduloCounter_ = phaseIncrement_.get() > 0 ? 0.0 : 1.0;
   }
   
@@ -106,7 +103,12 @@ public:
     quadPhaseCounter_ = incrementModuloCounter(moduloCounter_, 0.25);
   }
 
-  T frequency() const { return frequency_; }
+  /**
+   Obtain the current frequency of the LFO.
+
+   @return frequency in Hz
+   */
+  T frequency() const { return phaseIncrement_.get() * sampleRate_; }
 
 private:
   using ValueGenerator = std::function<T(T)>;
@@ -131,7 +133,6 @@ private:
   static T triangleValue(T counter) { return DSP::unipolarToBipolar(std::abs(DSP::unipolarToBipolar(counter))); }
   
   T sampleRate_;
-  T frequency_;
   std::function<T(T)> valueGenerator_;
   T moduloCounter_ = {0.0};
   T quadPhaseCounter_ = {0.0};

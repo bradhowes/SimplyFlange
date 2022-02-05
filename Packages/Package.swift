@@ -6,7 +6,7 @@ let package = Package(
   name: "Packages",
   platforms: [.iOS(.v13), .macOS(.v10_15)],
   products: [
-    .library(name: "Bridge", targets: ["Bridge"]),
+    .library(name: "KernelBridge", targets: ["KernelBridge"]),
     .library(name: "Kernel", targets: ["Kernel"]),
     .library(name: "Parameters", targets: ["Parameters"]),
     .library(name: "ParameterAddress", targets: ["ParameterAddress"]),
@@ -16,7 +16,7 @@ let package = Package(
   ],
   targets: [
     .target(
-      name: "Bridge",
+      name: "KernelBridge",
       dependencies: [
         "Kernel",
         .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),

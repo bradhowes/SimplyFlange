@@ -2,7 +2,7 @@
 
 import AUv3Support
 import CoreAudioKit
-import Bridge
+import KernelBridge
 import Kernel
 import Knob_iOS
 import ParameterAddress

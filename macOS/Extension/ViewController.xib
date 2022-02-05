@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <customObject id="-2" userLabel="File's Owner" customClass="ViewController_macOS" customModule="SimplyFlangeAU">
+        <customObject id="-2" userLabel="File's Owner" customClass="ViewController" customModule="SimplyFlangeAU" customModuleProvider="target">
             <connections>
                 <outlet property="controlsView" destination="oPI-wC-N8q" id="ydd-bK-CXa"/>
                 <outlet property="delayControl" destination="1VT-Na-dOb" id="R6W-EF-15Y"/>

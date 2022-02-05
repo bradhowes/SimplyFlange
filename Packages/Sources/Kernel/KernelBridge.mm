@@ -3,9 +3,9 @@
 #import <CoreAudioKit/CoreAudioKit.h>
 
 #import "C++/Kernel.hpp"
-#import "Bridge.h"
+#import "KernelBridge.h"
 
-@implementation Bridge {
+@implementation KernelBridge {
   Kernel* kernel_;
   AUAudioFrameCount maxFramesToRender_;
   AUValue maxDelayMilliseconds_;
@@ -25,9 +25,7 @@
   maxFramesToRender_ = maxFramesToRender;
 }
 
-- (void)stopProcessing {
-  kernel_->stopProcessing();
-}
+- (void)stopProcessing { kernel_->stopProcessing(); }
 
 - (AUInternalRenderBlock)internalRenderBlock {
   auto& kernel = *kernel_;
@@ -44,11 +42,7 @@
   };
 }
 
-- (void)setBypass:(BOOL)state {
-  kernel_->setBypass(state);
-}
-
-// AUParameterHandler conformance
+- (void)setBypass:(BOOL)state { kernel_->setBypass(state); }
 
 - (void)set:(AUParameter *)parameter value:(AUValue)value { kernel_->setParameterValue(parameter.address, value); }
 

@@ -7,12 +7,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 /**
- Small Obj-C bridge between Swift and the C++ kernel classes. Handles AUParameter get/set requests by forwarding them to
- the kernel.
+ Small Obj-C bridge between Swift and the C++ kernel classes. Best to use the `Bridge`
  */
-@interface Bridge : NSObject
+@interface KernelBridge : NSObject
 
 - (nonnull id)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds;
+
+@end
+
+// These are the functions that satisfy the AudioRenderer protocol
+@interface KernelBridge (AudioRenderer)
 
 /**
  Configure the kernel for new format and max frame in preparation to begin rendering
@@ -41,6 +45,11 @@ NS_ASSUME_NONNULL_BEGIN
  @param state new bypass value
  */
 - (void)setBypass:(BOOL)state;
+
+@end
+
+// These are the functions that satisfy the AUParameterHandler protocol
+@interface KernelBridge (AUParameterHandler)
 
 - (void)set:(AUParameter *)parameter value:(AUValue)value;
 

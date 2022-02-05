@@ -2,14 +2,12 @@
 
 import AUv3Support
 import CoreAudioKit
+import Bridge
 import Kernel
 import Knob_iOS
 import ParameterAddress
 import Parameters
 import os.log
-
-extension Bridge: AUParameterHandler {}
-extension Bridge: AudioRenderer {}
 
 extension UISwitch: AUParameterValueProvider, TagHolder, BooleanControl {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
@@ -186,7 +184,7 @@ extension ViewController_iOS: AUAudioUnitFactory {
   public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
     os_log(.info, log: log, "createAudioUnit BEGIN - %{public}s", componentDescription.description)
 
-    let kernel = Bridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
+    let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
     parameters.setParameterHandler(kernel)
 
     let audioUnit = try FilterAudioUnit(componentDescription: componentDescription, options: [.loadOutOfProcess])

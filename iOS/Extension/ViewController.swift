@@ -156,16 +156,11 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
       return
     }
 
-    guard let preset = audioUnit.currentPreset else {
-      os_log(.debug, log: log, "controlChanged END - nil currentPreset")
-      return
-    }
-
-    // When user changes something and a factory preset was active, clear it.
-    if preset.number >= 0 {
+    if let preset = audioUnit.currentPreset, preset.number >= 0 {
+      // When user changes something and a factory preset was active, clear it.
       os_log(.debug, log: log, "controlChanged - clearing currentPreset")
       audioUnit.currentPreset = nil
-    }
+    }
 
     (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
 

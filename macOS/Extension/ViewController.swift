@@ -19,10 +19,10 @@ extension FocusAwareTextField: TagHolder {}
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
-@objc open class ViewController_macOS: AUViewController {
+@objc open class ViewController: AUViewController {
 
   // NOTE: this special form sets the subsystem name and must run before any other logger calls.
-  private let log: OSLog = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController_iOS")
+  private let log: OSLog = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController")
 
   private let parameters = AudioUnitParameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
@@ -154,7 +154,7 @@ extension FocusAwareTextField: TagHolder {}
   }
 }
 
-extension ViewController_macOS: AUAudioUnitFactory {
+extension ViewController: AUAudioUnitFactory {
   
   /**
    Create a new FilterAudioUnit instance to run in an AVu3 container.
@@ -179,7 +179,7 @@ extension ViewController_macOS: AUAudioUnitFactory {
   }
 }
 
-extension ViewController_macOS {
+extension ViewController {
 
   override public func viewWillTransition(to newSize: NSSize) {
     os_log(.debug, log: log, "viewWillTransition: %f x %f", newSize.width, newSize.height)
@@ -254,7 +254,7 @@ extension ViewController_macOS {
   }
 }
 
-extension ViewController_macOS: AudioUnitViewConfigurationManager {
+extension ViewController: AudioUnitViewConfigurationManager {
 
   public func supportedViewConfigurations(_ available: [AUAudioUnitViewConfiguration]) -> IndexSet {
     var indexSet = IndexSet()

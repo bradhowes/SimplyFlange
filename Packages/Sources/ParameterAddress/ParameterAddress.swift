@@ -22,9 +22,9 @@ extension ParameterAddress {
     switch self {
     case .depth: return .defPercent("depth", localized: "Depth", address: ParameterAddress.depth)
     case .rate: return .defFloat("rate", localized: "Rate", address: ParameterAddress.rate,
-                                 range: 0.01...20.0, unit: .hertz)
+                                 range: 0.01...20.0, unit: .hertz, logScale: true)
     case .delay: return .defFloat("delay", localized: "Delay", address: ParameterAddress.delay,
-                                  range: 1.0...50.0, unit: .milliseconds)
+                                  range: 1.0...50.0, unit: .milliseconds, logScale: true)
     case .feedback: return .defPercent("feedback", localized: "Feedback", address: ParameterAddress.feedback)
     case .dry: return .defPercent("dry", localized: "Dry", address: ParameterAddress.dry)
     case .wet: return .defPercent("wet", localized: "Wet", address: ParameterAddress.wet)

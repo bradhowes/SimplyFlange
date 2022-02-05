@@ -34,8 +34,8 @@
 		BD38A30227A5C80900405CBC /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30127A5C80900405CBC /* Kernel */; };
 		BD38A30627A5C80900405CBC /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD38A30527A5C80900405CBC /* Parameters */; };
 		BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD38A31627A5D16200405CBC /* MainInterface.storyboard */; };
-		BD4F06B727A60E160019CB0D /* ViewController_macOS.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */; };
-		BD4F06B827A60E1B0019CB0D /* ViewController_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */; };
+		BD4F06B727A60E160019CB0D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController.xib */; };
+		BD4F06B827A60E1B0019CB0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController.swift */; };
 		BD668E8C27ADE7F40038D980 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD668E8B27ADE7F40038D980 /* Kernel */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
@@ -156,8 +156,8 @@
 		BD6E935527A06C3800230C02 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD6E935727A06C3800230C02 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		BD75B6B925DAA6680071F55E /* Credits.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Credits.rtf; sourceTree = "<group>"; };
-		BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_macOS.swift; sourceTree = "<group>"; };
-		BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController_macOS.xib; sourceTree = "<group>"; };
+		BD7AA22727A5EC71003CAE1D /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BD7AA22D27A5FB5A003CAE1D /* ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
 		BD95147524A08BB600D8024C /* macOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "macOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD95147924A08BB600D8024C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD96F2EA27A53E260001C2B9 /* Packages */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Packages; sourceTree = "<group>"; };
@@ -394,8 +394,8 @@
 		C4BEE7B722236A58001E6B6D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BD7AA22727A5EC71003CAE1D /* ViewController_macOS.swift */,
-				BD7AA22D27A5FB5A003CAE1D /* ViewController_macOS.xib */,
+				BD7AA22727A5EC71003CAE1D /* ViewController.swift */,
+				BD7AA22D27A5FB5A003CAE1D /* ViewController.xib */,
 				C4BEE7BE22236A58001E6B6D /* Info.plist */,
 				C4BEE7BD22236A58001E6B6D /* Extension.entitlements */,
 			);
@@ -738,7 +738,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD4F06B727A60E160019CB0D /* ViewController_macOS.xib in Resources */,
+				BD4F06B727A60E160019CB0D /* ViewController.xib in Resources */,
 				BD0D191027A8176400C974C6 /* Media.xcassets in Resources */,
 				BD0D190E27A8175D00C974C6 /* Desdemona.ttf in Resources */,
 			);
@@ -803,7 +803,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BD4F06B827A60E1B0019CB0D /* ViewController_macOS.swift in Sources */,
+				BD4F06B827A60E1B0019CB0D /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

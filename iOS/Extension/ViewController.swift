@@ -18,10 +18,10 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
-@objc open class ViewController_iOS: AUViewController {
+@objc open class ViewController: AUViewController {
 
   // NOTE: this special form sets the subsystem name and must run before any other logger calls.
-  private let log = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController_iOS")
+  private let log = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController")
 
   private let parameters = AudioUnitParameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
@@ -173,7 +173,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   }
 }
 
-extension ViewController_iOS: AUAudioUnitFactory {
+extension ViewController: AUAudioUnitFactory {
 
   /**
    Create a new FilterAudioUnit instance to run in an AVu3 container.
@@ -198,7 +198,7 @@ extension ViewController_iOS: AUAudioUnitFactory {
   }
 }
 
-extension ViewController_iOS {
+extension ViewController {
 
   private func connectViewToAU() {
     os_log(.info, log: log, "connectViewToAU")
@@ -285,7 +285,7 @@ extension ViewController_iOS {
   }
 }
 
-extension ViewController_iOS: AudioUnitViewConfigurationManager {
+extension ViewController: AudioUnitViewConfigurationManager {
 
   public func supportedViewConfigurations(_ available: [AUAudioUnitViewConfiguration]) -> IndexSet {
     var indexSet = IndexSet()
@@ -302,7 +302,7 @@ extension ViewController_iOS: AudioUnitViewConfigurationManager {
   }
 }
 
-extension ViewController_iOS: UITextFieldDelegate {
+extension ViewController: UITextFieldDelegate {
 
   @IBAction func beginEditing(sender: UITapGestureRecognizer) {
     guard editingView.isHidden,

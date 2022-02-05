@@ -49,7 +49,7 @@
 		BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
 		BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
-		C433F56122404C7C00F1B750 /* ViewController_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* ViewController_iOS.swift */; };
+		C433F56122404C7C00F1B750 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* ViewController.swift */; };
 		C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4737B0A2231D930002CAD0B /* AudioToolbox.framework */; };
@@ -169,7 +169,7 @@
 		BDE2CE1924A3EBD1004AC8FA /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configuration/Common.xcconfig; sourceTree = "<group>"; };
 		BDF5905A27A601AD005F6C1E /* Desdemona.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Desdemona.ttf; sourceTree = "<group>"; };
 		BDF5905B27A601AE005F6C1E /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
-		C433F56022404C7C00F1B750 /* ViewController_iOS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController_iOS.swift; sourceTree = "<group>"; };
+		C433F56022404C7C00F1B750 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplyFlangeAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE7A2223688D008D6C09 /* SimplyFlange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlange.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -360,7 +360,7 @@
 		C4BEE79722236A29001E6B6D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C433F56022404C7C00F1B750 /* ViewController_iOS.swift */,
+				C433F56022404C7C00F1B750 /* ViewController.swift */,
 				BD38A31627A5D16200405CBC /* MainInterface.storyboard */,
 				C4BEE79C22236A29001E6B6D /* Info.plist */,
 			);
@@ -785,7 +785,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C433F56122404C7C00F1B750 /* ViewController_iOS.swift in Sources */,
+				C433F56122404C7C00F1B750 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

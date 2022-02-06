@@ -27,6 +27,7 @@ let package = Package(
       name: "Kernel",
       dependencies: [
         .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+        .productItem(name: "AUv3-DSP-Headers", package: "AUv3SupportPackage", condition: .none),
         "ParameterAddress"
       ],
       exclude: ["README.md"],

@@ -34,25 +34,25 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   @IBOutlet weak var depthValueLabel: Label!
   @IBOutlet weak var depthTapEdit: UIView!
 
+  @IBOutlet weak var delayControl: Knob!
+  @IBOutlet weak var delayValueLabel: Label!
+  @IBOutlet weak var delayTapEdit: UIView!
+
   @IBOutlet weak var rateControl: Knob!
   @IBOutlet weak var rateValueLabel: Label!
   @IBOutlet weak var rateTapEdit: UIView!
+
+  @IBOutlet weak var feedbackControl: Knob!
+  @IBOutlet weak var feedbackValueLabel: Label!
+  @IBOutlet weak var feedbackTapEdit: UIView!
 
   @IBOutlet weak var altDepthControl: Knob!
   @IBOutlet weak var altDepthValueLabel: Label!
   @IBOutlet weak var altDepthTapEdit: View!
 
-  @IBOutlet weak var altRateControl: Knob!
-  @IBOutlet weak var altRateValueLabel: Label!
-  @IBOutlet weak var altRateTapEdit: View!
-
-  @IBOutlet weak var delayControl: Knob!
-  @IBOutlet weak var delayValueLabel: Label!
-  @IBOutlet weak var delayTapEdit: UIView!
-
-  @IBOutlet weak var feedbackControl: Knob!
-  @IBOutlet weak var feedbackValueLabel: Label!
-  @IBOutlet weak var feedbackTapEdit: UIView!
+  @IBOutlet weak var altDelayControl: Knob!
+  @IBOutlet weak var altDelayValueLabel: Label!
+  @IBOutlet weak var altDelayTapEdit: View!
 
   @IBOutlet weak var dryMixControl: Knob!
   @IBOutlet weak var dryMixValueLabel: Label!
@@ -99,15 +99,15 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
     editingView.isHidden = true
 
     addTapGesture(depthTapEdit)
-    addTapGesture(rateTapEdit)
     addTapGesture(delayTapEdit)
+    addTapGesture(rateTapEdit)
     addTapGesture(feedbackTapEdit)
     addTapGesture(dryMixTapEdit)
     addTapGesture(wetMixTapEdit)
     addTapGesture(altDepthTapEdit)
-    addTapGesture(altRateTapEdit)
+    addTapGesture(altDelayTapEdit)
 
-    for control in [depthControl, altDepthControl, rateControl, altRateControl, delayControl, feedbackControl] {
+    for control in [depthControl, altDepthControl, delayControl, altDelayControl, rateControl, feedbackControl] {
       if let control = control {
         control.trackLineWidth = 10
         control.progressLineWidth = 8
@@ -215,46 +215,39 @@ extension ViewController {
 
     controls[.depth] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
-      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
+      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel
     )]
     if altDepthControl != nil {
       controls[.depth]?.append(FloatParameterEditor(
         parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
-        formatter: parameters.valueFormatter(.depth), rangedControl: altDepthControl, label: altDepthValueLabel,
-        logValues: false
+        formatter: parameters.valueFormatter(.depth), rangedControl: altDepthControl, label: altDepthValueLabel
       ))
     }
-
-    controls[.rate] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
-      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel, logValues: true
-    )]
-    if altRateControl != nil {
-      controls[.rate]?.append(FloatParameterEditor(
-        parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
-        formatter: parameters.valueFormatter(.rate), rangedControl: altRateControl, label: altRateValueLabel,
-        logValues: true
-      ))
-    }
-
     controls[.delay] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
-      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel, logValues: true
+      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel
+    )]
+    if altDelayControl != nil {
+      controls[.delay]?.append(FloatParameterEditor(
+        parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
+        formatter: parameters.valueFormatter(.delay), rangedControl: altDelayControl, label: altDelayValueLabel
+      ))
+    }
+    controls[.rate] = [FloatParameterEditor(
+      parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
+      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel
     )]
     controls[.feedback] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.feedback],
-      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel
     )]
     controls[.dry] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.dry],
-      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel
     )]
     controls[.wet] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.wet],
-      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel
     )]
     controls[.negativeFeedback] = [BooleanParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.negativeFeedback],

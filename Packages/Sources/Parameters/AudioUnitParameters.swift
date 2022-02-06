@@ -4,7 +4,6 @@ import AUv3Support
 import CoreAudioKit
 import Foundation
 import ParameterAddress
-
 import os.log
 
 private extension Array where Element == AUParameter {
@@ -18,27 +17,32 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
 
   private let log = Shared.logger("AudioUnitParameters")
 
+  /// Array of AUParameter entities created from ParameterAddress value definitions.
   public let parameters: [AUParameter] = ParameterAddress.allCases.map { $0.parameterDefinition.parameter }
 
+  /// Array of 2-tuple values that pair a factory preset name and its definition
   public let factoryPresetValues: [(name: String, preset: FilterPreset)] = [
     ("Flangie",
-     .init(depth: 100, rate: 0.14, delay: 1.10, feedback: 20, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
+     .init(depth: 7, rate: 0.07, delay: 0.0, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
     ("Sweeper",
-     .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
+     .init(depth: 15, rate: 0.6, delay: 0.14, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
     ("Chorious",
-     .init(depth: 64, rate: 1.8, delay: 3.23, feedback: 0, dry: 50, wet: 50, negativeFeedback: 0, odd90:1)),
+     .init(depth: 20, rate: 0.3, delay: 0.15, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90:1)),
     ("Lord Tremolo",
-     .init(depth: 100, rate: 8.6, delay: 0.07, feedback: 90, dry: 0, wet: 100, negativeFeedback: 0, odd90:0)),
+     .init(depth: 5, rate: 8.0, delay: 0.0, feedback: 85, dry: 0, wet: 100, negativeFeedback: 0, odd90:0)),
     ("Wide Flangie",
      .init(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
     ("Wide Sweeper",
      .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
   ]
 
+  /// Array of `AUAudioUnitPreset` for the factory presets.
   public var factoryPresets: [AUAudioUnitPreset] {
     factoryPresetValues.enumerated().map { .init(number: $0.0, name: $0.1.name ) }
   }
 
+  /// Apply a factory preset -- user preset changes are handled by changing AUParameter values through the audio unit's
+  /// `fullState` attribute.
   public func usePreset(_ preset: AUAudioUnitPreset) {
     if preset.number >= 0 {
       setValues(factoryPresetValues[preset.number].preset)
@@ -48,13 +52,23 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
   /// AUParameterTree created with the parameter definitions for the audio unit
   public let parameterTree: AUParameterTree
 
+  /// Obtain the parameter setting that determines how much variation in time there is when reading values from
+  /// the delay buffer.
   public var depth: AUParameter { parameters[.depth] }
+  /// Obtain the parameter setting that determines how fast the LFO operates
   public var rate: AUParameter { parameters[.rate] }
+  /// Obtain the parameter setting that determines the minimum delay applied incoming samples. The actual delay value is
+  /// this value plus the `depth` times the current LFO value.
   public var delay: AUParameter { parameters[.delay] }
+  /// Obtain the parameter setting that determines how much of the processed signal is added to the 
   public var feedback: AUParameter { parameters[.feedback] }
+  /// Obtain the `depth` parameter setting
   public var dryMix: AUParameter { parameters[.dry] }
+  /// Obtain the `depth` parameter setting
   public var wetMix: AUParameter { parameters[.wet] }
+  /// Obtain the `depth` parameter setting
   public var negativeFeedback: AUParameter { parameters[.negativeFeedback] }
+  /// Obtain the `depth` parameter setting
   public var odd90: AUParameter { parameters[.odd90] }
 
   /**
@@ -98,7 +112,7 @@ extension AudioUnitParameters {
 
     let separator: String = {
       switch address {
-      case .rate, .delay: return " "
+      case .depth, .rate, .delay: return " "
       default: return ""
       }
     }()

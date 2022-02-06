@@ -200,30 +200,27 @@ extension ViewController {
     
     controls[.depth] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
-      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel, logValues: false
+      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel
     )]
     controls[.rate] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
-      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel, logValues: true
+      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel
     )]
     controls[.delay] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
-      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel, logValues: true
+      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel
     )]
     controls[.feedback] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.feedback],
-      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel
     )]
     controls[.dry] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.dry],
-      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel
     )]
     controls[.wet] = [FloatParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.wet],
-      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel,
-      logValues: false
+      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel
     )]
     controls[.negativeFeedback] = [BooleanParameterEditor(
       parameterObserverToken: parameterObserverToken, parameter: parameters[.negativeFeedback],

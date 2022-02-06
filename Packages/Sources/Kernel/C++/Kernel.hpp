@@ -2,6 +2,7 @@
 
 #pragma once
 
+#import <algorithm>
 #import <string>
 #import <AVFoundation/AVFoundation.h>
 
@@ -63,6 +64,8 @@ private:
 
   void initialize(int channelCount, double sampleRate, double maxDelayMilliseconds) {
     samplesPerMillisecond_ = sampleRate / 1000.0;
+    maxDelayMilliseconds_ = maxDelayMilliseconds;
+
     lfo_.initialize(sampleRate, 0.0);
 
     auto size = maxDelayMilliseconds * samplesPerMillisecond_ + 1;
@@ -87,20 +90,24 @@ private:
 
     // Advance by frames in outer loop so we can ramp values when they change without having to save/restore state.
     for (int frame = 0; frame < frameCount; ++frame) {
-      auto signedFeedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
-      auto scale = depth_.frameValue() * delay_.frameValue() * samplesPerMillisecond_;
 
-      auto evenLFO = DSP::bipolarToUnipolar(lfo_.value()) * scale;
-      auto oddLFO = DSP::bipolarToUnipolar(lfo_.quadPhaseValue()) * scale;
-      lfo_.increment();
-
+      auto depth = depth_.frameValue();
+      auto delay = delay_.frameValue();
+      auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
       auto wetMix = wetMix_.frameValue();
       auto dryMix = dryMix_.frameValue();
 
+      auto delaySpan = depth - delay;
+      auto evenDelay = DSP::bipolarToUnipolar(lfo_.value()) * delaySpan + delay;
+      auto oddDelay = odd90_ ? DSP::bipolarToUnipolar(lfo_.quadPhaseValue()) * delaySpan + delay : evenDelay;
+
+      lfo_.increment();
+
       for (int channel = 0; channel < ins.size(); ++channel) {
         auto inputSample = *ins[channel]++;
-        auto delayedSample = scale != 0.0 ? delayLines_[channel].read((channel & 1) ? oddLFO : evenLFO) : inputSample;
-        delayLines_[channel].write(inputSample + signedFeedback * delayedSample);
+        AUValue delayedSample = 0.0;
+        delayedSample = delayLines_[channel].read((channel & 1) ? oddDelay : evenDelay);
+        delayLines_[channel].write(inputSample + feedback * delayedSample);
         *outs[channel]++ = wetMix * delayedSample + dryMix * inputSample;
       }
     }
@@ -108,7 +115,7 @@ private:
 
   void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
 
-  PercentageParameter<AUValue> depth_;
+  MillisecondsParameter<AUValue> depth_;
   MillisecondsParameter<AUValue> delay_;
   PercentageParameter<AUValue> feedback_;
   PercentageParameter<AUValue> dryMix_;
@@ -117,6 +124,7 @@ private:
   BoolParameter odd90_;
 
   double samplesPerMillisecond_;
+  double maxDelayMilliseconds_;
 
   std::vector<DelayBuffer<AUValue>> delayLines_;
   LFO<AUValue> lfo_;

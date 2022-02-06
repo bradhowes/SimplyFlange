@@ -13,8 +13,7 @@ extension NSSwitch: AUParameterValueProvider, BooleanControl, TagHolder {
   public var value: AUValue { isOn ? 1.0 : 0.0 }
 }
 
-extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
-extension FocusAwareTextField: TagHolder {}
+extension Knob: AUParameterValueProvider, RangedControl {}
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
@@ -71,26 +70,6 @@ extension FocusAwareTextField: TagHolder {}
     if audioUnit != nil {
       connectViewToAU()
     }
-
-    // Set tag values to AUParameter address values for use in editing tasks
-    //
-    depthControl.setParameterAddress(.depth)
-    depthValueLabel.setParameterAddress(.depth)
-
-    rateControl.setParameterAddress(.rate)
-    rateValueLabel.setParameterAddress(.rate)
-
-    delayControl.setParameterAddress(.delay)
-    delayValueLabel.setParameterAddress(.delay)
-
-    feedbackControl.setParameterAddress(.feedback)
-    feedbackValueLabel.setParameterAddress(.feedback)
-
-    wetMixControl.setParameterAddress(.wet)
-    wetMixValueLabel.setParameterAddress(.wet)
-
-    dryMixControl.setParameterAddress(.dry)
-    dryMixValueLabel.setParameterAddress(.dry)
 
     for control in [depthControl, rateControl, delayControl, feedbackControl] {
       if let control = control {

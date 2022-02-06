@@ -39,3 +39,8 @@ extension ParameterAddress {
 extension ParameterAddress: ParameterAddressProvider {
   public var parameterAddress: AUParameterAddress { UInt64(self.rawValue) }
 }
+
+public extension TagHolder {
+  func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
+  var parameterAddress: ParameterAddress? { ParameterAddress(rawValue: UInt64(tag)) }
+}

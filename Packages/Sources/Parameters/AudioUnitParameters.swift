@@ -21,18 +21,18 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
   public let parameters: [AUParameter] = ParameterAddress.allCases.map { $0.parameterDefinition.parameter }
 
   public let factoryPresetValues: [(name: String, preset: FilterPreset)] = [
-    ("Flangie", .init(depth: 100, rate: 0.14, delay: 1.10, feedback: 20, dry: 50, wet: 50, negativeFeedback: 0,
-                      odd90: 0)),
-    ("Sweeper", .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50,
-                             negativeFeedback: 0, odd90: 0)),
-    ("Chorious", .init(depth: 64, rate: 1.8, delay: 3.23, feedback: 0, dry: 50, wet: 50,
-                              negativeFeedback: 0, odd90:1)),
-    ("Lord Tremolo", .init(depth: 100, rate: 8.6, delay: 0.07, feedback: 90, dry: 0, wet: 100,
-                                  negativeFeedback: 0, odd90:0)),
-    ("Wide Flangie", .init(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dry: 50, wet: 50,
-                                  negativeFeedback: 0, odd90: 1)),
-    ("Wide Sweeper", .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50,
-                                  negativeFeedback: 0, odd90: 1)),
+    ("Flangie",
+     .init(depth: 100, rate: 0.14, delay: 1.10, feedback: 20, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
+    ("Sweeper",
+     .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
+    ("Chorious",
+     .init(depth: 64, rate: 1.8, delay: 3.23, feedback: 0, dry: 50, wet: 50, negativeFeedback: 0, odd90:1)),
+    ("Lord Tremolo",
+     .init(depth: 100, rate: 8.6, delay: 0.07, feedback: 90, dry: 0, wet: 100, negativeFeedback: 0, odd90:0)),
+    ("Wide Flangie",
+     .init(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
+    ("Wide Sweeper",
+     .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
   ]
 
   public var factoryPresets: [AUAudioUnitPreset] {

@@ -134,13 +134,8 @@ extension FocusAwareTextField: TagHolder {}
       return
     }
 
-    guard let preset = audioUnit.currentPreset else {
-      os_log(.debug, log: log, "controlChanged END - nil currentPreset")
-      return
-    }
-
     // When user changes something and a factory preset was active, clear it.
-    if preset.number >= 0 {
+    if let preset = audioUnit.currentPreset, preset.number >= 0 {
       os_log(.debug, log: log, "controlChanged - clearing currentPreset")
       audioUnit.currentPreset = nil
     }

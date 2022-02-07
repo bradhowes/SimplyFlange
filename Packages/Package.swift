@@ -50,14 +50,18 @@ let package = Package(
     ),
     .testTarget(
       name: "KernelTests",
-      dependencies: ["Kernel"],
-      linkerSettings: [
-        .linkedFramework("AVFoundation")
-      ]
+      dependencies: ["Kernel", "ParameterAddress"],
+      cxxSettings: [.unsafeFlags(["-fmodules", "-fcxx-modules"], .none)],
+      linkerSettings: [.linkedFramework("AVFoundation")]
+    ),
+    .testTarget(
+      name: "ParameterAddressTests",
+      dependencies: ["ParameterAddress"]
     ),
     .testTarget(
       name: "ParametersTests",
-      dependencies: ["Parameters"]),
+      dependencies: ["Parameters"]
+    ),
   ],
   cxxLanguageStandard: .cxx17
 )

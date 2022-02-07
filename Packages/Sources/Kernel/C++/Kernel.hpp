@@ -14,7 +14,9 @@
 #import "PercentageParameter.hpp"
 
 /**
- The audio processing kernel that generates a "flange" effect.
+ The audio processing kernel that generates a "flange" effect by combining an audio signal with a slightly delayed copy
+ of itself. The delay value oscillates at a defined frequency which causes the delayed audio to vary in pitch due to it
+ being sped up or slowed down.
  */
 class Kernel : public EventProcessor<Kernel> {
 public:
@@ -97,16 +99,23 @@ private:
       auto wetMix = wetMix_.frameValue();
       auto dryMix = dryMix_.frameValue();
 
+      // This is the amount of delay that the LFO can oscillate over. A value of -1 in the LFO will result in 0.0 and a
+      // value of +1 from the LFO will give `delaySpan`.
       auto delaySpan = depth - delay;
+
+      // Calculate the delay signal for even channels (L)
       auto evenDelay = DSP::bipolarToUnipolar(lfo_.value()) * delaySpan + delay;
+
+      // Optionally, odd channels (R) can be 90° out of phase with the even channels.
       auto oddDelay = odd90_ ? DSP::bipolarToUnipolar(lfo_.quadPhaseValue()) * delaySpan + delay : evenDelay;
 
+      // Safe now to increment the LFO for the next frame.
       lfo_.increment();
 
+      // Process the same frame in all of the channels
       for (int channel = 0; channel < ins.size(); ++channel) {
         auto inputSample = *ins[channel]++;
-        AUValue delayedSample = 0.0;
-        delayedSample = delayLines_[channel].read((channel & 1) ? oddDelay : evenDelay);
+        auto delayedSample = delayLines_[channel].read((channel & 1) ? oddDelay : evenDelay);
         delayLines_[channel].write(inputSample + feedback * delayedSample);
         *outs[channel]++ = wetMix * delayedSample + dryMix * inputSample;
       }

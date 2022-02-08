@@ -7,6 +7,7 @@ import Kernel
 import Knob_iOS
 import ParameterAddress
 import Parameters
+import Theme
 import os.log
 
 extension UISwitch: AUParameterValueProvider, TagHolder, BooleanControl {
@@ -28,6 +29,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   private var parameterObserverToken: AUParameterObserverToken?
   private var keyValueObserverToken: NSKeyValueObservation?
 
+  @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var controlsView: View!
 
   @IBOutlet weak var depthControl: Knob!
@@ -92,11 +94,21 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   }
 
   public override func viewDidLoad() {
+    os_log(.info, log: log, "viewDidLoad BEGIN")
     super.viewDidLoad()
+
     view.backgroundColor = .black
+
     if audioUnit != nil {
       connectViewToAU()
     }
+
+    os_log(.info, log: log, "viewDidLoad - setting title font")
+    titleLabel.font = Theme.titleFont(size: 140 )
+    os_log(.info, log: log, "viewDidLoad - setting text color")
+    titleLabel.textColor = Theme.color(.title)
+
+    os_log(.info, log: log, "viewDidLoad - initing")
 
     editingViewTopConstraint.constant = 0
     editingBackgroundBottomConstraint.constant = view.frame.midY
@@ -123,6 +135,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 10
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
+        control.progressColor = Theme.color(.knobProgress)
       }
     }
 
@@ -131,8 +144,11 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 8
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6
+        control.progressColor = Theme.color(.knobProgress)
       }
     }
+
+    os_log(.info, log: log, "viewDidLoad END")
   }
 
   @IBAction func handleKeyboardAppearing(_ notification: NSNotification) {

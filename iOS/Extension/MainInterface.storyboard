@@ -526,6 +526,7 @@
                         <outlet property="rateControl" destination="hF3-lq-xlE" id="exq-g6-8Gh"/>
                         <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="qli-b2-uNY"/>
                         <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="s6J-i1-BCT"/>
+                        <outlet property="titleLabel" destination="Vbj-fp-p3P" id="aON-7E-b0j"/>
                         <outlet property="wetMixControl" destination="xjB-dE-KcA" id="9bZ-cp-CVC"/>
                         <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="MaS-FM-vIp"/>
                         <outlet property="wetMixValueLabel" destination="OFy-GK-jEJ" id="2mZ-Gs-4QQ"/>

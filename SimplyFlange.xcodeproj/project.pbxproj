@@ -172,6 +172,7 @@
 		BDE2CE1924A3EBD1004AC8FA /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Common.xcconfig; path = Configuration/Common.xcconfig; sourceTree = "<group>"; };
 		BDE5380B27B2B28B008ACA93 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 		BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Desdemona.ttf; sourceTree = "<group>"; };
+		BDE5381527B2B3AC008ACA93 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C433F56022404C7C00F1B750 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplyFlangeHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SimplyFlangeAU.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -304,6 +305,7 @@
 		BDE5380A27B2B28B008ACA93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BDE5381527B2B3AC008ACA93 /* README.md */,
 				BDE5380B27B2B28B008ACA93 /* Media.xcassets */,
 				BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */,
 			);

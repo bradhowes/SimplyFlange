@@ -1,4 +1,4 @@
-# About
+# Configuration
 
 This directory contains three [Xcode config](https://nshipster.com/xcconfig/) files that are used to setup
 certain build variables and some entries in the various Info.plist files that help define the frameworks and

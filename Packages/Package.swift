@@ -10,11 +10,16 @@ let package = Package(
     .library(name: "Kernel", targets: ["Kernel"]),
     .library(name: "Parameters", targets: ["Parameters"]),
     .library(name: "ParameterAddress", targets: ["ParameterAddress"]),
+    .library(name: "Theme", targets: ["Theme"])
   ],
   dependencies: [
-    .package(name: "AUv3SupportPackage", url: "/Users/howes/src/Mine/AUv3Support", branch: "main"),
+    .package(name: "AUv3SupportPackage", url: "https://github.com/bradhowes/AUv3Support", branch: "main"),
   ],
   targets: [
+    .target(
+      name: "Theme",
+      resources: [.process("Resources")]
+    ),
     .target(
       name: "KernelBridge",
       dependencies: [

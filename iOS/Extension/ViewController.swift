@@ -65,11 +65,19 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   @IBOutlet weak var odd90Control: Switch!
   @IBOutlet weak var negativeFeedbackControl: Switch!
 
-  @IBOutlet weak var editingViewBottomConstraint: NSLayoutConstraint!
+  // Holds all of the other editing views and is used to end editing when tapped.
   @IBOutlet weak var editingView: View!
-  @IBOutlet weak var editingLabel: Label!
-  @IBOutlet weak var editingValue: UITextField!
+  // Background that contains the label and value editor field. Always appears just above the keyboard view.
   @IBOutlet weak var editingBackground: UIView!
+  // Shows the name of the value being edited
+  @IBOutlet weak var editingLabel: Label!
+  // Value editor
+  @IBOutlet weak var editingValue: UITextField!
+
+  // The top constraint of the editingView. Set to 0 when loaded, but otherwise not used.
+  @IBOutlet weak var editingViewTopConstraint: NSLayoutConstraint!
+  // The bottom constraint of the editingBackground that controls the vertical position of the editor
+  @IBOutlet weak var editingBackgroundBottomConstraint: NSLayoutConstraint!
 
   var controls = [ParameterAddress : [AUParameterEditor]]()
 
@@ -90,9 +98,12 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
       connectViewToAU()
     }
 
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppearing(_:)),
+    editingViewTopConstraint.constant = 0
+    editingBackgroundBottomConstraint.constant = view.frame.midY
+
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardAppearing(_:)),
                                            name: UIApplication.keyboardWillShowNotification, object: nil)
-    NotificationCenter.default.addObserver(self, selector: #selector(keyboardAppearing(_:)),
+    NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardDisappearing(_:)),
                                            name: UIApplication.keyboardWillHideNotification, object: nil)
 
     editingBackground.layer.cornerRadius = 8.0
@@ -112,7 +123,6 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 10
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
-        control.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
       }
     }
 
@@ -121,30 +131,57 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 8
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6
-        control.addTarget(self, action: #selector(valueChanged(_:)), for: .valueChanged)
       }
     }
   }
 
-  @IBAction func keyboardAppearing(_ notification: NSNotification) {
-    guard let info = notification.userInfo else { return }
-    guard let frame = info[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }
-    editingViewBottomConstraint.constant = frame.height + 20
+  @IBAction func handleKeyboardAppearing(_ notification: NSNotification) {
+    os_log(.info, log: log, "handleKeyboardAppearing BEGIN")
+
+    guard let info = notification.userInfo else {
+      os_log(.error, log: log, "handleKeyboardAppearing END - no userInfo dict")
+      return
+    }
+
+    guard let keyboardFrameEnd = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {
+      os_log(.error, log: log, "handleKeyboardAppearing END - no userInfo entry for %{public}s",
+             UIResponder.keyboardFrameEndUserInfoKey)
+      return
+    }
+
+    let keyboardFrame = keyboardFrameEnd.cgRectValue
+    let localKeyboardFrame = view.convert(keyboardFrame, from: view.window)
+    os_log(.info, log: log, "handleKeyboardAppearing - height: %f", localKeyboardFrame.height)
+
+    view.layoutIfNeeded()
+    UIView.animate(withDuration: 0.4, delay: 0.0) {
+      if localKeyboardFrame.height < 100 {
+        self.editingBackgroundBottomConstraint.constant = self.view.frame.midY
+      } else {
+        self.editingBackgroundBottomConstraint.constant = localKeyboardFrame.height + 20
+      }
+      self.view.layoutIfNeeded()
+    }
   }
 
-  @IBAction func keyboardDisappearing(_ notification: NSNotification) {
-    editingViewBottomConstraint.constant = 0
+  @IBAction func handleKeyboardDisappearing(_ notification: NSNotification) {
+    view.layoutIfNeeded()
+    UIView.animate(withDuration: 0.4, delay: 0.0) {
+      self.editingBackgroundBottomConstraint.constant = self.view.frame.midY
+      self.view.layoutIfNeeded()
+    }
   }
 
-  @IBAction public func valueChanged(_ control: Knob) {
-    controlChanged(control, address: ParameterAddress(rawValue: UInt64(control.tag))!)
+  @IBAction public func handleKnobValueChange(_ control: Knob) {
+    guard let address = control.parameterAddress else { fatalError() }
+    controlChanged(control, address: address)
   }
 
-  @IBAction public func odd90Changed(_ control: Switch) {
+  @IBAction public func handleOdd90Change(_ control: Switch) {
     controlChanged(control, address: .odd90)
   }
 
-  @IBAction public func negativeFeedbackChanged(_ control: Switch) {
+  @IBAction public func handleNegativeFeedbackChange(_ control: Switch) {
     controlChanged(control, address: .negativeFeedback)
   }
 
@@ -300,6 +337,10 @@ extension ViewController: UITextFieldDelegate {
     else {
       return
     }
+
+#if targetEnvironment(macCatalyst)
+    editingBackgroundBottomConstraint = view.frame.midY
+#endif
 
     os_log(.info, log: log, "beginEditing - %d", view.tag)
     editingView.tag = view.tag

@@ -56,6 +56,9 @@
                                                                     <constraint firstAttribute="width" constant="120" id="FtR-Lj-lB0"/>
                                                                     <constraint firstAttribute="height" constant="120" id="Yks-2G-BfC"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="IUb-kf-LIw"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aa-JQ-dr0" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -91,6 +94,9 @@
                                                                     <constraint firstAttribute="height" constant="120" id="0iT-gO-BhY"/>
                                                                     <constraint firstAttribute="width" constant="120" id="2Hj-Eh-bGa"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="ucs-De-fba"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O1V-1T-DQD" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="18"/>
@@ -132,6 +138,9 @@
                                                                     <constraint firstAttribute="height" constant="120" id="XNk-0T-Igy"/>
                                                                     <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="jzl-C0-OBx"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="30"/>
@@ -168,6 +177,9 @@
                                                                     <constraint firstAttribute="width" constant="120" id="QHV-yg-ThV"/>
                                                                     <constraint firstAttribute="height" constant="120" id="jf1-Ig-22b"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="zQR-Ix-ips"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TX-4e-MBG" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -204,6 +216,9 @@
                                                                     <constraint firstAttribute="height" constant="120" id="kc7-LR-0xH"/>
                                                                     <constraint firstAttribute="width" constant="120" id="rGa-hf-xLW"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="NiD-iF-heD"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GCP-HR-UOg" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -239,6 +254,9 @@
                                                                     <constraint firstAttribute="width" constant="120" id="EOU-Ix-oTY"/>
                                                                     <constraint firstAttribute="height" constant="120" id="URe-tZ-2Yl"/>
                                                                 </constraints>
+                                                                <connections>
+                                                                    <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="uvF-lq-mHX"/>
+                                                                </connections>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alX-QB-0LM" userLabel="Value">
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
@@ -280,7 +298,7 @@
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="odd90Changed:" destination="BYZ-38-t0r" eventType="valueChanged" id="D0O-qs-16b"/>
+                                                                            <action selector="handleOdd90Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="K7F-Hh-XY1"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odd 90°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pj-Eh-BZS">
@@ -301,6 +319,9 @@
                                                                             <constraint firstAttribute="height" constant="80" id="6oC-7g-8AI"/>
                                                                             <constraint firstAttribute="width" constant="80" id="hnM-Xb-fyQ"/>
                                                                         </constraints>
+                                                                        <connections>
+                                                                            <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="NaM-AD-xtB"/>
+                                                                        </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2N-20-gAu" userLabel="Value">
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
@@ -336,6 +357,9 @@
                                                                             <constraint firstAttribute="width" constant="80" id="Ogz-zI-bPr"/>
                                                                             <constraint firstAttribute="height" constant="80" id="hUd-gk-rXl"/>
                                                                         </constraints>
+                                                                        <connections>
+                                                                            <action selector="handleKnobValueChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="JE1-dJ-qLF"/>
+                                                                        </connections>
                                                                     </view>
                                                                     <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFy-GK-jEJ" userLabel="Value">
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
@@ -370,7 +394,7 @@
                                                                         <color key="onTintColor" name="Progress"/>
                                                                         <color key="thumbTintColor" name="Labels"/>
                                                                         <connections>
-                                                                            <action selector="negativeFeedbackChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="rfB-g8-IUx"/>
+                                                                            <action selector="handleNegativeFeedbackChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dKp-TM-JOC"/>
                                                                         </connections>
                                                                     </switch>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="o6M-W6-I9I" userLabel="Labels">
@@ -414,10 +438,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uNx-0G-OWZ">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
+                                <rect key="frame" x="0.0" y="320" width="667" height="55"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gry-aw-80i" userLabel="Value Editor">
-                                        <rect key="frame" x="212.5" y="309" width="242" height="66"/>
+                                        <rect key="frame" x="212.5" y="-11" width="242" height="66"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
                                                 <rect key="frame" x="16" y="23" width="41.5" height="20.5"/>
@@ -468,7 +492,7 @@
                             <constraint firstItem="sOK-vA-Qxl" firstAttribute="bottom" secondItem="Vbj-fp-p3P" secondAttribute="bottom" id="b5y-va-adx"/>
                             <constraint firstItem="uNx-0G-OWZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="btT-0O-AHO"/>
                             <constraint firstItem="Vbj-fp-p3P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="naj-1p-ag8"/>
-                            <constraint firstItem="uNx-0G-OWZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sHm-Sp-MHW"/>
+                            <constraint firstItem="uNx-0G-OWZ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="320" id="sHm-Sp-MHW"/>
                         </constraints>
                     </view>
                     <connections>
@@ -489,10 +513,11 @@
                         <outlet property="dryMixTapEdit" destination="rYA-kZ-hpS" id="DfF-pr-lgO"/>
                         <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="WCe-vp-LRL"/>
                         <outlet property="editingBackground" destination="gry-aw-80i" id="PBp-Ji-ZTa"/>
+                        <outlet property="editingBackgroundBottomConstraint" destination="1CF-ek-3Xc" id="dPt-gM-ygo"/>
                         <outlet property="editingLabel" destination="0gm-sU-zom" id="hYQ-kP-vfa"/>
                         <outlet property="editingValue" destination="5xm-4x-x9O" id="iyh-yu-IH4"/>
                         <outlet property="editingView" destination="uNx-0G-OWZ" id="8IF-jT-EXh"/>
-                        <outlet property="editingViewBottomConstraint" destination="1CF-ek-3Xc" id="dPt-gM-ygo"/>
+                        <outlet property="editingViewTopConstraint" destination="sHm-Sp-MHW" id="f6j-8C-fRG"/>
                         <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="zLv-dE-aCy"/>
                         <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="fYJ-e4-p80"/>
                         <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="IPJ-RV-wnA"/>

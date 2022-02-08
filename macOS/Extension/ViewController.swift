@@ -92,16 +92,16 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     }
   }
 
-  @IBAction public func handleKnobValueChanged(_ control: Knob) {
+  @IBAction private func handleKnobValueChanged(_ control: Knob) {
      guard let address = control.parameterAddress else { fatalError() }
      controlChanged(control, address: address)
   }
 
-  @IBAction public func handleOdd90Changed(_ control: NSSwitch) {
+  @IBAction private func handleOdd90Changed(_ control: NSSwitch) {
     controlChanged(control, address: .odd90)
   }
 
-  @IBAction public func handleNegativeFeedbackChanged(_ control: NSSwitch) {
+  @IBAction private func handleNegativeFeedbackChanged(_ control: NSSwitch) {
     controlChanged(control, address: .negativeFeedback)
   }
 

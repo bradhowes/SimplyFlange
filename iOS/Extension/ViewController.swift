@@ -72,7 +72,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   @IBOutlet weak var editingBackground: UIView!
   // Shows the name of the value being edited
   @IBOutlet weak var editingLabel: Label!
-  // Value editor
+  // Shows the name of the value being edited
   @IBOutlet weak var editingValue: UITextField!
 
   // The top constraint of the editingView. Set to 0 when loaded, but otherwise not used.
@@ -122,8 +122,12 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
     addTapGesture(altDepthTapEdit)
     addTapGesture(altDelayTapEdit)
 
+    let knobColor = UIColor(named: "knob")!
+
     for control in [depthControl, altDepthControl, delayControl, altDelayControl, rateControl, feedbackControl] {
       if let control = control {
+        control.progressColor = knobColor
+        control.indicatorColor = knobColor
         control.trackLineWidth = 10
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
@@ -132,6 +136,8 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
     for control in [dryMixControl, wetMixControl] {
       if let control = control {
+        control.progressColor = knobColor
+        control.indicatorColor = knobColor
         control.trackLineWidth = 8
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6

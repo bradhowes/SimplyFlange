@@ -71,8 +71,12 @@ extension Knob: AUParameterValueProvider, RangedControl {}
       connectViewToAU()
     }
 
+    let knobColor = NSColor(named: "knob")!
+
     for control in [depthControl, rateControl, delayControl, feedbackControl] {
       if let control = control {
+        control.progressColor = knobColor
+        control.indicatorColor = knobColor
         control.trackLineWidth = 10
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
@@ -83,11 +87,22 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     
     for control in [dryMixControl, wetMixControl] {
       if let control = control {
+        control.progressColor = knobColor
+        control.indicatorColor = knobColor
         control.trackLineWidth = 8
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6
         control.target = self
         control.action = #selector(handleKnobValueChanged(_:))
+      }
+    }
+
+    for control in [odd90Control, negativeFeedbackControl] {
+      if let control = control {
+        control.wantsLayer = true
+        control.layer?.backgroundColor = knobColor.cgColor
+        control.layer?.masksToBounds = true
+        control.layer?.cornerRadius = 10
       }
     }
   }

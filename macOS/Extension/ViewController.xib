@@ -32,29 +32,29 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yz-l9v" userLabel="v1.0.0">
-                    <rect key="frame" x="484" y="64" width="40" height="17"/>
+                    <rect key="frame" x="500" y="59" width="40" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="v1.3.1" id="p30-Bk-a8R" userLabel="APP_VERSION">
                         <font key="font" metaFont="system" size="14"/>
-                        <color key="textColor" name="Title"/>
+                        <color key="textColor" name="title"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2pJ-Hs-NbD" userLabel="Flange">
-                    <rect key="frame" x="63" y="64" width="461" height="172"/>
+                    <rect key="frame" x="48" y="59" width="492" height="183"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Flange" id="Jce-ED-VFc" userLabel="Flange">
-                        <font key="font" size="150" name="Desdemona"/>
-                        <color key="textColor" name="Title"/>
+                        <font key="font" size="160" name="Desdemona"/>
+                        <color key="textColor" name="title"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oPI-wC-N8q">
-                    <rect key="frame" x="42" y="30" width="504" height="240"/>
+                    <rect key="frame" x="42" y="28" width="504" height="244"/>
                     <subviews>
                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="heu-JP-C0e" userLabel="Controls">
-                            <rect key="frame" x="0.0" y="0.0" width="504" height="240"/>
+                            <rect key="frame" x="0.0" y="0.0" width="504" height="244"/>
                             <subviews>
                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VU0-ak-QUz" userLabel="Top Row">
-                                    <rect key="frame" x="0.0" y="104" width="504" height="136"/>
+                                    <rect key="frame" x="0.0" y="108" width="504" height="136"/>
                                     <subviews>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="PLj-mQ-zSD" userLabel="Depth">
                                             <rect key="frame" x="0.0" y="0.0" width="120" height="136"/>
@@ -73,7 +73,7 @@
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Depth" usesSingleLineMode="YES" id="k91-bk-kf4">
                                                         <font key="font" metaFont="system" size="20"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -104,7 +104,7 @@
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Delay" usesSingleLineMode="YES" id="lqk-lB-PF2">
                                                         <font key="font" metaFont="system" size="20"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -135,7 +135,7 @@
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Feedback" usesSingleLineMode="YES" id="KUE-7S-C6W">
                                                         <font key="font" metaFont="system" size="20"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -167,7 +167,7 @@
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Rate" usesSingleLineMode="YES" id="dUD-TV-FfK">
                                                         <font key="font" metaFont="system" size="20"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -196,22 +196,22 @@
                                     </customSpacing>
                                 </stackView>
                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="7" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sre-ex-FW5" userLabel="Bottom Row">
-                                    <rect key="frame" x="101" y="0.0" width="301" height="88"/>
+                                    <rect key="frame" x="94" y="0.0" width="316" height="92"/>
                                     <subviews>
                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JVe-wT-xWS" userLabel="Odd 90">
-                                            <rect key="frame" x="0.0" y="23" width="56" height="42"/>
+                                            <rect key="frame" x="0.0" y="24" width="63" height="45"/>
                                             <subviews>
                                                 <switch horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="l5S-ZP-tBO">
-                                                    <rect key="frame" x="7" y="18" width="42" height="25"/>
+                                                    <rect key="frame" x="10" y="21" width="42" height="25"/>
                                                     <connections>
                                                         <action selector="handleOdd90Changed:" target="-2" id="QiG-qG-Pcq"/>
                                                     </connections>
                                                 </switch>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eOb-pQ-h5V">
-                                                    <rect key="frame" x="-2" y="0.0" width="60" height="16"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="67" height="19"/>
                                                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Odd 90°" id="BmG-du-2Fi">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <font key="font" metaFont="system" size="15"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -226,23 +226,23 @@
                                             </customSpacing>
                                         </stackView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Gho-Yc-bsF" userLabel="Dry">
-                                            <rect key="frame" x="63" y="0.0" width="80" height="88"/>
+                                            <rect key="frame" x="70" y="0.0" width="80" height="92"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="oTi-Ii-NHh" userLabel="Dry" customClass="Knob" customModule="Knob_macOS">
-                                                    <rect key="frame" x="0.0" y="8" width="80" height="80"/>
+                                                    <rect key="frame" x="0.0" y="12" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="Vze-vS-v09"/>
                                                         <constraint firstAttribute="width" constant="80" id="cgS-KS-MTB"/>
                                                     </constraints>
                                                 </customView>
                                                 <textField verticalHuggingPriority="750" tag="4" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k3X-9K-MVH" customClass="FocusAwareTextField" customModule="AUv3Support">
-                                                    <rect key="frame" x="-2" y="0.0" width="84" height="16"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="84" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="Ob0-G4-Fbi"/>
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Dry" usesSingleLineMode="YES" id="HiA-bC-Obk">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <font key="font" metaFont="system" size="17"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -257,23 +257,23 @@
                                             </constraints>
                                         </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="MeM-HX-zlS" userLabel="Wet">
-                                            <rect key="frame" x="150" y="0.0" width="80" height="88"/>
+                                            <rect key="frame" x="157" y="0.0" width="80" height="92"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="KfU-K8-Mrs" userLabel="Wet" customClass="Knob" customModule="Knob_macOS">
-                                                    <rect key="frame" x="0.0" y="8" width="80" height="80"/>
+                                                    <rect key="frame" x="0.0" y="12" width="80" height="80"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="6WU-mH-P2b"/>
                                                         <constraint firstAttribute="width" constant="80" id="czU-wj-DBM"/>
                                                     </constraints>
                                                 </customView>
                                                 <textField verticalHuggingPriority="750" tag="5" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bgn-eW-ymD" customClass="FocusAwareTextField" customModule="AUv3Support">
-                                                    <rect key="frame" x="-2" y="0.0" width="84" height="16"/>
+                                                    <rect key="frame" x="-2" y="0.0" width="84" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="7Ss-uv-eri"/>
                                                     </constraints>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Wet" usesSingleLineMode="YES" id="sdg-kR-mgP">
-                                                        <font key="font" usesAppearanceFont="YES"/>
-                                                        <color key="textColor" name="Labels"/>
+                                                        <font key="font" metaFont="system" size="17"/>
+                                                        <color key="textColor" name="label"/>
                                                         <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </textFieldCell>
                                                 </textField>
@@ -288,30 +288,30 @@
                                             </constraints>
                                         </customView>
                                         <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-Pn-w9H" userLabel="Neg Feedback">
-                                            <rect key="frame" x="237" y="15" width="64" height="58"/>
+                                            <rect key="frame" x="244" y="14" width="72" height="64"/>
                                             <subviews>
                                                 <switch wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" baseWritingDirection="leftToRight" alignment="left" translatesAutoresizingMaskIntoConstraints="NO" id="oCS-oA-s1A" userLabel="Neg Feedback">
-                                                    <rect key="frame" x="11" y="34" width="42" height="25"/>
+                                                    <rect key="frame" x="15" y="40" width="42" height="25"/>
                                                     <connections>
                                                         <action selector="handleNegativeFeedbackChanged:" target="-2" id="Ez5-4a-IVu"/>
                                                     </connections>
                                                 </switch>
                                                 <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nu1-EE-DQZ">
-                                                    <rect key="frame" x="0.0" y="0.0" width="64" height="32"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="72" height="38"/>
                                                     <subviews>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BGi-KE-Kig">
-                                                            <rect key="frame" x="-2" y="16" width="62" height="16"/>
+                                                            <rect key="frame" x="-2" y="19" width="69" height="19"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Negative" id="9UE-Mc-d2c">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <font key="font" metaFont="system" size="15"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="37o-LD-mdH" userLabel="Feedback">
-                                                            <rect key="frame" x="-2" y="0.0" width="68" height="16"/>
+                                                            <rect key="frame" x="-2" y="0.0" width="76" height="19"/>
                                                             <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="Feedback" id="96p-Oc-6jO">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <font key="font" metaFont="system" size="15"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
@@ -383,10 +383,10 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
     </objects>
     <resources>
-        <namedColor name="Labels">
+        <namedColor name="label">
             <color red="1" green="0.76399999856948853" blue="0.36700001358985901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Title">
+        <namedColor name="title">
             <color red="1" green="0.5" blue="0.0" alpha="0.34999999403953552" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

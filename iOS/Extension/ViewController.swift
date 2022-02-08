@@ -7,7 +7,6 @@ import Kernel
 import Knob_iOS
 import ParameterAddress
 import Parameters
-import Theme
 import os.log
 
 extension UISwitch: AUParameterValueProvider, TagHolder, BooleanControl {
@@ -103,13 +102,6 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
       connectViewToAU()
     }
 
-    os_log(.info, log: log, "viewDidLoad - setting title font")
-    titleLabel.font = Theme.titleFont(size: 140 )
-    os_log(.info, log: log, "viewDidLoad - setting text color")
-    titleLabel.textColor = Theme.color(.title)
-
-    os_log(.info, log: log, "viewDidLoad - initing")
-
     editingViewTopConstraint.constant = 0
     editingBackgroundBottomConstraint.constant = view.frame.midY
 
@@ -135,7 +127,6 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 10
         control.progressLineWidth = 8
         control.indicatorLineWidth = 8
-        control.progressColor = Theme.color(.knobProgress)
       }
     }
 
@@ -144,7 +135,6 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
         control.trackLineWidth = 8
         control.progressLineWidth = 6
         control.indicatorLineWidth = 6
-        control.progressColor = Theme.color(.knobProgress)
       }
     }
 

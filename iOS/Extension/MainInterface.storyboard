@@ -23,18 +23,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v1.3.1" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOK-vA-Qxl" userLabel="APP_VERSION">
-                                <rect key="frame" x="509.5" y="238.5" width="37.5" height="18"/>
+                                <rect key="frame" x="545" y="250" width="37.5" height="18"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <bool key="isElement" value="NO"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" name="Title"/>
+                                <color key="textColor" name="title"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Flanger" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbj-fp-p3P">
-                                <rect key="frame" x="120" y="118.5" width="427" height="138"/>
-                                <fontDescription key="fontDescription" name="Desdemona" family="Desdemona" pointSize="120"/>
-                                <color key="textColor" name="Title"/>
+                                <rect key="frame" x="84.5" y="107" width="498" height="161"/>
+                                <fontDescription key="fontDescription" name="Desdemona" family="Desdemona" pointSize="140"/>
+                                <color key="textColor" name="title"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-pC-dYn" userLabel="Controls">
@@ -64,7 +64,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sGQ-s4-7ru" userLabel="TapEdit">
@@ -102,7 +102,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="18"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xLK-EJ-lhl" userLabel="TapEdit">
@@ -146,7 +146,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="30"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="0"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-9f-pLo" userLabel="TapEdit">
@@ -185,7 +185,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="2"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdN-B7-7c6" userLabel="TapEdit">
@@ -224,7 +224,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="1"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ki-wy-l3o" userLabel="TapEdit">
@@ -262,7 +262,7 @@
                                                                 <rect key="frame" x="39.5" y="112" width="41.5" height="24"/>
                                                                 <accessibility key="accessibilityConfiguration" identifier="3"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="Labels"/>
+                                                                <color key="textColor" name="label"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <view tag="3" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bbp-ks-Vdp" userLabel="TapEdit">
@@ -295,8 +295,8 @@
                                                                 <subviews>
                                                                     <switch opaque="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="olm-sN-GtT" userLabel="Odd 90°">
                                                                         <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
-                                                                        <color key="onTintColor" name="Progress"/>
-                                                                        <color key="thumbTintColor" name="Labels"/>
+                                                                        <color key="onTintColor" name="knobProgress"/>
+                                                                        <color key="thumbTintColor" name="label"/>
                                                                         <connections>
                                                                             <action selector="handleOdd90Change:" destination="BYZ-38-t0r" eventType="valueChanged" id="K7F-Hh-XY1"/>
                                                                         </connections>
@@ -304,7 +304,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Odd 90°" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Pj-Eh-BZS">
                                                                         <rect key="frame" x="4" y="35" width="52" height="16"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                        <color key="textColor" name="Labels"/>
+                                                                        <color key="textColor" name="label"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -327,7 +327,7 @@
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="4"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                        <color key="textColor" name="Labels"/>
+                                                                        <color key="textColor" name="label"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view tag="4" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYA-kZ-hpS" userLabel="TapEdit">
@@ -365,7 +365,7 @@
                                                                         <rect key="frame" x="26" y="72" width="28.5" height="16"/>
                                                                         <accessibility key="accessibilityConfiguration" identifier="5"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                        <color key="textColor" name="Labels"/>
+                                                                        <color key="textColor" name="label"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <view tag="5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lM5-yt-nYm" userLabel="TapEdit">
@@ -391,8 +391,8 @@
                                                                 <subviews>
                                                                     <switch opaque="NO" tag="7" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvV-h7-UiY" userLabel="Neg Feedback">
                                                                         <rect key="frame" x="5.5" y="0.0" width="51" height="31"/>
-                                                                        <color key="onTintColor" name="Progress"/>
-                                                                        <color key="thumbTintColor" name="Labels"/>
+                                                                        <color key="onTintColor" name="knobProgress"/>
+                                                                        <color key="thumbTintColor" name="label"/>
                                                                         <connections>
                                                                             <action selector="handleNegativeFeedbackChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="dKp-TM-JOC"/>
                                                                         </connections>
@@ -403,14 +403,14 @@
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Negative" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vsL-Pr-7EI" userLabel="Neg">
                                                                                 <rect key="frame" x="3" y="0.0" width="54" height="16"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                                <color key="textColor" name="Labels"/>
+                                                                                <color key="textColor" name="label"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feedback" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Bqt-dc-BPj" userLabel="Feedback">
                                                                                 <rect key="frame" x="0.0" y="16" width="59.5" height="16"/>
                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                                                <color key="textColor" name="Labels"/>
+                                                                                <color key="textColor" name="label"/>
                                                                                 <nil key="highlightedColor"/>
                                                                             </label>
                                                                         </subviews>
@@ -446,7 +446,7 @@
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gm-sU-zom">
                                                 <rect key="frame" x="16" y="23" width="41.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" name="Labels"/>
+                                                <color key="textColor" name="label"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="100.00" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="5xm-4x-x9O">
@@ -455,7 +455,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="dPh-GW-1UK"/>
                                                 </constraints>
-                                                <color key="textColor" name="Labels"/>
+                                                <color key="textColor" name="label"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numbersAndPunctuation" keyboardAppearance="alert" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                             </textField>
@@ -538,13 +538,13 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="Labels">
-            <color red="1" green="0.76399999856948853" blue="0.36700001358985901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="Progress">
+        <namedColor name="knobProgress">
             <color red="1" green="0.57599997520446777" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="Title">
+        <namedColor name="label">
+            <color red="1" green="0.76399999856948853" blue="0.36700001358985901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="title">
             <color red="1" green="0.5" blue="0.0" alpha="0.34999999403953552" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>

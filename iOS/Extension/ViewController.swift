@@ -9,11 +9,7 @@ import ParameterAddress
 import Parameters
 import os.log
 
-extension UISwitch: AUParameterValueProvider, TagHolder, BooleanControl {
-  public var value: AUValue { isOn ? 1.0 : 0.0 }
-}
-
-extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
+extension Knob: AUParameterValueProvider, RangedControl {}
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.

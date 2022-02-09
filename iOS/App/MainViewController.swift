@@ -20,9 +20,11 @@ final class MainViewController: UIViewController {
                                               componentManufacturer: bundle.auComponentManufacturer,
                                               componentFlags: 0, componentFlagsMask: 0)
 
+    let tintColor = UIColor(named: "label")!
     let config = HostViewConfig(name: bundle.auBaseName, version: bundle.releaseVersionNumber,
                                 appStoreId: bundle.appStoreId,
-                                componentDescription: component, sampleLoop: .sample1) { url in
+                                componentDescription: component, sampleLoop: .sample1,
+                                tintColor: tintColor) { url in
       UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
 

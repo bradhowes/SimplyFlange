@@ -81,11 +81,27 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
   // Mapping of parameter address value to array of controls. Use array since two controls exist in pairs to handle
   // constrained width layouts.
-  private var controls = [ParameterAddress : [AUParameterEditor]]()
+  private var editors = [ParameterAddress : [AUParameterEditor]]()
+
+  private lazy var pairs: [ParameterAddress: [(Knob, Label)]] = [
+    .depth: [(depthControl, depthValueLabel),
+             (altDepthControl, altDelayValueLabel)],
+    .delay: [(delayControl, delayValueLabel),
+             (altDelayControl, altDelayValueLabel)],
+    .rate: [(rateControl, rateValueLabel)],
+    .feedback: [(feedbackControl, feedbackValueLabel)],
+    .wet: [(wetMixControl, wetMixValueLabel)],
+    .dry: [(dryMixControl, dryMixValueLabel)]
+  ]
+
+  private lazy var switches: [ParameterAddress: Switch] = [
+    .odd90: odd90Control,
+    .negativeFeedback: negativeFeedbackControl
+  ]
 
   public var audioUnit: FilterAudioUnit? {
     didSet {
-      performOnMain {
+      DispatchQueue.main.async {
         if self.isViewLoaded {
           self.connectViewToAU()
         }
@@ -95,10 +111,10 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
   public override func viewDidLoad() {
     os_log(.info, log: log, "viewDidLoad BEGIN")
+
     super.viewDidLoad()
 
     view.backgroundColor = .black
-
     if audioUnit != nil {
       connectViewToAU()
     }
@@ -123,29 +139,46 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
     addTapGesture(altDepthTapEdit)
     addTapGesture(altDelayTapEdit)
 
+    os_log(.info, log: log, "viewDidLoad BEGIN")
+  }
+
+  private func createEditors() {
+    os_log(.info, log: log, "createEditors BEGIN")
+
     let knobColor = UIColor(named: "knob")!
 
-    for control in [depthControl, altDepthControl, delayControl, altDelayControl, rateControl, feedbackControl] {
-      if let control = control {
-        control.progressColor = knobColor
-        control.indicatorColor = knobColor
-        control.trackLineWidth = 10
-        control.progressLineWidth = 8
-        control.indicatorLineWidth = 8
+    for (parameterAddress, pairs) in pairs {
+      var editors = [AUParameterEditor]()
+      for (knob, label) in pairs {
+
+        knob.progressColor = knobColor
+        knob.indicatorColor = knobColor
+
+        if parameterAddress == .wet || parameterAddress == .dry {
+          knob.trackLineWidth = 8
+          knob.progressLineWidth = 6
+          knob.indicatorLineWidth = 6
+        } else {
+          knob.trackLineWidth = 10
+          knob.progressLineWidth = 8
+          knob.indicatorLineWidth = 8
+        }
+
+        editors.append(FloatParameterEditor(parameter: parameters[parameterAddress],
+                                            formatter: parameters.valueFormatter(parameterAddress),
+                                            rangedControl: knob, label: label))
       }
+      self.editors[parameterAddress] = editors
     }
 
-    for control in [dryMixControl, wetMixControl] {
-      if let control = control {
-        control.progressColor = knobColor
-        control.indicatorColor = knobColor
-        control.trackLineWidth = 8
-        control.progressLineWidth = 6
-        control.indicatorLineWidth = 6
-      }
+    os_log(.info, log: log, "createEditors - creating bool parameter editors")
+    for (parameterAddress, control) in switches {
+      os_log(.info, log: log, "createEditors - before BooleanParameterEditor")
+      editors[parameterAddress] = [BooleanParameterEditor(parameter: parameters[parameterAddress],
+                                                         booleanControl: control)]
     }
 
-    os_log(.info, log: log, "viewDidLoad END")
+    os_log(.info, log: log, "createEditors END")
   }
 
   @IBAction func handleKeyboardAppearing(_ notification: NSNotification) {
@@ -212,7 +245,7 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
       audioUnit.currentPreset = nil
     }
 
-    (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
+    (editors[address] ?? []).forEach { $0.controlChanged(source: control) }
 
     os_log(.debug, log: log, "controlChanged END")
   }
@@ -247,60 +280,18 @@ extension ViewController {
 
   private func connectViewToAU() {
     os_log(.info, log: log, "connectViewToAU")
-
     guard let audioUnit = audioUnit else { fatalError("logic error -- nil audioUnit value") }
 
-    keyValueObserverToken = audioUnit.observe(\.allParameterValues) { _, _ in
-      self.performOnMain {
+    createEditors()
+
+    keyValueObserverToken = audioUnit.observe(\.allParameterValues) { [weak self] _, _ in
+      guard let self = self else { return }
+      DispatchQueue.main.async {
         if audioUnit.currentPreset != nil {
           self.updateDisplay()
         }
       }
     }
-
-    controls[.depth] = [FloatParameterEditor(
-      parameter: parameters[.depth],
-      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel
-    )]
-    if altDepthControl != nil {
-      controls[.depth]?.append(FloatParameterEditor(
-        parameter: parameters[.depth],
-        formatter: parameters.valueFormatter(.depth), rangedControl: altDepthControl, label: altDepthValueLabel
-      ))
-    }
-    controls[.delay] = [FloatParameterEditor(
-      parameter: parameters[.delay],
-      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel
-    )]
-    if altDelayControl != nil {
-      controls[.delay]?.append(FloatParameterEditor(
-        parameter: parameters[.delay],
-        formatter: parameters.valueFormatter(.delay), rangedControl: altDelayControl, label: altDelayValueLabel
-      ))
-    }
-    controls[.rate] = [FloatParameterEditor(
-      parameter: parameters[.rate],
-      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel
-    )]
-    controls[.feedback] = [FloatParameterEditor(
-      parameter: parameters[.feedback],
-      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel
-    )]
-    controls[.dry] = [FloatParameterEditor(
-      parameter: parameters[.dry],
-      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel
-    )]
-    controls[.wet] = [FloatParameterEditor(
-      parameter: parameters[.wet],
-      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel
-    )]
-    controls[.negativeFeedback] = [BooleanParameterEditor(
-      parameter: parameters[.negativeFeedback],
-      booleanControl: negativeFeedbackControl
-    )]
-    controls[.odd90] = [BooleanParameterEditor(
-      parameter: parameters[.odd90], booleanControl: odd90Control
-    )]
 
     // Let us manage view configuration changes
     audioUnit.viewConfigurationManager = self
@@ -309,12 +300,8 @@ extension ViewController {
   private func updateDisplay() {
     os_log(.info, log: log, "updateDisplay")
     for address in ParameterAddress.allCases {
-      (controls[address] ?? []).forEach { $0.parameterChanged() }
+      (editors[address] ?? []).forEach { $0.parameterChanged() }
     }
-  }
-
-  private func performOnMain(_ operation: @escaping () -> Void) {
-    (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
   }
 }
 
@@ -341,7 +328,7 @@ extension ViewController: UITextFieldDelegate {
     guard editingView.isHidden,
           let view = sender.view,
           let address = ParameterAddress(rawValue: UInt64(view.tag)),
-          let param = controls[address]?.first?.parameter
+          let param = editors[address]?.first?.parameter
     else {
       return
     }
@@ -386,7 +373,7 @@ extension ViewController: UITextFieldDelegate {
       self.editingView.isHidden = true
       if let stringValue = self.editingValue.text,
          let value = Float(stringValue) {
-        (self.controls[address] ?? []).forEach { $0.setEditedValue(value) }
+        (self.editors[address] ?? []).forEach { $0.setEditedValue(value) }
       }
       os_log(.info, log: self.log, "done animation")
     }

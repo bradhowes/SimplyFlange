@@ -15,10 +15,10 @@ import AUv3Support
   case odd90
 };
 
-extension ParameterAddress {
+public extension ParameterAddress {
 
   /// Obtain a ParameterDefinition for a parameter address enum.
-  public var parameterDefinition: ParameterDefinition {
+  var parameterDefinition: ParameterDefinition {
     let maxDelay: AUValue = 50.0
     switch self {
     case .depth: return .defFloat("depth", localized: "Depth", address: ParameterAddress.depth,
@@ -46,4 +46,8 @@ extension ParameterAddress: ParameterAddressProvider {
 public extension TagHolder {
   func setParameterAddress(_ address: ParameterAddress) { tag = Int(address.rawValue) }
   var parameterAddress: ParameterAddress? { tag >= 0 ? ParameterAddress(rawValue: UInt64(tag)) : nil }
+}
+
+extension ParameterAddress: CustomStringConvertible {
+  public var description: String { "<ParameterAddress: '\(parameterDefinition.identifier)' \(rawValue)>" }
 }

@@ -25,7 +25,6 @@ extension Knob: AUParameterValueProvider, RangedControl {}
 
   private let parameters = AudioUnitParameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
-  private var parameterObserverToken: AUParameterObserverToken?
   private var keyValueObserverToken: NSKeyValueObservation?
   private var hasActiveLabel = false
 
@@ -52,11 +51,25 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   @IBOutlet private weak var odd90Control: NSSwitch!
   @IBOutlet private weak var negativeFeedbackControl: NSSwitch!
 
-  var controls = [ParameterAddress : [AUParameterEditor]]()
+  private lazy var pairs: [ParameterAddress: (Knob, FocusAwareTextField)] = [
+    .depth: (depthControl, depthValueLabel),
+    .rate: (rateControl, rateValueLabel),
+    .delay: (delayControl, delayValueLabel),
+    .feedback: (feedbackControl, feedbackValueLabel),
+    .wet: (wetMixControl, wetMixValueLabel),
+    .dry: (dryMixControl, dryMixValueLabel)
+  ]
+
+  private lazy var switches: [ParameterAddress: NSSwitch] = [
+    .odd90: odd90Control,
+    .negativeFeedback: negativeFeedbackControl
+  ]
+
+  private var editors = [ParameterAddress : AUParameterEditor]()
   
   public var audioUnit: FilterAudioUnit? {
     didSet {
-      performOnMain {
+      DispatchQueue.main.async {
         if self.isViewLoaded {
           self.connectViewToAU()
         }
@@ -65,62 +78,82 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   }
 
   public override func viewDidLoad() {
+    os_log(.info, log: log, "viewDidLoad BEGIN")
+
     super.viewDidLoad()
+
     view.backgroundColor = .black
     if audioUnit != nil {
       connectViewToAU()
     }
 
+    os_log(.info, log: log, "viewDidLoad END")
+  }
+
+  private func createEditors() {
+    os_log(.info, log: log, "createEditors BEGIN")
+
     let knobColor = NSColor(named: "knob")!
 
-    for control in [depthControl, rateControl, delayControl, feedbackControl] {
-      if let control = control {
-        control.progressColor = knobColor
-        control.indicatorColor = knobColor
-        control.trackLineWidth = 10
-        control.progressLineWidth = 8
-        control.indicatorLineWidth = 8
-        control.target = self
-        control.action = #selector(handleKnobValueChanged(_:))
+    os_log(.info, log: log, "createEditors - creating float parameter editors")
+    for (parameterAddress, (knob, label)) in pairs {
+      os_log(.info, log: log, "createEditors - [%d] %{public}s %{public}s", parameterAddress.rawValue,
+             knob.pointer, label.pointer)
+
+      os_log(.info, log: log, "createEditors - creating float parameter editor: %{public}s",
+             parameterAddress.description)
+
+      knob.progressColor = knobColor
+      knob.indicatorColor = knobColor
+
+      if parameterAddress == .wet || parameterAddress == .dry {
+        knob.trackLineWidth = 8
+        knob.progressLineWidth = 6
+        knob.indicatorLineWidth = 6
+      } else {
+        knob.trackLineWidth = 10
+        knob.progressLineWidth = 8
+        knob.indicatorLineWidth = 8
       }
-    }
-    
-    for control in [dryMixControl, wetMixControl] {
-      if let control = control {
-        control.progressColor = knobColor
-        control.indicatorColor = knobColor
-        control.trackLineWidth = 8
-        control.progressLineWidth = 6
-        control.indicatorLineWidth = 6
-        control.target = self
-        control.action = #selector(handleKnobValueChanged(_:))
-      }
+
+      knob.target = self
+      knob.action = #selector(handleKnobValueChanged(_:))
+
+      os_log(.info, log: log, "createEditors - before FloatParameterEditor")
+      editors[parameterAddress] = FloatParameterEditor(parameter: parameters[parameterAddress],
+                                                       formatter: parameters.valueFormatter(parameterAddress),
+                                                       rangedControl: knob, label: label)
     }
 
-    for control in [odd90Control, negativeFeedbackControl] {
-      if let control = control {
-        control.wantsLayer = true
-        control.layer?.backgroundColor = knobColor.cgColor
-        control.layer?.masksToBounds = true
-        control.layer?.cornerRadius = 10
-      }
+    os_log(.info, log: log, "createEditors - creating bool parameter editors")
+    for (parameterAddress, control) in switches {
+      control.wantsLayer = true
+      control.layer?.backgroundColor = knobColor.cgColor
+      control.layer?.masksToBounds = true
+      control.layer?.cornerRadius = 10
+
+      os_log(.info, log: log, "createEditors - before BooleanParameterEditor")
+      editors[parameterAddress] = BooleanParameterEditor(parameter: parameters[parameterAddress],
+                                                         booleanControl: control)
     }
+
+    os_log(.info, log: log, "createEditors END")
   }
 
   @IBAction private func handleKnobValueChanged(_ control: Knob) {
      guard let address = control.parameterAddress else { fatalError() }
-     controlChanged(control, address: address)
+     handleControlChanged(control, address: address)
   }
 
   @IBAction private func handleOdd90Changed(_ control: NSSwitch) {
-    controlChanged(control, address: .odd90)
+    handleControlChanged(control, address: .odd90)
   }
 
   @IBAction private func handleNegativeFeedbackChanged(_ control: NSSwitch) {
-    controlChanged(control, address: .negativeFeedback)
+    handleControlChanged(control, address: .negativeFeedback)
   }
 
-  private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
+  private func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
     os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
 
     guard let audioUnit = audioUnit else {
@@ -134,7 +167,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
       audioUnit.currentPreset = nil
     }
 
-    (controls[address] ?? []).forEach { $0.controlChanged(source: control) }
+    editors[address]?.controlChanged(source: control)
   }
 
   override public func mouseDown(with event: NSEvent) {
@@ -175,68 +208,31 @@ extension ViewController {
   }
 
   private func connectViewToAU() {
-    os_log(.info, log: log, "connectViewToAU")
+    os_log(.info, log: log, "connectViewToAU BEGIN")
     
-    guard parameterObserverToken == nil else { return }
-    guard let audioUnit = audioUnit else { fatalError("logic error -- nil audioUnit value") }
-    guard let paramTree = audioUnit.parameterTree else { fatalError("logic error -- nil parameterTree") }
-    
+    guard let audioUnit = audioUnit else { fatalError("unexpected nil audioUnit") }
+
+    createEditors()
+
     keyValueObserverToken = audioUnit.observe(\.allParameterValues) { _, _ in
-      self.performOnMain { self.updateDisplay() }
+      DispatchQueue.main.async {
+        if audioUnit.currentPreset != nil {
+          self.updateDisplay()
+        }
+      }
     }
-    
-    let parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] _, _ in
-      guard let self = self else { return }
-      self.performOnMain { self.updateDisplay() }
-    })
-    
-    self.parameterObserverToken = parameterObserverToken
-    
-    controls[.depth] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
-      formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel
-    )]
-    controls[.rate] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
-      formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel
-    )]
-    controls[.delay] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
-      formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel
-    )]
-    controls[.feedback] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.feedback],
-      formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel
-    )]
-    controls[.dry] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.dry],
-      formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel
-    )]
-    controls[.wet] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.wet],
-      formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel
-    )]
-    controls[.negativeFeedback] = [BooleanParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.negativeFeedback],
-      booleanControl: negativeFeedbackControl
-    )]
-    controls[.odd90] = [BooleanParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.odd90], booleanControl: odd90Control
-    )]
 
     // Let us manage view configuration changes
     audioUnit.viewConfigurationManager = self
+
+    os_log(.info, log: log, "connectViewToAU END")
   }
   
   private func updateDisplay() {
     os_log(.info, log: log, "updateDisplay")
     for address in ParameterAddress.allCases {
-      (controls[address] ?? []).forEach { $0.parameterChanged() }
+      editors[address]?.parameterChanged()
     }
-  }
-  
-  private func performOnMain(_ operation: @escaping () -> Void) {
-    (Thread.isMainThread ? operation : { DispatchQueue.main.async { operation() } })()
   }
 }
 

@@ -25,7 +25,6 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
   private let parameters = AudioUnitParameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
-  private var parameterObserverToken: AUParameterObserverToken?
   private var keyValueObserverToken: NSKeyValueObservation?
 
   @IBOutlet weak var titleLabel: UILabel!
@@ -80,7 +79,9 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
   // The bottom constraint of the editingBackground that controls the vertical position of the editor
   @IBOutlet weak var editingBackgroundBottomConstraint: NSLayoutConstraint!
 
-  var controls = [ParameterAddress : [AUParameterEditor]]()
+  // Mapping of parameter address value to array of controls. Use array since two controls exist in pairs to handle
+  // constrained width layouts.
+  private var controls = [ParameterAddress : [AUParameterEditor]]()
 
   public var audioUnit: FilterAudioUnit? {
     didSet {
@@ -186,18 +187,18 @@ extension Knob: AUParameterValueProvider, RangedControl, TagHolder {}
 
   @IBAction public func handleKnobValueChange(_ control: Knob) {
     guard let address = control.parameterAddress else { fatalError() }
-    controlChanged(control, address: address)
+    handleControlChanged(control, address: address)
   }
 
   @IBAction public func handleOdd90Change(_ control: Switch) {
-    controlChanged(control, address: .odd90)
+    handleControlChanged(control, address: .odd90)
   }
 
   @IBAction public func handleNegativeFeedbackChange(_ control: Switch) {
-    controlChanged(control, address: .negativeFeedback)
+    handleControlChanged(control, address: .negativeFeedback)
   }
 
-  private func controlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
+  private func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
     os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
 
     guard let audioUnit = audioUnit else {
@@ -247,63 +248,58 @@ extension ViewController {
   private func connectViewToAU() {
     os_log(.info, log: log, "connectViewToAU")
 
-    guard parameterObserverToken == nil else { return }
     guard let audioUnit = audioUnit else { fatalError("logic error -- nil audioUnit value") }
-    guard let paramTree = audioUnit.parameterTree else { fatalError("logic error -- nil parameterTree") }
 
     keyValueObserverToken = audioUnit.observe(\.allParameterValues) { _, _ in
-      self.performOnMain { self.updateDisplay() }
+      self.performOnMain {
+        if audioUnit.currentPreset != nil {
+          self.updateDisplay()
+        }
+      }
     }
 
-    let parameterObserverToken = paramTree.token(byAddingParameterObserver: { [weak self] _, _ in
-      guard let self = self else { return }
-      self.performOnMain { self.updateDisplay() }
-    })
-
-    self.parameterObserverToken = parameterObserverToken
-
     controls[.depth] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
+      parameter: parameters[.depth],
       formatter: parameters.valueFormatter(.depth), rangedControl: depthControl, label: depthValueLabel
     )]
     if altDepthControl != nil {
       controls[.depth]?.append(FloatParameterEditor(
-        parameterObserverToken: parameterObserverToken, parameter: parameters[.depth],
+        parameter: parameters[.depth],
         formatter: parameters.valueFormatter(.depth), rangedControl: altDepthControl, label: altDepthValueLabel
       ))
     }
     controls[.delay] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
+      parameter: parameters[.delay],
       formatter: parameters.valueFormatter(.delay), rangedControl: delayControl, label: delayValueLabel
     )]
     if altDelayControl != nil {
       controls[.delay]?.append(FloatParameterEditor(
-        parameterObserverToken: parameterObserverToken, parameter: parameters[.delay],
+        parameter: parameters[.delay],
         formatter: parameters.valueFormatter(.delay), rangedControl: altDelayControl, label: altDelayValueLabel
       ))
     }
     controls[.rate] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.rate],
+      parameter: parameters[.rate],
       formatter: parameters.valueFormatter(.rate), rangedControl: rateControl, label: rateValueLabel
     )]
     controls[.feedback] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.feedback],
+      parameter: parameters[.feedback],
       formatter: parameters.valueFormatter(.feedback), rangedControl: feedbackControl, label: feedbackValueLabel
     )]
     controls[.dry] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.dry],
+      parameter: parameters[.dry],
       formatter: parameters.valueFormatter(.dry), rangedControl: dryMixControl, label: dryMixValueLabel
     )]
     controls[.wet] = [FloatParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.wet],
+      parameter: parameters[.wet],
       formatter: parameters.valueFormatter(.wet), rangedControl: wetMixControl, label:  wetMixValueLabel
     )]
     controls[.negativeFeedback] = [BooleanParameterEditor(
-      parameterObserverToken: parameterObserverToken, parameter: parameters[.negativeFeedback],
+      parameter: parameters[.negativeFeedback],
       booleanControl: negativeFeedbackControl
     )]
     controls[.odd90] = [BooleanParameterEditor(
-      parameterObserverToken: parameterObserverToken,parameter: parameters[.odd90], booleanControl: odd90Control
+      parameter: parameters[.odd90], booleanControl: odd90Control
     )]
 
     // Let us manage view configuration changes

@@ -41,8 +41,8 @@ public:
    @param maxFramesToRender the maximum number of samples we will be asked to render in one go
    @param maxDelayMilliseconds the max number of milliseconds of audio samples to keep in delay buffer
    */
-  void startProcessing(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender, double maxDelayMilliseconds) {
-    super::startProcessing(format, maxFramesToRender);
+  void setRenderingFormat(AVAudioFormat* format, AUAudioFrameCount maxFramesToRender, double maxDelayMilliseconds) {
+    super::setRenderingFormat(format, maxFramesToRender);
     initialize(format.channelCount, format.sampleRate, maxDelayMilliseconds);
   }
 
@@ -68,7 +68,7 @@ private:
     samplesPerMillisecond_ = sampleRate / 1000.0;
     maxDelayMilliseconds_ = maxDelayMilliseconds;
 
-    lfo_.initialize(sampleRate, 0.0);
+    lfo_.setSampleRate(sampleRate);
 
     auto size = maxDelayMilliseconds * samplesPerMillisecond_ + 1;
     os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f", size);

@@ -77,7 +77,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   ]
 
   // Holds all of the other editing views and is used to end editing when tapped.
-  @IBOutlet weak var editingView: View!
+  @IBOutlet weak var editingContainerView: View!
   // Background that contains the label and value editor field. Always appears just above the keyboard view.
   @IBOutlet weak var editingBackground: UIView!
   // Shows the name of the value being edited
@@ -144,7 +144,7 @@ extension ViewController {
 
     let knobColor = UIColor(named: "knob")!
 
-    let valueEditor = ValueEditor(containerView: editingView, backgroundView: editingBackground,
+    let valueEditor = ValueEditor(containerView: editingContainerView, backgroundView: editingBackground,
                                   parameterName: editingLabel, parameterValue: editingValue,
                                   containerViewTopConstraint: editingViewTopConstraint,
                                   backgroundViewBottomConstraint: editingBackgroundBottomConstraint,

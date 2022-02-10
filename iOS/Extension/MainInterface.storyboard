@@ -514,9 +514,9 @@
                         <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="IUg-RV-qeV"/>
                         <outlet property="editingBackground" destination="gry-aw-80i" id="388-9e-lec"/>
                         <outlet property="editingBackgroundBottomConstraint" destination="1CF-ek-3Xc" id="d9l-o6-86G"/>
+                        <outlet property="editingContainerView" destination="uNx-0G-OWZ" id="o8k-lD-VLo"/>
                         <outlet property="editingLabel" destination="0gm-sU-zom" id="pKf-Mk-gsG"/>
                         <outlet property="editingValue" destination="5xm-4x-x9O" id="I7q-07-9sx"/>
-                        <outlet property="editingView" destination="uNx-0G-OWZ" id="o8k-lD-VLo"/>
                         <outlet property="editingViewTopConstraint" destination="sHm-Sp-MHW" id="ixy-1X-hAo"/>
                         <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="Mvd-vW-gWJ"/>
                         <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="VBt-ka-JuJ"/>

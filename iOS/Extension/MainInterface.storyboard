@@ -496,40 +496,40 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="altDelayControl" destination="Mvw-nZ-fi3" id="6fr-Sd-9Sf"/>
-                        <outlet property="altDelayTapEdit" destination="OdN-B7-7c6" id="sWt-e0-DOu"/>
-                        <outlet property="altDelayValueLabel" destination="3TX-4e-MBG" id="gVm-I3-V5d"/>
-                        <outlet property="altDepthControl" destination="hui-tD-xRO" id="TD7-P9-5s5"/>
-                        <outlet property="altDepthTapEdit" destination="mHo-9f-pLo" id="7ty-Nj-VAm"/>
-                        <outlet property="altDepthValueLabel" destination="T5c-Sd-KDy" id="Jj9-HH-sgs"/>
-                        <outlet property="controlsView" destination="GTt-pC-dYn" id="ubw-u6-3cl"/>
-                        <outlet property="delayControl" destination="jXf-HD-UuC" id="awI-QK-Bob"/>
-                        <outlet property="delayTapEdit" destination="xLK-EJ-lhl" id="dp5-q6-wWj"/>
-                        <outlet property="delayValueLabel" destination="O1V-1T-DQD" id="YlR-fK-5MT"/>
-                        <outlet property="depthControl" destination="okm-Gk-DO2" id="oUc-Mw-wjP"/>
-                        <outlet property="depthTapEdit" destination="sGQ-s4-7ru" id="cYK-Qg-rRH"/>
-                        <outlet property="depthValueLabel" destination="4aa-JQ-dr0" id="xK0-V6-mrl"/>
-                        <outlet property="dryMixControl" destination="Jzc-6g-Fgq" id="MBg-yn-xk2"/>
-                        <outlet property="dryMixTapEdit" destination="rYA-kZ-hpS" id="DfF-pr-lgO"/>
-                        <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="WCe-vp-LRL"/>
-                        <outlet property="editingBackground" destination="gry-aw-80i" id="PBp-Ji-ZTa"/>
-                        <outlet property="editingBackgroundBottomConstraint" destination="1CF-ek-3Xc" id="dPt-gM-ygo"/>
-                        <outlet property="editingLabel" destination="0gm-sU-zom" id="hYQ-kP-vfa"/>
-                        <outlet property="editingValue" destination="5xm-4x-x9O" id="iyh-yu-IH4"/>
-                        <outlet property="editingView" destination="uNx-0G-OWZ" id="8IF-jT-EXh"/>
-                        <outlet property="editingViewTopConstraint" destination="sHm-Sp-MHW" id="f6j-8C-fRG"/>
-                        <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="zLv-dE-aCy"/>
-                        <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="fYJ-e4-p80"/>
-                        <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="IPJ-RV-wnA"/>
-                        <outlet property="negativeFeedbackControl" destination="fvV-h7-UiY" id="OZa-FI-EQU"/>
-                        <outlet property="odd90Control" destination="olm-sN-GtT" id="DNj-Fx-3tr"/>
-                        <outlet property="rateControl" destination="hF3-lq-xlE" id="exq-g6-8Gh"/>
-                        <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="qli-b2-uNY"/>
-                        <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="s6J-i1-BCT"/>
-                        <outlet property="titleLabel" destination="Vbj-fp-p3P" id="aON-7E-b0j"/>
-                        <outlet property="wetMixControl" destination="xjB-dE-KcA" id="9bZ-cp-CVC"/>
-                        <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="MaS-FM-vIp"/>
-                        <outlet property="wetMixValueLabel" destination="OFy-GK-jEJ" id="2mZ-Gs-4QQ"/>
+                        <outlet property="altDelayControl" destination="Mvw-nZ-fi3" id="NsG-0F-58P"/>
+                        <outlet property="altDelayTapEdit" destination="OdN-B7-7c6" id="HL8-xG-l4O"/>
+                        <outlet property="altDelayValueLabel" destination="3TX-4e-MBG" id="TUX-fT-wi1"/>
+                        <outlet property="altDepthControl" destination="hui-tD-xRO" id="TTf-gX-5ZH"/>
+                        <outlet property="altDepthTapEdit" destination="mHo-9f-pLo" id="Wbd-yn-Atb"/>
+                        <outlet property="altDepthValueLabel" destination="T5c-Sd-KDy" id="0Wu-C0-sbK"/>
+                        <outlet property="controlsView" destination="GTt-pC-dYn" id="wAx-Ty-OPo"/>
+                        <outlet property="delayControl" destination="jXf-HD-UuC" id="RTL-sc-EPD"/>
+                        <outlet property="delayTapEdit" destination="xLK-EJ-lhl" id="I3y-qA-bsf"/>
+                        <outlet property="delayValueLabel" destination="O1V-1T-DQD" id="ZSK-69-oHZ"/>
+                        <outlet property="depthControl" destination="okm-Gk-DO2" id="Q4O-Ak-QPM"/>
+                        <outlet property="depthTapEdit" destination="sGQ-s4-7ru" id="tuf-cv-f6M"/>
+                        <outlet property="depthValueLabel" destination="4aa-JQ-dr0" id="euH-0F-y5x"/>
+                        <outlet property="dryMixControl" destination="Jzc-6g-Fgq" id="tMs-JV-QW6"/>
+                        <outlet property="dryMixTapEdit" destination="rYA-kZ-hpS" id="zr2-tO-CTL"/>
+                        <outlet property="dryMixValueLabel" destination="N2N-20-gAu" id="IUg-RV-qeV"/>
+                        <outlet property="editingBackground" destination="gry-aw-80i" id="388-9e-lec"/>
+                        <outlet property="editingBackgroundBottomConstraint" destination="1CF-ek-3Xc" id="d9l-o6-86G"/>
+                        <outlet property="editingLabel" destination="0gm-sU-zom" id="pKf-Mk-gsG"/>
+                        <outlet property="editingValue" destination="5xm-4x-x9O" id="I7q-07-9sx"/>
+                        <outlet property="editingView" destination="uNx-0G-OWZ" id="o8k-lD-VLo"/>
+                        <outlet property="editingViewTopConstraint" destination="sHm-Sp-MHW" id="ixy-1X-hAo"/>
+                        <outlet property="feedbackControl" destination="tqE-Fz-AGz" id="Mvd-vW-gWJ"/>
+                        <outlet property="feedbackTapEdit" destination="bbp-ks-Vdp" id="VBt-ka-JuJ"/>
+                        <outlet property="feedbackValueLabel" destination="alX-QB-0LM" id="o7s-Lp-V0Q"/>
+                        <outlet property="negativeFeedbackControl" destination="fvV-h7-UiY" id="M4n-4l-t8o"/>
+                        <outlet property="odd90Control" destination="olm-sN-GtT" id="JFc-BK-zSM"/>
+                        <outlet property="rateControl" destination="hF3-lq-xlE" id="yWc-M8-Wdk"/>
+                        <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="ONn-Bf-TzX"/>
+                        <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="1f9-PS-kev"/>
+                        <outlet property="titleLabel" destination="Vbj-fp-p3P" id="85z-tT-iIT"/>
+                        <outlet property="wetMixControl" destination="xjB-dE-KcA" id="usi-fP-EqI"/>
+                        <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="p52-4Z-ZKv"/>
+                        <outlet property="wetMixValueLabel" destination="OFy-GK-jEJ" id="I9S-er-smA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -542,10 +542,10 @@
             <color red="1" green="0.57599997520446777" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="label">
-            <color red="0.0" green="0.83899998664855957" blue="0.84500002861022949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.76399999856948853" blue="0.36700001358985901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="title">
-            <color red="0.0" green="0.81300002336502075" blue="1" alpha="0.40000000596046448" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.5" blue="0.0" alpha="0.34999999403953552" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

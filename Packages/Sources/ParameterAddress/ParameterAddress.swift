@@ -37,6 +37,10 @@ public extension ParameterAddress {
   }
 }
 
+extension AUParameter {
+  public var parameterAddress: ParameterAddress? { .init(rawValue: self.address) }
+}
+
 /// Allow enum values to serve as AUParameterAddress values.
 extension ParameterAddress: ParameterAddressProvider {
   public var parameterAddress: AUParameterAddress { UInt64(self.rawValue) }

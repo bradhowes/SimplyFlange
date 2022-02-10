@@ -9,10 +9,6 @@ import ParameterAddress
 import Parameters
 import os.log
 
-extension NSSwitch: AUParameterValueProvider, BooleanControl, TagHolder {
-  public var value: AUValue { isOn ? 1.0 : 0.0 }
-}
-
 extension Knob: AUParameterValueProvider, RangedControl {}
 
 /**
@@ -51,7 +47,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   @IBOutlet private weak var odd90Control: NSSwitch!
   @IBOutlet private weak var negativeFeedbackControl: NSSwitch!
 
-  private lazy var pairs: [ParameterAddress: (Knob, FocusAwareTextField)] = [
+  private lazy var controls: [ParameterAddress: (Knob, FocusAwareTextField)] = [
     .depth: (depthControl, depthValueLabel),
     .rate: (rateControl, rateValueLabel),
     .delay: (delayControl, delayValueLabel),
@@ -66,73 +62,84 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   ]
 
   private var editors = [ParameterAddress : AUParameterEditor]()
-  
   public var audioUnit: FilterAudioUnit? {
     didSet {
       DispatchQueue.main.async {
         if self.isViewLoaded {
-          self.connectViewToAU()
+          self.createEditors()
         }
       }
     }
   }
+}
 
-  public override func viewDidLoad() {
+public extension ViewController {
+
+  override func viewDidLoad() {
     os_log(.info, log: log, "viewDidLoad BEGIN")
-
     super.viewDidLoad()
-
     view.backgroundColor = .black
-    if audioUnit != nil {
-      connectViewToAU()
-    }
 
+    if audioUnit != nil {
+      createEditors()
+    }
     os_log(.info, log: log, "viewDidLoad END")
   }
 
-  private func createEditors() {
+  override func mouseDown(with event: NSEvent) {
+    // Allow for clicks on the common NSView to end editing of values
+    NSApp.keyWindow?.makeFirstResponder(nil)
+  }
+}
+
+// MARK: - AudioUnitViewConfigurationManager
+
+extension ViewController: AudioUnitViewConfigurationManager {}
+
+// MARK: - AUAudioUnitFactory
+
+extension ViewController: AUAudioUnitFactory {
+  @objc public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
+    let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
+    let audioUnit = try FilterAudioUnitFactory.create(componentDescription: componentDescription,
+                                                      parameters: parameters,
+                                                      kernel: kernel,
+                                                      viewConfigurationManager: self)
+    self.audioUnit = audioUnit
+    return audioUnit
+  }
+}
+
+// MARK: - Private
+
+private extension ViewController {
+
+  func createEditors() {
     os_log(.info, log: log, "createEditors BEGIN")
 
     let knobColor = NSColor(named: "knob")!
 
-    os_log(.info, log: log, "createEditors - creating float parameter editors")
-    for (parameterAddress, (knob, label)) in pairs {
-      os_log(.info, log: log, "createEditors - [%d] %{public}s %{public}s", parameterAddress.rawValue,
-             knob.pointer, label.pointer)
-
-      os_log(.info, log: log, "createEditors - creating float parameter editor: %{public}s",
-             parameterAddress.description)
-
+    for (parameterAddress, (knob, label)) in controls {
       knob.progressColor = knobColor
       knob.indicatorColor = knobColor
 
-      if parameterAddress == .wet || parameterAddress == .dry {
-        knob.trackLineWidth = 8
-        knob.progressLineWidth = 6
-        knob.indicatorLineWidth = 6
-      } else {
-        knob.trackLineWidth = 10
-        knob.progressLineWidth = 8
-        knob.indicatorLineWidth = 8
-      }
+      let trackWidth: CGFloat = parameterAddress == .dry || parameterAddress == .wet ? 8 : 10
+      let progressWidth = trackWidth - 2.0
+
+      knob.trackLineWidth = trackWidth
+      knob.progressLineWidth = progressWidth
+      knob.indicatorLineWidth = progressWidth
 
       knob.target = self
       knob.action = #selector(handleKnobValueChanged(_:))
 
-      os_log(.info, log: log, "createEditors - before FloatParameterEditor")
       editors[parameterAddress] = FloatParameterEditor(parameter: parameters[parameterAddress],
                                                        formatter: parameters.valueFormatter(parameterAddress),
                                                        rangedControl: knob, label: label)
     }
 
-    os_log(.info, log: log, "createEditors - creating bool parameter editors")
     for (parameterAddress, control) in switches {
-      control.wantsLayer = true
-      control.layer?.backgroundColor = knobColor.cgColor
-      control.layer?.masksToBounds = true
-      control.layer?.cornerRadius = 10
-
-      os_log(.info, log: log, "createEditors - before BooleanParameterEditor")
+      control.setTint(knobColor)
       editors[parameterAddress] = BooleanParameterEditor(parameter: parameters[parameterAddress],
                                                          booleanControl: control)
     }
@@ -140,20 +147,20 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     os_log(.info, log: log, "createEditors END")
   }
 
-  @IBAction private func handleKnobValueChanged(_ control: Knob) {
-     guard let address = control.parameterAddress else { fatalError() }
-     handleControlChanged(control, address: address)
+  @IBAction func handleKnobValueChanged(_ control: Knob) {
+    guard let address = control.parameterAddress else { fatalError() }
+    handleControlChanged(control, address: address)
   }
 
-  @IBAction private func handleOdd90Changed(_ control: NSSwitch) {
+  @IBAction func handleOdd90Changed(_ control: NSSwitch) {
     handleControlChanged(control, address: .odd90)
   }
 
-  @IBAction private func handleNegativeFeedbackChanged(_ control: NSSwitch) {
+  @IBAction func handleNegativeFeedbackChanged(_ control: NSSwitch) {
     handleControlChanged(control, address: .negativeFeedback)
   }
 
-  private func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
+  func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
     os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
 
     guard let audioUnit = audioUnit else {
@@ -168,87 +175,5 @@ extension Knob: AUParameterValueProvider, RangedControl {}
     }
 
     editors[address]?.controlChanged(source: control)
-  }
-
-  override public func mouseDown(with event: NSEvent) {
-    // Allow for clicks on the common NSView to end editing of values
-    NSApp.keyWindow?.makeFirstResponder(nil)
-  }
-}
-
-extension ViewController: AUAudioUnitFactory {
-  
-  /**
-   Create a new FilterAudioUnit instance to run in an AVu3 container.
-   
-   - parameter componentDescription: descriptions of the audio environment it will run in
-   - returns: new FilterAudioUnit
-   */
-  public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
-    os_log(.info, log: log, "createAudioUnit BEGIN - %{public}s", componentDescription.description)
-
-    let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
-    parameters.setParameterHandler(kernel)
-
-    let audioUnit = try FilterAudioUnit(componentDescription: componentDescription, options: [.loadOutOfProcess])
-    self.audioUnit = audioUnit
-
-    audioUnit.setParameters(parameters)
-    audioUnit.setKernel(kernel)
-    
-    os_log(.info, log: log, "createAudioUnit END")
-    return audioUnit
-  }
-}
-
-extension ViewController {
-
-  override public func viewWillTransition(to newSize: NSSize) {
-    os_log(.debug, log: log, "viewWillTransition: %f x %f", newSize.width, newSize.height)
-  }
-
-  private func connectViewToAU() {
-    os_log(.info, log: log, "connectViewToAU BEGIN")
-    
-    guard let audioUnit = audioUnit else { fatalError("unexpected nil audioUnit") }
-
-    createEditors()
-
-    keyValueObserverToken = audioUnit.observe(\.allParameterValues) { _, _ in
-      DispatchQueue.main.async {
-        if audioUnit.currentPreset != nil {
-          self.updateDisplay()
-        }
-      }
-    }
-
-    // Let us manage view configuration changes
-    audioUnit.viewConfigurationManager = self
-
-    os_log(.info, log: log, "connectViewToAU END")
-  }
-  
-  private func updateDisplay() {
-    os_log(.info, log: log, "updateDisplay")
-    for address in ParameterAddress.allCases {
-      editors[address]?.parameterChanged()
-    }
-  }
-}
-
-extension ViewController: AudioUnitViewConfigurationManager {
-
-  public func supportedViewConfigurations(_ available: [AUAudioUnitViewConfiguration]) -> IndexSet {
-    var indexSet = IndexSet()
-    for (index, viewConfiguration) in available.enumerated() {
-      if viewConfiguration.width > 0 && viewConfiguration.height > 0 {
-        indexSet.insert(index)
-      }
-    }
-    return indexSet
-  }
-
-  public func selectViewConfiguration(_ viewConfiguration: AUAudioUnitViewConfiguration) {
-
   }
 }

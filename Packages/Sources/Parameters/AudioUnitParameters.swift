@@ -41,14 +41,6 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
     factoryPresetValues.enumerated().map { .init(number: $0.0, name: $0.1.name ) }
   }
 
-  /// Apply a factory preset -- user preset changes are handled by changing AUParameter values through the audio unit's
-  /// `fullState` attribute.
-  public func usePreset(_ preset: AUAudioUnitPreset) {
-    if preset.number >= 0 {
-      setValues(factoryPresetValues[preset.number].preset)
-    }
-  }
-
   /// AUParameterTree created with the parameter definitions for the audio unit
   public let parameterTree: AUParameterTree
 
@@ -77,25 +69,7 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
   override public init() {
     parameterTree = AUParameterTree.createTree(withChildren: parameters)
     super.init()
-  }
-
-  /**
-   Installs three closures in the tree based on the given parameter handler
-   - one for providing values
-   - one for accepting new values from other sources
-   - and one for obtaining formatted string values
-
-   - parameter parameterHandler the object to use to handle the AUParameterTree requests
-   */
-  public func setParameterHandler(_ parameterHandler: AUParameterHandler) {
-    parameterTree.implementorValueObserver = { parameterHandler.set($0, value: $1) }
-    parameterTree.implementorValueProvider = { parameterHandler.get($0) }
-    parameterTree.implementorStringFromValueCallback = { param, value in
-      let formatted = self.formatValue(ParameterAddress(rawValue: param.address), value: param.value)
-      os_log(.debug, log: self.log, "parameter %d as string: %d %f %{public}s",
-             param.address, param.value, formatted)
-      return formatted
-    }
+    installParameterValueFormatter()
   }
 }
 
@@ -103,29 +77,32 @@ extension AudioUnitParameters {
 
   private var missingParameter: AUParameter { fatalError() }
 
+  /// Apply a factory preset -- user preset changes are handled by changing AUParameter values through the audio unit's
+  /// `fullState` attribute.
+  public func useFactoryPreset(_ preset: AUAudioUnitPreset) {
+    if preset.number >= 0 {
+      setValues(factoryPresetValues[preset.number].preset)
+    }
+  }
+
   public subscript(address: ParameterAddress) -> AUParameter {
     parameterTree.parameter(withAddress: address.parameterAddress) ?? missingParameter
   }
 
   public func valueFormatter(_ address: ParameterAddress) -> (AUValue) -> String {
-    let unitName = self[address].unitName ?? ""
-
-    let separator: String = {
-      switch address {
-      case .depth, .rate, .delay: return " "
-      default: return ""
-      }
-    }()
-
-    let format: String = formatting(address)
-
-    return { value in String(format: format, value) + separator + unitName }
+    self[address].valueFormatter
   }
 
-  public func formatValue(_ address: ParameterAddress?, value: AUValue) -> String {
-    guard let address = address else { return "?" }
-    let format = formatting(address)
-    return String(format: format, value)
+  private func installParameterValueFormatter() {
+    parameterTree.implementorStringFromValueCallback = { param, valuePtr in
+      let value: AUValue
+      if let valuePtr = valuePtr {
+        value = valuePtr.pointee
+      } else {
+        value = param.value
+      }
+      return String(format: param.stringFormatForValue, value) + param.suffix
+    }
   }
 
   /**
@@ -133,25 +110,38 @@ extension AudioUnitParameters {
    AudioUnit.
    */
   public func setValues(_ preset: FilterPreset) {
-    self.depth.value = preset.depth
-    self.rate.value = preset.rate
-    self.delay.value = preset.delay
-    self.feedback.value = preset.feedback
-    self.dryMix.value = preset.dry
-    self.wetMix.value = preset.wet
-    self.negativeFeedback.value = preset.negativeFeedback
-    self.odd90.value = preset.odd90
+    depth.value = preset.depth
+    rate.value = preset.rate
+    delay.value = preset.delay
+    feedback.value = preset.feedback
+    dryMix.value = preset.dry
+    wetMix.value = preset.wet
+    negativeFeedback.value = preset.negativeFeedback
+    odd90.value = preset.odd90
   }
 }
 
-extension AudioUnitParameters {
-  private func formatting(_ address: ParameterAddress) -> String {
-    switch address {
-    case .depth, .feedback: return "%.2f"
-    case .rate: return "%.2f"
-    case .delay: return "%.2f"
-    case .dry, .wet, .negativeFeedback, .odd90: return "%.0f"
-    default: return "?"
+extension AUParameter {
+
+  /// Obtain string to use to separate a formatted value from its units name
+  var unitSeparator: String {
+    switch parameterAddress {
+    case .depth, .rate, .delay: return " "
+    default: return ""
     }
   }
+  /// Obtain the suffix to apply to a formatted value
+  var suffix: String { unitSeparator + (unitName ?? "") }
+  /// Obtain the format to use in String(format:value) when formatting a values
+  var stringFormatForValue: String {
+    switch parameterAddress {
+    case .dry, .wet: return "%.0f"
+    default: return "%.2f"
+    }
+  }
+  /// Obtain a closure that will format parameter values into a string
+  var valueFormatter: (AUValue) -> String {
+    { value in String(format: self.stringFormatForValue, value) + self.suffix }
+  }
 }
+

@@ -259,13 +259,9 @@ extension ViewController: AUAudioUnitFactory {
     os_log(.info, log: log, "createAudioUnit BEGIN - %{public}s", componentDescription.description)
 
     let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
-    parameters.setParameterHandler(kernel)
-
     let audioUnit = try FilterAudioUnit(componentDescription: componentDescription, options: [.loadOutOfProcess])
     self.audioUnit = audioUnit
-
-    audioUnit.setParameters(parameters)
-    audioUnit.setKernel(kernel)
+    audioUnit.configure(parameters: parameters, kernel: kernel)
 
     os_log(.info, log: log, "createAudioUnit END")
     return audioUnit

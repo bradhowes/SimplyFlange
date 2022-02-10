@@ -12,6 +12,6 @@ Note that many of the include files it uses are found in the `AUv3-DSP-Headers` 
 [AUv3Support](https://github.com/bradhowes/AUv3Support) package.
 
 Also note that although the `KernelBridge` Obj-C class is defined here, there is the
-[KernelBridge](Packages/Sources/KernelBridge) package that adds necessary Swift protocol conformances to it.
+[KernelBridge](../KernelBridge) package that adds necessary Swift protocol conformances to it.
 This split is due to the fact that the Obj-C class is unable to state that it conforms to protocols defined in
 Swift.

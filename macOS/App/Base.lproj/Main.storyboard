@@ -127,7 +127,7 @@
             <objects>
                 <windowController id="B8D-0N-5wS" customClass="MainWindowController" customModule="SimplyFlange" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="SimplyFlange" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="SimplyFlange" animationBehavior="default" titlebarAppearsTransparent="YES" id="IQv-IB-iLA" userLabel="SimplyFlange">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <rect key="contentRect" x="81" y="580" width="600" height="300"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1175"/>
                         <value key="minSize" type="size" width="600" height="300"/>

@@ -21,13 +21,15 @@ xcuserdata/
 !**/*.playground/playground.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
 
 DerivedData/
-*.ipa
 
 **/*.old
 
+Gemfile
 Gemfile.lock
-fastlane/SnapshotHelper.swift
-fastlane/report.xml
-fastlane/screenshots
-fastlane/metadata
-fastlane/*.json
+
+fastlane
+Packages/.swiftpm/
+Packages/.build/
+Packages/Package.resolved
+.version
+exportOptions.plist

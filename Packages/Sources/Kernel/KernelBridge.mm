@@ -18,19 +18,18 @@
   return self;
 }
 
-- (void)setRenderingFormat:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender {
-  kernel_->setRenderingFormat(inputFormat, maxFramesToRender, maxDelayMilliseconds_);
+- (void)setRenderingFormat:(NSInteger)busCount format:(AVAudioFormat*)inputFormat maxFramesToRender:(AUAudioFrameCount)maxFramesToRender {
+  kernel_->setRenderingFormat(busCount, inputFormat, maxFramesToRender, maxDelayMilliseconds_);
 }
 
 - (void)renderingStopped { kernel_->renderingStopped(); }
 
 - (AUInternalRenderBlock)internalRenderBlock {
   auto& kernel = *kernel_;
-  NSInteger bus = 0;
   return ^AUAudioUnitStatus(AudioUnitRenderActionFlags* flags, const AudioTimeStamp* timestamp,
-                            AUAudioFrameCount frameCount, NSInteger, AudioBufferList* output,
+                            AUAudioFrameCount frameCount, NSInteger outputBusNumber, AudioBufferList* output,
                             const AURenderEvent* realtimeEventListHead, AURenderPullInputBlock pullInputBlock) {
-    return kernel.processAndRender(timestamp, frameCount, bus, output, realtimeEventListHead, pullInputBlock);
+    return kernel.processAndRender(timestamp, frameCount, outputBusNumber, output, realtimeEventListHead, pullInputBlock);
   };
 }
 

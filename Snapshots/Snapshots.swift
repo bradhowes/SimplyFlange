@@ -30,8 +30,8 @@ class Snapshots: XCTestCase {
     }
 
 
-    func testLPFPortrait() { run(.portrait, "LPF") { showMainView() } }
-    func testLPFLandscape() { run(.landscapeLeft, "LPF") { showMainView() } }
+    func testPortrait() { run(.portrait, "Flange") { showMainView() } }
+    func testLandscape() { run(.landscapeLeft, "Flange") { showMainView() } }
 }
 
 extension XCUIApplication {

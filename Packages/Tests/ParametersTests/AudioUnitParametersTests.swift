@@ -1,12 +1,8 @@
 import XCTest
-@testable import Parameters
+import AUv3Support
 import Kernel
-
-class MockParameterHandler: AUParameterHandler {
-  var mapping = [AUParameterAddress: AUValue]()
-  func set(_ parameter: AUParameter, value: AUValue) { mapping[parameter.address] = value }
-  func get(_ parameter: AUParameter) -> AUValue { mapping[parameter.address] ?? 0.0 }
-}
+import Parameters
+import ParameterAddress
 
 final class FilterPresetTests: XCTestCase {
 
@@ -22,15 +18,14 @@ final class FilterPresetTests: XCTestCase {
     XCTAssertTrue(ParameterAddress.allCases.contains(.rate))
     XCTAssertTrue(ParameterAddress.allCases.contains(.delay))
     XCTAssertTrue(ParameterAddress.allCases.contains(.feedback))
-    XCTAssertTrue(ParameterAddress.allCases.contains(.dryMix))
-    XCTAssertTrue(ParameterAddress.allCases.contains(.wetMix))
+    XCTAssertTrue(ParameterAddress.allCases.contains(.dry))
+    XCTAssertTrue(ParameterAddress.allCases.contains(.wet))
     XCTAssertTrue(ParameterAddress.allCases.contains(.negativeFeedback))
     XCTAssertTrue(ParameterAddress.allCases.contains(.odd90))
   }
 
   func testParameterDefinitions() throws {
-    let handler = MockParameterHandler()
-    let aup = AudioUnitParameters(parameterHandler: handler)
+    let aup = AudioUnitParameters()
 
     for (index, address) in ParameterAddress.allCases.enumerated() {
       XCTAssertTrue(aup.parameters[index] == aup[address])

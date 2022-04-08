@@ -136,7 +136,7 @@ function buildTestDeploy # SCHEME DESTINATION
 
 for EACH in ${PLATFORMS}; do
     case "${EACH}" in
-        "ios") buildTestDeploy 'iOS App' 'platform=iOS Simulator,name=iPhone SE (2nd generation)' ;;
+        "ios") buildTestDeploy 'iOS App' 'platform=iOS Simulator,name=iPad Mini (6th generation)' ;;
         "macos") buildTestDeploy 'macOS App' 'platform=macOS' ;;
     esac
 done

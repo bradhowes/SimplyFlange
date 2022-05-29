@@ -5,7 +5,6 @@
 @import ParameterAddress;
 
 void Kernel::setParameterValue(AUParameterAddress address, AUValue value) {
-  os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "setParameterValue - %llul %f", address, value);
   switch (address) {
     case ParameterAddressDepth: depth_.set(value, 0); break;
     case ParameterAddressRate: lfo_.setFrequency(value, 0); break;
@@ -19,7 +18,6 @@ void Kernel::setParameterValue(AUParameterAddress address, AUValue value) {
 }
 
 void Kernel::setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) {
-  os_log_with_type(log_, OS_LOG_TYPE_DEBUG, "setRampedParameterValue - %llul %f %d", address, value, duration);
   switch (address) {
     case ParameterAddressDepth: depth_.set(value, duration); break;
     case ParameterAddressRate: lfo_.setFrequency(value, duration); break;

@@ -28,7 +28,7 @@ public:
 
    @param name the name to use for logging purposes.
    */
-  Kernel(std::string name) : super(name)
+  Kernel(std::string name) : super()
   {
     lfo_.setWaveform(LFOWaveform::triangle);
   }
@@ -71,7 +71,6 @@ private:
     lfo_.setSampleRate(sampleRate);
 
     auto size = maxDelayMilliseconds * samplesPerMillisecond_ + 1;
-    os_log_with_type(log_, OS_LOG_TYPE_INFO, "delayLine size: %f", size);
     delayLines_.clear();
     for (auto index = 0; index < channelCount; ++index) {
       delayLines_.emplace_back(size);

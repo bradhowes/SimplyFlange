@@ -48,8 +48,8 @@
 		BDE5381327B2B28B008ACA93 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */; };
 		BDE5381427B2B28B008ACA93 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */; };
 		C433F56122404C7C00F1B750 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* ViewController.swift */; };
-		C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4737B0A2231D930002CAD0B /* AudioToolbox.framework */; };
 		C4BEE7B122236A29001E6B6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE7A422236A29001E6B6D /* Assets.xcassets */; };
 		C4BEE7B322236A29001E6B6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4BEE7A722236A29001E6B6D /* Main.storyboard */; };
@@ -103,26 +103,26 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C437FE752223686D008D6C09 /* Embed App Extensions */ = {
+		C437FE752223686D008D6C09 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed App Extensions */,
+				C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C4660A642225F9A0007BE3B1 /* Embed App Extensions */ = {
+		C4660A642225F9A0007BE3B1 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed App Extensions */,
+				C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -432,7 +432,7 @@
 				C437FE37222367A6008D6C09 /* Frameworks */,
 				C437FE38222367A6008D6C09 /* Resources */,
 				C437FE5E222367CD008D6C09 /* Embed Frameworks */,
-				C437FE752223686D008D6C09 /* Embed App Extensions */,
+				C437FE752223686D008D6C09 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -480,7 +480,7 @@
 				C437FE762223688D008D6C09 /* Sources */,
 				C437FE772223688D008D6C09 /* Frameworks */,
 				C437FE782223688D008D6C09 /* Resources */,
-				C4660A642225F9A0007BE3B1 /* Embed App Extensions */,
+				C4660A642225F9A0007BE3B1 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -531,7 +531,7 @@
 			attributes = {
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1410;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					BD1D257525D5AAB000523748 = {
@@ -853,6 +853,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = NO;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -909,7 +910,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -928,7 +929,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange;
@@ -980,7 +981,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -999,7 +1000,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.appex;
@@ -1055,7 +1056,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1074,7 +1076,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange;
@@ -1125,7 +1127,8 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1145,7 +1148,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.appex;
@@ -1184,6 +1187,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = NO;
+				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
@@ -1242,7 +1246,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1266,7 +1270,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1318,7 +1322,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1343,7 +1347,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1399,7 +1403,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1424,7 +1429,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1476,7 +1481,8 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20220408222537;
+				CURRENT_PROJECT_VERSION = 20221205095050;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1502,7 +1508,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 2.0.3;
+				MARKETING_VERSION = 4.0.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1581,8 +1587,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {

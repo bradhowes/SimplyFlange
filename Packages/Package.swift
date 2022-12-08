@@ -13,7 +13,9 @@ let package = Package(
     .library(name: "Theme", targets: ["Theme"])
   ],
   dependencies: [
-    .package(name: "AUv3SupportPackage", url: "https://github.com/bradhowes/AUv3Support", branch: "main"),
+    // This is a pain -- we have to replicate Xcode setting so that our internal packages can be resolved.
+    // We need to keep this version and the Xcode version in sync or else major problems result.
+    .package(name: "AUv3SupportPackage", url: "https://github.com/bradhowes/AUv3Support", revision: "5.2.0")
   ],
   targets: [
     .target(

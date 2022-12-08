@@ -17,7 +17,6 @@
 		BD13369327E34168005988F8 /* AUv3-Support in Frameworks */ = {isa = PBXBuildFile; productRef = BD13369227E34168005988F8 /* AUv3-Support */; };
 		BD13369527E34168005988F8 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD13369427E34168005988F8 /* AUv3-Support-iOS */; };
 		BD13369727E34168005988F8 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD13369627E34168005988F8 /* AUv3-Support-macOS */; };
-		BD13369927E34184005988F8 /* AUv3-DSP-Headers in Frameworks */ = {isa = PBXBuildFile; productRef = BD13369827E34184005988F8 /* AUv3-DSP-Headers */; };
 		BD13369B27E34184005988F8 /* AUv3-Support in Frameworks */ = {isa = PBXBuildFile; productRef = BD13369A27E34184005988F8 /* AUv3-Support */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
@@ -234,7 +233,6 @@
 				BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
 				BD13369B27E34184005988F8 /* AUv3-Support in Frameworks */,
-				BD13369927E34184005988F8 /* AUv3-DSP-Headers in Frameworks */,
 				BD0E6F7127AECD4500B8CF3E /* ParameterAddress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,7 +514,6 @@
 				BD0E6F6E27AECD4500B8CF3E /* KernelBridge */,
 				BD0E6F7027AECD4500B8CF3E /* ParameterAddress */,
 				BD0E6F7427AECD5500B8CF3E /* Knob-macOS */,
-				BD13369827E34184005988F8 /* AUv3-DSP-Headers */,
 				BD13369A27E34184005988F8 /* AUv3-Support */,
 			);
 			productName = "AUv3FilterExtension macOS";
@@ -1587,8 +1584,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 5.0.0;
+				kind = exactVersion;
+				version = 5.2.0;
 			};
 		};
 		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {
@@ -1647,11 +1644,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BD13368F27E34168005988F8 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-macOS";
-		};
-		BD13369827E34184005988F8 /* AUv3-DSP-Headers */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD13368F27E34168005988F8 /* XCRemoteSwiftPackageReference "AUv3Support" */;
-			productName = "AUv3-DSP-Headers";
 		};
 		BD13369A27E34184005988F8 /* AUv3-Support */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -31,9 +31,9 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
     ("Lord Tremolo",
      .init(depth: 5, rate: 8.0, delay: 0.0, feedback: 85, dry: 0, wet: 100, negativeFeedback: 0, odd90:0)),
     ("Wide Flangie",
-     .init(depth: 100, rate: 0.14, delay: 0.72, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
+     .init(depth: 50, rate: 0.14, delay: 0.72, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
     ("Wide Sweeper",
-     .init(depth: 100, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
+     .init(depth: 50, rate: 0.14, delay: 1.51, feedback: 80, dry: 50, wet: 50, negativeFeedback: 0, odd90: 1)),
   ]
 
   /// Array of `AUAudioUnitPreset` for the factory presets.

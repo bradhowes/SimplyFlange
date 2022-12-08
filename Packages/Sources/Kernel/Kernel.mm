@@ -4,42 +4,57 @@
 
 @import ParameterAddress;
 
-void Kernel::setParameterValue(AUParameterAddress address, AUValue value) {
+void Kernel::setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept {
   switch (address) {
-    case ParameterAddressDepth: depth_.set(value, 0); break;
-    case ParameterAddressRate: lfo_.setFrequency(value, 0); break;
-    case ParameterAddressDelay: delay_.set(value, 0); break;
-    case ParameterAddressFeedback: feedback_.set(value, 0); break;
-    case ParameterAddressDry: dryMix_.set(value, 0); break;
-    case ParameterAddressWet: wetMix_.set(value, 0); break;
-    case ParameterAddressNegativeFeedback: negativeFeedback_.set(value); break;
-    case ParameterAddressOdd90: odd90_.set(value); break;
+    case ParameterAddressDepth: depth_.set(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - depth value: %f", value);
+      break;
+    case ParameterAddressRate: lfo_.setFrequency(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - frequency value: %f", value);
+      break;
+    case ParameterAddressDelay: delay_.set(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - delay value: %f", value);
+      break;
+    case ParameterAddressFeedback: feedback_.set(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - feedback value: %f", value);
+      break;
+    case ParameterAddressDry: dryMix_.set(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - dryMix value: %f", value);
+      break;
+    case ParameterAddressWet: wetMix_.set(value, duration);
+      os_log_debug(log_, "setRampedParameterValue - wetMix value: %f", value);
+      break;
+    case ParameterAddressNegativeFeedback: negativeFeedback_.set(value);
+      break;
+    case ParameterAddressOdd90: odd90_.set(value);
+      break;
   }
 }
 
-void Kernel::setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) {
+AUValue Kernel::getParameterValue(AUParameterAddress address) const noexcept {
   switch (address) {
-    case ParameterAddressDepth: depth_.set(value, duration); break;
-    case ParameterAddressRate: lfo_.setFrequency(value, duration); break;
-    case ParameterAddressDelay: delay_.set(value, duration); break;
-    case ParameterAddressFeedback: feedback_.set(value, duration); break;
-    case ParameterAddressDry: dryMix_.set(value, duration); break;
-    case ParameterAddressWet: wetMix_.set(value, duration); break;
-    case ParameterAddressNegativeFeedback: negativeFeedback_.set(value); break;
-    case ParameterAddressOdd90: odd90_.set(value); break;
-  }
-}
-
-AUValue Kernel::getParameterValue(AUParameterAddress address) const {
-  switch (address) {
-    case ParameterAddressDepth: return depth_.get();
-    case ParameterAddressRate: return lfo_.frequency();
-    case ParameterAddressDelay: return delay_.get();
-    case ParameterAddressFeedback: return feedback_.get();
-    case ParameterAddressDry: return dryMix_.get();
-    case ParameterAddressWet: return wetMix_.get();
-    case ParameterAddressNegativeFeedback: return negativeFeedback_.get();
-    case ParameterAddressOdd90: return odd90_.get();
+    case ParameterAddressDepth:
+      os_log_debug(log_, "getParameterValue - depth value: %f", depth_.get());
+      return depth_.get();
+    case ParameterAddressRate:
+      os_log_debug(log_, "getParameterValue - frequency value: %f", lfo_.frequency());
+      return lfo_.frequency();
+    case ParameterAddressDelay:
+      os_log_debug(log_, "getParameterValue - delay value: %f", delay_.get());
+      return delay_.get();
+    case ParameterAddressFeedback:
+      os_log_debug(log_, "getParameterValue - feedback value: %f", feedback_.get());
+      return feedback_.get();
+    case ParameterAddressDry:
+      os_log_debug(log_, "getParameterValue - dryMix value: %f", dryMix_.get());
+      return dryMix_.get();
+    case ParameterAddressWet:
+      os_log_debug(log_, "getParameterValue - wetMix value: %f", wetMix_.get());
+      return wetMix_.get();
+    case ParameterAddressNegativeFeedback:
+      return negativeFeedback_.get();
+    case ParameterAddressOdd90:
+      return odd90_.get();
   }
   return 0.0;
 }

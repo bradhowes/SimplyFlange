@@ -2,6 +2,7 @@
 
 #pragma once
 
+#import <os/log.h>
 #import <algorithm>
 #import <string>
 #import <AVFoundation/AVFoundation.h>
@@ -28,8 +29,9 @@ public:
 
    @param name the name to use for logging purposes.
    */
-  Kernel(std::string name) : super()
+  Kernel(std::string name) noexcept : super(), name_{name}, log_{os_log_create(name_.c_str(), "Kernel")}
   {
+    os_log_debug(log_, "constructor");
     lfo_.setWaveform(LFOWaveform::triangle);
   }
 
@@ -41,7 +43,7 @@ public:
    @param maxDelayMilliseconds the max number of milliseconds of audio samples to keep in delay buffer
    */
   void setRenderingFormat(NSInteger busCount, AVAudioFormat* format, AUAudioFrameCount maxFramesToRender,
-                          double maxDelayMilliseconds) {
+                          double maxDelayMilliseconds) noexcept {
     super::setRenderingFormat(busCount, format, maxFramesToRender);
     initialize(format.channelCount, format.sampleRate, maxDelayMilliseconds);
   }
@@ -52,7 +54,18 @@ public:
    @param address the address of the parameter that changed
    @param value the new value for the parameter
    */
-  void setParameterValue(AUParameterAddress address, AUValue value);
+  void setParameterValue(AUParameterAddress address, AUValue value) noexcept {
+    setRampedParameterValue(address, value, AUAudioFrameCount(50));
+  }
+
+  /**
+   Process an AU parameter value change by updating the kernel.
+
+   @param address the address of the parameter that changed
+   @param value the new value for the parameter
+   @param duration the number of samples to adjust over
+   */
+  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept;
 
   /**
    Obtain from the kernel the current value of an AU parameter.
@@ -60,11 +73,13 @@ public:
    @param address the address of the parameter to return
    @returns current parameter value
    */
-  AUValue getParameterValue(AUParameterAddress address) const;
+  AUValue getParameterValue(AUParameterAddress address) const noexcept;
 
 private:
 
-  void initialize(int channelCount, double sampleRate, double maxDelayMilliseconds) {
+  void initialize(int channelCount, double sampleRate, double maxDelayMilliseconds) noexcept {
+    os_log_debug(log_, "initialize - channelCount: %d sampleRate: %f maxDelayMilliseconds: %f",
+                 channelCount, sampleRate, maxDelayMilliseconds);
     samplesPerMillisecond_ = sampleRate / 1000.0;
     maxDelayMilliseconds_ = maxDelayMilliseconds;
 
@@ -77,18 +92,12 @@ private:
     }
   }
 
-  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration);
-
-  void setParameterFromEvent(const AUParameterEvent& event) {
-    if (event.rampDurationSampleFrames == 0) {
-      setParameterValue(event.parameterAddress, event.value);
-    } else {
-      setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
-    }
+  void setParameterFromEvent(const AUParameterEvent& event) noexcept {
+    setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
   }
 
   void doRendering(NSInteger outputBusNumber, DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs,
-                   AUAudioFrameCount frameCount) {
+                   AUAudioFrameCount frameCount) noexcept {
 
     // Advance by frames in outer loop so we can ramp values when they change without having to save/restore state.
     for (int frame = 0; frame < frameCount; ++frame) {
@@ -122,7 +131,7 @@ private:
     }
   }
 
-  void doMIDIEvent(const AUMIDIEvent& midiEvent) {}
+  void doMIDIEvent(const AUMIDIEvent& midiEvent) noexcept {}
 
   DSPHeaders::Parameters::MillisecondsParameter<AUValue> depth_;
   DSPHeaders::Parameters::MillisecondsParameter<AUValue> delay_;
@@ -137,4 +146,6 @@ private:
 
   std::vector<DSPHeaders::DelayBuffer<AUValue>> delayLines_;
   DSPHeaders::LFO<AUValue> lfo_;
+  std::string name_;
+  os_log_t log_;
 };

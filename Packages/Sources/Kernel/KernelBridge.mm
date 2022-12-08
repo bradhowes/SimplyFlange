@@ -8,6 +8,7 @@
 @implementation KernelBridge {
   Kernel* kernel_;
   AUValue maxDelayMilliseconds_;
+  os_log_t log_;
 }
 
 - (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds {

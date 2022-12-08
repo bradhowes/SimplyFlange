@@ -1584,8 +1584,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
-				kind = exactVersion;
-				version = 5.3.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {

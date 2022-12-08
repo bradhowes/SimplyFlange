@@ -15,7 +15,7 @@ let package = Package(
   dependencies: [
     // This is a pain -- we have to replicate Xcode setting so that our internal packages can be resolved.
     // We need to keep this version and the Xcode version in sync or else major problems result.
-    .package(name: "AUv3SupportPackage", url: "https://github.com/bradhowes/AUv3Support", revision: "5.3.0")
+    .package(url: "https://github.com/bradhowes/AUv3Support", branch: "main")
   ],
   targets: [
     .target(
@@ -26,15 +26,15 @@ let package = Package(
       name: "KernelBridge",
       dependencies: [
         "Kernel",
-        .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+        .productItem(name: "AUv3-Support", package: "AUv3Support", condition: .none),
       ],
       exclude: ["README.md"]
     ),
     .target(
       name: "Kernel",
       dependencies: [
-        .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
-        .productItem(name: "AUv3-DSP-Headers", package: "AUv3SupportPackage", condition: .none),
+        .productItem(name: "AUv3-Support", package: "AUv3Support", condition: .none),
+        .productItem(name: "AUv3-DSP-Headers", package: "AUv3Support", condition: .none),
         "ParameterAddress"
       ],
       exclude: ["README.md"],
@@ -43,14 +43,14 @@ let package = Package(
     .target(
       name: "ParameterAddress",
       dependencies: [
-        .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+        .productItem(name: "AUv3-Support", package: "AUv3Support", condition: .none),
       ],
       exclude: ["README.md"]
     ),
     .target(
       name: "Parameters",
       dependencies: [
-        .productItem(name: "AUv3-Support", package: "AUv3SupportPackage", condition: .none),
+        .productItem(name: "AUv3-Support", package: "AUv3Support", condition: .none),
         "Kernel"
       ],
       exclude: ["README.md"]

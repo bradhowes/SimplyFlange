@@ -8,10 +8,9 @@
 @implementation KernelBridge {
   Kernel* kernel_;
   AUValue maxDelayMilliseconds_;
-  os_log_t log_;
 }
 
-- (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds {
+- (instancetype)init:(NSString*)appExtensionName maxDelayMilliseconds:(AUValue)maxDelayMilliseconds; {
   if (self = [super init]) {
     self->kernel_ = new Kernel(std::string(appExtensionName.UTF8String));
     self->maxDelayMilliseconds_ = maxDelayMilliseconds;
@@ -25,11 +24,18 @@
 
 - (void)renderingStopped { kernel_->renderingStopped(); }
 
-- (AUInternalRenderBlock)internalRenderBlock {
+- (AUInternalRenderBlock)internalRenderBlock:(nullable AUHostTransportStateBlock)tsb {
   __block auto kernel = kernel_;
+  __block auto transportStateBlock = tsb;
   return ^AUAudioUnitStatus(AudioUnitRenderActionFlags* flags, const AudioTimeStamp* timestamp,
                             AUAudioFrameCount frameCount, NSInteger outputBusNumber, AudioBufferList* output,
                             const AURenderEvent* realtimeEventListHead, AURenderPullInputBlock pullInputBlock) {
+    if (transportStateBlock) {
+      AUHostTransportStateFlags flags;
+      transportStateBlock(&flags, NULL, NULL, NULL);
+      bool rendering = flags & AUHostTransportStateMoving;
+      kernel->setRendering(rendering);
+    }
     return kernel->processAndRender(timestamp, frameCount, outputBusNumber, output, realtimeEventListHead, pullInputBlock);
   };
 }

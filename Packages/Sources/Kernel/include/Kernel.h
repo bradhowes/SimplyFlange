@@ -2,6 +2,7 @@
 
 #pragma once
 
+#import <os/log.h>
 #import <AudioToolbox/AudioToolbox.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -39,7 +40,7 @@ NS_ASSUME_NONNULL_BEGIN
 
  @returns AUInternalRenderBlock instance
  */
-- (AUInternalRenderBlock)internalRenderBlock;
+- (AUInternalRenderBlock)internalRenderBlock:(nullable AUHostTransportStateBlock)tsb;
 
 /**
  Set the bypass state.

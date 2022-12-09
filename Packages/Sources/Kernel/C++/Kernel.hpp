@@ -35,6 +35,8 @@ public:
     lfo_.setWaveform(LFOWaveform::triangle);
   }
 
+  const os_log_t& log() const { return log_; }
+
   /**
    Update kernel and buffers to support the given format and channel count
 
@@ -94,6 +96,16 @@ private:
 
   void setParameterFromEvent(const AUParameterEvent& event) noexcept {
     setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
+  }
+
+  void doRenderingStateChanged(bool rendering) {
+    if (!rendering) {
+      depth_.stopRamping();
+      delay_.stopRamping();
+      feedback_.stopRamping();
+      dryMix_.stopRamping();
+      wetMix_.stopRamping();
+    }
   }
 
   void doRendering(NSInteger outputBusNumber, DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs,

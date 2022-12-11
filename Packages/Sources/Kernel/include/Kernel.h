@@ -33,7 +33,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Stop processing, releasing any resources used to support rendering.
  */
-- (void)renderingStopped;
+- (void)deallocateRenderResources;
 
 /**
  Obtain a block to use for rendering with the kernel.

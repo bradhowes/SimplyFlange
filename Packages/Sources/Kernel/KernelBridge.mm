@@ -22,7 +22,7 @@
   kernel_->setRenderingFormat(busCount, inputFormat, maxFramesToRender, maxDelayMilliseconds_);
 }
 
-- (void)renderingStopped { kernel_->renderingStopped(); }
+- (void)deallocateRenderResources { kernel_->deallocateRenderResources(); }
 
 - (AUInternalRenderBlock)internalRenderBlock:(nullable AUHostTransportStateBlock)tsb {
   __block auto kernel = kernel_;

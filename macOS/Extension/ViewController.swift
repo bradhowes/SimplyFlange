@@ -167,19 +167,27 @@ private extension ViewController {
   }
 
   func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {
-    os_log(.debug, log: log, "controlChanged BEGIN - %d %f", address.rawValue, control.value)
+    os_log(.debug, log: log, "controlChanged BEGIN - %d %f %f", address.rawValue, control.value,
+           parameters[address].value)
 
     guard let audioUnit = audioUnit else {
       os_log(.debug, log: log, "controlChanged END - nil audioUnit")
       return
     }
 
-    // When user changes something and a factory preset was active, clear it.
-    if let preset = audioUnit.currentPreset, preset.number >= 0 {
-      os_log(.debug, log: log, "controlChanged - clearing currentPreset")
-      audioUnit.currentPreset = nil
+    guard let editor = editorMap[address] else {
+      os_log(.debug, log: log, "controlChanged END - nil editor")
+      return
     }
 
-    editorMap[address]?.controlChanged(source: control)
+    if editor.differs {
+      // When user changes something and a factory preset was active, clear it.
+      if let preset = audioUnit.currentPreset, preset.number >= 0 {
+        os_log(.debug, log: log, "controlChanged - clearing currentPreset")
+        audioUnit.currentPreset = nil
+      }
+    }
+
+    editor.controlChanged(source: control)
   }
 }

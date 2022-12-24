@@ -12,10 +12,10 @@ final class ParameterAddressTests: XCTestCase {
   func testParameterDefinitions() throws {
     let depth = ParameterAddress.depth.parameterDefinition
     XCTAssertEqual(depth.range.lowerBound, 0.0)
-    XCTAssertEqual(depth.range.upperBound, 50.0)
-    XCTAssertEqual(depth.unit, .milliseconds)
+    XCTAssertEqual(depth.range.upperBound, 100.0)
+    XCTAssertEqual(depth.unit, .percent)
     XCTAssertTrue(depth.ramping)
-    XCTAssertTrue(depth.logScale)
+    XCTAssertFalse(depth.logScale)
 
     let delay = ParameterAddress.delay.parameterDefinition
     XCTAssertEqual(delay.range.lowerBound, 0.0)
@@ -61,7 +61,7 @@ final class ParameterAddressTests: XCTestCase {
     XCTAssertEqual(parameter.identifier, definition.identifier)
     XCTAssertEqual(parameter.displayName, definition.localized)
     XCTAssertTrue(parameter.flags.contains(.flag_CanRamp))
-    XCTAssertTrue(parameter.flags.contains(.flag_DisplayLogarithmic))
+    XCTAssertFalse(parameter.flags.contains(.flag_DisplayLogarithmic))
 
     address = .odd90
     definition = address.parameterDefinition

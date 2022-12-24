@@ -111,18 +111,18 @@ private:
   void doRendering(NSInteger outputBusNumber, DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs,
                    AUAudioFrameCount frameCount) noexcept {
 
+    auto depth = depth_.frameValue(); // 0-1
+    auto delay = delay_.frameValue(); // 0-50
+    auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
+    auto wetMix = wetMix_.frameValue();
+    auto dryMix = dryMix_.frameValue();
+
+    // This is the amount of delay that the LFO can oscillate over. A value of -1 in the LFO will result in 0.0 and a
+    // value of +1 from the LFO will give `delaySpan`.
+    auto delaySpan = maxDelayMilliseconds_ - delay;
+
     // Advance by frames in outer loop so we can ramp values when they change without having to save/restore state.
     for (int frame = 0; frame < frameCount; ++frame) {
-
-      auto depth = depth_.frameValue();
-      auto delay = delay_.frameValue();
-      auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
-      auto wetMix = wetMix_.frameValue();
-      auto dryMix = dryMix_.frameValue();
-
-      // This is the amount of delay that the LFO can oscillate over. A value of -1 in the LFO will result in 0.0 and a
-      // value of +1 from the LFO will give `delaySpan`.
-      auto delaySpan = depth - delay;
 
       // Calculate the delay signal for even channels (L)
       auto evenDelay = DSPHeaders::DSP::bipolarToUnipolar(lfo_.value()) * delaySpan + delay;
@@ -145,13 +145,13 @@ private:
 
   void doMIDIEvent(const AUMIDIEvent& midiEvent) noexcept {}
 
-  DSPHeaders::Parameters::MillisecondsParameter<AUValue> depth_;
-  DSPHeaders::Parameters::MillisecondsParameter<AUValue> delay_;
-  DSPHeaders::Parameters::PercentageParameter<AUValue> feedback_;
-  DSPHeaders::Parameters::PercentageParameter<AUValue> dryMix_;
-  DSPHeaders::Parameters::PercentageParameter<AUValue> wetMix_;
-  DSPHeaders::Parameters::BoolParameter negativeFeedback_;
-  DSPHeaders::Parameters::BoolParameter odd90_;
+  DSPHeaders::Parameters::PercentageParameter<> depth_;
+  DSPHeaders::Parameters::MillisecondsParameter<> delay_;
+  DSPHeaders::Parameters::PercentageParameter<> feedback_;
+  DSPHeaders::Parameters::PercentageParameter<> dryMix_;
+  DSPHeaders::Parameters::PercentageParameter<> wetMix_;
+  DSPHeaders::Parameters::BoolParameter<> negativeFeedback_;
+  DSPHeaders::Parameters::BoolParameter<> odd90_;
 
   double samplesPerMillisecond_;
   double maxDelayMilliseconds_;

@@ -134,7 +134,7 @@ private extension ViewController {
       knob.action = #selector(handleKnobValueChanged(_:))
 
       let editor = FloatParameterEditor(parameter: parameters[parameterAddress],
-                                        formatter: parameters.valueFormatter(parameterAddress),
+                                        formatting: parameters[parameterAddress],
                                         rangedControl: knob, label: label)
       editors.append(editor)
       editorMap[parameterAddress] = editor

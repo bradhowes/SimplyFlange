@@ -162,7 +162,7 @@ extension ViewController {
         knob.indicatorLineWidth = progressWidth
 
         let editor = FloatParameterEditor(parameter: parameters[parameterAddress],
-                                          formatter: parameters.valueFormatter(parameterAddress),
+                                          formatting: parameters[parameterAddress],
                                           rangedControl: knob, label: label)
         self.editors.append(editor)
         editors.append(editor)

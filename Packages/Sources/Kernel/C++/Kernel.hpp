@@ -105,6 +105,7 @@ private:
       feedback_.stopRamping();
       dryMix_.stopRamping();
       wetMix_.stopRamping();
+      lfo_.stopRamping();
     }
   }
 

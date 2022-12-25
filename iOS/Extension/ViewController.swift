@@ -21,7 +21,6 @@ extension Knob: AUParameterValueProvider, RangedControl {}
 
   private let parameters = AudioUnitParameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
-  private var keyValueObservationToken: NSKeyValueObservation?
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var controlsView: View!
@@ -181,8 +180,6 @@ extension ViewController {
       editorMap[parameterAddress] = [editor]
     }
 
-    keyValueObservationToken = Self.updateEditorsOnPresetChange(audioUnit!, editors: editors)
-    
     os_log(.info, log: log, "createEditors END")
   }
 

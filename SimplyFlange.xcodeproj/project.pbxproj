@@ -23,7 +23,6 @@
 		BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD38A31627A5D16200405CBC /* MainInterface.storyboard */; };
 		BD4F06B727A60E160019CB0D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController.xib */; };
 		BD4F06B827A60E1B0019CB0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController.swift */; };
-		BD668E8C27ADE7F40038D980 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD668E8B27ADE7F40038D980 /* Kernel */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
@@ -214,7 +213,6 @@
 			files = (
 				BD17CBEB29462A0F00C30BDD /* AUv3-Support-macOS in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
-				BD668E8C27ADE7F40038D980 /* Kernel in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +485,6 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
-				BD668E8B27ADE7F40038D980 /* Kernel */,
 				BD17CBEA29462A0F00C30BDD /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
@@ -1645,10 +1642,6 @@
 		BD38A30527A5C80900405CBC /* Parameters */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
-		};
-		BD668E8B27ADE7F40038D980 /* Kernel */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Kernel;
 		};
 		BD96F30327A57C160001C2B9 /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;

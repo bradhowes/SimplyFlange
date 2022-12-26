@@ -122,3 +122,21 @@ extension AudioUnitParameters {
     odd90.value = preset.odd90
   }
 }
+
+extension AUParameter: AUParameterFormatting {
+  public var suffix: String { makeFormattingSuffix(from: unitName) }
+
+  public var stringFormatForDisplayValue: String {
+    switch self.parameterAddress {
+    case .depth, .feedback, .dry, .wet: return "%.0f"
+    default: return "%.2f"
+    }
+  }
+
+  public var unitSeparator: String {
+    switch self.parameterAddress {
+    case .depth, .feedback, .dry, .wet: return ""
+    default: return " "
+    }
+  }
+}

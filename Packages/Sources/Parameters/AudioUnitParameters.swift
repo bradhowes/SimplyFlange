@@ -122,25 +122,3 @@ extension AudioUnitParameters {
     odd90.value = preset.odd90
   }
 }
-
-extension AUParameter: AUParameterFormatting {
-
-  /// Obtain string to use to separate a formatted value from its units name
-  public var unitSeparator: String {
-    switch parameterAddress {
-    case .rate, .delay: return " "
-    default: return ""
-    }
-  }
-
-  /// Obtain the suffix to apply to a formatted value
-  public var suffix: String { unitSeparator + (unitName ?? "") }
-
-  /// Obtain the format to use in String(format:value) when formatting a values
-  public var stringFormatForDisplayValue: String {
-    switch parameterAddress {
-    case .depth, .feedback, .dry, .wet: return "%.0f"
-    default: return "%.2f"
-    }
-  }
-}

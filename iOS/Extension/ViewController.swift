@@ -19,7 +19,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   // NOTE: this special form sets the subsystem name and must run before any other logger calls.
   private let log = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController")
 
-  private let parameters = AudioUnitParameters()
+  private let parameters = Parameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
 
   @IBOutlet weak var titleLabel: UILabel!
@@ -161,6 +161,7 @@ extension ViewController {
         knob.progressLineWidth = progressWidth
         knob.indicatorLineWidth = progressWidth
 
+        knob.addTarget(self, action: #selector(handleKnobChanged(_:)), for: .valueChanged)
         let editor = FloatParameterEditor(parameter: parameters[parameterAddress],
                                           formatting: parameters[parameterAddress],
                                           rangedControl: knob, label: label)
@@ -175,6 +176,7 @@ extension ViewController {
     os_log(.info, log: log, "createEditors - creating bool parameter editors")
     for (parameterAddress, control) in switches {
       os_log(.info, log: log, "createEditors - before BooleanParameterEditor")
+      control.addTarget(self, action: #selector(handleSwitchChanged(_:)), for: .valueChanged)
       let editor = BooleanParameterEditor(parameter: parameters[parameterAddress], booleanControl: control)
       editors.append(editor)
       editorMap[parameterAddress] = [editor]
@@ -183,17 +185,14 @@ extension ViewController {
     os_log(.info, log: log, "createEditors END")
   }
 
-  @IBAction public func handleKnobValueChange(_ control: Knob) {
+  @IBAction public func handleKnobChanged(_ control: Knob) {
     guard let address = control.parameterAddress else { fatalError() }
     handleControlChanged(control, address: address)
   }
 
-  @IBAction public func handleOdd90Change(_ control: Switch) {
-    handleControlChanged(control, address: .odd90)
-  }
-
-  @IBAction public func handleNegativeFeedbackChange(_ control: Switch) {
-    handleControlChanged(control, address: .negativeFeedback)
+  @IBAction public func handleSwitchChanged(_ control: Switch) {
+    guard let address = control.parameterAddress else { fatalError() }
+    handleControlChanged(control, address: address)
   }
 
   private func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {

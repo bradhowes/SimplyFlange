@@ -13,7 +13,7 @@ private extension Array where Element == AUParameter {
 /**
  Definitions for the runtime parameters of the filter.
  */
-public final class AudioUnitParameters: NSObject, ParameterSource {
+public final class Parameters: NSObject, ParameterSource {
 
   private let log = Shared.logger("AudioUnitParameters")
 
@@ -21,7 +21,7 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
   public let parameters: [AUParameter] = ParameterAddress.allCases.map { $0.parameterDefinition.parameter }
 
   /// Array of 2-tuple values that pair a factory preset name and its definition
-  public let factoryPresetValues: [(name: String, preset: FilterPreset)] = [
+  public let factoryPresetValues: [(name: String, configuration: Configuration)] = [
     ("Flangie",
      .init(depth: 14, rate: 0.07, delay: 0.0, feedback: 50, dry: 50, wet: 50, negativeFeedback: 0, odd90: 0)),
     ("Sweeper",
@@ -73,7 +73,7 @@ public final class AudioUnitParameters: NSObject, ParameterSource {
   }
 }
 
-extension AudioUnitParameters {
+extension Parameters {
 
   private var missingParameter: AUParameter { fatalError() }
 
@@ -81,7 +81,7 @@ extension AudioUnitParameters {
   /// `fullState` attribute.
   public func useFactoryPreset(_ preset: AUAudioUnitPreset) {
     if preset.number >= 0 {
-      setValues(factoryPresetValues[preset.number].preset)
+      setValues(factoryPresetValues[preset.number].configuration)
     }
   }
 
@@ -111,32 +111,33 @@ extension AudioUnitParameters {
    Accept new values for the filter settings. Uses the AUParameterTree framework for communicating the changes to the
    AudioUnit.
    */
-  public func setValues(_ preset: FilterPreset) {
-    depth.value = preset.depth
-    rate.value = preset.rate
-    delay.value = preset.delay
-    feedback.value = preset.feedback
-    dryMix.value = preset.dry
-    wetMix.value = preset.wet
-    negativeFeedback.value = preset.negativeFeedback
-    odd90.value = preset.odd90
+  public func setValues(_ configuration: Configuration) {
+    depth.value = configuration.depth
+    rate.value = configuration.rate
+    delay.value = configuration.delay
+    feedback.value = configuration.feedback
+    dryMix.value = configuration.dry
+    wetMix.value = configuration.wet
+    negativeFeedback.value = configuration.negativeFeedback
+    odd90.value = configuration.odd90
   }
 }
 
 extension AUParameter: AUParameterFormatting {
+
+  public var unitSeparator: String {
+    switch self.parameterAddress {
+    case .depth, .feedback, .dry, .wet: return ""
+    default: return " "
+    }
+  }
+
   public var suffix: String { makeFormattingSuffix(from: unitName) }
 
   public var stringFormatForDisplayValue: String {
     switch self.parameterAddress {
     case .depth, .feedback, .dry, .wet: return "%.0f"
     default: return "%.2f"
-    }
-  }
-
-  public var unitSeparator: String {
-    switch self.parameterAddress {
-    case .depth, .feedback, .dry, .wet: return ""
-    default: return " "
     }
   }
 }

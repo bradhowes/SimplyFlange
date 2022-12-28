@@ -13,6 +13,7 @@
 		BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F6E27AECD4500B8CF3E /* KernelBridge */; };
 		BD0E6F7127AECD4500B8CF3E /* ParameterAddress in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F7027AECD4500B8CF3E /* ParameterAddress */; };
 		BD0E6F7527AECD5500B8CF3E /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F7427AECD5500B8CF3E /* Knob-macOS */; };
+		BD11AFD4295D00D200D64DE6 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD11AFD3295D00D200D64DE6 /* AUv3-Support-iOS */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
@@ -21,6 +22,10 @@
 		BD38A31727A5D16200405CBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD38A31627A5D16200405CBC /* MainInterface.storyboard */; };
 		BD4F06B727A60E160019CB0D /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BD7AA22D27A5FB5A003CAE1D /* ViewController.xib */; };
 		BD4F06B827A60E1B0019CB0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7AA22727A5EC71003CAE1D /* ViewController.swift */; };
+		BD6214A6295BB53A0089FF15 /* AUv3-DSP-Headers in Frameworks */ = {isa = PBXBuildFile; productRef = BD6214A5295BB53A0089FF15 /* AUv3-DSP-Headers */; };
+		BD6214A8295BB53A0089FF15 /* AUv3-Support in Frameworks */ = {isa = PBXBuildFile; productRef = BD6214A7295BB53A0089FF15 /* AUv3-Support */; };
+		BD6214AA295BB5410089FF15 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD6214A9295BB5410089FF15 /* AUv3-Support-macOS */; };
+		BD6214AC295BB5560089FF15 /* AUv3-Support in Frameworks */ = {isa = PBXBuildFile; productRef = BD6214AB295BB5560089FF15 /* AUv3-Support */; };
 		BD6E935427A06B1700230C02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935327A06B1700230C02 /* AppDelegate.swift */; };
 		BD6E935827A06C3800230C02 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935527A06C3800230C02 /* MainViewController.swift */; };
 		BD6E935A27A06C3800230C02 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD6E935727A06C3800230C02 /* MainWindowController.swift */; };
@@ -40,8 +45,6 @@
 		BDE5381227B2B28B008ACA93 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */; };
 		BDE5381327B2B28B008ACA93 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */; };
 		BDE5381427B2B28B008ACA93 /* Desdemona.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380C27B2B28B008ACA93 /* Desdemona.ttf */; };
-		BDF38C44295938D600D1AEDE /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDF38C43295938D600D1AEDE /* AUv3-Support-iOS */; };
-		BDF38C46295938E100D1AEDE /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDF38C45295938E100D1AEDE /* AUv3-Support-macOS */; };
 		C433F56122404C7C00F1B750 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C433F56022404C7C00F1B750 /* ViewController.swift */; };
 		C437FE712223686D008D6C09 /* SimplyFlangeAU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		C4660A602225F9A0007BE3B1 /* SimplyFlangeAU.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -136,6 +139,7 @@
 		BD1D258725D5AAE300523748 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		BD34880427A1791F00CAD24A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = macOS/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		BD38A31627A5D16200405CBC /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		BD6214A2295BB2330089FF15 /* AUv3Support */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = AUv3Support; path = ../AUv3Support; sourceTree = SOURCE_ROOT; };
 		BD6E935327A06B1700230C02 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD6E935527A06C3800230C02 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BD6E935727A06C3800230C02 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -189,7 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */,
-				BDF38C44295938D600D1AEDE /* AUv3-Support-iOS in Frameworks */,
+				BD11AFD4295D00D200D64DE6 /* AUv3-Support-iOS in Frameworks */,
 				C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,6 +207,8 @@
 				BD38A30227A5C80900405CBC /* Kernel in Frameworks */,
 				BD38A30627A5C80900405CBC /* Parameters in Frameworks */,
 				BD0E6F6727AEB42100B8CF3E /* Knob-iOS in Frameworks */,
+				BD6214A8295BB53A0089FF15 /* AUv3-Support in Frameworks */,
+				BD6214A6295BB53A0089FF15 /* AUv3-DSP-Headers in Frameworks */,
 				BD0E6F6B27AEC2B000B8CF3E /* ParameterAddress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
-				BDF38C46295938E100D1AEDE /* AUv3-Support-macOS in Frameworks */,
+				BD6214AA295BB5410089FF15 /* AUv3-Support-macOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,6 +229,7 @@
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
 				BD0E6F7527AECD5500B8CF3E /* Knob-macOS in Frameworks */,
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
+				BD6214AC295BB5560089FF15 /* AUv3-Support in Frameworks */,
 				BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
 				BD0E6F7127AECD4500B8CF3E /* ParameterAddress in Frameworks */,
@@ -262,6 +269,7 @@
 		BDE1AE1629453A9100E1F91D /* Packages */ = {
 			isa = PBXGroup;
 			children = (
+				BD6214A2295BB2330089FF15 /* AUv3Support */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -439,7 +447,7 @@
 			);
 			name = "iOS App";
 			packageProductDependencies = (
-				BDF38C43295938D600D1AEDE /* AUv3-Support-iOS */,
+				BD11AFD3295D00D200D64DE6 /* AUv3-Support-iOS */,
 			);
 			productName = "AUv3Filter iOS";
 			productReference = C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */;
@@ -464,6 +472,8 @@
 				BD0E6F6627AEB42100B8CF3E /* Knob-iOS */,
 				BD0E6F6A27AEC2B000B8CF3E /* ParameterAddress */,
 				BD0E6F6C27AECCDF00B8CF3E /* KernelBridge */,
+				BD6214A5295BB53A0089FF15 /* AUv3-DSP-Headers */,
+				BD6214A7295BB53A0089FF15 /* AUv3-Support */,
 			);
 			productName = "AUv3FilterExtension iOS";
 			productReference = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */;
@@ -485,7 +495,7 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
-				BDF38C45295938E100D1AEDE /* AUv3-Support-macOS */,
+				BD6214A9295BB5410089FF15 /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -511,6 +521,7 @@
 				BD0E6F6E27AECD4500B8CF3E /* KernelBridge */,
 				BD0E6F7027AECD4500B8CF3E /* ParameterAddress */,
 				BD0E6F7427AECD5500B8CF3E /* Knob-macOS */,
+				BD6214AB295BB5560089FF15 /* AUv3-Support */,
 			);
 			productName = "AUv3FilterExtension macOS";
 			productReference = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */;
@@ -575,7 +586,6 @@
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
 				BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */,
-				BDF38C422959389900D1AEDE /* XCRemoteSwiftPackageReference "AUv3Support" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -1588,14 +1598,6 @@
 				kind = branch;
 			};
 		};
-		BDF38C422959389900D1AEDE /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bradhowes/AUv3Support";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1625,6 +1627,10 @@
 			package = BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */;
 			productName = "Knob-macOS";
 		};
+		BD11AFD3295D00D200D64DE6 /* AUv3-Support-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-Support-iOS";
+		};
 		BD38A30127A5C80900405CBC /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Kernel;
@@ -1633,6 +1639,22 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
+		BD6214A5295BB53A0089FF15 /* AUv3-DSP-Headers */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-DSP-Headers";
+		};
+		BD6214A7295BB53A0089FF15 /* AUv3-Support */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-Support";
+		};
+		BD6214A9295BB5410089FF15 /* AUv3-Support-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-Support-macOS";
+		};
+		BD6214AB295BB5560089FF15 /* AUv3-Support */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "AUv3-Support";
+		};
 		BD96F30327A57C160001C2B9 /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Kernel;
@@ -1640,16 +1662,6 @@
 		BD96F30727A57C160001C2B9 /* Parameters */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
-		};
-		BDF38C43295938D600D1AEDE /* AUv3-Support-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDF38C422959389900D1AEDE /* XCRemoteSwiftPackageReference "AUv3Support" */;
-			productName = "AUv3-Support-iOS";
-		};
-		BDF38C45295938E100D1AEDE /* AUv3-Support-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDF38C422959389900D1AEDE /* XCRemoteSwiftPackageReference "AUv3Support" */;
-			productName = "AUv3-Support-macOS";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

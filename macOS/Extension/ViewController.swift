@@ -19,7 +19,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
   // NOTE: this special form sets the subsystem name and must run before any other logger calls.
   private let log: OSLog = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController")
 
-  private let parameters = AudioUnitParameters()
+  private let parameters = Parameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
 
   @IBOutlet private weak var controlsView: NSView!
@@ -143,6 +143,8 @@ private extension ViewController {
     for (parameterAddress, control) in switches {
       control.setTint(knobColor)
       let editor = BooleanParameterEditor(parameter: parameters[parameterAddress], booleanControl: control)
+      control.target = self
+      control.action = #selector(handleSwitchValueChanged(_:))
       editors.append(editor)
       editorMap[parameterAddress] = editor
     }
@@ -155,12 +157,9 @@ private extension ViewController {
     handleControlChanged(control, address: address)
   }
 
-  @IBAction func handleOdd90Changed(_ control: NSSwitch) {
-    handleControlChanged(control, address: .odd90)
-  }
-
-  @IBAction func handleNegativeFeedbackChanged(_ control: NSSwitch) {
-    handleControlChanged(control, address: .negativeFeedback)
+  @IBAction func handleSwitchValueChanged(_ control: Switch) {
+    guard let address = control.parameterAddress else { fatalError() }
+    handleControlChanged(control, address: address)
   }
 
   func handleControlChanged(_ control: AUParameterValueProvider, address: ParameterAddress) {

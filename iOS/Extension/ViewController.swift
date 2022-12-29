@@ -185,12 +185,12 @@ extension ViewController {
     os_log(.info, log: log, "createEditors END")
   }
 
-  @IBAction public func handleKnobChanged(_ control: Knob) {
+  @objc public func handleKnobChanged(_ control: Knob) {
     guard let address = control.parameterAddress else { fatalError() }
     handleControlChanged(control, address: address)
   }
 
-  @IBAction public func handleSwitchChanged(_ control: Switch) {
+  @objc public func handleSwitchChanged(_ control: Switch) {
     guard let address = control.parameterAddress else { fatalError() }
     handleControlChanged(control, address: address)
   }

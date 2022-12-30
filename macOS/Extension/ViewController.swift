@@ -112,6 +112,14 @@ extension ViewController: AUAudioUnitFactory {
 
 // MARK: - Private
 
+extension ViewController: AUParameterEditorDelegate {
+  public func parameterEditorEditingDone(changed: Bool) {
+    if changed {
+      audioUnit?.clearCurrentPresetIfFactoryPreset()
+    }
+  }
+}
+
 private extension ViewController {
 
   func createEditors() {
@@ -136,6 +144,7 @@ private extension ViewController {
       let editor = FloatParameterEditor(parameter: parameters[parameterAddress],
                                         formatting: parameters[parameterAddress],
                                         rangedControl: knob, label: label)
+      editor.delegate = self
       editors.append(editor)
       editorMap[parameterAddress] = editor
     }
@@ -177,11 +186,7 @@ private extension ViewController {
     }
 
     if editor.differs {
-      // When user changes something and a factory preset was active, clear it.
-      if let preset = audioUnit.currentPreset, preset.number >= 0 {
-        os_log(.debug, log: log, "controlChanged - clearing currentPreset")
-        audioUnit.currentPreset = nil
-      }
+      audioUnit.clearCurrentPresetIfFactoryPreset()
     }
 
     editor.controlChanged(source: control)

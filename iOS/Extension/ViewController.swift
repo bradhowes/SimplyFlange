@@ -136,7 +136,7 @@ extension ViewController: AUAudioUnitFactory {
 
 // MARK: - Private
 
-extension ViewController: ValueEditorDelegate {
+extension ViewController: AUParameterEditorDelegate {
 
   private func createEditors() {
     os_log(.info, log: log, "createEditors BEGIN")
@@ -148,7 +148,6 @@ extension ViewController: ValueEditorDelegate {
                                   containerViewTopConstraint: editingViewTopConstraint,
                                   backgroundViewBottomConstraint: editingBackgroundBottomConstraint,
                                   controlsView: controlsView)
-    valueEditor.delegate = self
 
     for (parameterAddress, pairs) in controls {
       var editors = [AUParameterEditor]()
@@ -166,6 +165,8 @@ extension ViewController: ValueEditorDelegate {
         let editor = FloatParameterEditor(parameter: parameters[parameterAddress],
                                           formatting: parameters[parameterAddress],
                                           rangedControl: knob, label: label)
+        editor.delegate = self
+
         self.editors.append(editor)
         editors.append(editor)
         editor.setValueEditor(valueEditor: valueEditor, tapToEdit: tapEdit)
@@ -186,7 +187,7 @@ extension ViewController: ValueEditorDelegate {
     os_log(.info, log: log, "createEditors END")
   }
 
-  public func valueEditorDismissed(changed: Bool) {
+  public func parameterEditorEditingDone(changed: Bool) {
     if changed {
       audioUnit?.clearCurrentPresetIfFactoryPreset()
     }

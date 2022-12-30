@@ -136,7 +136,7 @@ extension ViewController: AUAudioUnitFactory {
 
 // MARK: - Private
 
-extension ViewController {
+extension ViewController: ValueEditorDelegate {
 
   private func createEditors() {
     os_log(.info, log: log, "createEditors BEGIN")
@@ -148,6 +148,7 @@ extension ViewController {
                                   containerViewTopConstraint: editingViewTopConstraint,
                                   backgroundViewBottomConstraint: editingBackgroundBottomConstraint,
                                   controlsView: controlsView)
+    valueEditor.delegate = self
 
     for (parameterAddress, pairs) in controls {
       var editors = [AUParameterEditor]()
@@ -185,6 +186,12 @@ extension ViewController {
     os_log(.info, log: log, "createEditors END")
   }
 
+  public func valueEditorDismissed(changed: Bool) {
+    if changed {
+      audioUnit?.clearCurrentPresetIfFactoryPreset()
+    }
+  }
+
   @objc public func handleKnobChanged(_ control: Knob) {
     guard let address = control.parameterAddress else { fatalError() }
     handleControlChanged(control, address: address)
@@ -209,11 +216,7 @@ extension ViewController {
     }
 
     if editors.contains(where: { $0.differs }) {
-      // When user changes something and a factory preset was active, clear it.
-      if let preset = audioUnit.currentPreset, preset.number >= 0 {
-        os_log(.debug, log: log, "controlChanged - clearing currentPreset")
-        audioUnit.currentPreset = nil
-      }
+      audioUnit.clearCurrentPresetIfFactoryPreset()
     }
 
     editors.forEach { $0.controlChanged(source: control) }

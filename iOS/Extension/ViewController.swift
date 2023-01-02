@@ -134,9 +134,18 @@ extension ViewController: AUAudioUnitFactory {
   }
 }
 
+extension ViewController: AUParameterEditorDelegate {
+
+  public func parameterEditorEditingDone(changed: Bool) {
+    if changed {
+      audioUnit?.clearCurrentPresetIfFactoryPreset()
+    }
+  }
+}
+
 // MARK: - Private
 
-extension ViewController: AUParameterEditorDelegate {
+extension ViewController {
 
   private func createEditors() {
     os_log(.info, log: log, "createEditors BEGIN")
@@ -185,12 +194,6 @@ extension ViewController: AUParameterEditorDelegate {
     }
 
     os_log(.info, log: log, "createEditors END")
-  }
-
-  public func parameterEditorEditingDone(changed: Bool) {
-    if changed {
-      audioUnit?.clearCurrentPresetIfFactoryPreset()
-    }
   }
 
   @objc public func handleKnobChanged(_ control: Knob) {

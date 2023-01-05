@@ -98,7 +98,7 @@ private:
     setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
   }
 
-  void doRenderingStateChanged(bool rendering) {
+  void doRenderingStateChanged(bool rendering) noexcept {
     if (!rendering) {
       depth_.stopRamping();
       delay_.stopRamping();

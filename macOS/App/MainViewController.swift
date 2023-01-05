@@ -31,7 +31,7 @@ extension MainViewController {
     self.makeHostViewManager()
   }
 
-  func makeHostViewManager() {
+  private func makeHostViewManager() {
 
     // We can only connect up a HostViewManager when all the pieces are available, and when `view.window` is set appears
     // to be as good as anything else to use as a signal to continue.

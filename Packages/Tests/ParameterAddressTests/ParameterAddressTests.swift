@@ -11,22 +11,22 @@ final class ParameterAddressTests: XCTestCase {
 
   func testParameterDefinitions() throws {
     let depth = ParameterAddress.depth.parameterDefinition
-    XCTAssertEqual(depth.range.lowerBound, 0.0)
+    XCTAssertEqual(depth.range.lowerBound, 0.01)
     XCTAssertEqual(depth.range.upperBound, 100.0)
     XCTAssertEqual(depth.unit, .percent)
     XCTAssertTrue(depth.ramping)
     XCTAssertFalse(depth.logScale)
 
     let delay = ParameterAddress.delay.parameterDefinition
-    XCTAssertEqual(delay.range.lowerBound, 0.0)
-    XCTAssertEqual(delay.range.upperBound, 50.0)
+    XCTAssertEqual(delay.range.lowerBound, 0.01)
+    XCTAssertEqual(delay.range.upperBound, 2.0)
     XCTAssertEqual(delay.unit, .milliseconds)
     XCTAssertTrue(delay.ramping)
     XCTAssertTrue(delay.logScale)
 
     let rate = ParameterAddress.rate.parameterDefinition
     XCTAssertEqual(rate.range.lowerBound, 0.01)
-    XCTAssertEqual(rate.range.upperBound, 20.0)
+    XCTAssertEqual(rate.range.upperBound, 12.0)
     XCTAssertEqual(rate.unit, .hertz)
     XCTAssertTrue(rate.ramping)
     XCTAssertTrue(rate.logScale)

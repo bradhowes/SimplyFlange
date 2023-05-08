@@ -5,7 +5,7 @@ final class ConfigurationTests: XCTestCase {
 
   func testInit() throws {
     
-    let a = Configuration(depth: 1.0, rate: 2.0, delay: 3.0, feedback: 4.0, dry: 5.0, wet: 6.0,
+    let a = Configuration(delay: 3.0, depth: 1.0, rate: 2.0, feedback: 4.0, dry: 5.0, wet: 6.0,
                           negativeFeedback: 1.0, odd90: 0.0)
 
     XCTAssertEqual(a.depth, 1.0)

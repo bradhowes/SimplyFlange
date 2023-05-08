@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wUu-Yz-l9v" userLabel="v1.0.0">
-                    <rect key="frame" x="496" y="59" width="44" height="17"/>
+                    <rect key="frame" x="498" y="59" width="42" height="17"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="v4.0.1" id="p30-Bk-a8R" userLabel="APP_VERSION">
                         <font key="font" metaFont="system" size="14"/>
                         <color key="textColor" name="title"/>
@@ -56,39 +56,8 @@
                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VU0-ak-QUz" userLabel="Top Row">
                                     <rect key="frame" x="0.0" y="108" width="504" height="136"/>
                                     <subviews>
-                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="PLj-mQ-zSD" userLabel="Depth">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="136"/>
-                                            <subviews>
-                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" userLabel="Depth" customClass="Knob" customModule="Knob_macOS">
-                                                    <rect key="frame" x="0.0" y="16" width="120" height="120"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="QUK-PT-mqw"/>
-                                                        <constraint firstAttribute="height" constant="120" id="vAd-uR-9t8"/>
-                                                    </constraints>
-                                                </customView>
-                                                <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="AUv3Support">
-                                                    <rect key="frame" x="-2" y="0.0" width="124" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="wMm-uE-pHU"/>
-                                                    </constraints>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Depth" usesSingleLineMode="YES" id="k91-bk-kf4">
-                                                        <font key="font" metaFont="system" size="20"/>
-                                                        <color key="textColor" name="label"/>
-                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="FNZ-OF-PRt" secondAttribute="bottom" id="0Dq-gA-HEq"/>
-                                                <constraint firstAttribute="trailing" secondItem="vJE-Qk-G6z" secondAttribute="trailing" id="Dg9-ZO-pwU"/>
-                                                <constraint firstItem="FNZ-OF-PRt" firstAttribute="top" secondItem="vJE-Qk-G6z" secondAttribute="bottom" constant="-8" id="KeQ-ek-ItN"/>
-                                                <constraint firstItem="vJE-Qk-G6z" firstAttribute="leading" secondItem="PLj-mQ-zSD" secondAttribute="leading" id="V8y-NW-hgC"/>
-                                                <constraint firstItem="vJE-Qk-G6z" firstAttribute="top" secondItem="PLj-mQ-zSD" secondAttribute="top" id="YEg-53-QbK"/>
-                                                <constraint firstItem="FNZ-OF-PRt" firstAttribute="centerX" secondItem="vJE-Qk-G6z" secondAttribute="centerX" id="etp-5j-qGQ"/>
-                                            </constraints>
-                                        </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="TQt-mg-0Ox" userLabel="Delay">
-                                            <rect key="frame" x="128" y="0.0" width="120" height="136"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="120" height="136"/>
                                             <subviews>
                                                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="1VT-Na-dOb" userLabel="Delay" customClass="Knob" customModule="Knob_macOS">
                                                     <rect key="frame" x="0.0" y="16" width="120" height="120"/>
@@ -116,6 +85,37 @@
                                                 <constraint firstAttribute="bottom" secondItem="aOT-T3-0Np" secondAttribute="bottom" id="k24-XO-PTo"/>
                                                 <constraint firstItem="aOT-T3-0Np" firstAttribute="top" secondItem="1VT-Na-dOb" secondAttribute="bottom" constant="-8" id="o5T-EC-jtU"/>
                                                 <constraint firstAttribute="trailing" secondItem="1VT-Na-dOb" secondAttribute="trailing" id="zoT-hL-cbQ"/>
+                                            </constraints>
+                                        </customView>
+                                        <customView translatesAutoresizingMaskIntoConstraints="NO" id="PLj-mQ-zSD" userLabel="Depth">
+                                            <rect key="frame" x="128" y="0.0" width="120" height="136"/>
+                                            <subviews>
+                                                <customView translatesAutoresizingMaskIntoConstraints="NO" id="vJE-Qk-G6z" userLabel="Depth" customClass="Knob" customModule="Knob_macOS">
+                                                    <rect key="frame" x="0.0" y="16" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="QUK-PT-mqw"/>
+                                                        <constraint firstAttribute="height" constant="120" id="vAd-uR-9t8"/>
+                                                    </constraints>
+                                                </customView>
+                                                <textField verticalHuggingPriority="750" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FNZ-OF-PRt" customClass="FocusAwareTextField" customModule="AUv3Support">
+                                                    <rect key="frame" x="-2" y="0.0" width="124" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="wMm-uE-pHU"/>
+                                                    </constraints>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" allowsUndo="NO" alignment="center" title="Depth" usesSingleLineMode="YES" id="k91-bk-kf4">
+                                                        <font key="font" metaFont="system" size="20"/>
+                                                        <color key="textColor" name="label"/>
+                                                        <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="FNZ-OF-PRt" secondAttribute="bottom" id="0Dq-gA-HEq"/>
+                                                <constraint firstAttribute="trailing" secondItem="vJE-Qk-G6z" secondAttribute="trailing" id="Dg9-ZO-pwU"/>
+                                                <constraint firstItem="FNZ-OF-PRt" firstAttribute="top" secondItem="vJE-Qk-G6z" secondAttribute="bottom" constant="-8" id="KeQ-ek-ItN"/>
+                                                <constraint firstItem="vJE-Qk-G6z" firstAttribute="leading" secondItem="PLj-mQ-zSD" secondAttribute="leading" id="V8y-NW-hgC"/>
+                                                <constraint firstItem="vJE-Qk-G6z" firstAttribute="top" secondItem="PLj-mQ-zSD" secondAttribute="top" id="YEg-53-QbK"/>
+                                                <constraint firstItem="FNZ-OF-PRt" firstAttribute="centerX" secondItem="vJE-Qk-G6z" secondAttribute="centerX" id="etp-5j-qGQ"/>
                                             </constraints>
                                         </customView>
                                         <customView translatesAutoresizingMaskIntoConstraints="NO" id="TWQ-qw-DU9" userLabel="Feedback">

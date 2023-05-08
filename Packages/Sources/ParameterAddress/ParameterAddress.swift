@@ -25,7 +25,8 @@ public extension ParameterAddress {
     case .depth: return .defPercent("depth", localized: "Depth", address: ParameterAddress.depth, minValue: 0.01)
     case .rate: return .defFloat("rate", localized: "Rate", address: ParameterAddress.rate,
                                  range: 0.01...12.0, unit: .hertz, logScale: true)
-    case .feedback: return .defPercent("feedback", localized: "Feedback", address: ParameterAddress.feedback)
+    case .feedback: return .defPercent("feedback", localized: "Feedback", address: ParameterAddress.feedback,
+                                       maxValue: 99.0)
 
     case .dry: return .defPercent("dry", localized: "Dry", address: ParameterAddress.dry)
     case .wet: return .defPercent("wet", localized: "Wet", address: ParameterAddress.wet)

@@ -8,8 +8,11 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
-    - uses: actions/checkout@v2
-    - name: Run iOS build
-      run: xcodebuild clean build -scheme 'iOS App' -destination 'name=iPhone 12' -showBuildTimingSummary -allowProvisioningUpdates
+    - uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+    - uses: actions/checkout@v3
+    - name: Build macOS and iOS
+      run: make

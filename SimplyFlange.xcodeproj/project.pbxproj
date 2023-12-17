@@ -263,13 +263,6 @@
 			path = macOSTests;
 			sourceTree = "<group>";
 		};
-		BDE1AE1629453A9100E1F91D /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
 		BDE5380A27B2B28B008ACA93 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -283,7 +276,6 @@
 		C437FE2F2223672C008D6C09 = {
 			isa = PBXGroup;
 			children = (
-				BDE1AE1629453A9100E1F91D /* Packages */,
 				BD0D190B27A814E000C974C6 /* README.md */,
 				BD96F2EA27A53E260001C2B9 /* Packages */,
 				BDE5380A27B2B28B008ACA93 /* Resources */,

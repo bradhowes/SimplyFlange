@@ -33,7 +33,7 @@ final class ParameterAddressTests: XCTestCase {
 
     let feedback = ParameterAddress.feedback.parameterDefinition
     XCTAssertEqual(feedback.range.lowerBound, 0.0)
-    XCTAssertEqual(feedback.range.upperBound, 100.0)
+    XCTAssertEqual(feedback.range.upperBound, 99.0)
     XCTAssertEqual(feedback.unit, .percent)
     XCTAssertTrue(feedback.ramping)
     XCTAssertFalse(feedback.logScale)

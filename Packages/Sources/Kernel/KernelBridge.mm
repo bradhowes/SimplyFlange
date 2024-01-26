@@ -45,14 +45,14 @@
 - (AUImplementorValueObserver)parameterValueObserverBlock {
   __block auto kernel = kernel_;
   return ^(AUParameter* parameter, AUValue value) {
-    kernel_->setParameterValue(parameter.address, value);
+    kernel_->setParameterValuePending(parameter.address, value);
   };
 }
 
 - (AUImplementorValueProvider)parameterValueProviderBlock {
   __block auto kernel = kernel_;
   return ^AUValue(AUParameter* address) {
-    return kernel_->getParameterValue(address.address);
+    return kernel_->getParameterValuePending(address.address);
   };
 }
 

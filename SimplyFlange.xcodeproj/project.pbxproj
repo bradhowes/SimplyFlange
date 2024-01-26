@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -30,8 +30,6 @@
 		BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */; };
 		BDA675A02B2F2D780051C6F3 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA6759F2B2F2D780051C6F3 /* AUv3-Support-iOS */; };
 		BDA675A22B2F2D780051C6F3 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */; };
-		BDA675A52B2F71650051C6F3 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA675A42B2F71650051C6F3 /* AUv3-Support-iOS */; };
-		BDA675A72B2F71650051C6F3 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA675A62B2F71650051C6F3 /* AUv3-Support-macOS */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
@@ -191,7 +189,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */,
-				BDA675A52B2F71650051C6F3 /* AUv3-Support-iOS in Frameworks */,
 				BDA675A02B2F2D780051C6F3 /* AUv3-Support-iOS in Frameworks */,
 				C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */,
 			);
@@ -214,7 +211,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDA675A72B2F71650051C6F3 /* AUv3-Support-macOS in Frameworks */,
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
 				BDA675A22B2F2D780051C6F3 /* AUv3-Support-macOS in Frameworks */,
 			);
@@ -436,7 +432,6 @@
 			name = "iOS App";
 			packageProductDependencies = (
 				BDA6759F2B2F2D780051C6F3 /* AUv3-Support-iOS */,
-				BDA675A42B2F71650051C6F3 /* AUv3-Support-iOS */,
 			);
 			productName = "AUv3Filter iOS";
 			productReference = C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */;
@@ -483,7 +478,6 @@
 			name = SimplyFlange;
 			packageProductDependencies = (
 				BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */,
-				BDA675A62B2F71650051C6F3 /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -573,7 +567,7 @@
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
 				BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */,
-				BDA675A32B2F71650051C6F3 /* XCRemoteSwiftPackageReference "AUv3Support" */,
+				BDC8E84E2B5D664E00DD3EC6 /* XCLocalSwiftPackageReference "../AUv3Support" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -1577,6 +1571,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		BDC8E84E2B5D664E00DD3EC6 /* XCLocalSwiftPackageReference "../AUv3Support" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../AUv3Support;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1584,14 +1585,6 @@
 			requirement = {
 				branch = main;
 				kind = branch;
-			};
-		};
-		BDA675A32B2F71650051C6F3 /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bradhowes/AUv3Support";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1645,16 +1638,6 @@
 		};
 		BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = "AUv3-Support-macOS";
-		};
-		BDA675A42B2F71650051C6F3 /* AUv3-Support-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDA675A32B2F71650051C6F3 /* XCRemoteSwiftPackageReference "AUv3Support" */;
-			productName = "AUv3-Support-iOS";
-		};
-		BDA675A62B2F71650051C6F3 /* AUv3-Support-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDA675A32B2F71650051C6F3 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-macOS";
 		};
 /* End XCSwiftPackageProductDependency section */

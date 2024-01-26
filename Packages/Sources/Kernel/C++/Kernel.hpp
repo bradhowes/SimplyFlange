@@ -32,6 +32,14 @@ public:
   Kernel(std::string name) noexcept : super(), name_{name}, log_{os_log_create(name_.c_str(), "Kernel")}
   {
     os_log_debug(log_, "constructor");
+    registerParameter(delay_);
+    registerParameter(depth_);
+    registerParameter(feedback_);
+    registerParameter(dryMix_);
+    registerParameter(wetMix_);
+    registerParameter(negativeFeedback_);
+    registerParameter(odd90_);
+    registerParameter(lfo_.frequencyParameter());
   }
 
   const os_log_t& log() const { return log_; }
@@ -55,18 +63,7 @@ public:
    @param address the address of the parameter that changed
    @param value the new value for the parameter
    */
-  void setParameterValue(AUParameterAddress address, AUValue value) noexcept {
-    setRampedParameterValue(address, value, AUAudioFrameCount(50));
-  }
-
-  /**
-   Process an AU parameter value change by updating the kernel.
-
-   @param address the address of the parameter that changed
-   @param value the new value for the parameter
-   @param duration the number of samples to adjust over
-   */
-  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept;
+  void setParameterValuePending(AUParameterAddress address, AUValue value) noexcept;
 
   /**
    Obtain from the kernel the current value of an AU parameter.
@@ -74,7 +71,7 @@ public:
    @param address the address of the parameter to return
    @returns current parameter value
    */
-  AUValue getParameterValue(AUParameterAddress address) const noexcept;
+  AUValue getParameterValuePending(AUParameterAddress address) const noexcept;
 
 private:
   using DelayLine = DSPHeaders::DelayBuffer<AUValue>;
@@ -98,20 +95,13 @@ private:
     }
   }
 
+  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept;
+
   void doParameterEvent(const AUParameterEvent& event) noexcept {
     setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
   }
 
-  void doRenderingStateChanged(bool rendering) noexcept {
-    if (!rendering) {
-      depth_.stopRamping();
-      delay_.stopRamping();
-      feedback_.stopRamping();
-      dryMix_.stopRamping();
-      wetMix_.stopRamping();
-      lfo_.stopRamping();
-    }
-  }
+  void doRenderingStateChanged(bool rendering) noexcept {}
 
   void writeSample(DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs, AUValue evenTap, AUValue oddTap,
                    AUValue feedback, AUValue wetMix, AUValue dryMix) noexcept {
@@ -145,20 +135,20 @@ private:
   void doRendering(NSInteger outputBusNumber, DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs,
                    AUAudioFrameCount frameCount) noexcept {
 
-    auto odd90 = odd90_.get();
+    bool odd90 = odd90_;
     if (isRamping() || frameCount == 1) {
       auto delay = delay_.frameValue();
       auto depth = depth_.frameValue();
       auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.frameValue();
       auto [center, variance] = calcCenterVariance(delay, depth);
       auto [evenTap, oddTap] = odd90 ? calcDoubleTap(center, variance) : calcSingleTap(center, variance);
-      writeSample(ins, outs, evenTap, oddTap, feedback, wetMix_.normalized(), dryMix_.normalized());
+      writeSample(ins, outs, evenTap, oddTap, feedback, wetMix_.frameValue(), dryMix_.frameValue());
     } else {
       auto delay = delay_.get();
-      auto depth = depth_.normalized();
-      auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.normalized();
-      auto wetMix = wetMix_.normalized();
-      auto dryMix = dryMix_.normalized();
+      auto depth = depth_.get();
+      auto feedback = (negativeFeedback_ ? -1.0 : 1.0) * feedback_.get();
+      auto wetMix = wetMix_.get();
+      auto dryMix = dryMix_.get();
       auto [center, variance] = calcCenterVariance(delay, depth);
       if (odd90) {
         while (frameCount-- >0) {
@@ -176,13 +166,13 @@ private:
 
   void doMIDIEvent(const AUMIDIEvent& midiEvent) noexcept {}
 
-  DSPHeaders::Parameters::MillisecondsParameter<> delay_;
-  DSPHeaders::Parameters::PercentageParameter<> depth_;
-  DSPHeaders::Parameters::PercentageParameter<> feedback_;
-  DSPHeaders::Parameters::PercentageParameter<> dryMix_;
-  DSPHeaders::Parameters::PercentageParameter<> wetMix_;
-  DSPHeaders::Parameters::BoolParameter<> negativeFeedback_;
-  DSPHeaders::Parameters::BoolParameter<> odd90_;
+  DSPHeaders::Parameters::MillisecondsParameter delay_;
+  DSPHeaders::Parameters::PercentageParameter depth_;
+  DSPHeaders::Parameters::PercentageParameter feedback_;
+  DSPHeaders::Parameters::PercentageParameter dryMix_;
+  DSPHeaders::Parameters::PercentageParameter wetMix_;
+  DSPHeaders::Parameters::BoolParameter negativeFeedback_;
+  DSPHeaders::Parameters::BoolParameter odd90_;
 
   double samplesPerMillisecond_;
   double maxDelayMilliseconds_{0};

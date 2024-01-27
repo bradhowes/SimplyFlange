@@ -58,7 +58,9 @@ public:
   }
 
   /**
-   Process an AU parameter value change by updating the kernel.
+   Process an AU parameter value change by updating the kernel. Note that this
+   is likely coming from UI activity (main thread) and it must not interfere with
+   any render thread activity.
 
    @param address the address of the parameter that changed
    @param value the new value for the parameter
@@ -66,7 +68,8 @@ public:
   void setParameterValuePending(AUParameterAddress address, AUValue value) noexcept;
 
   /**
-   Obtain from the kernel the current value of an AU parameter.
+   Obtain from the kernel the current value of an AU parameter. This is most likely
+   call to satisfy UI requests for updates.
 
    @param address the address of the parameter to return
    @returns current parameter value

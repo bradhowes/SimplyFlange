@@ -7,12 +7,12 @@
 #import <string>
 #import <AVFoundation/AVFoundation.h>
 
-#import "DSPHeaders/BoolParameter.hpp"
 #import "DSPHeaders/DelayBuffer.hpp"
 #import "DSPHeaders/EventProcessor.hpp"
-#import "DSPHeaders/MillisecondsParameter.hpp"
 #import "DSPHeaders/LFO.hpp"
-#import "DSPHeaders/PercentageParameter.hpp"
+#import "DSPHeaders/Parameters/Bool.hpp"
+#import "DSPHeaders/Parameters/Milliseconds.hpp"
+#import "DSPHeaders/Parameters/Percentage.hpp"
 
 /**
  The audio processing kernel that generates a "flange" effect by combining an audio signal with a slightly delayed copy
@@ -98,10 +98,10 @@ private:
     }
   }
 
-  void setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept;
+  AUAudioFrameCount setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept;
 
-  void doParameterEvent(const AUParameterEvent& event) noexcept {
-    setRampedParameterValue(event.parameterAddress, event.value, event.rampDurationSampleFrames);
+  AUAudioFrameCount doParameterEvent(const AUParameterEvent& event, AUAudioFrameCount duration) noexcept {
+    return setRampedParameterValue(event.parameterAddress, event.value, duration);
   }
 
   void doRenderingStateChanged(bool rendering) noexcept {}
@@ -169,13 +169,13 @@ private:
 
   void doMIDIEvent(const AUMIDIEvent& midiEvent) noexcept {}
 
-  DSPHeaders::Parameters::MillisecondsParameter delay_;
-  DSPHeaders::Parameters::PercentageParameter depth_;
-  DSPHeaders::Parameters::PercentageParameter feedback_;
-  DSPHeaders::Parameters::PercentageParameter dryMix_;
-  DSPHeaders::Parameters::PercentageParameter wetMix_;
-  DSPHeaders::Parameters::BoolParameter negativeFeedback_;
-  DSPHeaders::Parameters::BoolParameter odd90_;
+  DSPHeaders::Parameters::Milliseconds delay_;
+  DSPHeaders::Parameters::Percentage depth_;
+  DSPHeaders::Parameters::Percentage feedback_;
+  DSPHeaders::Parameters::Percentage dryMix_;
+  DSPHeaders::Parameters::Percentage wetMix_;
+  DSPHeaders::Parameters::Bool negativeFeedback_;
+  DSPHeaders::Parameters::Bool odd90_;
 
   double samplesPerMillisecond_;
   double maxDelayMilliseconds_{0};

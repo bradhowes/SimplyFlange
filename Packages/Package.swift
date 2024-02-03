@@ -15,7 +15,7 @@ let package = Package(
   dependencies: [
     // This is a pain -- we have to replicate Xcode setting so that our internal packages can be resolved.
     // We need to keep this version and the Xcode version in sync or else major problems result.
-    .package(url: "https://github.com/bradhowes/AUv3Support", from: "10.1.0")
+    .package(url: "https://github.com/bradhowes/AUv3Support", from: "11.0.0")
     //.package(name: "AUv3Support", path: "/Users/howes/src/Mine/AUv3Support")
   ],
   targets: [

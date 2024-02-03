@@ -104,8 +104,6 @@ private:
     return setRampedParameterValue(event.parameterAddress, event.value, duration);
   }
 
-  void doRenderingStateChanged(bool rendering) noexcept {}
-
   void writeSample(DSPHeaders::BusBuffers ins, DSPHeaders::BusBuffers outs, AUValue evenTap, AUValue oddTap,
                    AUValue feedback, AUValue wetMix, AUValue dryMix) noexcept {
     for (int channel = 0; channel < ins.size();  ++channel) {

@@ -9,7 +9,7 @@ import ParameterAddress
 import Parameters
 import os.log
 
-extension Knob: AUParameterValueProvider, RangedControl {}
+extension Knob: @retroactive AUParameterValueProvider, @retroactive RangedControl {}
 
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
@@ -21,6 +21,7 @@ extension Knob: AUParameterValueProvider, RangedControl {}
 
   private let parameters = Parameters()
   private var viewConfig: AUAudioUnitViewConfiguration!
+  private var versionTagValue: String = ""
 
   @IBOutlet private weak var controlsView: NSView!
 
@@ -44,6 +45,8 @@ extension Knob: AUParameterValueProvider, RangedControl {}
 
   @IBOutlet private weak var odd90Control: NSSwitch!
   @IBOutlet private weak var negativeFeedbackControl: NSSwitch!
+
+  @IBOutlet private weak var versionTag: NSTextField!
 
   private lazy var controls: [ParameterAddress: (Knob, FocusAwareTextField)] = [
     .depth: (depthControl, depthValueLabel),
@@ -86,6 +89,10 @@ public extension ViewController {
     os_log(.info, log: log, "viewDidLoad END")
   }
 
+  override func viewDidAppear() {
+    versionTag.text = versionTagValue
+  }
+
   override func mouseDown(with event: NSEvent) {
     // Allow for clicks on the common NSView to end editing of values
     NSApp.keyWindow?.makeFirstResponder(nil)
@@ -98,13 +105,16 @@ extension ViewController: AudioUnitViewConfigurationManager {}
 
 // MARK: - AUAudioUnitFactory
 
-extension ViewController: AUAudioUnitFactory {
+extension ViewController: @preconcurrency AUAudioUnitFactory {
   @objc public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
+    let bundle = InternalConstants.bundle
+
     let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
     let audioUnit = try FilterAudioUnitFactory.create(componentDescription: componentDescription,
                                                       parameters: parameters,
                                                       kernel: kernel,
                                                       viewConfigurationManager: self)
+    self.versionTagValue = bundle.versionTag
     self.audioUnit = audioUnit
     return audioUnit
   }
@@ -184,4 +194,9 @@ private extension ViewController {
 
     editor.controlChanged(source: control)
   }
+}
+
+private enum InternalConstants {
+  private class EmptyClass {}
+  static let bundle = Bundle(for: InternalConstants.EmptyClass.self)
 }

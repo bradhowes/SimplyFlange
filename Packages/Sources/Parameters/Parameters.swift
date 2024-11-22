@@ -123,7 +123,7 @@ extension Parameters {
   }
 }
 
-extension AUParameter: AUParameterFormatting {
+extension AUParameter: @retroactive AUParameterFormatting {
 
   public var unitSeparator: String {
     switch self.parameterAddress {

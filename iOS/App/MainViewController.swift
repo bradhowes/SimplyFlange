@@ -10,7 +10,6 @@ final class MainViewController: UIViewController {
   private var hostViewController: HostViewController!
 
   override func viewDidLoad() {
-    print(CommandLine.arguments)
     super.viewDidLoad()
     
     guard let delegate = UIApplication.shared.delegate as? AppDelegate else { fatalError() }

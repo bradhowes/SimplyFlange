@@ -37,12 +37,12 @@
 
 - (AUImplementorValueObserver)parameterValueObserverBlock {
   __block auto dsp = kernel_;
-  return ^(AUParameter* parameter, AUValue value) { dsp->setParameterValuePending(parameter.address, value); };
+  return ^(AUParameter* parameter, AUValue value) { dsp->setParameterValue(parameter.address, value); };
 }
 
 - (AUImplementorValueProvider)parameterValueProviderBlock {
   __block auto dsp = kernel_;
-  return ^AUValue(AUParameter* address) { return dsp->getParameterValuePending(address.address); };
+  return ^AUValue(AUParameter* address) { return dsp->getParameterValue(address.address); };
 }
 
 @end

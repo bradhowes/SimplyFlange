@@ -4,22 +4,22 @@
 
 @import ParameterAddress;
 
-AUAudioFrameCount Kernel::setRampedParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept {
+bool Kernel::doSetImmediateParameterValue(AUParameterAddress address, AUValue value, AUAudioFrameCount duration) noexcept {
   // Setting ramped values are safe -- they come from the event loop and are interleaved with rendering
   switch (address) {
-    case ParameterAddressDepth: depth_.set(value, duration); return duration;
-    case ParameterAddressRate: lfo_.setFrequency(value, duration); return duration;
-    case ParameterAddressDelay: delay_.set(value, duration); return duration;
-    case ParameterAddressFeedback: feedback_.set(value, duration); return duration;
-    case ParameterAddressDry: dryMix_.set(value, duration); return duration;
-    case ParameterAddressWet: wetMix_.set(value, duration); return duration;
-    case ParameterAddressNegativeFeedback: negativeFeedback_.set(value, duration); return duration;
-    case ParameterAddressOdd90: odd90_.set(value, duration); return 0;
+    case ParameterAddressDepth: depth_.setImmediate(value, duration); return true;
+    case ParameterAddressRate: lfo_.setFrequency(value, duration); return true;
+    case ParameterAddressDelay: delay_.setImmediate(value, duration); return true;
+    case ParameterAddressFeedback: feedback_.setImmediate(value, duration); return true;
+    case ParameterAddressDry: dryMix_.setImmediate(value, duration); return true;
+    case ParameterAddressWet: wetMix_.setImmediate(value, duration); return true;
+    case ParameterAddressNegativeFeedback: negativeFeedback_.setImmediate(value, duration); return true;
+    case ParameterAddressOdd90: odd90_.setImmediate(value, duration); return true;
   }
-  return 0;
+  return false;
 }
 
-void Kernel::setParameterValuePending(AUParameterAddress address, AUValue value) noexcept {
+bool Kernel::doSetPendingParameterValue(AUParameterAddress address, AUValue value) noexcept {
   switch (address) {
     case ParameterAddressDepth: depth_.setPending(value); break;
     case ParameterAddressRate: lfo_.setFrequencyPending(value); break;
@@ -30,9 +30,23 @@ void Kernel::setParameterValuePending(AUParameterAddress address, AUValue value)
     case ParameterAddressNegativeFeedback: negativeFeedback_.setPending(value); break;
     case ParameterAddressOdd90: odd90_.setPending(value); break;
   }
+  return false;
 }
 
-AUValue Kernel::getParameterValuePending(AUParameterAddress address) const noexcept {
+AUValue Kernel::doGetImmediateParameterValue(AUParameterAddress address) const noexcept {
+  switch (address) {
+    case ParameterAddressDepth: return depth_.getPending();
+    case ParameterAddressRate: return lfo_.frequencyPending();
+    case ParameterAddressDelay: return delay_.getPending();
+    case ParameterAddressFeedback: return feedback_.getPending();
+    case ParameterAddressDry: return dryMix_.getPending();
+    case ParameterAddressWet: return wetMix_.getPending();
+    case ParameterAddressNegativeFeedback: return negativeFeedback_.getPending();
+    case ParameterAddressOdd90: return odd90_.getPending();
+  }
+  return 0.0;
+}
+AUValue Kernel::doGetPendingParameterValue(AUParameterAddress address) const noexcept {
   switch (address) {
     case ParameterAddressDepth: return depth_.getPending();
     case ParameterAddressRate: return lfo_.frequencyPending();

@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BD0E6F6727AEB42100B8CF3E /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F6627AEB42100B8CF3E /* Knob-iOS */; };
 		BD0E6F6B27AEC2B000B8CF3E /* ParameterAddress in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F6A27AEC2B000B8CF3E /* ParameterAddress */; };
 		BD0E6F6D27AECCDF00B8CF3E /* KernelBridge in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F6C27AECCDF00B8CF3E /* KernelBridge */; };
 		BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F6E27AECD4500B8CF3E /* KernelBridge */; };
 		BD0E6F7127AECD4500B8CF3E /* ParameterAddress in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F7027AECD4500B8CF3E /* ParameterAddress */; };
-		BD0E6F7527AECD5500B8CF3E /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BD0E6F7427AECD5500B8CF3E /* Knob-macOS */; };
 		BD1D257925D5AAB000523748 /* Snapshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D257825D5AAB000523748 /* Snapshots.swift */; };
 		BD1D258825D5AAE300523748 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD1D258725D5AAE300523748 /* SnapshotHelper.swift */; };
 		BD34880527A1791F00CAD24A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD34880427A1791F00CAD24A /* Assets.xcassets */; };
@@ -28,12 +26,15 @@
 		BD96F30427A57C160001C2B9 /* Kernel in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30327A57C160001C2B9 /* Kernel */; };
 		BD96F30827A57C160001C2B9 /* Parameters in Frameworks */ = {isa = PBXBuildFile; productRef = BD96F30727A57C160001C2B9 /* Parameters */; };
 		BD9FA81B24A9505300FA9940 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BD9FA81A24A9505300FA9940 /* Default-568h@2x.png */; };
-		BDA675A02B2F2D780051C6F3 /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA6759F2B2F2D780051C6F3 /* AUv3-Support-iOS */; };
-		BDA675A22B2F2D780051C6F3 /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */; };
 		BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
 		BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
+		BDCF4E242CF0F19900549C0A /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E232CF0F19900549C0A /* AUv3-Support-iOS */; };
+		BDCF4E262CF0F1A400549C0A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E252CF0F1A400549C0A /* AUv3-Support-macOS */; };
+		BDCF4E282CF0F1B700549C0A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E272CF0F1B700549C0A /* AUv3-Support-macOS */; };
+		BDCF4E2A2CF0F1DD00549C0A /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E292CF0F1DD00549C0A /* Knob-macOS */; };
+		BDCF4E2C2CF0F1EF00549C0A /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */; };
 		BDE5380D27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
 		BDE5380E27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
 		BDE5380F27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
@@ -189,7 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */,
-				BDA675A02B2F2D780051C6F3 /* AUv3-Support-iOS in Frameworks */,
+				BDCF4E242CF0F19900549C0A /* AUv3-Support-iOS in Frameworks */,
 				C4737B0B2231D930002CAD0B /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -202,7 +203,7 @@
 				BD0E6F6D27AECCDF00B8CF3E /* KernelBridge in Frameworks */,
 				BD38A30227A5C80900405CBC /* Kernel in Frameworks */,
 				BD38A30627A5C80900405CBC /* Parameters in Frameworks */,
-				BD0E6F6727AEB42100B8CF3E /* Knob-iOS in Frameworks */,
+				BDCF4E2C2CF0F1EF00549C0A /* Knob-iOS in Frameworks */,
 				BD0E6F6B27AEC2B000B8CF3E /* ParameterAddress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -212,7 +213,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE93249EC556009580D5 /* Accelerate.framework in Frameworks */,
-				BDA675A22B2F2D780051C6F3 /* AUv3-Support-macOS in Frameworks */,
+				BDCF4E262CF0F1A400549C0A /* AUv3-Support-macOS in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,9 +222,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
-				BD0E6F7527AECD5500B8CF3E /* Knob-macOS in Frameworks */,
+				BDCF4E2A2CF0F1DD00549C0A /* Knob-macOS in Frameworks */,
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
 				BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */,
+				BDCF4E282CF0F1B700549C0A /* AUv3-Support-macOS in Frameworks */,
 				BD96F30827A57C160001C2B9 /* Parameters in Frameworks */,
 				BD0E6F7127AECD4500B8CF3E /* ParameterAddress in Frameworks */,
 			);
@@ -431,7 +433,7 @@
 			);
 			name = "iOS App";
 			packageProductDependencies = (
-				BDA6759F2B2F2D780051C6F3 /* AUv3-Support-iOS */,
+				BDCF4E232CF0F19900549C0A /* AUv3-Support-iOS */,
 			);
 			productName = "AUv3Filter iOS";
 			productReference = C437FE3A222367A6008D6C09 /* SimplyFlangeHost.app */;
@@ -453,9 +455,9 @@
 			packageProductDependencies = (
 				BD38A30127A5C80900405CBC /* Kernel */,
 				BD38A30527A5C80900405CBC /* Parameters */,
-				BD0E6F6627AEB42100B8CF3E /* Knob-iOS */,
 				BD0E6F6A27AEC2B000B8CF3E /* ParameterAddress */,
 				BD0E6F6C27AECCDF00B8CF3E /* KernelBridge */,
+				BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */,
 			);
 			productName = "AUv3FilterExtension iOS";
 			productReference = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */;
@@ -477,7 +479,7 @@
 			);
 			name = SimplyFlange;
 			packageProductDependencies = (
-				BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */,
+				BDCF4E252CF0F1A400549C0A /* AUv3-Support-macOS */,
 			);
 			productName = "AUv3Filter macOS";
 			productReference = C437FE7A2223688D008D6C09 /* SimplyFlange.app */;
@@ -502,7 +504,8 @@
 				BD96F30727A57C160001C2B9 /* Parameters */,
 				BD0E6F6E27AECD4500B8CF3E /* KernelBridge */,
 				BD0E6F7027AECD4500B8CF3E /* ParameterAddress */,
-				BD0E6F7427AECD5500B8CF3E /* Knob-macOS */,
+				BDCF4E272CF0F1B700549C0A /* AUv3-Support-macOS */,
+				BDCF4E292CF0F1DD00549C0A /* Knob-macOS */,
 			);
 			productName = "AUv3FilterExtension macOS";
 			productReference = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */;
@@ -514,9 +517,10 @@
 		C437FE302223672C008D6C09 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1610;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					BD1D257525D5AAB000523748 = {
@@ -566,8 +570,8 @@
 			);
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
-				BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */,
-				BDDC29742B6537F8003489C4 /* XCRemoteSwiftPackageReference "AUv3Support" */,
+				BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */,
+				BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -817,6 +821,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */;
 			buildSettings = {
+				APP_BUNDLE_IDENTIFIER_PREFIX = com.braysoftware;
+				AUDIO_COMPONENT_BUNDLE = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework";
+				AU_PRODUCT_BUNDLE_IDENTIFIER = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).appex";
+				AU_PRODUCT_NAME = "$(AU_BASE_NAME)AU";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -838,8 +846,10 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = NO;
+				CURRENT_PROJECT_VERSION = 20241102214535;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -850,8 +860,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				HOST_PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER_PREFIX).$(AU_BASE_NAME)";
+				HOST_PRODUCT_NAME = "$(AU_BASE_NAME)Host";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0.0;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -860,7 +875,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -895,7 +909,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -910,11 +923,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOS/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange;
@@ -923,7 +936,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -966,7 +978,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -980,12 +991,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOS/Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.appex;
@@ -995,7 +1006,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1005,7 +1015,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1041,7 +1050,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
@@ -1062,8 +1070,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange;
@@ -1072,7 +1079,6 @@
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1084,7 +1090,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1114,7 +1120,6 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
@@ -1135,7 +1140,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.braysoftware.SimplyFlange.appex;
@@ -1145,7 +1150,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1153,6 +1157,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */;
 			buildSettings = {
+				APP_BUNDLE_IDENTIFIER_PREFIX = com.braysoftware;
+				AUDIO_COMPONENT_BUNDLE = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework";
+				AU_PRODUCT_BUNDLE_IDENTIFIER = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).appex";
+				AU_PRODUCT_NAME = "$(AU_BASE_NAME)AU";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
@@ -1174,9 +1182,11 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CLANG_WARN__EXIT_TIME_DESTRUCTORS = NO;
+				CURRENT_PROJECT_VERSION = 20241102214535;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = c11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1187,9 +1197,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				HOST_PRODUCT_BUNDLE_IDENTIFIER = "$(APP_BUNDLE_IDENTIFIER_PREFIX).$(AU_BASE_NAME)";
+				HOST_PRODUCT_NAME = "$(AU_BASE_NAME)Host";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
+				MARKETING_VERSION = 1.0.0;
 				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1198,7 +1213,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1233,7 +1247,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1253,11 +1266,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOS/App/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1267,7 +1280,6 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1309,7 +1321,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1329,12 +1340,12 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = iOS/Extension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1345,7 +1356,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1354,7 +1364,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1390,7 +1399,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
@@ -1417,8 +1425,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1428,7 +1435,6 @@
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1440,7 +1446,7 @@
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++23";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -1470,7 +1476,6 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 20230105194028;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = UP6SS5ES7E;
@@ -1497,7 +1502,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MARKETING_VERSION = 4.0.1;
+				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1508,7 +1513,6 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1572,30 +1576,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */ = {
+		BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/bradhowes/knob";
+			repositoryURL = "https://github.com/bradhowes/Knob";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.3;
 			};
 		};
-		BDDC29742B6537F8003489C4 /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
+		BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
+				minimumVersion = 14.0.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BD0E6F6627AEB42100B8CF3E /* Knob-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */;
-			productName = "Knob-iOS";
-		};
 		BD0E6F6A27AEC2B000B8CF3E /* ParameterAddress */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ParameterAddress;
@@ -1611,11 +1610,6 @@
 		BD0E6F7027AECD4500B8CF3E /* ParameterAddress */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = ParameterAddress;
-		};
-		BD0E6F7427AECD5500B8CF3E /* Knob-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BD9BFB9127A6EC450081337C /* XCRemoteSwiftPackageReference "knob" */;
-			productName = "Knob-macOS";
 		};
 		BD38A30127A5C80900405CBC /* Kernel */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1633,13 +1627,30 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
-		BDA6759F2B2F2D780051C6F3 /* AUv3-Support-iOS */ = {
+		BDCF4E232CF0F19900549C0A /* AUv3-Support-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-iOS";
 		};
-		BDA675A12B2F2D780051C6F3 /* AUv3-Support-macOS */ = {
+		BDCF4E252CF0F1A400549C0A /* AUv3-Support-macOS */ = {
 			isa = XCSwiftPackageProductDependency;
+			package = BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-macOS";
+		};
+		BDCF4E272CF0F1B700549C0A /* AUv3-Support-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */;
+			productName = "AUv3-Support-macOS";
+		};
+		BDCF4E292CF0F1DD00549C0A /* Knob-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */;
+			productName = "Knob-macOS";
+		};
+		BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */;
+			productName = "Knob-iOS";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

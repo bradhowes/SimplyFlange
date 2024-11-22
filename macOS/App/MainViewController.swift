@@ -49,21 +49,25 @@ extension MainViewController {
 
     let bundle = Bundle.main
     let audioUnitName = bundle.auBaseName
-    let componentDescription = AudioComponentDescription(componentType: bundle.auComponentType,
-                                                         componentSubType: bundle.auComponentSubtype,
-                                                         componentManufacturer: bundle.auComponentManufacturer,
-                                                         componentFlags: 0, componentFlagsMask: 0)
-    let config = HostViewConfig(componentName: audioUnitName,
-                                componentVersion: bundle.releaseVersionNumber,
-                                componentDescription: componentDescription,
-                                sampleLoop: .sample1,
-                                playButton: windowController.playButton,
-                                bypassButton: windowController.bypassButton,
-                                presetsButton: windowController.presetsButton,
-                                playMenuItem: appDelegate.playMenuItem,
-                                bypassMenuItem: appDelegate.bypassMenuItem,
-                                presetsMenu: appDelegate.presetsMenu,
-                                viewController: self, containerView: containerView)
+    let componentDescription = AudioComponentDescription(
+      componentType: bundle.auComponentType,
+      componentSubType: bundle.auComponentSubtype,
+      componentManufacturer: bundle.auComponentManufacturer,
+      componentFlags: 0, componentFlagsMask: 0
+    )
+    let config = HostViewConfig(
+      componentName: audioUnitName,
+      componentDescription: componentDescription,
+      sampleLoop: .sample1,
+      playButton: windowController.playButton,
+      bypassButton: windowController.bypassButton,
+      presetsButton: windowController.presetsButton,
+      playMenuItem: appDelegate.playMenuItem,
+      bypassMenuItem: appDelegate.bypassMenuItem,
+      presetsMenu: appDelegate.presetsMenu,
+      viewController: self,
+      containerView: containerView
+    )
     hostViewManager = .init(config: config)
   }
   

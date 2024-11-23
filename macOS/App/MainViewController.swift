@@ -26,19 +26,7 @@ final class MainViewController: NSViewController {
 
 extension MainViewController {
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    self.makeHostViewManager()
-  }
-
   private func makeHostViewManager() {
-
-    // We can only connect up a HostViewManager when all the pieces are available, and when `view.window` is set appears
-    // to be as good as anything else to use as a signal to continue.
-    guard view.window != nil else {
-      windowObserver = view.observe(\.window) { _, _ in self.makeHostViewManager() }
-      return
-    }
 
     guard let appDelegate = appDelegate,
           appDelegate.presetsMenu != nil,
@@ -70,7 +58,12 @@ extension MainViewController {
     )
     hostViewManager = .init(config: config)
   }
-  
+
+  override func viewWillAppear() {
+    super.viewWillAppear()
+    makeHostViewManager()
+  }
+
   override func viewDidAppear() {
     super.viewDidAppear()
     hostViewManager?.showInitialPrompt()

@@ -30,3 +30,40 @@ AU_PRODUCT_NAME = $(AU_BASE_NAME)AU
 
 // The bundle that holds the AUv3 component
 AUDIO_COMPONENT_BUNDLE = $(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework
+
+// Copyright notice to put in the Info.plist files
+COPYRIGHT_NOTICE = Copyright © 2024 B-Ray Software
+
+// The bundle / class that will be used to instantiate the AUv3. It must implement the `AUAudioUnitFactory`
+// protocol.
+AU_FACTORY_FUNCTION = $(AU_BASE_NAME)AU.ViewController
+
+// The "build" version -- the `bumpVersions.py -b` option sets this to a date/time stamp
+CURRENT_PROJECT_VERSION = 20241122214535
+
+// The visible version (eg. 1.2.3)
+MARKETING_VERSION = 4.3.1
+
+// The bundle ID prefix to use for the app host and app extension.
+APP_BUNDLE_IDENTIFIER_PREFIX = com.braysoftware
+
+// The Product Bundle Identifier to use for the host app
+HOST_PRODUCT_BUNDLE_IDENTIFIER = $(APP_BUNDLE_IDENTIFIER_PREFIX).$(AU_BASE_NAME)
+
+// The Product Bundle Identifier
+AU_PRODUCT_BUNDLE_IDENTIFIER = $(HOST_PRODUCT_BUNDLE_IDENTIFIER).appex
+
+// The Product Name for the app hosts
+HOST_PRODUCT_NAME = $(AU_BASE_NAME)Host
+
+// The Product Name for the app extensions
+AU_PRODUCT_NAME = $(AU_BASE_NAME)AU
+
+// The bundle that holds the AUv3 component
+AUDIO_COMPONENT_BUNDLE = $(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework
+
+// The minimum iOS version that we support -- affects build, but not SPM Package. Must edit there as well.
+MIN_IOS_DEPLOYMENT_TARGET = 16.4
+
+// The minimum macOS version that we support
+MIN_MACOSX_DEPLOYMENT_TARGET = 14.6

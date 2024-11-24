@@ -1593,7 +1593,7 @@
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 14.0.4;
+				minimumVersion = 15.0.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

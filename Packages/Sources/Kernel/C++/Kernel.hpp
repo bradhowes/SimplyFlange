@@ -34,7 +34,7 @@ public:
   Kernel(std::string name) noexcept : super(), name_{name}, log_{os_log_create(name_.c_str(), "Kernel")}
   {
     os_log_debug(log_, "constructor");
-    registerParameters({rate_, delay_, depth_, dryMix_, wetMix_, negativeFeedback_, odd90_});
+    registerParameters({rate_, delay_, depth_, feedback_, dryMix_, wetMix_, negativeFeedback_, odd90_});
   }
 
   const os_log_t& log() const { return log_; }

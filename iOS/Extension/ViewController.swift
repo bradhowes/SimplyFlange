@@ -123,7 +123,7 @@ extension ViewController: AudioUnitViewConfigurationManager {}
 
 // MARK: - AUAudioUnitFactory
 
-extension ViewController: AUAudioUnitFactory {
+extension ViewController: @preconcurrency AUAudioUnitFactory {
   @objc public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
     let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
     let audioUnit = try FilterAudioUnitFactory.create(componentDescription: componentDescription,

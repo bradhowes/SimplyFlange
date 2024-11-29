@@ -9,8 +9,6 @@ import ParameterAddress
 import Parameters
 import os.log
 
-extension Knob: @retroactive AUParameterValueProvider, @retroactive RangedControl {}
-
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
@@ -125,7 +123,7 @@ extension ViewController: AudioUnitViewConfigurationManager {}
 extension ViewController: AUAudioUnitFactory {
 
   nonisolated public func createAudioUnit(with componentDescription: AudioComponentDescription) throws -> AUAudioUnit {
-    let audioUnit = try DispatchQueue.main.sync {
+    try DispatchQueue.main.sync {
       let parameters = Parameters()
       let kernel = KernelBridge(Bundle.main.auBaseName, maxDelayMilliseconds: parameters[.delay].maxValue)
       let audioUnit = try FilterAudioUnitFactory.create(componentDescription: componentDescription,
@@ -134,7 +132,6 @@ extension ViewController: AUAudioUnitFactory {
       self.audioUnit = audioUnit
       return audioUnit
     }
-    return audioUnit
   }
 }
 
@@ -232,6 +229,8 @@ extension ViewController {
     os_log(.debug, log: log, "controlChanged END")
   }
 }
+
+extension Knob: @retroactive AUParameterValueProvider, @retroactive RangedControl {}
 
 extension AUParameterTree {
   fileprivate subscript (_ parameter: ParameterAddress) -> AUParameter {

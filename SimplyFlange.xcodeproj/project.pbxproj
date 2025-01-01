@@ -30,11 +30,11 @@
 		BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE92249EC556009580D5 /* Accelerate.framework */; };
 		BDB7CE9E249FC152009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
 		BDB7CE9F249FC157009580D5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDB7CE9D249FC152009580D5 /* Accelerate.framework */; };
+		BDC21E4D2D25838D00E3227F /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDC21E4C2D25838D00E3227F /* Knob-iOS */; };
+		BDC21E4F2D25839300E3227F /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDC21E4E2D25839300E3227F /* Knob-macOS */; };
 		BDCF4E242CF0F19900549C0A /* AUv3-Support-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E232CF0F19900549C0A /* AUv3-Support-iOS */; };
 		BDCF4E262CF0F1A400549C0A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E252CF0F1A400549C0A /* AUv3-Support-macOS */; };
 		BDCF4E282CF0F1B700549C0A /* AUv3-Support-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E272CF0F1B700549C0A /* AUv3-Support-macOS */; };
-		BDCF4E2A2CF0F1DD00549C0A /* Knob-macOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E292CF0F1DD00549C0A /* Knob-macOS */; };
-		BDCF4E2C2CF0F1EF00549C0A /* Knob-iOS in Frameworks */ = {isa = PBXBuildFile; productRef = BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */; };
 		BDE5380D27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
 		BDE5380E27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
 		BDE5380F27B2B28B008ACA93 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDE5380B27B2B28B008ACA93 /* Media.xcassets */; };
@@ -203,7 +203,7 @@
 				BD0E6F6D27AECCDF00B8CF3E /* KernelBridge in Frameworks */,
 				BD38A30227A5C80900405CBC /* Kernel in Frameworks */,
 				BD38A30627A5C80900405CBC /* Parameters in Frameworks */,
-				BDCF4E2C2CF0F1EF00549C0A /* Knob-iOS in Frameworks */,
+				BDC21E4D2D25838D00E3227F /* Knob-iOS in Frameworks */,
 				BD0E6F6B27AEC2B000B8CF3E /* ParameterAddress in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -222,7 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDB7CE94249EC565009580D5 /* Accelerate.framework in Frameworks */,
-				BDCF4E2A2CF0F1DD00549C0A /* Knob-macOS in Frameworks */,
+				BDC21E4F2D25839300E3227F /* Knob-macOS in Frameworks */,
 				BD96F30427A57C160001C2B9 /* Kernel in Frameworks */,
 				BD0E6F6F27AECD4500B8CF3E /* KernelBridge in Frameworks */,
 				BDCF4E282CF0F1B700549C0A /* AUv3-Support-macOS in Frameworks */,
@@ -457,7 +457,7 @@
 				BD38A30527A5C80900405CBC /* Parameters */,
 				BD0E6F6A27AEC2B000B8CF3E /* ParameterAddress */,
 				BD0E6F6C27AECCDF00B8CF3E /* KernelBridge */,
-				BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */,
+				BDC21E4C2D25838D00E3227F /* Knob-iOS */,
 			);
 			productName = "AUv3FilterExtension iOS";
 			productReference = C437FE632223686D008D6C09 /* SimplyFlangeAU.appex */;
@@ -505,7 +505,7 @@
 				BD0E6F6E27AECD4500B8CF3E /* KernelBridge */,
 				BD0E6F7027AECD4500B8CF3E /* ParameterAddress */,
 				BDCF4E272CF0F1B700549C0A /* AUv3-Support-macOS */,
-				BDCF4E292CF0F1DD00549C0A /* Knob-macOS */,
+				BDC21E4E2D25839300E3227F /* Knob-macOS */,
 			);
 			productName = "AUv3FilterExtension macOS";
 			productReference = C437FEA0222368B7008D6C09 /* SimplyFlangeAU.appex */;
@@ -520,7 +520,7 @@
 				BuildIndependentTargetsInParallel = YES;
 				DefaultBuildSystemTypeForWorkspace = Latest;
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1610;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = Apple;
 				TargetAttributes = {
 					BD1D257525D5AAB000523748 = {
@@ -571,7 +571,7 @@
 			mainGroup = C437FE2F2223672C008D6C09;
 			packageReferences = (
 				BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */,
-				BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */,
+				BDC21E4B2D257F3400E3227F /* XCRemoteSwiftPackageReference "Knob" */,
 			);
 			productRefGroup = C437FE3B222367A6008D6C09 /* Products */;
 			projectDirPath = "";
@@ -822,6 +822,7 @@
 			baseConfigurationReference = BDE2CE1824A3E8DB004AC8FA /* Staging.xcconfig */;
 			buildSettings = {
 				APP_BUNDLE_IDENTIFIER_PREFIX = com.braysoftware;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				AUDIO_COMPONENT_BUNDLE = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework";
 				AU_PRODUCT_BUNDLE_IDENTIFIER = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).appex";
 				AU_PRODUCT_NAME = "$(AU_BASE_NAME)AU";
@@ -1153,6 +1154,7 @@
 			baseConfigurationReference = BDE2CE1724A3E887004AC8FA /* Dev.xcconfig */;
 			buildSettings = {
 				APP_BUNDLE_IDENTIFIER_PREFIX = com.braysoftware;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				AUDIO_COMPONENT_BUNDLE = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).framework";
 				AU_PRODUCT_BUNDLE_IDENTIFIER = "$(HOST_PRODUCT_BUNDLE_IDENTIFIER).appex";
 				AU_PRODUCT_NAME = "$(AU_BASE_NAME)AU";
@@ -1566,7 +1568,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */ = {
+		BDC21E4B2D257F3400E3227F /* XCRemoteSwiftPackageReference "Knob" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/bradhowes/Knob";
 			requirement = {
@@ -1579,7 +1581,7 @@
 			repositoryURL = "https://github.com/bradhowes/AUv3Support";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 16.0.2;
+				minimumVersion = 16.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1617,6 +1619,16 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = Parameters;
 		};
+		BDC21E4C2D25838D00E3227F /* Knob-iOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDC21E4B2D257F3400E3227F /* XCRemoteSwiftPackageReference "Knob" */;
+			productName = "Knob-iOS";
+		};
+		BDC21E4E2D25839300E3227F /* Knob-macOS */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDC21E4B2D257F3400E3227F /* XCRemoteSwiftPackageReference "Knob" */;
+			productName = "Knob-macOS";
+		};
 		BDCF4E232CF0F19900549C0A /* AUv3-Support-iOS */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */;
@@ -1631,16 +1643,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BDC8BB6B2CD1AD0F00BDFD10 /* XCRemoteSwiftPackageReference "AUv3Support" */;
 			productName = "AUv3-Support-macOS";
-		};
-		BDCF4E292CF0F1DD00549C0A /* Knob-macOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */;
-			productName = "Knob-macOS";
-		};
-		BDCF4E2B2CF0F1EF00549C0A /* Knob-iOS */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDAD36302CF0F032004135CD /* XCRemoteSwiftPackageReference "Knob" */;
-			productName = "Knob-iOS";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

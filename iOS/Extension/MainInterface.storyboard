@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23504" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23506"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,7 +43,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nB9-xP-QOJ">
                                         <rect key="frame" x="0.0" y="0.0" width="291" height="398.5"/>
                                         <subviews>
-                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Th3-tm-Tp2" userLabel="Row 1">
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Th3-tm-Tp2" userLabel="Row 1">
                                                 <rect key="frame" x="25.5" y="0.0" width="240" height="142"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ba2-M2-1tZ" userLabel="Delay">
@@ -117,47 +117,10 @@
                                                         </constraints>
                                                     </view>
                                                 </subviews>
-                                                <variation key="heightClass=regular-widthClass=compact" hidden="NO"/>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Nt1-Eg-mZb" userLabel="Row 2">
                                                 <rect key="frame" x="23.5" y="150" width="244" height="142"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-Iz-NtY" userLabel="Alt Depth">
-                                                        <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
-                                                        <subviews>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" customClass="Knob" customModule="Knob_iOS">
-                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
-                                                                <accessibility key="accessibilityConfiguration" identifier="0"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="120" id="XNk-0T-Igy"/>
-                                                                    <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
-                                                                <rect key="frame" x="39" y="112" width="42" height="30"/>
-                                                                <accessibility key="accessibilityConfiguration" identifier="0"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                                                <color key="textColor" name="knobLabel"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-9f-pLo" userLabel="TapEdit">
-                                                                <rect key="frame" x="0.0" y="112" width="120" height="30"/>
-                                                            </view>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="top" secondItem="I7B-Iz-NtY" secondAttribute="top" id="Adj-Cd-KDj"/>
-                                                            <constraint firstItem="mHo-9f-pLo" firstAttribute="top" secondItem="T5c-Sd-KDy" secondAttribute="top" id="DFP-z1-H5T"/>
-                                                            <constraint firstItem="T5c-Sd-KDy" firstAttribute="centerX" secondItem="hui-tD-xRO" secondAttribute="centerX" id="HBl-HQ-KYi"/>
-                                                            <constraint firstItem="mHo-9f-pLo" firstAttribute="bottom" secondItem="T5c-Sd-KDy" secondAttribute="bottom" id="Naw-0H-BPF"/>
-                                                            <constraint firstAttribute="bottom" secondItem="mHo-9f-pLo" secondAttribute="bottom" id="QwL-rO-8AL"/>
-                                                            <constraint firstItem="mHo-9f-pLo" firstAttribute="trailing" secondItem="hui-tD-xRO" secondAttribute="trailing" id="U6z-x7-PbA"/>
-                                                            <constraint firstItem="T5c-Sd-KDy" firstAttribute="top" secondItem="hui-tD-xRO" secondAttribute="bottom" constant="-8" id="bJa-DH-C4v"/>
-                                                            <constraint firstAttribute="trailing" secondItem="hui-tD-xRO" secondAttribute="trailing" id="haX-rr-Ov3"/>
-                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="leading" secondItem="I7B-Iz-NtY" secondAttribute="leading" id="mdS-23-KJT"/>
-                                                            <constraint firstItem="mHo-9f-pLo" firstAttribute="leading" secondItem="hui-tD-xRO" secondAttribute="leading" id="xGL-Cy-Cv3"/>
-                                                        </constraints>
-                                                        <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
-                                                    </view>
                                                     <view tag="2" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sSI-o8-Nqf" userLabel="Alt Delay">
                                                         <rect key="frame" x="-120" y="0.0" width="120" height="142"/>
                                                         <subviews>
@@ -182,7 +145,6 @@
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="OdN-B7-7c6" firstAttribute="trailing" secondItem="Mvw-nZ-fi3" secondAttribute="trailing" id="9W5-sP-nWB"/>
-                                                            <constraint firstItem="OdN-B7-7c6" firstAttribute="top" secondItem="3TX-4e-MBG" secondAttribute="top" id="C9v-6O-ZKq"/>
                                                             <constraint firstAttribute="trailing" secondItem="Mvw-nZ-fi3" secondAttribute="trailing" id="KEb-UI-6NZ"/>
                                                             <constraint firstItem="OdN-B7-7c6" firstAttribute="leading" secondItem="Mvw-nZ-fi3" secondAttribute="leading" id="N6L-Ta-SAK"/>
                                                             <constraint firstItem="Mvw-nZ-fi3" firstAttribute="top" secondItem="sSI-o8-Nqf" secondAttribute="top" id="Tf7-gG-2mZ"/>
@@ -192,7 +154,6 @@
                                                             <constraint firstItem="3TX-4e-MBG" firstAttribute="centerX" secondItem="Mvw-nZ-fi3" secondAttribute="centerX" id="kjA-Tu-XCa"/>
                                                             <constraint firstItem="Mvw-nZ-fi3" firstAttribute="leading" secondItem="sSI-o8-Nqf" secondAttribute="leading" id="lke-ba-fez"/>
                                                         </constraints>
-                                                        <variation key="heightClass=regular-widthClass=compact" hidden="YES"/>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oDd-k9-ILX" userLabel="Rate">
                                                         <rect key="frame" x="0.0" y="0.0" width="120" height="142"/>
@@ -262,6 +223,40 @@
                                                             <constraint firstItem="bbp-ks-Vdp" firstAttribute="trailing" secondItem="tqE-Fz-AGz" secondAttribute="trailing" id="tIl-eg-v93"/>
                                                             <constraint firstItem="tqE-Fz-AGz" firstAttribute="top" secondItem="LzR-gn-frA" secondAttribute="top" id="xAS-AO-ku7"/>
                                                             <constraint firstAttribute="trailing" secondItem="tqE-Fz-AGz" secondAttribute="trailing" id="y7S-1f-VGI"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I7B-Iz-NtY" userLabel="Alt Depth">
+                                                        <rect key="frame" x="243.5" y="-0.5" width="120" height="142"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hui-tD-xRO" userLabel="Alt Depth Control" customClass="Knob" customModule="Knob_iOS">
+                                                                <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="0"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="120" id="XNk-0T-Igy"/>
+                                                                    <constraint firstAttribute="width" constant="120" id="wlx-rv-DBt"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="50%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5c-Sd-KDy" userLabel="Value">
+                                                                <rect key="frame" x="39" y="112" width="42" height="30"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="0"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                                <color key="textColor" name="knobLabel"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mHo-9f-pLo" userLabel="TapEdit">
+                                                                <rect key="frame" x="0.0" y="112" width="120" height="30"/>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="T5c-Sd-KDy" firstAttribute="bottom" secondItem="mHo-9f-pLo" secondAttribute="bottom" constant="6" id="R6G-C9-5Ox"/>
+                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="trailing" secondItem="mHo-9f-pLo" secondAttribute="trailing" id="U4x-bv-3jx"/>
+                                                            <constraint firstItem="T5c-Sd-KDy" firstAttribute="top" secondItem="hui-tD-xRO" secondAttribute="bottom" constant="-8" id="Z3F-7Y-hmY"/>
+                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="leading" secondItem="mHo-9f-pLo" secondAttribute="leading" id="aCu-MM-zrt"/>
+                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="centerX" secondItem="T5c-Sd-KDy" secondAttribute="centerX" id="dDR-VR-Ta7"/>
+                                                            <constraint firstAttribute="bottom" secondItem="mHo-9f-pLo" secondAttribute="bottom" id="hSM-Zd-EOQ"/>
+                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="top" secondItem="I7B-Iz-NtY" secondAttribute="top" id="vRC-GW-5OY"/>
+                                                            <constraint firstAttribute="trailing" secondItem="hui-tD-xRO" secondAttribute="trailing" id="xUZ-sy-hw3"/>
+                                                            <constraint firstItem="hui-tD-xRO" firstAttribute="leading" secondItem="I7B-Iz-NtY" secondAttribute="leading" id="yOT-Nh-7RN"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -466,12 +461,14 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="altDelay" destination="sSI-o8-Nqf" id="tOC-7O-7hM"/>
                         <outlet property="altDelayControl" destination="Mvw-nZ-fi3" id="NsG-0F-58P"/>
                         <outlet property="altDelayTapEdit" destination="OdN-B7-7c6" id="HL8-xG-l4O"/>
                         <outlet property="altDelayValueLabel" destination="3TX-4e-MBG" id="TUX-fT-wi1"/>
-                        <outlet property="altDepthControl" destination="hui-tD-xRO" id="TTf-gX-5ZH"/>
-                        <outlet property="altDepthTapEdit" destination="mHo-9f-pLo" id="Wbd-yn-Atb"/>
-                        <outlet property="altDepthValueLabel" destination="T5c-Sd-KDy" id="0Wu-C0-sbK"/>
+                        <outlet property="altDepth" destination="I7B-Iz-NtY" id="QIc-Rx-s9d"/>
+                        <outlet property="altDepthControl" destination="hui-tD-xRO" id="331-oH-YkC"/>
+                        <outlet property="altDepthTapEdit" destination="mHo-9f-pLo" id="0Ik-wR-nJz"/>
+                        <outlet property="altDepthValueLabel" destination="T5c-Sd-KDy" id="INY-Gr-Jby"/>
                         <outlet property="controlsView" destination="GTt-pC-dYn" id="wAx-Ty-OPo"/>
                         <outlet property="delayControl" destination="jXf-HD-UuC" id="RTL-sc-EPD"/>
                         <outlet property="delayTapEdit" destination="xLK-EJ-lhl" id="I3y-qA-bsf"/>
@@ -496,6 +493,7 @@
                         <outlet property="rateControl" destination="hF3-lq-xlE" id="yWc-M8-Wdk"/>
                         <outlet property="rateTapEdit" destination="8ki-wy-l3o" id="ONn-Bf-TzX"/>
                         <outlet property="rateValueLabel" destination="GCP-HR-UOg" id="1f9-PS-kev"/>
+                        <outlet property="row1" destination="Th3-tm-Tp2" id="64X-as-G0H"/>
                         <outlet property="titleLabel" destination="Vbj-fp-p3P" id="85z-tT-iIT"/>
                         <outlet property="wetMixControl" destination="xjB-dE-KcA" id="usi-fP-EqI"/>
                         <outlet property="wetMixTapEdit" destination="lM5-yt-nYm" id="p52-4Z-ZKv"/>

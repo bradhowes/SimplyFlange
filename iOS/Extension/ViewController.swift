@@ -12,7 +12,7 @@ import os.log
 /**
  Controller for the AUv3 filter view. Handles wiring up of the controls with AUParameter settings.
  */
-@objc open class ViewController: AUViewController {
+@objc public final class ViewController: AUViewController {
 
   // NOTE: this special form sets the subsystem name and must run before any other logger calls.
   private let log = Shared.logger(Bundle.main.auBaseName + "AU", "ViewController")
@@ -21,6 +21,10 @@ import os.log
 
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var controlsView: View!
+
+  @IBOutlet weak var row1: UIStackView!
+  @IBOutlet weak var altDelay: UIView!
+  @IBOutlet weak var altDepth: UIView!
 
   @IBOutlet weak var depthControl: Knob!
   @IBOutlet weak var depthValueLabel: Label!
@@ -111,6 +115,30 @@ public extension ViewController {
     if audioUnit != nil {
       createEditors()
     }
+  }
+
+  override func viewWillTransition(to size: CGSize, with coordinator: any UIViewControllerTransitionCoordinator) {
+    if traitCollection.horizontalSizeClass == .compact {
+      // Going to be taller
+      if size.width < size.height {
+        row1.isHidden = false
+        altDelay.isHidden = true
+        altDepth.isHidden = true
+      } else {
+        row1.isHidden = true
+        altDelay.isHidden = false
+        altDepth.isHidden = false
+      }
+    } else {
+      row1.isHidden = true
+      altDelay.isHidden = false
+      altDepth.isHidden = false
+    }
+  }
+
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    os_log(.info, log: log, "horizontalSizeClass: %d", traitCollection.horizontalSizeClass.rawValue)
+    os_log(.info, log: log, "verticalSizeClass: %d", traitCollection.verticalSizeClass.rawValue)
   }
 }
 

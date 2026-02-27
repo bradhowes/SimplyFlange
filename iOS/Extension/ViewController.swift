@@ -135,11 +135,6 @@ public extension ViewController {
       altDepth.isHidden = false
     }
   }
-
-  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-    os_log(.info, log: log, "horizontalSizeClass: %d", traitCollection.horizontalSizeClass.rawValue)
-    os_log(.info, log: log, "verticalSizeClass: %d", traitCollection.verticalSizeClass.rawValue)
-  }
 }
 
 // MARK: - AudioUnitViewConfigurationManager

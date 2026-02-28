@@ -16,7 +16,9 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Select Xcode 16.1
-      run: ls -l /Applications && sudo xcode-select -s /Applications/Xcode_16.1.app
+    - name: Select Xcode Xcode_26.2.0
+      run: ls -l /Applications && sudo xcode-select -s /Applications/Xcode_26.2.0.app
+    - name: Show ENV
+      run: env
     - name: Build, test, and code coverage
-      run: env && make
+      run: make
